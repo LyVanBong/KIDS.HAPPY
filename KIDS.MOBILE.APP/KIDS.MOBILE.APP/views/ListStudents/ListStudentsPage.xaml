@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KIDS.MOBILE.APP.views.ListStudents.ListStudentsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    iOsSpecific:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <Grid
+            Margin="0"
+            Padding="0"
+            RowDefinitions="Auto,50,*"
+            BackgroundColor="{StaticResource BackgroundApp}"
+            RowSpacing="0">
+            <navigationView:NavigationView Text="{markupExtension:Translate 00042}"/>
+            <SearchBar Grid.Row="1"
+                       VerticalOptions="CenterAndExpand"
+                       Text="{Binding SearchStudent}" />
+            <CollectionView
+                x:Name="CollectionView"
+                Grid.Row="2"
+                Margin="0"
+                BackgroundColor="{StaticResource BackgroundApp}"
+                ItemsSource="{Binding Students}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="0" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            Margin="0"
+                            Padding="5,0,10,10"
+                            ColumnDefinitions="60,*,Auto"
+                            ColumnSpacing="0"
+                            RowDefinitions="20,20,20,.5"
+                            RowSpacing="0">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference CollectionView}, Path=BindingContext.StudentDetailCommand}" CommandParameter="{Binding}" />
+                            </Grid.GestureRecognizers>
+                            <forms:CachedImage
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Margin="5"
+                                Aspect="AspectFill"
+                                DownsampleToViewSize="true"
+                                ErrorPlaceholder="student0.png"
+                                LoadingPlaceholder="student0.png"
+                                Source="{Binding TmpPicture}">
+                                <forms:CachedImage.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Sex}"
+                                        TargetType="forms:CachedImage"
+                                        Value="True">
+                                        <Setter Property="ErrorPlaceholder" Value="student1.png" />
+                                        <Setter Property="LoadingPlaceholder" Value="student1.png" />
+                                    </DataTrigger>
+                                </forms:CachedImage.Triggers>
+                                <forms:CachedImage.Transformations>
+                                    <transformations:CornersTransformation CornersTransformType="AllRounded" />
+                                </forms:CachedImage.Transformations>
+                            </forms:CachedImage>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding Name}"
+                                TextColor="#000000" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding TmpDOB}"
+                                TextColor="#000000" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding NickName}"
+                                TextColor="#000000" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Text="{markupExtension:Translate 00084}"
+                                TextColor="#000000">
+                                <Label.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Sex}"
+                                        TargetType="Label"
+                                        Value="True">
+                                        <Setter Property="Label.Text" Value="{markupExtension:Translate 00085}" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <BoxView
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                BackgroundColor="DarkGray" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <loadingView:LoadingView Grid.Row="1" IsVisible="{Binding IsLoading}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

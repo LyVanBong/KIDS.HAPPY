@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KIDS.MOBILE.APP.views.ListStudents.StudentDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:listStudents="clr-namespace:KIDS.MOBILE.APP.views.ListStudents;assembly=KIDS.MOBILE.APP"
+    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+    iOsSpecific:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <Grid
+        HorizontalOptions="FillAndExpand"
+        RowDefinitions="Auto,*"
+        VerticalOptions="FillAndExpand">
+        <navigationView:NavigationView Grid.Row="0" Text="{markupExtension:Translate 00089}" />
+        <ContentView
+            x:Name="ContentView"
+            Grid.Row="1"
+            BackgroundColor="{StaticResource BackgroundApp}" />
+        <loadingView:LoadingView Grid.Row="1" IsVisible="{Binding IsLoading}" />
+    </Grid>
+</ContentPage>

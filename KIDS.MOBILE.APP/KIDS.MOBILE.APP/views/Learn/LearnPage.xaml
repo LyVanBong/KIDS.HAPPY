@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KIDS.MOBILE.APP.views.Learn.LearnPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:learn="clr-namespace:KIDS.MOBILE.APP.ViewModels.Learn;assembly=KIDS.MOBILE.APP"
+    xmlns:learn1="clr-namespace:KIDS.MOBILE.APP.views.Learn;assembly=KIDS.MOBILE.APP"
+    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+    xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+    iOsSpecific:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <Grid
+            Margin="0"
+            Padding="0"
+            BackgroundColor="{StaticResource BackgroundApp}"
+            HorizontalOptions="FillAndExpand"
+            RowDefinitions="40,*"
+            RowSpacing="0"
+            ColumnDefinitions="*,80"
+            ColumnSpacing="0"
+            VerticalOptions="FillAndExpand">
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                ColumnDefinitions="auto,*">
+                <navigationView:NavigationView Grid.Column="0" Grid.ColumnSpan="2" Text="{markupExtension:Translate 00031}" />
+                <Grid Grid.Column="0"
+                      ColumnDefinitions="5,*,30">
+                    <Label Grid.Column="1" Text="{Binding ChoosedDate}" TextColor="White" VerticalOptions="CenterAndExpand"/>
+                    <Image Grid.Column="2" Source="{markupExtension:ImageResource calendarToolbar.png}"></Image>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectDateCommand}"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </Grid>
+            <tabView:SfTabView
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0"
+                VisibleHeaderCount="2">
+                <tabView:SfTabItem Title="{markupExtension:Translate 00090}" TitleFontSize="18">
+                    <tabView:SfTabItem.Content>
+                        <learn1:LearnMorningView />
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+                <tabView:SfTabItem Title="{markupExtension:Translate 00091}" TitleFontSize="18">
+                    <tabView:SfTabItem.Content>
+                        <learn1:LearnAfternoonView />
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+            </tabView:SfTabView>
+            <loadingView:LoadingView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsLoading}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

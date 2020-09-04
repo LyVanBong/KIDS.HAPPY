@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="KIDS.MOBILE.APP.views.TicketManagement.AbsenceRequestView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="{StaticResource BackgroundApp}"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <CollectionView
+            x:Name="CollectionViewAbsence"
+            Margin="10"
+            HorizontalOptions="FillAndExpand"
+            ItemsSource="{Binding AbseceData}"
+            VerticalOptions="FillAndExpand">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="Transparent"
+                        BorderColor="#c3edea"
+                        CornerRadius="10"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+                        <Frame.Triggers>
+                            <DataTrigger
+                                Binding="{Binding Status}"
+                                TargetType="Frame"
+                                Value="False">
+                                <Setter Property="Frame.BorderColor" Value="#dd7631" />
+                            </DataTrigger>
+                        </Frame.Triggers>
+                        <Grid
+                            Margin="0"
+                            Padding="10,5"
+                            ColumnDefinitions="50,*"
+                            HorizontalOptions="FillAndExpand"
+                            RowDefinitions="50,Auto"
+                            RowSpacing="0"
+                            VerticalOptions="FillAndExpand">
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Aspect="AspectFill"
+                                BackgroundColor="{StaticResource BackgroundImage}"
+                                Source="{Binding TmpPicture}">
+                                <Image.Clip>
+                                    <EllipseGeometry
+                                        Center="25,25"
+                                        RadiusX="25"
+                                        RadiusY="25" />
+                                </Image.Clip>
+                            </Image>
+                            <StackLayout
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0"
+                                Padding="0"
+                                Spacing="0">
+                                <Label
+                                    FontSize="16"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding NguoiGui}"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Label
+                                    FontSize="14"
+                                    HorizontalOptions="StartAndExpand"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{markupExtension:Translate 00036}" />
+                                            <Span Text=" " />
+                                            <Span Text="{Binding TmpFromDate}" />
+                                            <Span Text=" " />
+                                            <Span Text="{markupExtension:Translate 00037}" />
+                                            <Span Text=" " />
+                                            <Span Text="{Binding TmpToDate}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                            <Grid
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Margin="0"
+                                Padding="0"
+                                ColumnDefinitions="*,*"
+                                ColumnSpacing="0"
+                                RowDefinitions="Auto,20,.5,30"
+                                RowSpacing="0">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    FontSize="14"
+                                    HorizontalOptions="StartAndExpand"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="99"
+                                    Text="{Binding Content}"
+                                    TextColor="Black"
+                                    VerticalOptions="StartAndExpand" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    FontSize="14"
+                                    HorizontalOptions="EndAndExpand"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{markupExtension:Translate 00038}" TextColor="Gray" />
+                                            <Span Text=" " />
+                                            <Span Text="{Binding TmpDate}" TextColor="Black" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <BoxView
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="{StaticResource LineBackground}" />
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    FontSize="12"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{markupExtension:Translate 00040}"
+                                    TextColor="#ff926b"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference CollectionViewAbsence}, Path=BindingContext.ConfirmAbsenceCommand}" CommandParameter="{Binding}" />
+                                    </Label.GestureRecognizers>
+                                    <Label.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding Status}"
+                                            TargetType="Label"
+                                            Value="True">
+                                            <Setter Property="Label.Text" Value="{markupExtension:Translate 00039}" />
+                                            <Setter Property="Label.TextColor" Value="#035aa6" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    FontSize="12"
+                                    HorizontalOptions="EndAndExpand"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{markupExtension:Translate 00041}" />
+                                            <Span Text=" " />
+                                            <Span Text="{Binding Source={x:Reference CollectionViewAbsence}, Path=BindingContext.UserData.TenGV}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentView.Content>
+</ContentView>

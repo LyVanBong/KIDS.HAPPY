@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="KIDS.MOBILE.APP.views.Login.LoginView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+    xmlns:markup="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <Grid
+            Margin="0"
+            Padding="0"
+            BackgroundColor="{StaticResource BackgroundApp}"
+            HorizontalOptions="FillAndExpand"
+            RowSpacing="0"
+            VerticalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".5*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width=".5*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".5*" />
+                <RowDefinition Height=".5*" />
+                <RowDefinition Height=".5*" />
+                <RowDefinition Height=".3*" />
+                <RowDefinition Height=".1*" />
+                <RowDefinition Height=".3*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <BoxView
+                Grid.Row="2"
+                Grid.RowSpan="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                Margin="0"
+                BackgroundColor="#343669" />
+            <BoxView
+                Grid.Row="3"
+                Grid.RowSpan="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                Margin="0,-10"
+                BackgroundColor="#797EEF" />
+            <BoxView
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                Margin="0,-10"
+                BackgroundColor="#FDA14D" />
+            <Image
+                Grid.Row="0"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Margin="0"
+                Aspect="AspectFit"
+                   Source="{markup:ImageResource KIDS.MOBILE.APP.Resources.Images.2.png}"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="200" />
+            <forms:AnimationView
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                Animation="schoolhome.json"
+                AutoPlay="True"
+                BackgroundColor="Transparent"
+                HorizontalOptions="FillAndExpand"
+                Loop="true"
+                VerticalOptions="FillAndExpand" />
+
+            <Frame
+                Grid.Row="2"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                BackgroundColor="#f4f4f4"
+                BorderColor="LightGray"
+                CornerRadius="20"
+                HasShadow="False">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height=".5*" />
+                    </Grid.RowDefinitions>
+                    <textInputLayout:SfTextInputLayout
+                        Grid.Row="0"
+                        ContainerType="Outlined"
+                        FocusedColor="#5459E6"
+                        Hint="{markup:Translate 00004}"
+                        UnfocusedColor="#1b1b2f">
+                        <Entry
+                            ClearButtonVisibility="WhileEditing"
+                            Keyboard="Email"
+                            MaxLength="250"
+                            ReturnType="Next"
+                            Text="{Binding UserName}"
+                            TextColor="Black" />
+                    </textInputLayout:SfTextInputLayout>
+                    <textInputLayout:SfTextInputLayout
+                        Grid.Row="1"
+                        Margin="0"
+                        ContainerType="Outlined"
+                        EnablePasswordVisibilityToggle="True"
+                        FocusedColor="#5459E6"
+                        Hint="{markup:Translate 00002}"
+                        UnfocusedColor="#1b1b2f">
+                        <Entry
+                            ClearButtonVisibility="WhileEditing"
+                            Focused="FocusePassword_OnFocused"
+                            IsPassword="True"
+                            Keyboard="Plain"
+                            MaxLength="250"
+                            ReturnCommand="{Binding LoginAppCommand}"
+                            ReturnType="Done"
+                            Text="{Binding Passwd}"
+                            TextColor="Black"
+                            Unfocused="UnfocusePassword_OnUnfocused" />
+                    </textInputLayout:SfTextInputLayout>
+                    <StackLayout
+                        Grid.Row="2"
+                        Padding="0"
+                        Orientation="Horizontal"
+                        VerticalOptions="CenterAndExpand">
+                        <CheckBox
+                            x:Name="SaveAccount"
+                            IsChecked="{Binding IsSaveAccountUser}"
+                            Color="#5459E6" />
+                        <Label
+                            FontSize="16"
+                            Text="{markup:Translate 00003}"
+                            TextColor="Black"
+                            VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CheckSaveAccount_OnTapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+            <Button
+                Grid.Row="5"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Command="{Binding LoginAppCommand}"
+                Style="{StaticResource SummitButton}"
+                Text="{markup:Translate 00001}" />
+            <loadingView:LoadingView
+                Grid.Row="0"
+                Grid.RowSpan="7"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsLoading}"
+                VerticalOptions="FillAndExpand" />
+            <BoxView
+                x:Name="ViewPass"
+                Grid.Row="6"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                BackgroundColor="#FDA14D"
+                HeightRequest="50"
+                IsVisible="False" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

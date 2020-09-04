@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="KIDS.MOBILE.APP.Controls.LoadingView.LoadingView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    HorizontalOptions="FillAndExpand"
+    VerticalOptions="FillAndExpand"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <Frame
+            Margin="0"
+            Padding="0"
+            BackgroundColor="{StaticResource BackgroundApp}"
+            BorderColor="#111d5e"
+            CornerRadius="10"
+            HasShadow="False"
+            HeightRequest="60"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="60">
+            <forms:AnimationView
+                Animation="Loading.json"
+                IsPlaying="True"
+                Loop="True" />
+        </Frame>
+    </ContentView.Content>
+</ContentView>

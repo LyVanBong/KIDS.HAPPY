@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="KIDS.MOBILE.APP.views.Message.EditDeletePopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:renderers="clr-namespace:KIDS.MOBILE.APP.Controls.Renderers;assembly=KIDS.MOBILE.APP"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    Margin="0"
+    Padding="0"
+    prism:DialogLayout.CloseOnBackgroundTapped="False"
+    prism:DialogLayout.RelativeWidthRequest=".8"
+    BackgroundColor="{StaticResource BackgroundApp}"
+    CornerRadius="10"
+    HasShadow="True">
+    <Grid
+        Margin="10,10,10,0"
+        Padding="0"
+        ColumnDefinitions="70,*"
+        RowDefinitions="40,30,200,50"
+        RowSpacing="0">
+        <forms:CachedImage
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="0"
+            Margin="5"
+            Aspect="AspectFill"
+            DownsampleToViewSize="true"
+            ErrorPlaceholder="student0.png"
+            LoadingPlaceholder="student0.png"
+            Source="{Binding Message.Picture}">
+            <forms:CachedImage.Transformations>
+                <transformations:CornersTransformation CornersTransformType="AllRounded" />
+            </forms:CachedImage.Transformations>
+        </forms:CachedImage>
+        <Label
+            Grid.Row="0"
+            Grid.Column="1"
+            FontSize="16"
+            Text="{Binding Message.NguoiGui}"
+            VerticalOptions="Center" />
+        <Image
+            Grid.Row="0"
+            Grid.Column="1"
+            HorizontalOptions="End"
+            Source="{markupExtension:ImageResource cancel.png}"
+            VerticalOptions="Center"
+            WidthRequest="60">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CancelCommand}" />
+            </Image.GestureRecognizers>
+        </Image>
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="{Binding Message.TmpDateCreate}" />
+        <Frame
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="0"
+            Padding="0"
+            BorderColor="DarkGray"
+            CornerRadius="5"
+            HasShadow="False">
+            <renderers:CustomEditor
+                Margin="2,0"
+                AutoSize="Disabled"
+                FontSize="14"
+                Text="{Binding Message.Content}" />
+        </Frame>
+        <Grid
+            Grid.Row="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            ColumnDefinitions="*,*">
+            <Button
+                Grid.Column="0"
+                Margin="5"
+                Padding="0"
+                BackgroundColor="#fff"
+                BorderColor="Red"
+                BorderWidth=".5"
+                Command="{Binding DeleteCommand}"
+                CornerRadius="10"
+                Text="{markupExtension:Translate 00121}"
+                VerticalOptions="End" />
+            <Button
+                Grid.Column="1"
+                Margin="5"
+                Padding="0"
+                BackgroundColor="#fff"
+                BorderColor="{StaticResource BackgroundColorNavBar}"
+                BorderWidth=".5"
+                Command="{Binding UpdateCommand}"
+                CornerRadius="10"
+                Text="{markupExtension:Translate 00098}"
+                VerticalOptions="End" />
+
+        </Grid>
+        <loadingView:LoadingView
+            Grid.Row="0"
+            Grid.RowSpan="4"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            IsVisible="{Binding IsLoading}" />
+    </Grid>
+</Frame>

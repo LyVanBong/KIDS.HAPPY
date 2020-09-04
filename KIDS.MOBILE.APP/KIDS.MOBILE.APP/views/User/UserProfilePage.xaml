@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KIDS.MOBILE.APP.views.User.UserProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:KIDS.MOBILE.APP.Controls.Renderers;assembly=KIDS.MOBILE.APP"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+    iOsSpecific:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <Grid
+            Margin="0"
+            Padding="0"
+            ColumnDefinitions="*,80"
+            ColumnSpacing="0"
+            RowDefinitions="40,*"
+            RowSpacing="0">
+            <navigationView:NavigationView
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Text="{markupExtension:Translate 00092}" />
+            <ScrollView
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0"
+                Padding="0"
+                BackgroundColor="{StaticResource BackgroundApp}"
+                VerticalOptions="FillAndExpand">
+                <Grid
+                    Margin="10,0"
+                    Padding="0"
+                    ColumnSpacing="0"
+                    RowDefinitions="200,40,40,40,40,40,40,40"
+                    RowSpacing="10"
+                    VerticalOptions="FillAndExpand">
+                    <Image
+                        Grid.Row="0"
+                        Margin="0"
+                        Aspect="Fill"
+                        BackgroundColor="{StaticResource BackgroundImage}"
+                        HeightRequest="150"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="{Binding Teacher.AvatarTeacher}"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="150">
+                        <Image.Clip>
+                            <EllipseGeometry
+                                Center="75,75"
+                                RadiusX="75"
+                                RadiusY="75" />
+                        </Image.Clip>
+                    </Image>
+                    <Frame
+                        Grid.Row="1"
+                        BorderColor="Silver"
+                        HasShadow="False" />
+                    <Grid Grid.Row="1" ColumnDefinitions="20,*">
+                        <Image
+                            Grid.Column="0"
+                            HorizontalOptions="Center"
+                            Source="{markupExtension:ImageResource people.png}"
+                            VerticalOptions="Center" />
+                        <control:CustomEntry
+                            x:Name="username"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Placeholder="Username"
+                            Text="{Binding Teacher.Name}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+                    </Grid>
+                    <Frame
+                        Grid.Row="2"
+                        BorderColor="Silver"
+                        HasShadow="False" />
+                    <Grid Grid.Row="2" ColumnDefinitions="20,*">
+                        <Image
+                            Grid.Column="0"
+                            HorizontalOptions="Center"
+                            Source="{markupExtension:ImageResource phonenum.png}"
+                            VerticalOptions="Center" />
+                        <control:CustomEntry
+                            x:Name="phonenumble"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Placeholder="Phone Numble"
+                            Text="{Binding Teacher.Phone}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+                    </Grid>
+                    <Frame
+                        Grid.Row="3"
+                        BorderColor="Silver"
+                        HasShadow="False" />
+                    <Grid Grid.Row="3" ColumnDefinitions="20,*">
+                        <Image
+                            Grid.Column="0"
+                            HorizontalOptions="Center"
+                            Source="{markupExtension:ImageResource email.png}"
+                            VerticalOptions="Center" />
+                        <control:CustomEntry
+                            x:Name="email"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Placeholder="Username"
+                            Text="{Binding Teacher.Email}"
+                            VerticalOptions="CenterAndExpand" />
+                    </Grid>
+                    <Frame
+                        Grid.Row="4"
+                        BorderColor="Silver"
+                        HasShadow="False" />
+                    <Grid Grid.Row="4" ColumnDefinitions="20,*">
+                        <Image
+                            Grid.Column="0"
+                            HorizontalOptions="Center"
+                            Source="{markupExtension:ImageResource calendar.png}"
+                            VerticalOptions="Center" />
+                        <DatePicker
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0,0,4,0"
+                            Date="{Binding Teacher.DOB}"
+                            VerticalOptions="CenterAndExpand" />
+                    </Grid>
+                    <Frame
+                        Grid.Row="5"
+                        BorderColor="Silver"
+                        HasShadow="False" />
+                    <Grid Grid.Row="5" ColumnDefinitions="20,*">
+                        <Image
+                            Grid.Column="0"
+                            HorizontalOptions="Center"
+                            Source="{markupExtension:ImageResource gender.png}"
+                            VerticalOptions="Center" />
+                        <Picker
+                            x:Name="gender"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0,0,4,0"
+                            SelectedIndex="{Binding Teacher.Sex}"
+                            VerticalOptions="CenterAndExpand">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <markupExtension:Translate Text="00084" />
+                                    <markupExtension:Translate Text="00085" />
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Grid>
+                    <Frame
+                        Grid.Row="6"
+                        BorderColor="Silver"
+                        HasShadow="False" />
+                    <Grid Grid.Row="6" ColumnDefinitions="20,*">
+                        <Image
+                            Grid.Column="0"
+                            HorizontalOptions="Center"
+                            Source="{markupExtension:ImageResource address.png}"
+                            VerticalOptions="Center" />
+                        <control:CustomEntry
+                            x:Name="address"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Placeholder="address"
+                            Text="{Binding Teacher.Address}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+                    </Grid>
+                    <Button
+                        Grid.Row="7"
+                        BackgroundColor="{StaticResource BackgroundColorNavBar}"
+                        Command="{Binding UpdateProfileCommand}"
+                        CornerRadius="5"
+                        FontSize="16"
+                        HeightRequest="40"
+                        HorizontalOptions="Center"
+                        Text="Cập nhật"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        WidthRequest="200" />
+                </Grid>
+            </ScrollView>
+            <loadingView:LoadingView
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                IsVisible="{Binding IsLoading}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

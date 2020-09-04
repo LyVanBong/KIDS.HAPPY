@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KIDS.MOBILE.APP.views.TicketManagement.TicketManagementPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+    xmlns:ticketManagement="clr-namespace:KIDS.MOBILE.APP.views.TicketManagement;assembly=KIDS.MOBILE.APP"
+    xmlns:translate="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    iOsSpecific:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <Grid
+            BackgroundColor="{StaticResource BackgroundApp}"
+            RowDefinitions="40,*"
+            RowSpacing="0">
+            <BoxView
+                Grid.Row="0"
+                Margin="0"
+                BackgroundColor="{StaticResource BackgroundColorNavBar}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" />
+            <Label
+                Grid.Row="0"
+                Style="{StaticResource TitleNavigation}"
+                Text="{translate:Translate 00022}" />
+            <tabView:SfTabView
+                Grid.Row="1"
+                Margin="0"
+                BackgroundColor="Transparent"
+                SelectedIndex="{Binding SelectIndexTabview, Mode=TwoWay}"
+                VisibleHeaderCount="2">
+                <tabView:SfTabItem
+                    Title="{translate:Translate 00008}"
+                    TitleFontColor="LightGray"
+                    TitleFontSize="18">
+                    <tabView:SfTabItem.Content>
+                        <ticketManagement:MedicineRemindersView />
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+                <tabView:SfTabItem
+                    Title="{translate:Translate 00009}"
+                    TitleFontColor="LightGray"
+                    TitleFontSize="18">
+                    <tabView:SfTabItem.Content>
+                        <ticketManagement:AbsenceRequestView />
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+            </tabView:SfTabView>
+            <loadingView:LoadingView Grid.Row="1" IsVisible="{Binding IsLoading}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

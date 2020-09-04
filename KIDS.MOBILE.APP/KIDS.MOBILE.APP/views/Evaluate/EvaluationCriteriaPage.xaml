@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KIDS.MOBILE.APP.views.Evaluate.EvaluationCriteriaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+    xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:xaml="http://prismlibrary.com"
+    iOsSpecific:Page.UseSafeArea="True"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid
+            Margin="0"
+            Padding="0"
+            BackgroundColor="{StaticResource BackgroundApp}"
+            ColumnDefinitions="80,*"
+            RowDefinitions="40,150,.5,*">
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0"
+                Padding="0"
+                BackgroundColor="{StaticResource BackgroundColorNavBar}"
+                ColumnDefinitions="*,80">
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Style="{StaticResource TitleNavigation}"
+                    Text="{Binding TitleName}" />
+                <Image
+                    x:Name="Image"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="10"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="EndAndExpand"
+                    Source="{markupExtension:ImageResource close.png}"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="40" />
+                <BoxView
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{xaml:GoBack}" />
+                    </BoxView.GestureRecognizers>
+                </BoxView>
+            </Grid>
+            <forms:CachedImage
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="5"
+                Aspect="AspectFit"
+                DownsampleToViewSize="true"
+                ErrorPlaceholder="student0.png"
+                HeightRequest="75"
+                LoadingPlaceholder="student0.png"
+                Source="{Binding EvaluationCriteria.Picture}">
+                <forms:CachedImage.Transformations>
+                    <transformations:CornersTransformation CornersTransformType="AllRounded" />
+                </forms:CachedImage.Transformations>
+            </forms:CachedImage>
+            <progressBar:SfCircularProgressBar
+                Grid.Row="1"
+                Grid.Column="1"
+                Progress="{Binding EvaluationCriteria.TyLe}"
+                SegmentCount="4">
+                <progressBar:SfCircularProgressBar.Content>
+                    <Label
+                        FontSize="24"
+                        Text="{Binding EvaluationCriteria.TyLe, StringFormat='{0} %'}"
+                        TextColor="#000" />
+                </progressBar:SfCircularProgressBar.Content>
+            </progressBar:SfCircularProgressBar>
+            <BoxView
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="10,0"
+                BackgroundColor="DarkGray" />
+            <CollectionView
+                x:Name="CollectionView"
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="10,0"
+                Header="{Binding .}"
+                ItemsSource="{Binding EvaluationCriteriaData}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,30" RowDefinitions="30,.5">
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{markupExtension:Translate 00119}"
+                                VerticalOptions="Fill"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{markupExtension:Translate 00120}"
+                                VerticalOptions="Fill"
+                                VerticalTextAlignment="Center" />
+                            <BoxView
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                BackgroundColor="DarkGray" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.HeaderTemplate>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,30" RowDefinitions="30,.5">
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="{Binding Name}"
+                                VerticalOptions="Fill"
+                                VerticalTextAlignment="Center" />
+                            <CheckBox
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                IsChecked="{Binding Result}"
+                                VerticalOptions="CenterAndExpand" />
+                            <BoxView
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                BackgroundColor="DarkGray" />
+                            <BoxView
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference CollectionView}, Path=BindingContext.UpdateEvaluationCommand}" CommandParameter="{Binding .}" />
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <loadingView:LoadingView
+                Grid.Row="1"
+                Grid.RowSpan="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                IsVisible="{Binding IsLoading}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KIDS.MOBILE.APP.views.MedicineReminders.DetailMedicineRemindersPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+    iOsSpecific:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <Grid
+            Margin="0"
+            Padding="0"
+            ColumnSpacing="0"
+            RowDefinitions="40,*"
+            RowSpacing="0">
+            <navigationView:NavigationView Grid.Row="0" Text="{markupExtension:TranslateExtension 00066}" />
+            <Grid
+                Grid.Row="1"
+                Margin="0"
+                Padding="10"
+                BackgroundColor="{StaticResource BackgroundApp}"
+                ColumnSpacing="0"
+                RowDefinitions="Auto,Auto"
+                RowSpacing="10">
+                <Frame
+                    Margin="0"
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    BorderColor="#c3edea"
+                    CornerRadius="10"
+                    HasShadow="False"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Frame.Triggers>
+                        <DataTrigger
+                            Binding="{Binding MedicineData.Status}"
+                            TargetType="Frame"
+                            Value="False">
+                            <Setter Property="Frame.BorderColor" Value="#dd7631" />
+                        </DataTrigger>
+                    </Frame.Triggers>
+                    <Grid
+                        Margin="0"
+                        Padding="10,5"
+                        ColumnDefinitions="50,*"
+                        HorizontalOptions="FillAndExpand"
+                        RowDefinitions="50,Auto"
+                        RowSpacing="0"
+                        VerticalOptions="FillAndExpand">
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Aspect="AspectFill"
+                            BackgroundColor="{StaticResource BackgroundImage}"
+                            Source="{Binding MedicineData.TmpPicture}">
+                            <Image.Clip>
+                                <EllipseGeometry
+                                    Center="25,25"
+                                    RadiusX="25"
+                                    RadiusY="25" />
+                            </Image.Clip>
+                        </Image>
+                        <StackLayout
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0"
+                            Padding="0"
+                            Spacing="0">
+                            <Label
+                                FontSize="16"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding MedicineData.NguoiGui}"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                FontSize="14"
+                                HorizontalOptions="StartAndExpand"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{markupExtension:Translate 00036}" />
+                                        <Span Text=" " />
+                                        <Span Text="{Binding MedicineData.TmpFromDate}" />
+                                        <Span Text=" " />
+                                        <Span Text="{markupExtension:Translate 00037}" />
+                                        <Span Text=" " />
+                                        <Span Text="{Binding MedicineData.TmpToDate}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <Grid
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="0"
+                            Padding="0"
+                            ColumnDefinitions="Auto,*"
+                            ColumnSpacing="0"
+                            RowDefinitions="Auto,20,.5,30"
+                            RowSpacing="0">
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                FontSize="14"
+                                HorizontalOptions="StartAndExpand"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="99"
+                                Text="{Binding MedicineData.Content}"
+                                TextColor="Black"
+                                VerticalOptions="StartAndExpand" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                FontSize="14"
+                                HorizontalOptions="EndAndExpand"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{markupExtension:Translate 00038}" TextColor="Gray" />
+                                        <Span Text=" " />
+                                        <Span Text="{Binding MedicineData.TmpDate}" TextColor="Black" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <BoxView
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                BackgroundColor="{StaticResource LineBackground}" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                BackgroundColor="Transparent"
+                                FontSize="12"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{markupExtension:Translate 00040}"
+                                TextColor="#ff926b"
+                                VerticalOptions="FillAndExpand"
+                                VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ConfirmedMedicineCommand}" />
+                                </Label.GestureRecognizers>
+                                <Label.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding MedicineData.Status}"
+                                        TargetType="Label"
+                                        Value="True">
+                                        <Setter Property="Label.Text" Value="{markupExtension:Translate 00039}" />
+                                        <Setter Property="Label.TextColor" Value="#035aa6" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                FontSize="12"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{markupExtension:Translate 00041}" />
+                                        <Span Text=" " />
+                                        <Span Text="{Binding UserData.TenGV}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                    </Grid>
+                </Frame>
+                <Grid
+                    Grid.Row="1"
+                    Margin="0"
+                    Padding="0"
+                    RowDefinitions="40,Auto">
+                    <BoxView
+                        Grid.Row="0"
+                        Margin="0"
+                        BackgroundColor="{StaticResource BackgroundColorNavBar}" />
+                    <Label
+                        Grid.Row="0"
+                        Style="{StaticResource TitleNavigation}"
+                        Text="{markupExtension:TranslateExtension 00065}" />
+                    <CollectionView
+                        Grid.Row="1"
+                        Margin="0"
+                        ItemsSource="{Binding DetailMeicineData}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="0" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Label
+                                    Margin="0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                FontSize="16"
+                                                Text="{Binding Name}"
+                                                TextColor="Black" />
+                                            <Span Text="&#10;" />
+                                            <Span
+                                                FontSize="14"
+                                                Text="{Binding Description}"
+                                                TextColor="DarkGray" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Grid>
+            <loadingView:LoadingView Grid.Row="1" IsVisible="{Binding IsLoading}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

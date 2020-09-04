@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="KIDS.MOBILE.APP.views.ListStudents.StudentDetailView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <Grid
+            Margin="5"
+            Padding="0"
+            ColumnDefinitions="60,*"
+            ColumnSpacing="0"
+            RowDefinitions="20,20,20,40,*"
+            RowSpacing="0">
+            <forms:CachedImage
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                Grid.Column="0"
+                Margin="5"
+                Aspect="AspectFill"
+                DownsampleToViewSize="true"
+                ErrorPlaceholder="student0.png"
+                LoadingPlaceholder="student0.png"
+                Source="{Binding Student.TmpPicture}">
+                <forms:CachedImage.Transformations>
+                    <transformations:CornersTransformation CornersTransformType="AllRounded" />
+                </forms:CachedImage.Transformations>
+                <forms:CachedImage.Triggers>
+                    <DataTrigger
+                        Binding="{Binding Student.Sex}"
+                        TargetType="forms:CachedImage"
+                        Value="True">
+                        <Setter Property="ErrorPlaceholder" Value="student1.png" />
+                        <Setter Property="LoadingPlaceholder" Value="student1.png" />
+                    </DataTrigger>
+                </forms:CachedImage.Triggers>
+            </forms:CachedImage>
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="{Binding Student.Name}"
+                TextColor="#000000" />
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                TextColor="#000000">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{markupExtension:Translate 00086}" />
+                        <Span Text=" : " />
+                        <Span Text="{Binding Student.TmpDOB}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <StackLayout
+                Grid.Row="2"
+                Grid.Column="1"
+                Orientation="Horizontal">
+                <Label Text="{markupExtension:Translate 00087}" TextColor="#000000" />
+                <Label Text=" : " TextColor="#000000" />
+                <Label Text="{markupExtension:Translate 00084}" TextColor="#000000">
+                    <Label.Triggers>
+                        <DataTrigger
+                            Binding="{Binding Student.Sex}"
+                            TargetType="Label"
+                            Value="True">
+                            <Setter Property="Label.Text" Value="{markupExtension:Translate 00085}" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </StackLayout>
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                FontSize="16"
+                Text="{markupExtension:Translate 00088}"
+                VerticalOptions="EndAndExpand" />
+            <CollectionView
+                x:Name="CollectionView"
+                Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0"
+                ItemsSource="{Binding ParentData}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            Margin="0"
+                            Padding="0"
+                            ColumnDefinitions="60,*,30"
+                            RowDefinitions="30,25">
+                            <forms:CachedImage
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="0"
+                                Margin="5"
+                                Aspect="AspectFill"
+                                DownsampleToViewSize="true"
+                                ErrorPlaceholder="student0.png"
+                                LoadingPlaceholder="student0.png"
+                                Source="{Binding TmpPicture}">
+                                <forms:CachedImage.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Sex}"
+                                        TargetType="forms:CachedImage"
+                                        Value="True">
+                                        <Setter Property="ErrorPlaceholder" Value="student1.png" />
+                                        <Setter Property="LoadingPlaceholder" Value="student1.png" />
+                                    </DataTrigger>
+                                </forms:CachedImage.Triggers>
+                                <forms:CachedImage.Transformations>
+                                    <transformations:CornersTransformation CornersTransformType="AllRounded" />
+                                </forms:CachedImage.Transformations>
+                            </forms:CachedImage>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                VerticalOptions="FillAndExpand"
+                                VerticalTextAlignment="End">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Name}" />
+                                        <Span Text=" (" />
+                                        <Span Text="{Binding Relationship}" />
+                                        <Span Text=")" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding Mobile}"
+                                VerticalOptions="FillAndExpand"
+                                VerticalTextAlignment="Start" />
+                            <Image
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="2"
+                                Source="{markupExtension:ImageResource phone.png}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference CollectionView}, Path=BindingContext.CallParentStudentCommand}" CommandParameter="{Binding Mobile}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

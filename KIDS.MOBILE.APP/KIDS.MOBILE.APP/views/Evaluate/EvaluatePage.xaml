@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KIDS.MOBILE.APP.views.Evaluate.EvaluatePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+    xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+    xmlns:xForms="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+    iOsSpecific:Page.UseSafeArea="True"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid
+            Margin="0"
+            Padding="0"
+            BackgroundColor="{StaticResource BackgroundApp}"
+            RowDefinitions="40,40,*">
+            <navigationView:NavigationView Grid.Row="0" Text="{markupExtension:TranslateExtension 00117}" />
+            <comboBox:SfComboBox
+                Grid.Row="1"
+                Margin="10,0"
+                DataSource="{Binding EvaluationBoardData}"
+                DisplayMemberPath="Name"
+                SelectedItem="{Binding SelectedItemComboBox}"
+                Text="{markupExtension:Translate 00118}">
+                <comboBox:SfComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            Margin="0"
+                            Padding="0"
+                            RowDefinitions="30,.5">
+                            <Label
+                                Grid.Row="0"
+                                Margin="5,0"
+                                Text="{Binding Name}"
+                                VerticalOptions="CenterAndExpand" />
+                            <BoxView Grid.Row="1" BackgroundColor="DarkGray" />
+                        </Grid>
+                    </DataTemplate>
+                </comboBox:SfComboBox.ItemTemplate>
+            </comboBox:SfComboBox>
+            <xForms:SfDataGrid
+                x:Name="SfDataGrid"
+                Grid.Row="2"
+                AutoGenerateColumns="False"
+                ColumnSizer="Auto"
+                FrozenColumnsCount="1"
+                ItemsSource="{Binding StudentAssessmentData}"
+                SelectedItem="{Binding SelectedItemDataGrid}"
+                SelectionChanged="SfDataGrid_OnSelectionChanged"
+                SelectionMode="Single">
+                <xForms:SfDataGrid.Columns>
+                    <xForms:GridImageColumn
+                        Aspect="AspectFill"
+                        HeaderCellTextSize="14"
+                        HeaderFontAttribute="Bold"
+                        HeaderText="{markupExtension:Translate 00109}"
+                        MappingName="Picture" />
+                    <xForms:GridTextColumn
+                        CellTextSize="13"
+                        HeaderCellTextSize="14"
+                        HeaderFontAttribute="Bold"
+                        HeaderText="{markupExtension:Translate 00110}"
+                        MappingName="NickName"
+                        TextAlignment="Center" />
+                    <xForms:GridTextColumn
+                        CellTextSize="13"
+                        HeaderCellTextSize="14"
+                        HeaderFontAttribute="Bold"
+                        HeaderText="{markupExtension:Translate 00111}"
+                        MappingName="Name"
+                        TextAlignment="Start" />
+                    <xForms:GridTextColumn
+                        CellTextSize="13"
+                        HeaderCellTextSize="14"
+                        HeaderFontAttribute="Bold"
+                        HeaderText="{markupExtension:Translate 00026}"
+                        MappingName="ClassName"
+                        TextAlignment="Center" />
+                    <xForms:GridTextColumn
+                        CellTextSize="13"
+                        HeaderCellTextSize="14"
+                        HeaderFontAttribute="Bold"
+                        HeaderText="{markupExtension:Translate 00112}"
+                        MappingName="A"
+                        TextAlignment="Center" />
+                    <xForms:GridTextColumn
+                        CellTextSize="13"
+                        HeaderCellTextSize="14"
+                        HeaderFontAttribute="Bold"
+                        HeaderText="{markupExtension:Translate 00113}"
+                        MappingName="B"
+                        TextAlignment="Center" />
+                    <xForms:GridTextColumn
+                        CellTextSize="13"
+                        HeaderCellTextSize="14"
+                        HeaderFontAttribute="Bold"
+                        HeaderText="{markupExtension:Translate 00114}"
+                        MappingName="C"
+                        TextAlignment="Center" />
+                    <xForms:GridTextColumn
+                        CellTextSize="13"
+                        HeaderCellTextSize="14"
+                        HeaderFontAttribute="Bold"
+                        HeaderText="{markupExtension:Translate 00115}"
+                        MappingName="D"
+                        TextAlignment="Center" />
+                    <xForms:GridTemplateColumn
+                        CellTextSize="13"
+                        HeaderCellTextSize="14"
+                        HeaderText="{markupExtension:Translate 00116}"
+                        MappingName="TmpTyle">
+                        <xForms:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <progressBar:SfCircularProgressBar Progress="{Binding TyLe}" SegmentCount="4" />
+                            </DataTemplate>
+                        </xForms:GridTemplateColumn.CellTemplate>
+                    </xForms:GridTemplateColumn>
+                </xForms:SfDataGrid.Columns>
+            </xForms:SfDataGrid>
+            <loadingView:LoadingView
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                IsVisible="{Binding IsLoading}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
