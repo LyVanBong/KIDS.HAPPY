@@ -83,7 +83,7 @@ namespace KIDS.MOBILE.APP.Configurations
         /// <summary>
         /// uri web form
         /// </summary>
-        internal static string UriBaseWebForm = "http://kids.ntdauto.com";
+        internal static string UriBaseWebForm = "http://school.hkids.edu.vn/";
 
         /// <summary>
         /// config db realm
@@ -103,6 +103,6 @@ namespace KIDS.MOBILE.APP.Configurations
         /// <summary>
         /// base url api in application
         /// </summary>
-        internal static string UrlApiApp = "http://webapi.ntdauto.com/api/v1/";
+        internal static string UrlApiApp = "http://api.hkids.edu.vn/";
     }
 }
