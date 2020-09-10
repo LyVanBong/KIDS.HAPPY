@@ -11,6 +11,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -66,25 +67,27 @@ namespace KIDS.MOBILE.APP.ViewModels.Notification
             {
                 new Thread(() =>
                {
-                   Device.BeginInvokeOnMainThread(async () =>
-                   {
-                       var data = await _notificationService.GetCountNotification();
-                       if (data != null && data.Data > 0)
-                       {
-                           if (data.Data > 9)
-                           {
-                               Count = "9+";
-                           }
-
-                           if (data.Data < 10 && data.Data > 0)
-                           {
-                               Count = data.Data + "";
-                           }
-                       }
-                   });
+                   Device.BeginInvokeOnMainThread(async () => { await GetCountNotification(); });
                }).Start();
                 return true;
             });
+        }
+
+        private async Task GetCountNotification()
+        {
+            var data = await _notificationService.GetCountNotification();
+            if (data != null && data.Data > 0)
+            {
+                if (data.Data > 9)
+                {
+                    Count = "9+";
+                }
+
+                if (data.Data < 10 && data.Data > 0)
+                {
+                    Count = data.Data + "";
+                }
+            }
         }
 
         private void NotificationDetail(NotificationModel obj)
@@ -146,6 +149,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Notification
                         DataNotification = new List<NotificationModel>(data.Data);
                     }
                 }
+                await GetCountNotification();
                 LoadNotification = false;
             }
             else
