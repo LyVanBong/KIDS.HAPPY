@@ -1,24 +1,18 @@
 ﻿using KIDS.MOBILE.APP.Configurations;
 using KIDS.MOBILE.APP.Controls.Dialogs.NewFolder;
-using KIDS.MOBILE.APP.MarkupExtension;
 using KIDS.MOBILE.APP.Models.Assessment;
 using KIDS.MOBILE.APP.Models.Attendance;
-using KIDS.MOBILE.APP.Resources;
 using KIDS.MOBILE.APP.Services.Assessment;
 using KIDS.MOBILE.APP.Services.Attendance;
 using Microsoft.AppCenter.Crashes;
-using Prism;
-using Prism.Common;
 using Prism.Navigation;
 using Prism.Services.Dialogs;
-using Realms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 
 namespace KIDS.MOBILE.APP.ViewModels.Assessment
 {
@@ -35,22 +29,24 @@ namespace KIDS.MOBILE.APP.ViewModels.Assessment
         private DateTime _dateData;
         private string _searchWeek;
         private string _searchDay;
+
         public string SearchWeek
         {
             get => _searchWeek;
             set
             {
-                if(SetProperty(ref _searchWeek,value))
+                if (SetProperty(ref _searchWeek, value))
                     if (string.IsNullOrWhiteSpace(SearchWeek))
                     {
                         AttendanceLeave = _cache;
                     }
                     else
                     {
-                        AttendanceLeave = new List<AttendanceLeaveModel>(_cache.Where(x=>x.Name.ToUpper().Contains(SearchWeek.ToUpper())));
+                        AttendanceLeave = new List<AttendanceLeaveModel>(_cache.Where(x => x.Name.ToUpper().Contains(SearchWeek.ToUpper())));
                     }
             }
         }
+
         public string SearchDay
         {
             get => _searchDay;
@@ -67,37 +63,46 @@ namespace KIDS.MOBILE.APP.ViewModels.Assessment
                     }
             }
         }
+
         public DateTime DateData
         {
             get => _dateData;
             set => SetProperty(ref _dateData, value);
         }
+
         private string _choosedDate;
+
         public string ChoosedDate
         {
             get => _choosedDate;
             set => SetProperty(ref _choosedDate, value);
         }
+
         public bool IsLoading
         {
             get => _isLoading;
             set => SetProperty(ref _isLoading, value);
         }
+
         public List<AttendanceLeaveModel> AttendanceLeave
         {
             get => _attendanceLeaves;
             set => SetProperty(ref _attendanceLeaves, value);
         }
+
         //public ICommand SelectPickerCommand { get; set; }
         public ICommand AttendanceLeaveCommand { get; set; }
+
         public ICommand ReloadCommand { get; set; }
         public ICommand SelectDateCommand { get; set; }
         public ICommand SearchCommand { get; set; }
+
         public int SelectIndexTabview
         {
             get => _selectIndexTabview;
             set => SetProperty(ref _selectIndexTabview, value);
         }
+
         public AssessmentViewModel(IAttendanceService attendanceService, IAssessmentService assessmentService, INavigationService navigationService, IDialogService dialogService)
         {
             _navigationService = navigationService;
@@ -110,6 +115,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Assessment
             SelectDateCommand = new Command(OpenDatePicker);
             SearchCommand = new Command(Search);
         }
+
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
@@ -117,10 +123,11 @@ namespace KIDS.MOBILE.APP.ViewModels.Assessment
             ChoosedDate = DateData.ToString("dd/MM/yyyy");
             await InitializationAttendance();
         }
+
         private void Search()
         {
-
         }
+
         private async Task InitializationAttendance()
         {
             try
@@ -137,6 +144,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Assessment
                 IsLoading = false;
             }
         }
+
         private async Task AttendanceLeaveUpdate(AttendanceLeaveModel leave)
         {
             try
@@ -172,6 +180,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Assessment
                 IsLoading = false;
             }
         }
+
         private async Task GetAttendanceLeave()
         {
             try
@@ -192,6 +201,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Assessment
                 Crashes.TrackError(e);
             }
         }
+
         //private async Task SelectPicker(AttendanceLeaveModel leave)
         //{
         //    try
@@ -229,8 +239,9 @@ namespace KIDS.MOBILE.APP.ViewModels.Assessment
         {
             var para = new DialogParameters();
             para.Add(nameof(ChoosedDate), ChoosedDate);
-            _dialogService.ShowDialog(nameof(DatePickerDialog),para,goBackAssessment);
+            _dialogService.ShowDialog(nameof(DatePickerDialog), para, goBackAssessment);
         }
+
         private void goBackAssessment(IDialogResult obj)
         {
             if (obj.Parameters.ContainsKey(AppConstants.ChoosedDate))
@@ -240,6 +251,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Assessment
                 ChoosedDate = DateData.ToString("dd/MM/yyyy");
             }
         }
+
         private async Task DailyAssessmentUpdate(AssessmentModel student)
         {
             try
@@ -263,6 +275,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Assessment
                 IsLoading = false;
             }
         }
+
         private async Task WeeklyAssessmentUpdate(AssessmentModel student)
         {
             try
@@ -284,9 +297,9 @@ namespace KIDS.MOBILE.APP.ViewModels.Assessment
             finally
             {
                 IsLoading = false;
-
             }
         }
+
         private void GoBack()
         {
             _navigationService.GoBackAsync();

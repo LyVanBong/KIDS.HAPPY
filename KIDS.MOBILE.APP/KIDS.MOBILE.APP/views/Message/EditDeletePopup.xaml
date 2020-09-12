@@ -99,7 +99,6 @@
                 CornerRadius="10"
                 Text="{markupExtension:Translate 00098}"
                 VerticalOptions="End" />
-
         </Grid>
         <loadingView:LoadingView
             Grid.Row="0"

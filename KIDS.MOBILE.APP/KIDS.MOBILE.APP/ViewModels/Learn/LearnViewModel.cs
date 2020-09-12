@@ -8,8 +8,8 @@ using Microsoft.AppCenter.Crashes;
 using Prism.Navigation;
 using Prism.Services.Dialogs;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -31,6 +31,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
         private string _searchMorning;
         private List<AttendanceLeaveModel> _cache;
         private string _searchAfternoon;
+
         public bool IsHasData
         {
             get => _isHasData;
@@ -42,7 +43,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
             get => _searchAfternoon;
             set
             {
-                if(SetProperty(ref _searchAfternoon, value))
+                if (SetProperty(ref _searchAfternoon, value))
                 {
                     if (string.IsNullOrWhiteSpace(SearchAfternoon))
                     {
@@ -55,6 +56,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
                 }
             }
         }
+
         public string SearchMorning
         {
             get => _searchMorning;
@@ -75,17 +77,21 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
         }
 
         private DateTime _dateData;
+
         public DateTime DateData
         {
             get => _dateData;
             set => SetProperty(ref _dateData, value);
         }
+
         private string _choosedDate;
+
         public string ChoosedDate
         {
             get => _choosedDate;
             set => SetProperty(ref _choosedDate, value);
         }
+
         public List<AttendanceLeaveModel> StudentData
         {
             get => _studentData;
@@ -119,7 +125,6 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
         public ICommand UpdateMorningCommand { get; set; }
         public ICommand UpdateAfternoonCommand { get; private set; }
         public ICommand SelectDateCommand { get; set; }
-
 
         public LearnViewModel(ILearnService learnService, IAttendanceService attendanceService, IDialogService dialogService)
         {
@@ -174,12 +179,14 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
             ChoosedDate = DateData.ToString("dd/MM/yyyy");
             await InitializationLearn();
         }
+
         private void OpenDatePicker()
         {
             var para = new DialogParameters();
             para.Add(nameof(ChoosedDate), ChoosedDate);
             _dialogService.ShowDialog(nameof(DatePickerDialog), para, goBackLearn);
         }
+
         private async void goBackLearn(IDialogResult obj)
         {
             if (obj.Parameters.ContainsKey(AppConstants.ChoosedDate))
@@ -190,6 +197,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
             }
             await InitializationLearn();
         }
+
         private async Task InitializationLearn()
         {
             try
@@ -222,7 +230,6 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
                 {
                     LearnAfternoonData = new List<LearnModel>(afternoon.Data);
                     IsHasData = true;
-
                 }
                 else
                 {

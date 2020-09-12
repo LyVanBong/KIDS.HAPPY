@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace KIDS.MOBILE.APP.Models.Assessment
+﻿namespace KIDS.MOBILE.APP.Models.Assessment
 {
     public class AssessmentModel
     {

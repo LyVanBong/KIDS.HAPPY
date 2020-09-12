@@ -7,6 +7,7 @@ namespace KIDS.MOBILE.APP.Models.Evaluate
     {
         [JsonProperty("ID")]
         public string ID { get; set; }
+
         [JsonProperty("Name")]
         public string Name { get; set; }
     }

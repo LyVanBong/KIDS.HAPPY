@@ -32,7 +32,7 @@ namespace KIDS.MOBILE.APP.Services.Hygiene
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }

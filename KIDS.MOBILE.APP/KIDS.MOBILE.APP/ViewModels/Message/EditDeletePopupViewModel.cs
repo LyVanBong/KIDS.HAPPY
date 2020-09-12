@@ -1,10 +1,10 @@
-﻿using System;
-using System.Windows.Input;
-using KIDS.MOBILE.APP.Configurations;
+﻿using KIDS.MOBILE.APP.Configurations;
 using KIDS.MOBILE.APP.Models.Message;
 using KIDS.MOBILE.APP.Services.Message;
 using Microsoft.AppCenter.Crashes;
 using Prism.Services.Dialogs;
+using System;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.ViewModels.Message
@@ -24,6 +24,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Message
         public ICommand UpdateCommand { get; private set; }
         public ICommand DeleteCommand { get; private set; }
         public ICommand CancelCommand { get; set; }
+
         public SentModel Message
         {
             get => _message;
@@ -76,7 +77,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Message
                 if (RequestClose != null)
                 {
                     var para = new DialogParameters();
-                    para.Add(AppConstants.DeleteMessage,true);
+                    para.Add(AppConstants.DeleteMessage, true);
                     RequestClose(para);
                 }
                 IsLoading = false;
@@ -98,7 +99,6 @@ namespace KIDS.MOBILE.APP.ViewModels.Message
 
         public void OnDialogClosed()
         {
-
         }
 
         public void OnDialogOpened(IDialogParameters parameters)

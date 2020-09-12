@@ -30,7 +30,7 @@ namespace KIDS.MOBILE.APP.Services.User
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -48,7 +48,7 @@ namespace KIDS.MOBILE.APP.Services.User
             }
             catch (Exception e)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -66,7 +66,7 @@ namespace KIDS.MOBILE.APP.Services.User
             }
             catch (Exception e)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -91,7 +91,7 @@ namespace KIDS.MOBILE.APP.Services.User
             }
             catch (Exception e)
             {
-                throw;
+                
                 return null;
             }
         }

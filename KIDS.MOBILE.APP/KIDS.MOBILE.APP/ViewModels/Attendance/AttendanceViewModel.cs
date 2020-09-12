@@ -39,6 +39,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
         private bool _isLoading;
         private string _searchCome;
         private string _searchLeave;
+
         public string SearchCome
         {
             get => _searchCome;
@@ -55,12 +56,13 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
                     }
             }
         }
+
         public string SearchLeave
         {
             get => _searchLeave;
             set
             {
-                if(SetProperty(ref _searchLeave,value))
+                if (SetProperty(ref _searchLeave, value))
                     if (string.IsNullOrWhiteSpace(SearchLeave))
                     {
                         AttendanceLeave = _leaveCache;
@@ -71,18 +73,23 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
                     }
             }
         }
+
         public bool IsLoading
         {
             get => _isLoading;
             set => SetProperty(ref _isLoading, value);
         }
+
         private DateTime _dateData;
+
         public DateTime DateData
         {
             get => _dateData;
             set => SetProperty(ref _dateData, value);
         }
+
         private string _choosedDate;
+
         public string ChoosedDate
         {
             get => _choosedDate;
@@ -98,7 +105,6 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
         public ICommand SelectPickerCommand { get; set; }
         public ICommand AttendanceLeaveCommand { get; set; }
         public ICommand SelectDateCommand { get; set; }
-
 
         public int SelectIndexTabview
         {
@@ -272,12 +278,14 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
             ChoosedDate = DateData.ToString("dd/MM/yyyy");
             await InitializationAttendance();
         }
+
         private void OpenDatePicker()
         {
             var para = new DialogParameters();
             para.Add(nameof(ChoosedDate), ChoosedDate);
             _dialogService.ShowDialog(nameof(DatePickerDialog), para, goBackAttendance);
         }
+
         private async void goBackAttendance(IDialogResult obj)
         {
             if (obj.Parameters.ContainsKey(AppConstants.ChoosedDate))
@@ -288,6 +296,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
             }
             await InitializationAttendance();
         }
+
         private async Task InitializationAttendance()
         {
             try

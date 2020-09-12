@@ -1,6 +1,6 @@
-﻿using System;
-using KIDS.MOBILE.APP.Configurations;
+﻿using KIDS.MOBILE.APP.Configurations;
 using Prism.Mvvm;
+using System;
 
 namespace KIDS.MOBILE.APP.Models.Message
 {

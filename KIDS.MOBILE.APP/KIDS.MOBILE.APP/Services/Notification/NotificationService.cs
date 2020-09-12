@@ -1,11 +1,11 @@
-﻿using KIDS.MOBILE.APP.Models.Notification;
+﻿using KIDS.MOBILE.APP.Configurations;
+using KIDS.MOBILE.APP.Models.Notification;
 using KIDS.MOBILE.APP.Models.RequestProvider;
 using KIDS.MOBILE.APP.Models.Response;
 using KIDS.MOBILE.APP.Services.RequestProvider;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KIDS.MOBILE.APP.Configurations;
 
 namespace KIDS.MOBILE.APP.Services.Notification
 {
@@ -33,7 +33,7 @@ namespace KIDS.MOBILE.APP.Services.Notification
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -52,7 +52,7 @@ namespace KIDS.MOBILE.APP.Services.Notification
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }

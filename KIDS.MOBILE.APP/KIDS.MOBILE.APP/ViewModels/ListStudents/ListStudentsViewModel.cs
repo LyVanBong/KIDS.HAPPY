@@ -21,12 +21,13 @@ namespace KIDS.MOBILE.APP.ViewModels.ListStudents
         private bool _isLoading;
         private List<StudentModel> _cache;
         private string _searchStudent;
+
         public string SearchStudent
         {
             get => _searchStudent;
             set
             {
-                if(SetProperty(ref _searchStudent, value))
+                if (SetProperty(ref _searchStudent, value))
                 {
                     if (string.IsNullOrWhiteSpace(SearchStudent))
                     {

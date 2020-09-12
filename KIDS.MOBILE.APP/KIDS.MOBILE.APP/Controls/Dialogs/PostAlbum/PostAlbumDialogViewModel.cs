@@ -8,9 +8,6 @@ using Plugin.Media;
 using Prism.Services;
 using Prism.Services.Dialogs;
 using System;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -25,16 +22,19 @@ namespace KIDS.MOBILE.APP.Controls.Dialogs.PostAlbum
         private IPageDialogService _pageDialogService;
         private Image _image;
         private string _numOfPic;
+
         public string NumOfPic
         {
             get => _numOfPic;
             set => SetProperty(ref _numOfPic, value);
         }
+
         public Image image
         {
             get => _image;
             set => SetProperty(ref _image, value);
         }
+
         public string Thumbnail
         {
             get => _thumbnail;
@@ -59,6 +59,7 @@ namespace KIDS.MOBILE.APP.Controls.Dialogs.PostAlbum
             PostAlbumCommand = new Command(async () => await PostAlbum());
             AddImageCommand = new Command(async () => await AddImage());
         }
+
         private async Task AddImage()
         {
             try
@@ -85,9 +86,9 @@ namespace KIDS.MOBILE.APP.Controls.Dialogs.PostAlbum
             }
             catch
             {
-
             }
         }
+
         private async Task PostAlbum()
         {
             try

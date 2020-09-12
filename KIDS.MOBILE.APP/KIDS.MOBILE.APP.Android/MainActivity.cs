@@ -1,5 +1,4 @@
 ﻿using Android.App;
-using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
@@ -8,10 +7,6 @@ using Lottie.Forms.Droid;
 using Plugin.Media;
 using Prism;
 using Prism.Ioc;
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.Droid
 {

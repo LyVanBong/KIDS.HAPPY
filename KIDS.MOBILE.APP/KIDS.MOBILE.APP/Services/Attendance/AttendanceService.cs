@@ -31,7 +31,7 @@ namespace KIDS.MOBILE.APP.Services.Attendance
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -55,7 +55,7 @@ namespace KIDS.MOBILE.APP.Services.Attendance
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -80,7 +80,7 @@ namespace KIDS.MOBILE.APP.Services.Attendance
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -99,7 +99,7 @@ namespace KIDS.MOBILE.APP.Services.Attendance
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -118,7 +118,7 @@ namespace KIDS.MOBILE.APP.Services.Attendance
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }

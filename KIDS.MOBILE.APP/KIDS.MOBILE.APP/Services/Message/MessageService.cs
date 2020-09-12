@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using KIDS.MOBILE.APP.Models.Message;
+﻿using KIDS.MOBILE.APP.Models.Message;
 using KIDS.MOBILE.APP.Models.RequestProvider;
 using KIDS.MOBILE.APP.Models.Response;
 using KIDS.MOBILE.APP.Services.RequestProvider;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace KIDS.MOBILE.APP.Services.Message
 {
     public class MessageService : IMessageService
     {
         private IRequestProvider _requestProvider;
+
         public MessageService(IRequestProvider requestProvider)
         {
             _requestProvider = requestProvider;
@@ -20,7 +21,7 @@ namespace KIDS.MOBILE.APP.Services.Message
         {
             try
             {
-                var parameters= new List<RequestParameter>
+                var parameters = new List<RequestParameter>
                 {
                     new RequestParameter("CommunicationID",communicationId),
                     new RequestParameter("IsConfirmed",isConfirmed),
@@ -30,9 +31,9 @@ namespace KIDS.MOBILE.APP.Services.Message
                 var data = await _requestProvider.PostAsync<int>("Communication/Approve", parameters);
                 return data;
             }
-            catch (Exception )
+            catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -48,9 +49,9 @@ namespace KIDS.MOBILE.APP.Services.Message
                 var data = await _requestProvider.GetAsync<IEnumerable<CommentModel>>("Communication/Select/Reply", para);
                 return data;
             }
-            catch (Exception )
+            catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -73,9 +74,9 @@ namespace KIDS.MOBILE.APP.Services.Message
                 var data = await _requestProvider.PostAsync<int>("Communication/InsertTeacher", para);
                 return data;
             }
-            catch (Exception )
+            catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -98,7 +99,7 @@ namespace KIDS.MOBILE.APP.Services.Message
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -118,7 +119,7 @@ namespace KIDS.MOBILE.APP.Services.Message
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -136,7 +137,7 @@ namespace KIDS.MOBILE.APP.Services.Message
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -155,7 +156,7 @@ namespace KIDS.MOBILE.APP.Services.Message
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }

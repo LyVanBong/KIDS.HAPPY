@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using KIDS.MOBILE.APP.Models.Evaluate;
+﻿using KIDS.MOBILE.APP.Models.Evaluate;
 using KIDS.MOBILE.APP.Models.RequestProvider;
 using KIDS.MOBILE.APP.Models.Response;
 using KIDS.MOBILE.APP.Services.RequestProvider;
-using Microsoft.AppCenter.Crashes;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace KIDS.MOBILE.APP.Services.Evaluate
 {
     public class EvaluateService : IEvaluateService
     {
         private IRequestProvider _requestProvider;
+
         public EvaluateService(IRequestProvider requestProvider)
         {
             _requestProvider = requestProvider;
         }
+
         public async Task<ResponseModel<int>> UpdateEvaluation(string id, string result)
         {
             try
@@ -30,7 +31,7 @@ namespace KIDS.MOBILE.APP.Services.Evaluate
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -48,7 +49,7 @@ namespace KIDS.MOBILE.APP.Services.Evaluate
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -67,7 +68,7 @@ namespace KIDS.MOBILE.APP.Services.Evaluate
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -86,7 +87,7 @@ namespace KIDS.MOBILE.APP.Services.Evaluate
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }

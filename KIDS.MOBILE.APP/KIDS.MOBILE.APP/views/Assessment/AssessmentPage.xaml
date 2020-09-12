@@ -34,10 +34,10 @@
                 <navigationView:NavigationView Grid.Column="0" Grid.ColumnSpan="2" Text="{markupExtension:Translate 00035}" />
                 <Grid Grid.Column="0"
                       ColumnDefinitions="5,*,30">
-                    <Label Grid.Column="1" Text="{Binding ChoosedDate}" TextColor="White" VerticalOptions="CenterAndExpand"/>
+                    <Label Grid.Column="1" Text="{Binding ChoosedDate}" TextColor="White" VerticalOptions="CenterAndExpand" />
                     <Image Grid.Column="2" Source="{markupExtension:ImageResource calendarToolbar.png}"></Image>
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding SelectDateCommand}"/>
+                        <TapGestureRecognizer Command="{Binding SelectDateCommand}" />
                     </Grid.GestureRecognizers>
                 </Grid>
             </Grid>

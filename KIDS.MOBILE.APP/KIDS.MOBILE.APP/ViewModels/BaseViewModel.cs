@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Prism.AppModel;
+﻿using Prism.AppModel;
 using Prism.Mvvm;
 using Prism.Navigation;
 
@@ -7,8 +6,6 @@ namespace KIDS.MOBILE.APP.ViewModels
 {
     public class BaseViewModel : BindableBase, INavigationAware, IDestructible, IInitialize, IApplicationLifecycleAware
     {
-
-
         public virtual void OnNavigatedFrom(INavigationParameters parameters)
         {
         }
@@ -31,7 +28,6 @@ namespace KIDS.MOBILE.APP.ViewModels
 
         public virtual void Initialize(INavigationParameters parameters)
         {
-
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using System;
-using KIDS.MOBILE.APP.Configurations;
+﻿using KIDS.MOBILE.APP.Configurations;
+using System;
 
 namespace KIDS.MOBILE.APP.Models.Message
 {

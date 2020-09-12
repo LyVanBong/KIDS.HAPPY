@@ -22,7 +22,7 @@
             RowDefinitions="Auto,50,*"
             BackgroundColor="{StaticResource BackgroundApp}"
             RowSpacing="0">
-            <navigationView:NavigationView Text="{markupExtension:Translate 00042}"/>
+            <navigationView:NavigationView Text="{markupExtension:Translate 00042}" />
             <SearchBar Grid.Row="1"
                        VerticalOptions="CenterAndExpand"
                        Text="{Binding SearchStudent}" />
