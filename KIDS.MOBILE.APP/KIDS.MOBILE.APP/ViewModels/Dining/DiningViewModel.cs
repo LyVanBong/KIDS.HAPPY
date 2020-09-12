@@ -40,16 +40,19 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
         public ICommand UpdateLunchCommand { get; set; }
         public ICommand UpdateSnackCommand { get; set; }
         public ICommand SelectDateCommand { get; set; }
+
         public DateTime DateData
         {
             get => _dateData;
             set => SetProperty(ref _dateData, value);
         }
+
         public string ChoosedDate
         {
             get => _choosedDate;
             set => SetProperty(ref _choosedDate, value);
         }
+
         public List<MealListModel> MealList
         {
             get => _mealList;
@@ -79,13 +82,15 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
             get => _selectedIndex;
             set => SetProperty(ref _selectedIndex, value, LoadDataSelect);
         }
-        public bool IsHaveDish 
+
+        public bool IsHaveDish
         {
             get => _isHaveDish;
             set => SetProperty(ref _isHaveDish, value);
         }
-        public string SearchSnack 
-        { 
+
+        public string SearchSnack
+        {
             get => _searchSnack;
             set
             {
@@ -100,8 +105,9 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
                     }
             }
         }
-        public string SearchLunch 
-        { 
+
+        public string SearchLunch
+        {
             get => _searchLunch;
             set
             {
@@ -116,8 +122,9 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
                     }
             }
         }
-        public string SearchDinner 
-        { 
+
+        public string SearchDinner
+        {
             get => _searchDinner;
             set
             {
@@ -132,8 +139,9 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
                     }
             }
         }
-        public string SearchBreak 
-        { 
+
+        public string SearchBreak
+        {
             get => _searchBreak;
             set
             {
@@ -149,7 +157,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
             }
         }
 
-        public DiningViewModel(IAttendanceService attendanceService, IDiningService diningService,IDialogService dialogService)
+        public DiningViewModel(IAttendanceService attendanceService, IDiningService diningService, IDialogService dialogService)
         {
             _dialogService = dialogService;
             _diningService = diningService;
@@ -160,12 +168,14 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
             UpdateSnackCommand = new Command<AttendanceLeaveModel>(UpdateSnack);
             SelectDateCommand = new Command(OpenDatePicker);
         }
+
         private void OpenDatePicker()
         {
             var para = new DialogParameters();
             para.Add(nameof(ChoosedDate), ChoosedDate);
             _dialogService.ShowDialog(nameof(DatePickerDialog), para, goBackDining);
         }
+
         private async void goBackDining(IDialogResult obj)
         {
             if (obj.Parameters.ContainsKey(AppConstants.ChoosedDate))
@@ -176,6 +186,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
             }
             await InitializeDining();
         }
+
         private async void UpdateSnack(AttendanceLeaveModel obj)
         {
             try

@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using KIDS.MOBILE.APP.Configurations;
+﻿using KIDS.MOBILE.APP.Configurations;
 using KIDS.MOBILE.APP.Models.Attendance;
 using KIDS.MOBILE.APP.Services.Attendance;
 using KIDS.MOBILE.APP.Services.Message;
 using Microsoft.AppCenter.Crashes;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.ViewModels.Message
@@ -30,6 +30,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Message
         private IMessageService _messageService;
         private string[] _parameterSentMessage;
         public ICommand SendMessageCommand { get; private set; }
+
         public bool IsActiveButtonSent
         {
             get => _isActiveButtonSent;
@@ -43,6 +44,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Message
         }
 
         public ICommand ReSelectPeopleSentCommand { get; private set; }
+
         public string NamePeopleSent
         {
             get => _namePeopleSent;
@@ -50,6 +52,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Message
         }
 
         public ICommand ChoosePeopleCommand { get; private set; }
+
         public bool IsSendMessage
         {
             get => _isSendMessage;
@@ -67,12 +70,15 @@ namespace KIDS.MOBILE.APP.ViewModels.Message
             get => _isLoading;
             set => SetProperty(ref _isLoading, value);
         }
+
         public ObservableCollection<AttendanceLeaveModel> AttendanceLeaveData
         {
             get => _attendanceLeaveData;
             set => SetProperty(ref _attendanceLeaveData, value);
         }
+
         public ICommand CancelNewMessageCommand { get; private set; }
+
         public NewMessagePopupViewModel(IAttendanceService attendanceService, IMessageService messageService)
         {
             _attendanceService = attendanceService;
@@ -155,6 +161,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Message
                 AttendanceLeaveData = new ObservableCollection<AttendanceLeaveModel>(_studentData.Where(x => x.Name.ToUpper().Contains(search.ToUpper())));
             }
         }
+
         private void CancelNewMessage()
         {
             if (RequestClose != null)
@@ -170,7 +177,6 @@ namespace KIDS.MOBILE.APP.ViewModels.Message
 
         public void OnDialogClosed()
         {
-
         }
 
         public async void OnDialogOpened(IDialogParameters parameters)

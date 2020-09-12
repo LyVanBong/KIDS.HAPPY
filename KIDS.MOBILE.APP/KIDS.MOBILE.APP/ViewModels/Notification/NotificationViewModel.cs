@@ -26,6 +26,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Notification
         private bool _loadNotification;
         private INavigationService _navigationService;
         private string _count;
+
         public string Count
         {
             get => _count;

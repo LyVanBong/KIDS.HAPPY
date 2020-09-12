@@ -1,5 +1,4 @@
 ﻿using KIDS.MOBILE.APP.Models.Login;
-using System;
 
 namespace KIDS.MOBILE.APP.Configurations
 {
@@ -9,22 +8,27 @@ namespace KIDS.MOBILE.APP.Configurations
         /// chon ngay
         /// </summary>
         internal static string ChoosedDate = "ChoosedDate";
+
         /// <summary>
         /// xoa tin nhan
         /// </summary>
         internal static string DeleteMessage = "DeleteMessage";
+
         /// <summary>
         /// binh luan tin nhan
         /// </summary>
         internal static string CommentMessage = "Comment";
+
         /// <summary>
         /// sua xoa tin nhan
         /// </summary>
         internal static string EditAndDeleteMessage = "EditAndDelete";
+
         /// <summary>
         /// danh sach chi tieu danh gia cua hoc sinh
         /// </summary>
         internal static string EvaluationCriteria = "EvaluationCriteria";
+
         /// <summary>
         /// check pop mang co dang mo hay khong
         /// </summary>

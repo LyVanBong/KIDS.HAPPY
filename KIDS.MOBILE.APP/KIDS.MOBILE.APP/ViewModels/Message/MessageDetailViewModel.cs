@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using KIDS.MOBILE.APP.Configurations;
+﻿using KIDS.MOBILE.APP.Configurations;
 using KIDS.MOBILE.APP.Models.Message;
 using KIDS.MOBILE.APP.Services.Message;
 using KIDS.MOBILE.APP.views.Message;
 using Microsoft.AppCenter.Crashes;
 using Prism.Navigation;
 using Prism.Services.Dialogs;
+using System;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.ViewModels.Message
@@ -31,6 +31,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Message
         }
 
         public ICommand CommentCommand { get; set; }
+
         public ObservableCollection<CommentModel> CommentData
         {
             get => _commentData;
@@ -38,6 +39,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Message
         }
 
         public ICommand EditAndDeleteCommand { get; private set; }
+
         public bool IsLoading
         {
             get => _isLoading;
@@ -49,6 +51,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Message
             get => _name;
             set => SetProperty(ref _name, value);
         }
+
         public SentModel MessageData
         {
             get => _messageData;

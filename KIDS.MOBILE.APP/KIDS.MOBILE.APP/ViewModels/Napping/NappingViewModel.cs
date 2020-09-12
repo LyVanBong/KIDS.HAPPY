@@ -8,9 +8,8 @@ using Microsoft.AppCenter.Crashes;
 using Prism.Navigation;
 using Prism.Services.Dialogs;
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -31,6 +30,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Napping
         private IAttendanceService _attendanceService;
         private bool _isLoading;
         private INappingService _navigationService;
+
         public string SearchNapping
         {
             get => _searchNapping;
@@ -49,17 +49,19 @@ namespace KIDS.MOBILE.APP.ViewModels.Napping
                 }
             }
         }
+
         public DateTime DateData
         {
             get => _dateData;
             set => SetProperty(ref _dateData, value);
         }
+
         public string ChoosedDate
         {
             get => _choosedDate;
             set => SetProperty(ref _choosedDate, value);
         }
-       
+
         public ICommand UpdateStartTimeSleepCommand { get; private set; }
         public ICommand UpdateEndTimeSleepCommand { get; private set; }
         public ICommand UpdateNappingCommand { get; set; }
@@ -74,7 +76,6 @@ namespace KIDS.MOBILE.APP.ViewModels.Napping
         public ICommand EndNappingCommand { get; set; }
         public ICommand StartNappingCommand { get; set; }
         public ICommand SelectDateCommand { get; set; }
-
 
         public string EndNapping
         {
@@ -107,12 +108,14 @@ namespace KIDS.MOBILE.APP.ViewModels.Napping
             UpdateEndTimeSleepCommand = new Command<AttendanceLeaveModel>(UpdateEndTimeSleep);
             SelectDateCommand = new Command(OpenDatePicker);
         }
+
         private void OpenDatePicker()
         {
             var para = new DialogParameters();
             para.Add(nameof(ChoosedDate), ChoosedDate);
             _dialogService.ShowDialog(nameof(DatePickerDialog), para, goBackNapping);
         }
+
         private async void goBackNapping(IDialogResult obj)
         {
             if (obj.Parameters.ContainsKey(AppConstants.ChoosedDate))
@@ -123,6 +126,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Napping
             }
             await InitialNapping();
         }
+
         private void UpdateEndTimeSleep(AttendanceLeaveModel obj)
         {
             try
@@ -269,6 +273,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Napping
                 IsLoading = false;
             }
         }
+
         private async Task InitialNapping()
         {
             try

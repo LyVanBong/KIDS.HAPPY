@@ -31,7 +31,7 @@ namespace KIDS.MOBILE.APP.Services.News
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -54,7 +54,7 @@ namespace KIDS.MOBILE.APP.Services.News
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }

@@ -1,7 +1,7 @@
 ﻿using Android.App;
+using Plugin.Badge.Droid;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Plugin.Badge.Droid;
 using Xamarin.Forms;
 
 // General Information about an assembly is controlled through the following

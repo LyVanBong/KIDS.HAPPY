@@ -25,7 +25,7 @@
                 Margin="10,5"
                 HorizontalOptions="CenterAndExpand"
                 Text="{Binding Time}"
-                VerticalOptions="CenterAndExpand"/>
+                VerticalOptions="CenterAndExpand" />
             <BoxView Grid.Row="1" Margin="10,5" BackgroundColor="DarkGray" />
             <CollectionView
                 Grid.Row="2"
@@ -37,7 +37,7 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.Triggers>
                     <Trigger TargetType="CollectionView" Property="HeightRequest" Value="80">
-                        <Setter Property="IsVisible" Value="{Binding IsHasData}"/>
+                        <Setter Property="IsVisible" Value="{Binding IsHasData}" />
                     </Trigger>
                 </CollectionView.Triggers>
                 <CollectionView.ItemTemplate>

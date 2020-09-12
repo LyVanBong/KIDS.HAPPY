@@ -1,11 +1,11 @@
 ﻿using KIDS.MOBILE.APP.Configurations;
 using KIDS.MOBILE.APP.Models.Evaluate;
+using KIDS.MOBILE.APP.Services.Evaluate;
+using Microsoft.AppCenter.Crashes;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
-using KIDS.MOBILE.APP.Services.Evaluate;
-using Microsoft.AppCenter.Crashes;
 using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.ViewModels.Evaluate
@@ -19,6 +19,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Evaluate
         private IEvaluateService _evaluateService;
         private string _idBoard;
         public ICommand UpdateEvaluationCommand { get; private set; }
+
         public List<EvaluationCriteriaModel> EvaluationCriteriaData
         {
             get => _evaluationCriteriaData;

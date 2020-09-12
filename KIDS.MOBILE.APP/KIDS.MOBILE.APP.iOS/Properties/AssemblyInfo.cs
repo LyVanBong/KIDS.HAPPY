@@ -1,6 +1,6 @@
-﻿using System.Reflection;
+﻿using Plugin.Badge.iOS;
+using System.Reflection;
 using System.Runtime.InteropServices;
-using Plugin.Badge.iOS;
 using Xamarin.Forms;
 
 // General Information about an assembly is controlled through the following

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Globalization;
-using KIDS.MOBILE.APP.Configurations;
+﻿using KIDS.MOBILE.APP.Configurations;
 using Prism.Mvvm;
+using System;
 
 namespace KIDS.MOBILE.APP.Models.Evaluate
 {
@@ -33,6 +32,5 @@ namespace KIDS.MOBILE.APP.Models.Evaluate
             get => Math.Round(_tyLe, 0);
             set => SetProperty(ref _tyLe, value);
         }
-
     }
 }

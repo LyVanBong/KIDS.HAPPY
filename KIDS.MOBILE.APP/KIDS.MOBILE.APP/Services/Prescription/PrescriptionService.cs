@@ -33,7 +33,7 @@ namespace KIDS.MOBILE.APP.Services.Prescription
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -52,7 +52,7 @@ namespace KIDS.MOBILE.APP.Services.Prescription
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -70,7 +70,7 @@ namespace KIDS.MOBILE.APP.Services.Prescription
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }

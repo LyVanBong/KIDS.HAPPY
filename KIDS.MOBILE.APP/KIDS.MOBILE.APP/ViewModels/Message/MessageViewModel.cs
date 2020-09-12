@@ -1,8 +1,6 @@
 ﻿using KIDS.MOBILE.APP.Configurations;
-using KIDS.MOBILE.APP.Models.Attendance;
 using KIDS.MOBILE.APP.Models.Message;
 using KIDS.MOBILE.APP.Resources;
-using KIDS.MOBILE.APP.Services.Attendance;
 using KIDS.MOBILE.APP.Services.Message;
 using KIDS.MOBILE.APP.views.Message;
 using Microsoft.AppCenter.Crashes;
@@ -36,6 +34,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Message
         private INavigationService _navigationService;
         private IPageDialogService _pageDialogService;
         private string _searchInbox;
+
         public string SearchInbox
         {
             get => _searchInbox;
@@ -54,10 +53,12 @@ namespace KIDS.MOBILE.APP.ViewModels.Message
                 }
             }
         }
+
         public ICommand CreateNewMessageCommand { get; set; }
         public ICommand ComfirmedCommand { get; private set; }
         public ICommand CommentMessageCommand { get; private set; }
         public ICommand EditAndDeleteCommand { get; private set; }
+
         public string SearchMessageSent
         {
             get => _searchMessageSent;

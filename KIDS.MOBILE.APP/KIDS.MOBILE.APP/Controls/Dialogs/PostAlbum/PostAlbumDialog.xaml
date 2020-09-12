@@ -100,9 +100,9 @@
                     TextColor="#000000"
                     VerticalOptions="CenterAndExpand" />
             </Frame>
-            <Label 
-                Grid.Row="4" 
-                Grid.Column="0" 
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Text="{Binding NumOfPic}"
                 HorizontalOptions="CenterAndExpand"

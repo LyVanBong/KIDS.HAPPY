@@ -42,7 +42,7 @@ namespace KIDS.MOBILE.APP.Services.RequestProvider
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -58,7 +58,7 @@ namespace KIDS.MOBILE.APP.Services.RequestProvider
             }
             catch (Exception)
             {
-                throw;
+                
             }
         }
 
@@ -83,7 +83,7 @@ namespace KIDS.MOBILE.APP.Services.RequestProvider
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -109,7 +109,7 @@ namespace KIDS.MOBILE.APP.Services.RequestProvider
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }
@@ -135,7 +135,7 @@ namespace KIDS.MOBILE.APP.Services.RequestProvider
             }
             catch (Exception)
             {
-                throw;
+                
                 return null;
             }
         }

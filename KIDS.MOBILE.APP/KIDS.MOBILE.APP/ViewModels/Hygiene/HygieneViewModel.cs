@@ -17,7 +17,6 @@ namespace KIDS.MOBILE.APP.ViewModels.Hygiene
 {
     public class HygieneViewModel : BaseViewModel
     {
-
         private bool _isLoading;
         private List<AttendanceLeaveModel> _studentData;
         private List<AttendanceLeaveModel> _cache;
@@ -26,6 +25,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Hygiene
         private IHygieneService _hygieneService;
         private DateTime _dateData;
         private string _searchHygiene;
+
         public string SearchHygiene
         {
             get => _searchHygiene;
@@ -40,17 +40,21 @@ namespace KIDS.MOBILE.APP.ViewModels.Hygiene
                 }
             }
         }
+
         public DateTime DateData
         {
             get => _dateData;
             set => SetProperty(ref _dateData, value);
         }
+
         private string _choosedDate;
+
         public string ChoosedDate
         {
             get => _choosedDate;
             set => SetProperty(ref _choosedDate, value);
         }
+
         public ICommand PlusCommand { get; private set; }
         public ICommand MinusCommand { get; private set; }
         public ICommand UpdateHygieneCommand { get; private set; }
@@ -68,7 +72,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Hygiene
             set => SetProperty(ref _isLoading, value);
         }
 
-        public HygieneViewModel(IAttendanceService attendanceService, IHygieneService hygieneService,IDialogService dialogService)
+        public HygieneViewModel(IAttendanceService attendanceService, IHygieneService hygieneService, IDialogService dialogService)
         {
             _dialogService = dialogService;
             _hygieneService = hygieneService;
@@ -78,12 +82,14 @@ namespace KIDS.MOBILE.APP.ViewModels.Hygiene
             PlusCommand = new Command<AttendanceLeaveModel>(PlusHygiene);
             SelectDateCommand = new Command(OpenDatePicker);
         }
+
         private void OpenDatePicker()
         {
             var para = new DialogParameters();
             para.Add(nameof(ChoosedDate), ChoosedDate);
             _dialogService.ShowDialog(nameof(DatePickerDialog), para, goBackHygiene);
         }
+
         private async void goBackHygiene(IDialogResult obj)
         {
             if (obj.Parameters.ContainsKey(AppConstants.ChoosedDate))
@@ -92,8 +98,9 @@ namespace KIDS.MOBILE.APP.ViewModels.Hygiene
                 DateData = date;
                 ChoosedDate = DateData.ToString("dd/MM/yyyy");
             }
-           await InitializeHygiene();
+            await InitializeHygiene();
         }
+
         private void PlusHygiene(AttendanceLeaveModel obj)
         {
             try
@@ -111,7 +118,6 @@ namespace KIDS.MOBILE.APP.ViewModels.Hygiene
                 IsLoading = false;
             }
         }
-
 
         private void MinusHygiene(AttendanceLeaveModel obj)
         {

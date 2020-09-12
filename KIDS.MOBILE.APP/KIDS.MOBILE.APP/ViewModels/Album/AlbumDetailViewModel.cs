@@ -3,6 +3,7 @@ using KIDS.MOBILE.APP.Controls.Dialogs.ShowImage;
 using KIDS.MOBILE.APP.Models.Album;
 using KIDS.MOBILE.APP.Services.Album;
 using Microsoft.AppCenter.Crashes;
+using Plugin.Media;
 using Prism.Navigation;
 using Prism.Services.Dialogs;
 using System;
@@ -11,7 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Plugin.Media;
+
 namespace KIDS.MOBILE.APP.ViewModels.Album
 {
     internal class AlbumDetailViewModel : BaseViewModel
@@ -171,13 +172,10 @@ namespace KIDS.MOBILE.APP.ViewModels.Album
                     var stream = file.GetStream();
                     file.Dispose();
                     return stream;
-
                 });
-
             }
             catch
             {
-
             }
         }
 

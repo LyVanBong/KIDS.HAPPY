@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using KIDS.MOBILE.APP.Models.Evaluate;
+﻿using KIDS.MOBILE.APP.Models.Evaluate;
 using KIDS.MOBILE.APP.Models.Response;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace KIDS.MOBILE.APP.Services.Evaluate
 {
@@ -14,12 +14,14 @@ namespace KIDS.MOBILE.APP.Services.Evaluate
         /// <param name="result"></param>
         /// <returns></returns>
         Task<ResponseModel<int>> UpdateEvaluation(string id, string result);
+
         /// <summary>
         /// Danh sách  học sinh trong bảng đánh giá
         /// </summary>
         /// <param name="assessId"></param>
         /// <returns></returns>
         Task<ResponseModel<IEnumerable<StudentAssessmentModel>>> GetStudentAssessment(string assessId);
+
         /// <summary>
         /// Danh sách chỉ tiêu đánh giá của mỗi học sinh
         /// </summary>
@@ -27,6 +29,7 @@ namespace KIDS.MOBILE.APP.Services.Evaluate
         /// <param name="studentId"></param>
         /// <returns></returns>
         Task<ResponseModel<IEnumerable<EvaluationCriteriaModel>>> GetEvaluationCriteria(string assessId, string studentId);
+
         /// <summary>
         /// Danh mục Bảng kế hoạch đánh giá
         /// </summary>

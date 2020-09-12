@@ -34,7 +34,7 @@
                 HasShadow="False">
                     <Frame.Triggers>
                         <Trigger TargetType="Frame" Property="Margin" Value="0">
-                            <Setter Property="IsVisible" Value="{Binding IsHaveDish}"/>
+                            <Setter Property="IsVisible" Value="{Binding IsHaveDish}" />
                         </Trigger>
                     </Frame.Triggers>
                     <Grid RowDefinitions="40,Auto">

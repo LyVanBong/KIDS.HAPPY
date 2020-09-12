@@ -51,7 +51,7 @@ namespace KIDS.MOBILE.APP.Services.Database
             }
             catch (Exception)
             {
-                throw;
+                return null;
             }
         }
 
@@ -70,7 +70,7 @@ namespace KIDS.MOBILE.APP.Services.Database
             }
             catch (Exception)
             {
-                throw;
+                return null;
             }
         }
 
@@ -87,7 +87,7 @@ namespace KIDS.MOBILE.APP.Services.Database
             }
             catch (Exception)
             {
-                throw;
+                return null;
             }
         }
 
@@ -110,7 +110,7 @@ namespace KIDS.MOBILE.APP.Services.Database
             }
             catch (Exception)
             {
-                throw;
+                return null;
             }
         }
     }

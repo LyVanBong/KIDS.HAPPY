@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using KIDS.MOBILE.APP.Configurations;
+﻿using KIDS.MOBILE.APP.Configurations;
 using KIDS.MOBILE.APP.Models.Evaluate;
 using KIDS.MOBILE.APP.Services.Evaluate;
 using KIDS.MOBILE.APP.views.Evaluate;
 using Microsoft.AppCenter.Crashes;
 using Prism.Navigation;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace KIDS.MOBILE.APP.ViewModels.Evaluate
 {
@@ -20,6 +20,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Evaluate
         private bool _isLoading;
         private StudentAssessmentModel _selectedItemDataGrid;
         private INavigationService _navigationService;
+
         public StudentAssessmentModel SelectedItemDataGrid
         {
             get => _selectedItemDataGrid;
@@ -34,6 +35,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Evaluate
                 }
             }
         }
+
         public bool IsLoading
         {
             get => _isLoading;
@@ -69,6 +71,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Evaluate
             _navigationService = navigationService;
             _evaluateService = evaluateService;
         }
+
         private void GetEvaluationCriteria(StudentAssessmentModel item)
         {
             try
@@ -76,7 +79,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Evaluate
                 IsLoading = true;
                 var para = new NavigationParameters();
                 para.Add(AppConstants.EvaluationCriteria, item);
-                para.Add("IdDanhMucChiTieu",SelectedItemComboBox.ID);
+                para.Add("IdDanhMucChiTieu", SelectedItemComboBox.ID);
                 _navigationService.NavigateAsync(nameof(EvaluationCriteriaPage), para, useModalNavigation: true);
             }
             catch (Exception e)
@@ -88,6 +91,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Evaluate
                 IsLoading = false;
             }
         }
+
         private async void GetStudentAssessment(EvaluationBoardModel item)
         {
             try
@@ -108,6 +112,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Evaluate
                 IsLoading = false;
             }
         }
+
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);

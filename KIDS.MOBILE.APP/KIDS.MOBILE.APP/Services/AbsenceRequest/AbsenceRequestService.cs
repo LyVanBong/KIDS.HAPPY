@@ -31,9 +31,8 @@ namespace KIDS.MOBILE.APP.Services.AbsenceRequest
                 var data = await _requestProvider.PostAsync<string>("Application/Approve", parameter);
                 return data;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw;
                 return null;
             }
         }
@@ -52,7 +51,6 @@ namespace KIDS.MOBILE.APP.Services.AbsenceRequest
             }
             catch (Exception)
             {
-                throw;
                 return null;
             }
         }

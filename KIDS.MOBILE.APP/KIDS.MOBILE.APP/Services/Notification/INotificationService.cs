@@ -12,6 +12,7 @@ namespace KIDS.MOBILE.APP.Services.Notification
         /// </summary>
         /// <returns></returns>
         Task<ResponseModel<int>> GetCountNotification();
+
         /// <summary>
         /// lấy danh sách thông báo
         /// </summary>
