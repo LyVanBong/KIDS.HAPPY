@@ -54,7 +54,7 @@ namespace KIDS.MOBILE.APP.ViewModels.NewsPost
         {
             var para = new NavigationParameters();
             para.Add(AppConstants.DetailNews, obj);
-            _navigationService.NavigateAsync(nameof(DetailNewsPage), para);
+            _navigationService.NavigateAsync(nameof(DetailNewsPage), para, useModalNavigation: true);
         }
 
         private void AddNewsPost()

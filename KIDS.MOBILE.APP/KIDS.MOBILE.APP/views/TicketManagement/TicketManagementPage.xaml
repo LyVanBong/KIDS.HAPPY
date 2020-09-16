@@ -1,58 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="KIDS.MOBILE.APP.views.TicketManagement.TicketManagementPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
-    xmlns:ticketManagement="clr-namespace:KIDS.MOBILE.APP.views.TicketManagement;assembly=KIDS.MOBILE.APP"
-    xmlns:translate="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-    iOsSpecific:Page.UseSafeArea="true"
-    BackgroundColor="{StaticResource BackgroundColorNavBar}"
-    NavigationPage.HasNavigationBar="False"
-    mc:Ignorable="d">
+<ContentPage x:Class="KIDS.MOBILE.APP.views.TicketManagement.TicketManagementPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             xmlns:ticketManagement="clr-namespace:KIDS.MOBILE.APP.views.TicketManagement;assembly=KIDS.MOBILE.APP"
+             xmlns:translate="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+             xmlns:xaml="http://prismlibrary.com"
+             iOsSpecific:Page.UseSafeArea="true"
+             BackgroundColor="{StaticResource BackgroundColorNavBar}"
+             NavigationPage.HasNavigationBar="False"
+             mc:Ignorable="d">
     <ContentPage.Content>
-        <Grid
-            BackgroundColor="{StaticResource BackgroundApp}"
-            RowDefinitions="40,*"
-            RowSpacing="0">
-            <BoxView
-                Grid.Row="0"
-                Margin="0"
-                BackgroundColor="{StaticResource BackgroundColorNavBar}"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand" />
-            <Label
-                Grid.Row="0"
-                Style="{StaticResource TitleNavigation}"
-                Text="{translate:Translate 00022}" />
-            <tabView:SfTabView
-                Grid.Row="1"
-                Margin="0"
-                BackgroundColor="Transparent"
-                SelectedIndex="{Binding SelectIndexTabview, Mode=TwoWay}"
-                VisibleHeaderCount="2">
-                <tabView:SfTabItem
-                    Title="{translate:Translate 00008}"
-                    TitleFontColor="LightGray"
-                    TitleFontSize="18">
+        <Grid BackgroundColor="{StaticResource BackgroundApp}"
+              RowDefinitions="40,*"
+              ColumnDefinitions="*,80"
+              RowSpacing="0">
+            <BoxView Grid.Row="0"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     Margin="0"
+                     BackgroundColor="{StaticResource BackgroundColorNavBar}"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand" />
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Style="{StaticResource TitleNavigation}"
+                   Text="{translate:Translate 00022}" />
+            <Image x:Name="Image"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Margin="10"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="EndAndExpand"
+                   Source="{translate:ImageResource close.png}"
+                   VerticalOptions="FillAndExpand"
+                   IsVisible="False"
+                   WidthRequest="40">
+                <Image.Triggers>
+                    <DataTrigger Binding="{Binding IsCloseTicketManager}"
+                                 Value="True"
+                                 TargetType="Image">
+                        <Setter Property="Image.IsVisible"
+                                Value="True"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+            </Image>
+            <BoxView Grid.Row="0"
+                     IsVisible="False"
+                     Grid.Column="1"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+                <BoxView.Triggers>
+                    <DataTrigger Binding="{Binding IsCloseTicketManager}"
+                                 Value="True"
+                                 TargetType="BoxView">
+                        <Setter Property="BoxView.IsVisible"
+                                Value="True"></Setter>
+                    </DataTrigger>
+                </BoxView.Triggers>
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{xaml:GoBack}" />
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <tabView:SfTabView Grid.Row="1"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="2"
+                               Margin="0"
+                               BackgroundColor="Transparent"
+                               SelectedIndex="{Binding SelectIndexTabview, Mode=TwoWay}"
+                               VisibleHeaderCount="2">
+                <tabView:SfTabItem Title="{translate:Translate 00008}"
+                                   TitleFontColor="LightGray"
+                                   TitleFontSize="18">
                     <tabView:SfTabItem.Content>
                         <ticketManagement:MedicineRemindersView />
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
-                <tabView:SfTabItem
-                    Title="{translate:Translate 00009}"
-                    TitleFontColor="LightGray"
-                    TitleFontSize="18">
+                <tabView:SfTabItem Title="{translate:Translate 00009}"
+                                   TitleFontColor="LightGray"
+                                   TitleFontSize="18">
                     <tabView:SfTabItem.Content>
                         <ticketManagement:AbsenceRequestView />
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
             </tabView:SfTabView>
-            <loadingView:LoadingView Grid.Row="1" IsVisible="{Binding IsLoading}" />
+            <loadingView:LoadingView Grid.Row="1"
+                                     IsVisible="{Binding IsLoading}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

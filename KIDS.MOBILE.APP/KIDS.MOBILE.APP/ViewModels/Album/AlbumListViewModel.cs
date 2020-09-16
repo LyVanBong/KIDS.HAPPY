@@ -89,7 +89,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Album
         {
             var para = new NavigationParameters();
             para.Add(AppConstants.DetailAlbums, obj);
-            _navigationService.NavigateAsync(nameof(AlbumDetailPage), para);
+            _navigationService.NavigateAsync(nameof(AlbumDetailPage), para, useModalNavigation: true);
         }
 
         private void GoBack()

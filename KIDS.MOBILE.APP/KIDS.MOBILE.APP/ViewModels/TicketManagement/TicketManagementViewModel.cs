@@ -28,6 +28,12 @@ namespace KIDS.MOBILE.APP.ViewModels.TicketManagement
         private int _selectIndexTabview;
         private List<AbsenceRequestModel> _abseceData;
 
+        public bool IsCloseTicketManager
+        {
+            get => _isCloseTicketManager;
+            set => SetProperty(ref _isCloseTicketManager, value);
+        }
+
         public bool IsLoading
         {
             get => _isLoading;
@@ -63,6 +69,7 @@ namespace KIDS.MOBILE.APP.ViewModels.TicketManagement
         public UserModel UserData { get; set; }
         private IAbsenceRequestService _absenceRequestService;
         private bool _isLoading;
+        private bool _isCloseTicketManager;
         public ICommand ConfirmedMedicineCommand { get; set; }
         public ICommand ShowDetailMedicineCommand { get; set; }
         public ICommand ConfirmAbsenceCommand { get; set; }
@@ -99,7 +106,7 @@ namespace KIDS.MOBILE.APP.ViewModels.TicketManagement
         {
             var parameter = new NavigationParameters();
             parameter.Add(AppConstants.DetailMedicine, obj);
-            _navigationService.NavigateAsync(nameof(DetailMedicineRemindersPage), parameter);
+            _navigationService.NavigateAsync(nameof(DetailMedicineRemindersPage), parameter, useModalNavigation: true);
         }
 
         private async void ConfirmedMedicine(PrescriptionModel obj)
@@ -126,6 +133,7 @@ namespace KIDS.MOBILE.APP.ViewModels.TicketManagement
             {
                 if (parameters[AppConstants.NotificationID] != null)
                 {
+                    IsCloseTicketManager = true;
                     SelectIndexTabview = 1;
                 }
             }
