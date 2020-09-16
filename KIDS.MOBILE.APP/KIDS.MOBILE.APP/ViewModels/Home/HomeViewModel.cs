@@ -106,7 +106,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Home
             if (_isGoToProfile)
                 return;
             _isGoToProfile = true;
-            await _navigationService.NavigateAsync(nameof(UserProfilePage));
+            await _navigationService.NavigateAsync(nameof(UserProfilePage), useModalNavigation: true);
             _isGoToProfile = false;
         }
 
@@ -114,14 +114,14 @@ namespace KIDS.MOBILE.APP.ViewModels.Home
         {
             var para = new NavigationParameters();
             para.Add(AppConstants.DetailAlbums, obj);
-            _navigationService.NavigateAsync(nameof(AlbumDetailPage), para);
+            _navigationService.NavigateAsync(nameof(AlbumDetailPage), para, useModalNavigation: true);
         }
 
         private void DetailNews(NewsModel obj)
         {
             var para = new NavigationParameters();
             para.Add(AppConstants.DetailNews, obj);
-            _navigationService.NavigateAsync(nameof(DetailNewsPage), para);
+            _navigationService.NavigateAsync(nameof(DetailNewsPage), para, useModalNavigation: true);
         }
 
         private async Task News()
@@ -129,7 +129,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Home
             if (_isGoToNews)
                 return;
             _isGoToNews = true;
-            await _navigationService.NavigateAsync(nameof(NewsPostPage));
+            await _navigationService.NavigateAsync(nameof(NewsPostPage), useModalNavigation: true);
             _isGoToNews = false;
         }
 
@@ -138,7 +138,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Home
             if (_isGoToAlbumList)
                 return;
             _isGoToAlbumList = true;
-            await _navigationService.NavigateAsync(nameof(AlbumListPage));
+            await _navigationService.NavigateAsync(nameof(AlbumListPage), useModalNavigation: true);
             _isGoToAlbumList = false;
         }
 

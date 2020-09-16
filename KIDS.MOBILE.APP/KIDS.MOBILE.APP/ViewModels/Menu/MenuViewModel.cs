@@ -78,7 +78,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Menu
             if (_isGoToProfile)
                 return;
             _isGoToProfile = true;
-            await _navigationService.NavigateAsync(nameof(UserProfilePage));
+            await _navigationService.NavigateAsync(nameof(UserProfilePage), useModalNavigation: true);
             _isGoToProfile = false;
         }
 

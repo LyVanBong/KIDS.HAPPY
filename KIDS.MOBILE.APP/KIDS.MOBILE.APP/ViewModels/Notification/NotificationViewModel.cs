@@ -99,12 +99,12 @@ namespace KIDS.MOBILE.APP.ViewModels.Notification
             {
                 case 1:
                     // đơn xin nghỉ
-                    _navigationService.NavigateAsync(nameof(TicketManagementPage), para);
+                    _navigationService.NavigateAsync(nameof(TicketManagementPage), para, useModalNavigation: true);
                     break;
 
                 case 2:
                     // đơn thuốc
-                    _navigationService.NavigateAsync(nameof(DetailMedicineRemindersPage), para);
+                    _navigationService.NavigateAsync(nameof(DetailMedicineRemindersPage), para, useModalNavigation: true);
                     break;
 
                 case 3:
@@ -114,22 +114,22 @@ namespace KIDS.MOBILE.APP.ViewModels.Notification
 
                 case 4:
                     //Album lớp
-                    _navigationService.NavigateAsync(nameof(AlbumDetailPage), para);
+                    _navigationService.NavigateAsync(nameof(AlbumDetailPage), para, useModalNavigation: true);
                     break;
 
                 case 5:
                     //Album trường
-                    _navigationService.NavigateAsync(nameof(AlbumDetailPage), para);
+                    _navigationService.NavigateAsync(nameof(AlbumDetailPage), para, useModalNavigation: true);
                     break;
 
                 case 6:
                     //Bài viết lớp
-                    _navigationService.NavigateAsync(nameof(DetailNewsPage), para);
+                    _navigationService.NavigateAsync(nameof(DetailNewsPage), para, useModalNavigation: true);
                     break;
 
                 case 7:
                     //bài viết trường
-                    _navigationService.NavigateAsync(nameof(DetailNewsPage), para);
+                    _navigationService.NavigateAsync(nameof(DetailNewsPage), para, useModalNavigation: true);
                     break;
 
                 default:
