@@ -64,7 +64,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Notification
         public override void Initialize(INavigationParameters parameters)
         {
             base.Initialize(parameters);
-            Device.StartTimer(TimeSpan.FromMinutes(2), () =>
+            Device.StartTimer(TimeSpan.FromMinutes(1), () =>
             {
                 new Thread(() =>
                {
