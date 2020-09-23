@@ -36,6 +36,10 @@
 	<key>CFBundleDisplayName</key>
 	<string>HK Teacher</string>
 	<key>CFBundleShortVersionString</key>
+	<string>1.1.6</string>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
