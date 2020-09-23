@@ -29,6 +29,7 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>Apple Development: Le Khac Hai (86BHMCQP3H)</CodesignKey>
     <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <OptimizePNGs>true</OptimizePNGs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
