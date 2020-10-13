@@ -20,7 +20,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.bsoftgroup.hkteacher</string>
+	<string>com.bsoftgroup.hkteacher.v2</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>UILaunchStoryboardName</key>
@@ -36,7 +36,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>HK Teacher</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.7</string>
+	<string>1.1.8</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 </dict>

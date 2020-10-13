@@ -109,4 +109,18 @@ namespace KIDS.MOBILE.APP.Configurations
         /// </summary>
         internal static string UrlApiApp = "http://api.hkids.edu.vn/api/v1/";
     }
+    /// <summary>
+    /// Luu khoa appcenter
+    /// </summary>
+    public static class AppCenterConstants
+    {
+        /// <summary>
+        /// khoa bi mat android
+        /// </summary>
+        internal static string AppSecretAndroid = "android=acc10d72-d01e-44e9-b07a-3448f1b2d3d8;";
+        /// <summary>
+        /// khoa bi mat ios
+        /// </summary>
+        internal static string AppSecretiOS = "ios=269c873d-746f-43d5-abc2-a49cdb854947;";
+    }
 }
