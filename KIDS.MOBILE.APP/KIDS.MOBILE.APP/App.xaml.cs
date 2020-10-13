@@ -223,8 +223,8 @@ namespace KIDS.MOBILE.APP
 
         protected override void OnStart()
         {
-            AppCenter.Start("android=a1fd9bce-f687-4102-8c97-bba5b8bb674f;" +
-                            "ios=fe3fc357-12eb-498f-a1f1-4055291d133e;",
+            AppCenter.Start(AppCenterConstants.AppSecretAndroid +
+                            AppCenterConstants.AppSecretiOS,
                 typeof(Analytics), typeof(Crashes));
         }
 
