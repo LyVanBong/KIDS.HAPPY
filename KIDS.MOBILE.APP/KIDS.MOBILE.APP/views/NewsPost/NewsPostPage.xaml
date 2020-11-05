@@ -1,97 +1,89 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="KIDS.MOBILE.APP.views.NewsPost.NewsPostPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:abstractions="clr-namespace:LabelHtml.Forms.Plugin.Abstractions;assembly=HtmlLabel.Forms.Plugin"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
-    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
-    iOsSpecific:Page.UseSafeArea="true"
-    BackgroundColor="{StaticResource BackgroundColorNavBar}"
-    NavigationPage.HasNavigationBar="False"
-    mc:Ignorable="d">
+<ContentPage x:Class="KIDS.MOBILE.APP.views.NewsPost.NewsPostPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:LabelHtml.Forms.Plugin.Abstractions;assembly=HtmlLabel.Forms.Plugin"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+             iOsSpecific:Page.UseSafeArea="true"
+             BackgroundColor="{StaticResource BackgroundColorNavBar}"
+             NavigationPage.HasNavigationBar="False"
+             mc:Ignorable="d">
     <ContentPage.Content>
-        <Grid
-            Margin="0"
-            Padding="0"
-            BackgroundColor="{StaticResource BackgroundApp}"
-            ColumnDefinitions="*,80"
-            RowDefinitions="40,*,80"
-            RowSpacing="0">
-            <navigationView:NavigationView
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Text="{markupExtension:Translate 00053}" />
-            <CollectionView
-                x:Name="LsNewsData"
-                Grid.Row="1"
-                Grid.RowSpan="2"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Margin="10,5,10,10"
-                ItemsSource="{Binding NewsData}">
+        <Grid Margin="0"
+              Padding="0"
+              BackgroundColor="{StaticResource BackgroundApp}"
+              ColumnDefinitions="*,80"
+              RowDefinitions="40,*,80"
+              RowSpacing="0">
+            <navigationView:NavigationView Grid.Row="0"
+                                           Grid.Column="0"
+                                           Grid.ColumnSpan="2"
+                                           Text="{markupExtension:Translate 00053}" />
+            <CollectionView x:Name="LsNewsData"
+                            Grid.Row="1"
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="10,5,10,10"
+                            ItemsSource="{Binding NewsData}">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                    <LinearItemsLayout ItemSpacing="10"
+                                       Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame
-                            Padding="0"
-                            BorderColor="#588da8"
-                            CornerRadius="5"
-                            HasShadow="False">
+                        <Frame Padding="0"
+                               BorderColor="#588da8"
+                               CornerRadius="5"
+                               HasShadow="False">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:Reference LsNewsData}, Path=BindingContext.DetailNewsCommand}" CommandParameter="{Binding}" />
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference LsNewsData}, Path=BindingContext.DetailNewsCommand}"
+                                                      CommandParameter="{Binding}" />
                             </Frame.GestureRecognizers>
-                            <Grid
-                                Margin="0"
-                                Padding="0"
-                                BackgroundColor="Transparent"
-                                ColumnSpacing="0"
-                                HorizontalOptions="FillAndExpand"
-                                RowDefinitions="250,30,20,20,50"
-                                RowSpacing="0"
-                                VerticalOptions="FillAndExpand">
-                                <forms:CachedImage
-                                    Grid.Row="0"
-                                    Margin=".5"
-                                    Aspect="AspectFill"
-                                    DownsampleToViewSize="True"
-                                    ErrorPlaceholder="news.png"
-                                    LoadingPlaceholder="news.png"
-                                    Source="{Binding ImgTmp}" />
-                                <Label
-                                    Grid.Row="1"
-                                    Margin="0"
-                                    Padding="5,0"
-                                    FontSize="18"
-                                    HorizontalOptions="FillAndExpand"
-                                    LineBreakMode="TailTruncation"
-                                    MaxLines="1"
-                                    Text="{Binding Title}"
-                                    TextColor="#000000"
-                                    VerticalOptions="FillAndExpand" />
-                                <Label
-                                    Grid.Row="2"
-                                    Margin="0"
-                                    Padding="5,0"
-                                    FontSize="15"
-                                    HorizontalOptions="FillAndExpand"
-                                    Text="{Binding TenLop}"
-                                    TextColor="DarkGray" />
-                                <Label
-                                    Grid.Row="3"
-                                    Margin="0"
-                                    Padding="5,0"
-                                    FontSize="15"
-                                    HorizontalOptions="FillAndExpand"
-                                    TextColor="DarkGray">
+                            <Grid Margin="0"
+                                  Padding="0"
+                                  BackgroundColor="Transparent"
+                                  ColumnSpacing="0"
+                                  HorizontalOptions="FillAndExpand"
+                                  RowDefinitions="250,30,20,20,50"
+                                  RowSpacing="0"
+                                  VerticalOptions="FillAndExpand">
+                                <forms:CachedImage Grid.Row="0"
+                                                   Margin=".5"
+                                                   Aspect="AspectFill"
+                                                   DownsampleToViewSize="True"
+                                                   ErrorPlaceholder="news.png"
+                                                   LoadingPlaceholder="news.png"
+                                                   Source="{Binding ImgTmp}" />
+                                <Label Grid.Row="1"
+                                       Margin="0"
+                                       Padding="5,0"
+                                       FontSize="18"
+                                       HorizontalOptions="FillAndExpand"
+                                       LineBreakMode="TailTruncation"
+                                       MaxLines="1"
+                                       Text="{Binding Title}"
+                                       TextColor="#000000"
+                                       VerticalOptions="FillAndExpand" />
+                                <Label Grid.Row="2"
+                                       Margin="0"
+                                       Padding="5,0"
+                                       FontSize="15"
+                                       HorizontalOptions="FillAndExpand"
+                                       Text="{Binding TenLop}"
+                                       TextColor="DarkGray" />
+                                <Label Grid.Row="3"
+                                       Margin="0"
+                                       Padding="5,0"
+                                       FontSize="15"
+                                       HorizontalOptions="FillAndExpand"
+                                       TextColor="DarkGray">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{markupExtension:Translate 00055}" />
@@ -100,41 +92,38 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <abstractions:HtmlLabel
-                                    Grid.Row="4"
-                                    Margin="0"
-                                    Padding="5,0"
-                                    FontSize="16"
-                                    LineBreakMode="TailTruncation"
-                                    MaxLines="2"
-                                    Text="{Binding Content}"
-                                    TextColor="DarkGray"
-                                    VerticalOptions="CenterAndExpand" />
+                                <abstractions:HtmlLabel Grid.Row="4"
+                                                        Margin="0"
+                                                        Padding="5,0"
+                                                        FontSize="16"
+                                                        LineBreakMode="TailTruncation"
+                                                        MaxLines="2"
+                                                        Text="{Binding Content}"
+                                                        TextColor="DarkGray"
+                                                        VerticalOptions="CenterAndExpand" />
                             </Grid>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Image
-                Grid.Row="2"
-                Grid.Column="1"
-                Margin="10"
-                Aspect="AspectFill"
-                BackgroundColor="Transparent"
-                HorizontalOptions="FillAndExpand"
-                Source="{markupExtension:ImageResource addpost.png}"
-                VerticalOptions="FillAndExpand">
+            <Image Grid.Row="2"
+                   Grid.Column="1"
+                   Margin="10"
+                   Aspect="AspectFill"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="FillAndExpand"
+                   Source="{markupExtension:ImageResource addpost.png}"
+                   VerticalOptions="FillAndExpand">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding AddNewsPostCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <loadingView:LoadingView
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                HorizontalOptions="FillAndExpand"
-                IsVisible="{Binding IsLoading}"
-                VerticalOptions="FillAndExpand" />
+            <loadingView:LoadingView Grid.Row="1"
+                                     Grid.Column="0"
+                                     Grid.ColumnSpan="2"
+                                     HorizontalOptions="FillAndExpand"
+                                     IsVisible="{Binding IsLoading}"
+                                     VerticalOptions="FillAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

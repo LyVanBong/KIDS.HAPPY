@@ -1,45 +1,40 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentView
-    x:Class="KIDS.MOBILE.APP.Controls.NavigationView.NavigationView"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:prism="http://prismlibrary.com"
-    Margin="0"
-    Padding="0"
-    BackgroundColor="{StaticResource BackgroundColorNavBar}"
-    HeightRequest="40"
-    HorizontalOptions="FillAndExpand"
-    VerticalOptions="FillAndExpand"
-    mc:Ignorable="d">
+<ContentView x:Class="KIDS.MOBILE.APP.Controls.NavigationView.NavigationView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:prism="http://prismlibrary.com"
+             Margin="0"
+             Padding="0"
+             BackgroundColor="{StaticResource BackgroundColorNavBar}"
+             HeightRequest="40"
+             HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand"
+             mc:Ignorable="d">
     <ContentView.Content>
-        <Grid
-            Margin="0"
-            Padding="0"
-            ColumnDefinitions="*,80">
-            <Label
-                x:Name="TextTitle"
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Style="{StaticResource TitleNavigation}" />
-            <Image
-                x:Name="Image"
-                Grid.Row="0"
-                Grid.Column="1"
-                Margin="10"
-                BackgroundColor="Transparent"
-                HorizontalOptions="EndAndExpand"
-                Source="{markupExtension:ImageResource close.png}"
-                VerticalOptions="FillAndExpand"
-                WidthRequest="40" />
-            <BoxView
-                Grid.Row="0"
-                Grid.Column="1"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
+        <Grid Margin="0"
+              Padding="0"
+              ColumnDefinitions="*,80">
+            <Label x:Name="TextTitle"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Style="{StaticResource TitleNavigation}" />
+            <Image x:Name="Image"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Margin="10"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="EndAndExpand"
+                   Source="{markupExtension:ImageResource close.png}"
+                   VerticalOptions="FillAndExpand"
+                   WidthRequest="40" />
+            <BoxView Grid.Row="0"
+                     Grid.Column="1"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
                 <BoxView.GestureRecognizers>
                     <TapGestureRecognizer Command="{prism:GoBack}" />
                 </BoxView.GestureRecognizers>
