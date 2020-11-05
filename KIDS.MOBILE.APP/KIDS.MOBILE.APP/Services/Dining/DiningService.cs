@@ -38,7 +38,6 @@ namespace KIDS.MOBILE.APP.Services.Dining
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }
@@ -58,7 +57,6 @@ namespace KIDS.MOBILE.APP.Services.Dining
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }
@@ -76,7 +74,6 @@ namespace KIDS.MOBILE.APP.Services.Dining
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }
@@ -90,7 +87,6 @@ namespace KIDS.MOBILE.APP.Services.Dining
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }

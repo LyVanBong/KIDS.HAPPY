@@ -4,6 +4,6 @@
     {
         // Syncfusion License
         internal static string SyncfusionLicense =
-            "MzAyNDY2QDMxMzgyZTMyMmUzMENyQjRoWHR0L1ZUcFN1bkdzS2I0ZE5PYkpnVC9aUFgxMWd0Y25wTW1LQTA9";
+            "MzQ2ODYxQDMxMzgyZTMzMmUzMFZVTnBTNFZsR0NZekcxQnY5Yk9ydTJKdHNrSC9PZjhtOEtkbUdpQUs2cGM9";
     }
 }

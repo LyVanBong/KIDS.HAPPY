@@ -1,9 +1,4 @@
-﻿using Android.Content;
-using Android.Graphics.Drawables;
-using KIDS.MOBILE.APP.Controls.CustomRenderers;
-using KIDS.MOBILE.APP.Droid.Renderers;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
+﻿using KIDS.MOBILE.APP.Droid.Renderers;
 
 [assembly: ExportRenderer(typeof(CustomPicker), typeof(CustomPickerRenderer))]
 

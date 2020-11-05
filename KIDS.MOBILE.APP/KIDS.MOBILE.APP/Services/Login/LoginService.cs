@@ -31,7 +31,6 @@ namespace KIDS.MOBILE.APP.Services.Login
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }

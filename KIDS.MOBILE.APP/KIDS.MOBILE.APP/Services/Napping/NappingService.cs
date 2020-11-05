@@ -33,7 +33,6 @@ namespace KIDS.MOBILE.APP.Services.Napping
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }

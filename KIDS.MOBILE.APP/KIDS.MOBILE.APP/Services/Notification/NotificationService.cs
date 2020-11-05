@@ -33,7 +33,6 @@ namespace KIDS.MOBILE.APP.Services.Notification
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }
@@ -52,7 +51,6 @@ namespace KIDS.MOBILE.APP.Services.Notification
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }

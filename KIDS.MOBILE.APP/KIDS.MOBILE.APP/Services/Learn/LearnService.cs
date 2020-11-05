@@ -32,7 +32,6 @@ namespace KIDS.MOBILE.APP.Services.Learn
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }
@@ -52,7 +51,6 @@ namespace KIDS.MOBILE.APP.Services.Learn
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }
@@ -71,7 +69,6 @@ namespace KIDS.MOBILE.APP.Services.Learn
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }
@@ -90,7 +87,6 @@ namespace KIDS.MOBILE.APP.Services.Learn
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }

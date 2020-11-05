@@ -1,38 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="KIDS.MOBILE.APP.views.Message.MessagePage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
-    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:message="clr-namespace:KIDS.MOBILE.APP.views.Message;assembly=KIDS.MOBILE.APP"
-    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
-    xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
-    iOsSpecific:Page.UseSafeArea="True"
-    BackgroundColor="{StaticResource BackgroundColorNavBar}"
-    NavigationPage.HasNavigationBar="False"
-    mc:Ignorable="d">
+<ContentPage x:Class="KIDS.MOBILE.APP.views.Message.MessagePage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:message="clr-namespace:KIDS.MOBILE.APP.views.Message;assembly=KIDS.MOBILE.APP"
+             xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             iOsSpecific:Page.UseSafeArea="True"
+             BackgroundColor="{StaticResource BackgroundColorNavBar}"
+             NavigationPage.HasNavigationBar="False"
+             mc:Ignorable="d">
     <ContentPage.Content>
-        <Grid
-            Margin="0"
-            Padding="0"
-            RowDefinitions="40,*">
+        <Grid Margin="0"
+              Padding="0"
+              RowDefinitions="40,*">
             <navigationView:NavigationView Text="{markupExtension:Translate 00010}" />
-            <tabView:SfTabView
-                Grid.Row="1"
-                BackgroundColor="{StaticResource BackgroundApp}"
-                DisplayMode="Image"
-                SelectedIndex="{Binding SelectedIndex}"
-                TabHeaderBackgroundColor="#f5f5f5"
-                VisibleHeaderCount="2">
+            <tabView:SfTabView Grid.Row="1"
+                               BackgroundColor="{StaticResource BackgroundApp}"
+                               DisplayMode="Image"
+                               SelectedIndex="{Binding SelectedIndex}"
+                               TabHeaderBackgroundColor="#f5f5f5"
+                               VisibleHeaderCount="2">
                 <tabView:SfTabView.SelectionIndicatorSettings>
-                    <tabView:SelectionIndicatorSettings
-                        Position="Bottom"
-                        StrokeThickness="3"
-                        Color="#0779e4" />
+                    <tabView:SelectionIndicatorSettings Position="Bottom"
+                                                        StrokeThickness="3"
+                                                        Color="#0779e4" />
                 </tabView:SfTabView.SelectionIndicatorSettings>
                 <tabView:SfTabItem ImageSource="inbox.png">
                     <tabView:SfTabItem.HeaderContent>
@@ -51,7 +47,8 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
             </tabView:SfTabView>
-            <loadingView:LoadingView Grid.Row="1" IsVisible="{Binding IsLoading}" />
+            <loadingView:LoadingView Grid.Row="1"
+                                     IsVisible="{Binding IsLoading}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
