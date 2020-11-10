@@ -45,7 +45,7 @@ namespace KIDS.MOBILE.APP.Services.User
                 var data = await _requestProvider.GetAsync<IEnumerable<ParentModel>>("Student/Select/Parent", parameters);
                 return data;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
