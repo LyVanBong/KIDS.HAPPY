@@ -10,7 +10,6 @@ namespace KIDS.MOBILE.APP.Services.Database
     public class DatabaseService : IDatabaseService
     {
         private RealmConfiguration _realmConfiguration;
-        private byte[] _encryptionKey;
 
         public DatabaseService()
         {

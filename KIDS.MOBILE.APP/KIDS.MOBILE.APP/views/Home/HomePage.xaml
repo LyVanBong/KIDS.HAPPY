@@ -129,11 +129,10 @@
                             </ResourceDictionary>
                         </Frame.Resources>
                         <Grid RowDefinitions="80,40">
-                            <forms:AnimationView Grid.Row="0"
-                                                 Grid.RowSpan="2"
-                                                 Animation="learn.json"
-                                                 AutoPlay="True"
-                                                 Loop="true" />
+                            <Image Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   Margin="20"
+                                   Source="{markupExtension:ImageResource learn.png}" />
                             <Label Grid.Row="1"
                                    Text="{markupExtension:Translate 00031}" />
                             <BoxView Grid.Row="0"
@@ -178,11 +177,10 @@
                             </ResourceDictionary>
                         </Frame.Resources>
                         <Grid RowDefinitions="80,40">
-                            <forms:AnimationView Grid.Row="0"
-                                                 Grid.RowSpan="2"
-                                                 Animation="attendance.json"
-                                                 AutoPlay="True"
-                                                 Loop="true" />
+                            <Image Grid.Row="0"
+                                   Margin="20"
+                                   Grid.RowSpan="2"
+                                   Source="{markupExtension:ImageResource attendance.png}" />
                             <Label Grid.Row="1"
                                    Text="{markupExtension:Translate 00030}" />
                             <BoxView Grid.Row="0"
@@ -227,11 +225,10 @@
                             </ResourceDictionary>
                         </Frame.Resources>
                         <Grid RowDefinitions="80,40">
-                            <forms:AnimationView Grid.Row="0"
-                                                 Grid.RowSpan="2"
-                                                 Animation="dining.json"
-                                                 AutoPlay="True"
-                                                 Loop="true" />
+                            <Image Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   Margin="20"
+                                   Source="{markupExtension:ImageResource dining.png}" />
                             <Label Grid.Row="1"
                                    Text="{markupExtension:Translate 00033}" />
                             <BoxView Grid.Row="0"
@@ -277,11 +274,10 @@
                             </ResourceDictionary>
                         </Frame.Resources>
                         <Grid RowDefinitions="80,40">
-                            <forms:AnimationView Grid.Row="0"
-                                                 Grid.RowSpan="2"
-                                                 Animation="napping.json"
-                                                 AutoPlay="True"
-                                                 Loop="true" />
+                            <Image Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   Margin="20"
+                                   Source="{markupExtension:ImageResource napping.png}" />
                             <Label Grid.Row="1"
                                    Text="{markupExtension:Translate 00032}" />
                             <BoxView Grid.Row="0"
@@ -326,11 +322,10 @@
                             </ResourceDictionary>
                         </Frame.Resources>
                         <Grid RowDefinitions="80,40">
-                            <forms:AnimationView Grid.Row="0"
-                                                 Grid.RowSpan="2"
-                                                 Animation="hygiene.json"
-                                                 AutoPlay="True"
-                                                 Loop="true" />
+                            <Image Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   Margin="20"
+                                   Source="{markupExtension:ImageResource hygiene.png}" />
                             <Label Grid.Row="1"
                                    Text="{markupExtension:Translate 00034}" />
                             <BoxView Grid.Row="0"
@@ -375,11 +370,10 @@
                             </ResourceDictionary>
                         </Frame.Resources>
                         <Grid RowDefinitions="80,40">
-                            <forms:AnimationView Grid.Row="0"
-                                                 Grid.RowSpan="2"
-                                                 Animation="assessment.json"
-                                                 AutoPlay="True"
-                                                 Loop="true" />
+                            <Image Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   Margin="20"
+                                   Source="{markupExtension:ImageResource assessment.png}" />
                             <Label Grid.Row="1"
                                    Text="{markupExtension:Translate 00035}" />
                             <BoxView Grid.Row="0"
@@ -425,11 +419,10 @@
                             </ResourceDictionary>
                         </Frame.Resources>
                         <Grid RowDefinitions="80,40">
-                            <forms:AnimationView Grid.Row="0"
-                                                 Grid.RowSpan="2"
-                                                 Animation="messager.json"
-                                                 AutoPlay="True"
-                                                 Loop="true" />
+                            <Image Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   Margin="20"
+                                   Source="{markupExtension:ImageResource message.png}" />
                             <Label Grid.Row="1"
                                    Text="{markupExtension:Translate 00010}" />
                             <BoxView Grid.Row="0"
@@ -474,11 +467,10 @@
                             </ResourceDictionary>
                         </Frame.Resources>
                         <Grid RowDefinitions="80,40">
-                            <forms:AnimationView Grid.Row="0"
-                                                 Grid.RowSpan="2"
-                                                 Animation="weight.json"
-                                                 AutoPlay="True"
-                                                 Loop="true" />
+                            <Image Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   Margin="20"
+                                   Source="{markupExtension:ImageResource evalution.png}" />
                             <Label Grid.Row="1"
                                    Text="{markupExtension:Translate 00044}" />
                             <BoxView Grid.Row="0"
@@ -523,11 +515,10 @@
                             </ResourceDictionary>
                         </Frame.Resources>
                         <Grid RowDefinitions="80,40">
-                            <forms:AnimationView Grid.Row="0"
-                                                 Grid.RowSpan="2"
-                                                 Animation="studyplan.json"
-                                                 AutoPlay="True"
-                                                 Loop="true" />
+                            <Image Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   Margin="20"
+                                   Source="{markupExtension:ImageResource studentmanagement.png}" />
                             <Label Grid.Row="1"
                                    Text="{markupExtension:Translate 00042}" />
                             <BoxView Grid.Row="0"

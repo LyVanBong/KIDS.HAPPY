@@ -8,7 +8,6 @@ namespace KIDS.MOBILE.APP.Models.Attendance
     public class AttendanceLeaveModel : BindableBase
     {
         private string _parentName;
-        private string _startTime;
         private string _sleepFrom;
         private string _sleepTo;
         private string _hygiene;

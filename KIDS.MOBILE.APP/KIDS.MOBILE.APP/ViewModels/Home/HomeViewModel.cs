@@ -22,10 +22,6 @@ namespace KIDS.MOBILE.APP.ViewModels.Home
     public class HomeViewModel : BaseViewModel, IActiveAware
     {
         private IDatabaseService _databaseService;
-        private string _avatar;
-        private string _webcomeTo;
-        private string _className;
-        private string _classMaxim;
         private UserModel _userData;
         private List<AlbumModel> _albumData;
         private bool _isGoToNews;
