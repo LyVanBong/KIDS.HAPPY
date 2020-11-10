@@ -1,4 +1,14 @@
-﻿namespace KIDS.MOBILE.APP.Droid
+﻿using Android.App;
+using Android.Content.PM;
+using Android.OS;
+using Android.Runtime;
+using LabelHtml.Forms.Plugin.Droid;
+using Lottie.Forms.Droid;
+using Plugin.Media;
+using Prism;
+using Prism.Ioc;
+
+namespace KIDS.MOBILE.APP.Droid
 {
     [Activity(Label = "HK Teacher", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity

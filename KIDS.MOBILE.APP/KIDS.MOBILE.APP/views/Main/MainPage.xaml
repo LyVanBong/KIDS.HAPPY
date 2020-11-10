@@ -20,25 +20,25 @@
             UnselectedTabColor="DarkGray"
             mc:Ignorable="d">
     <NavigationPage Title="{markupExtension:Translate 00021}"
-                    IconImageSource="Home.png">
+                    IconImageSource="home_icon.png">
         <x:Arguments>
             <home:HomePage />
         </x:Arguments>
     </NavigationPage>
     <NavigationPage Title="{markupExtension:Translate 00022}"
-                    IconImageSource="TicketManagement.png">
+                    IconImageSource="checklist_icon.png">
         <x:Arguments>
             <ticketManagement:TicketManagementPage />
         </x:Arguments>
     </NavigationPage>
     <NavigationPage Title="{markupExtension:Translate 00023}"
-                    IconImageSource="Notification.png">
+                    IconImageSource="notificaion_icon.png">
         <x:Arguments>
             <notification:NotificationPage />
         </x:Arguments>
     </NavigationPage>
     <NavigationPage Title="{markupExtension:Translate 00024}"
-                    IconImageSource="Menu.png">
+                    IconImageSource="menu_icon.png">
         <x:Arguments>
             <menu:MenuPage />
         </x:Arguments>

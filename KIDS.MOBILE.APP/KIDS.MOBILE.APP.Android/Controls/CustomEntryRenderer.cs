@@ -1,4 +1,10 @@
-﻿using KIDS.MOBILE.APP.Droid.Controls;
+﻿using Android.Content.Res;
+using Android.Graphics.Drawables;
+using Android.Text;
+using KIDS.MOBILE.APP.Controls.Renderers;
+using KIDS.MOBILE.APP.Droid.Controls;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRenderer))]
 

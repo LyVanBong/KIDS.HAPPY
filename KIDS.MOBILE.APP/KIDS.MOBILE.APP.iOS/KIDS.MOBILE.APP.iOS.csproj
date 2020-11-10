@@ -263,18 +263,18 @@
     <BundleResource Include="Resources\student1.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Home.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Menu.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\TicketManagement.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\splash_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\checklist_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\home_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\notificaion_icon.png" />
   </ItemGroup>
 </Project>
