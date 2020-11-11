@@ -70,6 +70,10 @@ using Prism.Ioc;
 using Prism.Navigation;
 using Prism.Unity;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Com.OneSignal;
+using Com.OneSignal.Abstractions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Device = Xamarin.Forms.Device;
@@ -94,7 +98,7 @@ namespace KIDS.MOBILE.APP
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(AppSettings.SyncfusionLicense);
 
             await NavigationService.NavigateAsync(nameof(LoginPage));
-
+            await RequiredOnesignal();
             // check mang
             Connectivity.ConnectivityChanged += CheckNetwork;
 
@@ -123,6 +127,22 @@ namespace KIDS.MOBILE.APP
                    return false;
                }
            });
+        }
+
+        private async Task RequiredOnesignal()
+        {
+            //Remove this method to stop OneSignal Debugging  
+            OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);
+
+            OneSignal.Current.StartInit(AppSettings.OnesignalAppId)
+                .Settings(new Dictionary<string, bool>() {
+                    { IOSSettings.kOSSettingsKeyAutoPrompt, false },
+                    { IOSSettings.kOSSettingsKeyInAppLaunchURL, false } })
+                .InFocusDisplaying(OSInFocusDisplayOption.Notification)
+                .EndInit();
+
+            // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 7)
+            OneSignal.Current.RegisterForPushNotifications();
         }
 
         private async void CheckNetwork(object sender, ConnectivityChangedEventArgs e)
