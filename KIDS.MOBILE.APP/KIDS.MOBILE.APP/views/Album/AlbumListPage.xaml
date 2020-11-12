@@ -1,135 +1,122 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="KIDS.MOBILE.APP.views.Album.AlbumListPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
-    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    iOsSpecific:Page.UseSafeArea="true"
-    BackgroundColor="{StaticResource BackgroundColorNavBar}"
-    NavigationPage.HasNavigationBar="False"
-    mc:Ignorable="d">
+<ContentPage x:Class="KIDS.MOBILE.APP.views.Album.AlbumListPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             iOsSpecific:Page.UseSafeArea="true"
+             BackgroundColor="{StaticResource BackgroundColorNavBar}"
+             NavigationPage.HasNavigationBar="False"
+             mc:Ignorable="d">
     <ContentPage.Content>
-        <Grid
-            Margin="0"
-            Padding="0"
-            BackgroundColor="{StaticResource BackgroundApp}"
-            ColumnDefinitions="*,80"
-            RowDefinitions="40,*,80"
-            RowSpacing="0">
-            <BoxView
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Margin="0"
-                BackgroundColor="{StaticResource BackgroundColorNavBar}"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand" />
-            <Label
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Style="{StaticResource TitleNavigation}"
-                Text="{markupExtension:Translate 00027}" />
-            <Image
-                Grid.Row="0"
-                Grid.Column="1"
-                Margin="10"
-                BackgroundColor="Transparent"
-                HorizontalOptions="EndAndExpand"
-                Source="{markupExtension:ImageResource close.png}"
-                VerticalOptions="FillAndExpand"
-                WidthRequest="40" />
-            <BoxView
-                Grid.Row="0"
-                Grid.Column="1"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
+        <Grid Margin="0"
+              Padding="0"
+              BackgroundColor="{StaticResource BackgroundApp}"
+              ColumnDefinitions="*,80"
+              RowDefinitions="40,*,80"
+              RowSpacing="0">
+            <BoxView Grid.Row="0"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     Margin="0"
+                     BackgroundColor="{StaticResource BackgroundColorNavBar}"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand" />
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Style="{StaticResource TitleNavigation}"
+                   Text="{markupExtension:Translate 00027}" />
+            <Image Grid.Row="0"
+                   Grid.Column="1"
+                   Margin="10"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="EndAndExpand"
+                   Source="{markupExtension:ImageResource close.png}"
+                   VerticalOptions="FillAndExpand"
+                   WidthRequest="40" />
+            <BoxView Grid.Row="0"
+                     Grid.Column="1"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
                 <BoxView.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GoBackCommand}" />
                 </BoxView.GestureRecognizers>
             </BoxView>
-            <CollectionView
-                x:Name="LsAlbumData"
-                Grid.Row="1"
-                Grid.RowSpan="2"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Margin="5"
-                ItemsSource="{Binding AlbumData}">
+            <CollectionView x:Name="LsAlbumData"
+                            Grid.Row="1"
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="5"
+                            ItemsSource="{Binding AlbumData}">
                 <CollectionView.ItemsLayout>
-                    <GridItemsLayout
-                        HorizontalItemSpacing="5"
-                        Orientation="Vertical"
-                        Span="2"
-                        VerticalItemSpacing="5" />
+                    <GridItemsLayout HorizontalItemSpacing="5"
+                                     Orientation="Vertical"
+                                     Span="2"
+                                     VerticalItemSpacing="5" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame
-                            Margin="0"
-                            Padding="0"
-                            BorderColor="#3282b8"
-                            CornerRadius="5"
-                            HasShadow="False">
+                        <Frame Margin="0"
+                               Padding="0"
+                               BorderColor="#3282b8"
+                               CornerRadius="5"
+                               HasShadow="False">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:Reference LsAlbumData}, Path=BindingContext.DetailAlbumCommand}" CommandParameter="{Binding}" />
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference LsAlbumData}, Path=BindingContext.DetailAlbumCommand}"
+                                                      CommandParameter="{Binding}" />
                             </Frame.GestureRecognizers>
-                            <Grid
-                                Margin="0"
-                                Padding="0"
-                                ColumnSpacing="0"
-                                RowDefinitions="*,30"
-                                RowSpacing="0">
-                                <forms:CachedImage
-                                    Grid.Row="0"
-                                    Margin="0"
-                                    Aspect="AspectFill"
-                                    ErrorPlaceholder="news.png"
-                                    LoadingPlaceholder="news.png"
-                                    Source="{Binding UriImage}" />
-                                <Label
-                                    Grid.Row="1"
-                                    Margin="0"
-                                    Padding="5,0"
-                                    FontSize="18"
-                                    HorizontalOptions="FillAndExpand"
-                                    LineBreakMode="TailTruncation"
-                                    MaxLines="1"
-                                    Text="{Binding Description}"
-                                    TextColor="#588da8"
-                                    TextDecorations="None"
-                                    VerticalOptions="FillAndExpand"
-                                    VerticalTextAlignment="Center" />
+                            <Grid Margin="0"
+                                  Padding="0"
+                                  ColumnSpacing="0"
+                                  RowDefinitions="*,30"
+                                  RowSpacing="0">
+                                <forms:CachedImage Grid.Row="0"
+                                                   Margin="0"
+                                                   Aspect="AspectFill"
+                                                   ErrorPlaceholder="news.png"
+                                                   LoadingPlaceholder="news.png"
+                                                   Source="{Binding UriImage}" />
+                                <Label Grid.Row="1"
+                                       Margin="0"
+                                       Padding="5,0"
+                                       FontSize="18"
+                                       HorizontalOptions="FillAndExpand"
+                                       LineBreakMode="TailTruncation"
+                                       MaxLines="1"
+                                       Text="{Binding Description}"
+                                       TextColor="#588da8"
+                                       TextDecorations="None"
+                                       VerticalOptions="FillAndExpand"
+                                       VerticalTextAlignment="Center" />
                             </Grid>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Image
-                Grid.Row="2"
-                Grid.Column="1"
-                Margin="10"
-                Aspect="AspectFill"
-                BackgroundColor="Transparent"
-                HorizontalOptions="FillAndExpand"
-                Source="{markupExtension:ImageResource add-image.png}"
-                VerticalOptions="FillAndExpand">
+            <Image Grid.Row="2"
+                   Grid.Column="1"
+                   Margin="10"
+                   Aspect="AspectFill"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="FillAndExpand"
+                   Source="{markupExtension:ImageResource add-image.png}"
+                   VerticalOptions="FillAndExpand">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding AddNewAlbumCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <loadingView:LoadingView
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                HorizontalOptions="FillAndExpand"
-                IsVisible="{Binding IsLoading}"
-                VerticalOptions="FillAndExpand" />
+            <loadingView:LoadingView Grid.Row="1"
+                                     Grid.Column="0"
+                                     Grid.ColumnSpan="2"
+                                     HorizontalOptions="FillAndExpand"
+                                     IsVisible="{Binding IsLoading}"
+                                     VerticalOptions="FillAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

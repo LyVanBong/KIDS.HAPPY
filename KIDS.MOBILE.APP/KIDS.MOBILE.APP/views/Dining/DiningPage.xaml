@@ -1,70 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="KIDS.MOBILE.APP.views.Dining.DiningPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:dining="clr-namespace:KIDS.MOBILE.APP.views.Dining;assembly=KIDS.MOBILE.APP"
-    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
-    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
-    xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
-    iOsSpecific:Page.UseSafeArea="True"
-    BackgroundColor="{StaticResource BackgroundColorNavBar}"
-    NavigationPage.HasNavigationBar="False"
-    mc:Ignorable="d">
+<ContentPage x:Class="KIDS.MOBILE.APP.views.Dining.DiningPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:dining="clr-namespace:KIDS.MOBILE.APP.views.Dining;assembly=KIDS.MOBILE.APP"
+             xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             iOsSpecific:Page.UseSafeArea="True"
+             BackgroundColor="{StaticResource BackgroundColorNavBar}"
+             NavigationPage.HasNavigationBar="False"
+             mc:Ignorable="d">
     <ContentPage.Content>
-        <Grid
-            Margin="0"
-            Padding="0"
-            BackgroundColor="{StaticResource BackgroundApp}"
-            RowDefinitions="40,*">
-            <Grid
-                Grid.Row="0"
-                ColumnDefinitions="auto,*">
-                <navigationView:NavigationView Grid.Column="0" Grid.ColumnSpan="2" Text="{markupExtension:Translate 00033}" />
+        <Grid Margin="0"
+              Padding="0"
+              BackgroundColor="{StaticResource BackgroundApp}"
+              RowDefinitions="40,*">
+            <Grid Grid.Row="0"
+                  ColumnDefinitions="auto,*">
+                <navigationView:NavigationView Grid.Column="0"
+                                               Grid.ColumnSpan="2"
+                                               Text="{markupExtension:Translate 00033}" />
                 <Grid Grid.Column="0"
                       ColumnDefinitions="5,*,30">
-                    <Label Grid.Column="1" Text="{Binding ChoosedDate}" TextColor="White" VerticalOptions="CenterAndExpand" />
-                    <Image Grid.Column="2" Source="{markupExtension:ImageResource calendarToolbar.png}"></Image>
+                    <Label Grid.Column="1"
+                           Text="{Binding ChoosedDate}"
+                           TextColor="White"
+                           VerticalOptions="CenterAndExpand" />
+                    <Image Grid.Column="2"
+                           Source="{markupExtension:ImageResource calendarToolbar.png}"></Image>
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SelectDateCommand}" />
                     </Grid.GestureRecognizers>
                 </Grid>
             </Grid>
-            <tabView:SfTabView
-                Grid.Row="1"
-                IsScrollButtonEnabled="False"
-                OverflowMode="Scroll"
-                SelectedIndex="{Binding SelectedIndex}">
-                <tabView:SfTabItem Title="{markupExtension:Translate 00093}" TitleFontSize="16">
+            <tabView:SfTabView Grid.Row="1"
+                               IsScrollButtonEnabled="False"
+                               OverflowMode="Scroll"
+                               SelectedIndex="{Binding SelectedIndex}">
+                <tabView:SfTabItem Title="{markupExtension:Translate 00093}"
+                                   TitleFontSize="16">
                     <tabView:SfTabItem.Content>
                         <dining:BreakfastView />
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
-                <tabView:SfTabItem Title="{markupExtension:Translate 00094}" TitleFontSize="16">
+                <tabView:SfTabItem Title="{markupExtension:Translate 00094}"
+                                   TitleFontSize="16">
                     <tabView:SfTabItem.Content>
                         <dining:LunchView />
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
-                <tabView:SfTabItem Title="{markupExtension:Translate 00095}" TitleFontSize="16">
+                <tabView:SfTabItem Title="{markupExtension:Translate 00095}"
+                                   TitleFontSize="16">
                     <tabView:SfTabItem.Content>
                         <dining:SnackView />
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
-                <tabView:SfTabItem Title="{markupExtension:Translate 00096}" TitleFontSize="16">
+                <tabView:SfTabItem Title="{markupExtension:Translate 00096}"
+                                   TitleFontSize="16">
                     <tabView:SfTabItem.Content>
                         <dining:DinnerView />
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
             </tabView:SfTabView>
-            <loadingView:LoadingView
-                Grid.Row="1"
-                HorizontalOptions="FillAndExpand"
-                IsVisible="{Binding IsLoading}"
-                VerticalOptions="FillAndExpand" />
+            <loadingView:LoadingView Grid.Row="1"
+                                     HorizontalOptions="FillAndExpand"
+                                     IsVisible="{Binding IsLoading}"
+                                     VerticalOptions="FillAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -1,62 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Frame
-    x:Class="KIDS.MOBILE.APP.Controls.Dialogs.ShowImage.ShowImageDialog"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:prism="http://prismlibrary.com"
-    Margin="0"
-    Padding="0"
-    prism:DialogLayout.CloseOnBackgroundTapped="False"
-    prism:DialogLayout.RelativeWidthRequest=".85"
-    BackgroundColor="{StaticResource BackgroundApp}"
-    CornerRadius="10"
-    HorizontalOptions="FillAndExpand"
-    mc:Ignorable="d">
+<Frame x:Class="KIDS.MOBILE.APP.Controls.Dialogs.ShowImage.ShowImageDialog"
+       xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+       xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:prism="http://prismlibrary.com"
+       Margin="0"
+       Padding="0"
+       prism:DialogLayout.CloseOnBackgroundTapped="False"
+       prism:DialogLayout.RelativeWidthRequest=".85"
+       BackgroundColor="{StaticResource BackgroundApp}"
+       CornerRadius="10"
+       HorizontalOptions="FillAndExpand"
+       mc:Ignorable="d">
     <ScrollView>
-        <Grid
-            ColumnDefinitions="*,*"
-            RowDefinitions="50,300"
-            RowSpacing="0">
-            <Label
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                BackgroundColor="{StaticResource BackgroundColorNavBar}"
-                HorizontalOptions="FillAndExpand"
-                HorizontalTextAlignment="Center"
-                Style="{StaticResource TitleNavigation}"
-                Text="{markupExtension:Translate 00083}"
-                VerticalOptions="FillAndExpand"
-                VerticalTextAlignment="Center" />
-            <Image
-                Grid.Row="0"
-                Grid.Column="1"
-                Margin="0,0,10,0"
-                BackgroundColor="Transparent"
-                HeightRequest="20"
-                HorizontalOptions="End"
-                Source="{markupExtension:ImageResource close.png}"
-                VerticalOptions="FillAndExpand"
-                WidthRequest="20">
+        <Grid ColumnDefinitions="*,*"
+              RowDefinitions="50,300"
+              RowSpacing="0">
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   BackgroundColor="{StaticResource BackgroundColorNavBar}"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Center"
+                   Style="{StaticResource TitleNavigation}"
+                   Text="{markupExtension:Translate 00083}"
+                   VerticalOptions="FillAndExpand"
+                   VerticalTextAlignment="Center" />
+            <Image Grid.Row="0"
+                   Grid.Column="1"
+                   Margin="0,0,10,0"
+                   BackgroundColor="Transparent"
+                   HeightRequest="20"
+                   HorizontalOptions="End"
+                   Source="{markupExtension:ImageResource close.png}"
+                   VerticalOptions="FillAndExpand"
+                   WidthRequest="20">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GoBackCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <forms:CachedImage
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Aspect="AspectFill"
-                DownsampleToViewSize="True"
-                ErrorPlaceholder="imagetmp.png"
-                HorizontalOptions="FillAndExpand"
-                LoadingPlaceholder="imagetmp.png"
-                Source="{Binding ImageData}"
-                VerticalOptions="FillAndExpand" />
+            <forms:CachedImage Grid.Row="1"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="2"
+                               Aspect="AspectFill"
+                               DownsampleToViewSize="True"
+                               ErrorPlaceholder="imagetmp.png"
+                               HorizontalOptions="FillAndExpand"
+                               LoadingPlaceholder="imagetmp.png"
+                               Source="{Binding ImageData}"
+                               VerticalOptions="FillAndExpand" />
         </Grid>
     </ScrollView>
 </Frame>

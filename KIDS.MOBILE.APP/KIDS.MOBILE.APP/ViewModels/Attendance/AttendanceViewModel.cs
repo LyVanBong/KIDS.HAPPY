@@ -22,7 +22,6 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
     {
         private string _teacherId;
         private string _unSelectAll;
-        private string _cancel;
         private string[] _parents;
         private IUserService _userService;
         private string _classId;

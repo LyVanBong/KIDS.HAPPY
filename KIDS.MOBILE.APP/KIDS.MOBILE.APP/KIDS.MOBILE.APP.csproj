@@ -17,19 +17,27 @@
     <None Remove="Resources\Images\addpost.png" />
     <None Remove="Resources\Images\address.png" />
     <None Remove="Resources\Images\arrowdown.png" />
+    <None Remove="Resources\Images\assessment.png" />
+    <None Remove="Resources\Images\attendance.png" />
     <None Remove="Resources\Images\calendar.png" />
     <None Remove="Resources\Images\calendarToolbar.png" />
     <None Remove="Resources\Images\cancel.png" />
     <None Remove="Resources\Images\close.png" />
     <None Remove="Resources\Images\comment.png" />
+    <None Remove="Resources\Images\dining.png" />
     <None Remove="Resources\Images\email.png" />
+    <None Remove="Resources\Images\evalution.png" />
     <None Remove="Resources\Images\evolution.png" />
     <None Remove="Resources\Images\gender.png" />
+    <None Remove="Resources\Images\hygiene.png" />
     <None Remove="Resources\Images\inbox.png" />
+    <None Remove="Resources\Images\learn.png" />
     <None Remove="Resources\Images\listpeoples.png" />
     <None Remove="Resources\Images\logout.png" />
     <None Remove="Resources\Images\mail.png" />
+    <None Remove="Resources\Images\message.png" />
     <None Remove="Resources\Images\more.png" />
+    <None Remove="Resources\Images\napping.png" />
     <None Remove="Resources\Images\people.png" />
     <None Remove="Resources\Images\phone.png" />
     <None Remove="Resources\Images\phonenum.png" />
@@ -37,6 +45,7 @@
     <None Remove="Resources\Images\send.png" />
     <None Remove="Resources\Images\sent.png" />
     <None Remove="Resources\Images\setting.png" />
+    <None Remove="Resources\Images\studentmanagement.png" />
     <None Remove="Resources\Images\submit.png" />
   </ItemGroup>
 
@@ -47,24 +56,33 @@
     <EmbeddedResource Include="Resources\Images\addpost.png" />
     <EmbeddedResource Include="Resources\Images\address.png" />
     <EmbeddedResource Include="Resources\Images\arrowdown.png" />
+    <EmbeddedResource Include="Resources\Images\assessment.png" />
+    <EmbeddedResource Include="Resources\Images\attendance.png" />
     <EmbeddedResource Include="Resources\Images\calendar.png" />
     <EmbeddedResource Include="Resources\Images\calendarToolbar.png" />
     <EmbeddedResource Include="Resources\Images\cancel.png" />
     <EmbeddedResource Include="Resources\Images\close.png" />
     <EmbeddedResource Include="Resources\Images\comment.png" />
+    <EmbeddedResource Include="Resources\Images\dining.png" />
     <EmbeddedResource Include="Resources\Images\email.png" />
+    <EmbeddedResource Include="Resources\Images\evalution.png" />
     <EmbeddedResource Include="Resources\Images\evolution.png" />
     <EmbeddedResource Include="Resources\Images\gender.png" />
+    <EmbeddedResource Include="Resources\Images\hygiene.png" />
     <EmbeddedResource Include="Resources\Images\inbox.png" />
+    <EmbeddedResource Include="Resources\Images\learn.png" />
     <EmbeddedResource Include="Resources\Images\listpeoples.png" />
     <EmbeddedResource Include="Resources\Images\logout.png" />
+    <EmbeddedResource Include="Resources\Images\message.png" />
     <EmbeddedResource Include="Resources\Images\more.png" />
+    <EmbeddedResource Include="Resources\Images\napping.png" />
     <EmbeddedResource Include="Resources\Images\people.png" />
     <EmbeddedResource Include="Resources\Images\phone.png" />
     <EmbeddedResource Include="Resources\Images\phonenum.png" />
     <EmbeddedResource Include="Resources\Images\Search.png" />
     <EmbeddedResource Include="Resources\Images\send.png" />
     <EmbeddedResource Include="Resources\Images\sent.png" />
+    <EmbeddedResource Include="Resources\Images\studentmanagement.png" />
     <EmbeddedResource Include="Resources\Images\submit.png" />
     <Page Include="Resources\Images\mail.png" />
     <Resource Include="Resources\Images\phone.png" />
@@ -73,27 +91,28 @@
 
   <ItemGroup>
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="3.1.3" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.1" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.1" />
+    <PackageReference Include="Com.OneSignal" Version="3.10.2" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.3" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.3" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="Plugin.Badge" Version="2.3.0" />
+    <PackageReference Include="Plugin.Badge" Version="2.3.1" />
     <PackageReference Include="Prism.Unity.Forms" Version="7.2.0.1422" />
-    <PackageReference Include="Realm" Version="5.0.1" />
-    <PackageReference Include="RestSharp" Version="106.11.4" />
+    <PackageReference Include="Realm" Version="5.1.2" />
+    <PackageReference Include="RestSharp" Version="106.11.7" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.5" />
-    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.2.0.58" />
-    <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.2.0.58" />
-    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="18.2.0.58" />
-    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.2.0.58" />
-    <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="18.2.0.58" />
-    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.2.0.58" />
-    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.2.0.58" />
-    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.2.0.58" />
-    <PackageReference Include="Xam.Plugin.HtmlLabel" Version="4.1.3" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.3.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.3.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="18.3.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.3.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="18.3.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.3.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.3.0.47" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.3.0.47" />
+    <PackageReference Include="Xam.Plugin.HtmlLabel" Version="5.0.0" />
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1364" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
 

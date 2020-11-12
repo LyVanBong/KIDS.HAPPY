@@ -31,7 +31,6 @@ namespace KIDS.MOBILE.APP.Services.Album
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }
@@ -53,7 +52,6 @@ namespace KIDS.MOBILE.APP.Services.Album
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }

@@ -1,6 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.1.4" package="com.bsoftgroup.happy.kids" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
-	<application android:label="Happy Kids"></application>
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.1.11" package="com.bsoftgroup.hkteacher.v2" android:installLocation="auto">
+  <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
+  <application android:label="HK Teacher">
+    <receiver android:name="com.onesignal.GcmBroadcastReceiver"
+              android:permission="com.google.android.c2dm.permission.SEND" >
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <category android:name="com.bsoftgroup.hkteacher.v2" />
+      </intent-filter>
+    </receiver>
+  </application>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <permission android:name="com.bsoftgroup.hkteacher.v2.permission.C2D_MESSAGE"
+              android:protectionLevel="signature" />
+  <uses-permission android:name="com.bsoftgroup.hkteacher.v2.permission.C2D_MESSAGE" />
 </manifest>

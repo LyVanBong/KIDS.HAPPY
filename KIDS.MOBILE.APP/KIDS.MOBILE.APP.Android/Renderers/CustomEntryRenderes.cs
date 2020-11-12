@@ -1,8 +1,9 @@
-﻿using Android.Content;
+﻿
+using System.ComponentModel;
+using Android.Content;
 using Android.Graphics.Drawables;
 using KIDS.MOBILE.APP.Controls.CustomRenderers;
 using KIDS.MOBILE.APP.Droid.Renderers;
-using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 

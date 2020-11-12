@@ -1,119 +1,108 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentView
-    x:Class="KIDS.MOBILE.APP.views.Assessment.WeeklyAssessmentView"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:behaviors="http://prismlibrary.com"
-    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:renderers="clr-namespace:KIDS.MOBILE.APP.Controls.Renderers;assembly=KIDS.MOBILE.APP"
-    xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-    mc:Ignorable="d">
+<ContentView x:Class="KIDS.MOBILE.APP.views.Assessment.WeeklyAssessmentView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="http://prismlibrary.com"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:renderers="clr-namespace:KIDS.MOBILE.APP.Controls.Renderers;assembly=KIDS.MOBILE.APP"
+             xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             mc:Ignorable="d">
     <ContentView.Content>
-        <Grid
-            Margin="0"
-            ColumnSpacing="0"
-            RowDefinitions="50,*"
-            RowSpacing="0"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
-            <SearchBar Grid.Row="0" Text="{Binding SearchWeek}" />
-            <CollectionView
-            x:Name="Assessment"
-            Grid.Row="1"
-            Margin="5"
-            ItemsSource="{Binding AttendanceLeave}">
+        <Grid Margin="0"
+              ColumnSpacing="0"
+              RowDefinitions="50,*"
+              RowSpacing="0"
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand">
+            <SearchBar Grid.Row="0"
+                       Text="{Binding SearchWeek}" />
+            <CollectionView x:Name="Assessment"
+                            Grid.Row="1"
+                            Margin="5"
+                            ItemsSource="{Binding AttendanceLeave}">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="15" Orientation="Vertical" />
+                    <LinearItemsLayout ItemSpacing="15"
+                                       Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame
-                        Margin="0"
-                        Padding="5"
-                        HasShadow="False"
-                        BorderColor="DodgerBlue">
-                            <Grid
-                            Margin="0"
-                            Padding="0"
-                            ColumnDefinitions="50,*"
-                            RowDefinitions="{OnPlatform iOS='20,30,40,80',
+                        <Frame Margin="0"
+                               Padding="5"
+                               HasShadow="False"
+                               BorderColor="DodgerBlue">
+                            <Grid Margin="0"
+                                  Padding="0"
+                                  ColumnDefinitions="50,*"
+                                  RowDefinitions="{OnPlatform iOS='20,30,40,80',
                                                         Android='20,30,40,60'}">
-                                <forms:CachedImage
-                                Grid.Row="0"
-                                Grid.RowSpan="2"
-                                Grid.Column="0"
-                                Margin="0"
-                                HeightRequest="50"
-                                WidthRequest="50"
-                                HorizontalOptions="Start"
-                                VerticalOptions="Start"
-                                Aspect="AspectFill"
-                                DownsampleToViewSize="True"
-                                ErrorPlaceholder="student0.png"
-                                LoadingPlaceholder="student0.png"
-                                Source="{Binding TmpPicture}">
+                                <forms:CachedImage Grid.Row="0"
+                                                   Grid.RowSpan="2"
+                                                   Grid.Column="0"
+                                                   Margin="0"
+                                                   HeightRequest="50"
+                                                   WidthRequest="50"
+                                                   HorizontalOptions="Start"
+                                                   VerticalOptions="Start"
+                                                   Aspect="AspectFill"
+                                                   DownsampleToViewSize="True"
+                                                   ErrorPlaceholder="student0.png"
+                                                   LoadingPlaceholder="student0.png"
+                                                   Source="{Binding TmpPicture}">
                                     <forms:CachedImage.Transformations>
                                         <transformations:CornersTransformation CornersTransformType="AllRounded" />
                                     </forms:CachedImage.Transformations>
                                 </forms:CachedImage>
-                                <Label
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                FontSize="16"
-                                Text="{Binding Name}"
-                                VerticalTextAlignment="Center" />
-                                <Frame
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                Grid.ColumnSpan="2"
-                                Margin="0"
-                                Padding="0"
-                                BorderColor="DarkGray"
-                                CornerRadius="10"
-                                HasShadow="False">
-                                    <renderers:CustomEditor
-                                    Margin="3"
-                                    AutoSize="Disabled"
-                                    FontSize="14"
-                                    HeightRequest="{OnPlatform Android=45,
+                                <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                       FontSize="16"
+                                       Text="{Binding Name}"
+                                       VerticalTextAlignment="Center" />
+                                <Frame Grid.Row="2"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="2"
+                                       Margin="0"
+                                       Padding="0"
+                                       BorderColor="DarkGray"
+                                       CornerRadius="10"
+                                       HasShadow="False">
+                                    <renderers:CustomEditor Margin="3"
+                                                            AutoSize="Disabled"
+                                                            FontSize="14"
+                                                            HeightRequest="{OnPlatform Android=45,
                                                                iOS=40}"
-                                    Placeholder="{markupExtension:Translate 00106}"
-                                    Text="{Binding WeekPhieuBeNgoan}">
+                                                            Placeholder="{markupExtension:Translate 00106}"
+                                                            Text="{Binding WeekPhieuBeNgoan}">
                                         <renderers:CustomEditor.Behaviors>
-                                            <behaviors:EventToCommandBehavior
-                                            Command="{Binding Source={x:Reference Assessment}, Path=BindingContext.AttendanceLeaveCommand}"
-                                            CommandParameter="{Binding}"
-                                            EventName="Unfocused" />
+                                            <behaviors:EventToCommandBehavior Command="{Binding Source={x:Reference Assessment}, Path=BindingContext.AttendanceLeaveCommand}"
+                                                                              CommandParameter="{Binding}"
+                                                                              EventName="Unfocused" />
                                         </renderers:CustomEditor.Behaviors>
                                     </renderers:CustomEditor>
                                 </Frame>
-                                <Frame
-                                Grid.Row="3"
-                                Grid.Column="0"
-                                Grid.ColumnSpan="2"
-                                Margin="0"
-                                Padding="0"
-                                BorderColor="DarkGray"
-                                CornerRadius="10"
-                                HasShadow="False">
-                                    <renderers:CustomEditor
-                                    Margin="0"
-                                    AutoSize="TextChanges"
-                                    FontSize="14"
-                                    HeightRequest="{OnPlatform Android=45,
+                                <Frame Grid.Row="3"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="2"
+                                       Margin="0"
+                                       Padding="0"
+                                       BorderColor="DarkGray"
+                                       CornerRadius="10"
+                                       HasShadow="False">
+                                    <renderers:CustomEditor Margin="0"
+                                                            AutoSize="TextChanges"
+                                                            FontSize="14"
+                                                            HeightRequest="{OnPlatform Android=45,
                                                                iOS=40}"
-                                    Placeholder="{markupExtension:Translate 000104}"
-                                    Text="{Binding WeekComment}">
+                                                            Placeholder="{markupExtension:Translate 000104}"
+                                                            Text="{Binding WeekComment}">
                                         <renderers:CustomEditor.Behaviors>
-                                            <behaviors:EventToCommandBehavior
-                                            Command="{Binding Source={x:Reference Assessment}, Path=BindingContext.AttendanceLeaveCommand}"
-                                            CommandParameter="{Binding}"
-                                            EventName="Unfocused" />
+                                            <behaviors:EventToCommandBehavior Command="{Binding Source={x:Reference Assessment}, Path=BindingContext.AttendanceLeaveCommand}"
+                                                                              CommandParameter="{Binding}"
+                                                                              EventName="Unfocused" />
                                         </renderers:CustomEditor.Behaviors>
                                     </renderers:CustomEditor>
                                 </Frame>

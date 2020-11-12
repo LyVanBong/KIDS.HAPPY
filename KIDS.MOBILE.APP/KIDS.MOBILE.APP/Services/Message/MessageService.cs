@@ -33,7 +33,6 @@ namespace KIDS.MOBILE.APP.Services.Message
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }
@@ -51,7 +50,6 @@ namespace KIDS.MOBILE.APP.Services.Message
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }
@@ -76,7 +74,6 @@ namespace KIDS.MOBILE.APP.Services.Message
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }
@@ -99,7 +96,6 @@ namespace KIDS.MOBILE.APP.Services.Message
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }
@@ -119,7 +115,6 @@ namespace KIDS.MOBILE.APP.Services.Message
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }
@@ -137,7 +132,6 @@ namespace KIDS.MOBILE.APP.Services.Message
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }
@@ -156,7 +150,6 @@ namespace KIDS.MOBILE.APP.Services.Message
             }
             catch (Exception)
             {
-                
                 return null;
             }
         }

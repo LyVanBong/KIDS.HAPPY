@@ -70,6 +70,11 @@ using Prism.Ioc;
 using Prism.Navigation;
 using Prism.Unity;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using Com.OneSignal;
+using Com.OneSignal.Abstractions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Device = Xamarin.Forms.Device;
@@ -94,7 +99,7 @@ namespace KIDS.MOBILE.APP
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(AppSettings.SyncfusionLicense);
 
             await NavigationService.NavigateAsync(nameof(LoginPage));
-
+            RequiredOnesignal();
             // check mang
             Connectivity.ConnectivityChanged += CheckNetwork;
 
@@ -125,6 +130,73 @@ namespace KIDS.MOBILE.APP
            });
         }
 
+        private void RequiredOnesignal()
+        {
+            //Remove this method to stop OneSignal Debugging  
+            OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);
+
+            OneSignal.Current.StartInit(AppSettings.OnesignalAppId)
+                .Settings(new Dictionary<string, bool>() {
+                    { IOSSettings.kOSSettingsKeyAutoPrompt, false },
+                    { IOSSettings.kOSSettingsKeyInAppLaunchURL, false } })
+                .InFocusDisplaying(OSInFocusDisplayOption.Notification)
+                .EndInit();
+
+            // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 7)
+            OneSignal.Current.RegisterForPushNotifications();
+
+            // Lets you retrieve the OneSignal player id and push token
+            OneSignal.Current.IdsAvailable(IdsAvailable);
+        }
+        private void IdsAvailable(string userID, string pushToken)
+        {
+            Debug.WriteLine("UserID:" + userID);
+            Debug.WriteLine("pushToken:" + pushToken);
+        }
+
+        // Called when your app is in focus and a notificaiton is recieved.
+        // The name of the method can be anything as long as the signature matches.
+        // Method must be static or this object should be marked as DontDestroyOnLoad
+        private static void HandleNotificationReceived(OSNotification notification)
+        {
+            OSNotificationPayload payload = notification.payload;
+            string message = payload.body;
+
+            Debug.WriteLine("GameControllerExample:HandleNotificationReceived: " + message);
+            Debug.WriteLine("displayType: " + notification.displayType);
+            var extraMessage = "Notification received with text: " + message;
+            Debug.WriteLine(extraMessage);
+        }
+        // Called when a notification is opened.
+        // The name of the method can be anything as long as the signature matches.
+        // Method must be static or this object should be marked as DontDestroyOnLoad
+        private static void HandleNotificationOpened(OSNotificationOpenedResult result)
+        {
+            OSNotificationPayload payload = result.notification.payload;
+            Dictionary<string, object> additionalData = payload.additionalData;
+            string message = payload.body;
+            string actionID = result.action.actionID;
+
+            Debug.WriteLine("GameControllerExample:HandleNotificationOpened: " + message);
+            var extraMessage = "Notification opened with text: " + message;
+
+            if (additionalData != null)
+            {
+                if (additionalData.ContainsKey("discount"))
+                {
+                    extraMessage = (string)additionalData["discount"];
+                    // Take user to your store.
+                }
+            }
+            if (actionID != null)
+            {
+                // actionSelected equals the id on the button the user pressed.
+                // actionSelected will equal "__DEFAULT__" when the notification itself was tapped when buttons were present.
+                extraMessage = "Pressed ButtonId: " + actionID;
+            }
+
+            Debug.WriteLine(extraMessage);
+        }
         private async void CheckNetwork(object sender, ConnectivityChangedEventArgs e)
         {
             var access = e.NetworkAccess;
@@ -223,8 +295,8 @@ namespace KIDS.MOBILE.APP
 
         protected override void OnStart()
         {
-            AppCenter.Start("android=0b0adf16-16df-4f1f-b2c2-a7b11b9b1273;" +
-                            "ios=4af41406-c7eb-4bb7-aa3b-42ce26def43f;",
+            AppCenter.Start(AppCenterConstants.AppSecretAndroid +
+                            AppCenterConstants.AppSecretiOS,
                 typeof(Analytics), typeof(Crashes));
         }
 

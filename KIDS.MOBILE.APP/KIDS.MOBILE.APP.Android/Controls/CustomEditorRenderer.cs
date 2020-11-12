@@ -7,7 +7,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(CustomEditor), typeof(CustomEditorRenderer))]
-
 namespace KIDS.MOBILE.APP.Droid.Controls
 {
     public class CustomEditorRenderer : EditorRenderer

@@ -4,7 +4,6 @@ namespace KIDS.MOBILE.APP.Models.Evaluate
 {
     public class EvaluationCriteriaModel : BindableBase
     {
-        private bool _isDatChiTieu;
         private bool _result;
         public string ID { get; set; }
         public string NamHoc { get; set; }
