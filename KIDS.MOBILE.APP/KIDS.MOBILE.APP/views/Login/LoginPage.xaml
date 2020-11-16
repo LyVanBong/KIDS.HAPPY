@@ -20,8 +20,8 @@
                 <forms:AnimationView Grid.Row="0"
                                      Animation="loading-animation.json"
                                      HorizontalOptions="FillAndExpand"
-                                     IsPlaying="True"
-                                     Loop="true"
+                                     AutoPlay="True"
+                                     RepeatMode="Infinite"
                                      VerticalOptions="FillAndExpand" />
                 <Image Grid.Row="0"
                        Grid.RowSpan="2"

@@ -3,7 +3,6 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using LabelHtml.Forms.Plugin.Droid;
-using Lottie.Forms.Droid;
 using Plugin.Media;
 using Prism;
 using Prism.Ioc;
@@ -30,7 +29,6 @@ namespace KIDS.MOBILE.APP.Droid
             Rg.Plugins.Popup.Popup.Init(this, bundle);
             HtmlLabelRenderer.Initialize();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
-            AnimationViewRenderer.Init();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

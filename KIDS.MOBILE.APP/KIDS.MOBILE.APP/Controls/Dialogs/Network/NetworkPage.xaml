@@ -45,8 +45,8 @@
                        VerticalTextAlignment="Center" />
                 <forms:AnimationView Grid.Row="1"
                                      Animation="notconnection.json"
-                                     IsPlaying="True"
-                                     Loop="True" />
+                                     AutoPlay="True"
+                                     RepeatMode="Infinite" />
                 <Label Grid.Row="2"
                        Margin="0"
                        Padding="20,0"
