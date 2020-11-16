@@ -1,7 +1,6 @@
 ﻿using FFImageLoading.Forms.Platform;
 using Foundation;
 using LabelHtml.Forms.Plugin.iOS;
-using Lottie.Forms.iOS.Renderers;
 using Prism;
 using Prism.Ioc;
 using Rg.Plugins.Popup;
@@ -52,7 +51,6 @@ namespace KIDS.MOBILE.APP.iOS
             CachedImageRenderer.Init();
             SfTextInputLayoutRenderer.Init();
             SfCalendarRenderer.Init();
-            AnimationViewRenderer.Init();
         }
     }
 

@@ -20,8 +20,8 @@
                VerticalOptions="Center"
                WidthRequest="60">
             <forms:AnimationView Animation="Loading.json"
-                                 IsPlaying="True"
-                                 Loop="True" />
+                                 AutoPlay="True"
+                                 RepeatMode="Infinite" />
         </Frame>
     </ContentView.Content>
 </ContentView>
