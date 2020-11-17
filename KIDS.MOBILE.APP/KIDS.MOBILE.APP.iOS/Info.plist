@@ -45,6 +45,21 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
-
+  <key>NSBluetoothAlwaysUsageDescription</key>
+  <string>8. Our app does not request this permission or utilize this functionality but it is included in our info.plist since our app utilizes the react-native-permissions library, which references this permission in its code.</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>7. Our app does not request this permission or utilize this functionality but it is included in our info.plist since our app utilizes the react-native-permissions library, which references this permission in its code.</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>6. Our app does not request this permission or utilize this functionality but it is included in our info.plist since our app utilizes the react-native-permissions library, which references this permission in its code.</string>
+  <key>NSSiriUsageDescription</key>
+  <string>5. Our app does not request this permission or utilize this functionality but it is included in our info.plist since our app utilizes the react-native-permissions library, which references this permission in its code.</string>
+  <key>NSAppleMusicUsageDescription</key>
+  <string>4. Our app does not request this permission or utilize this functionality but it is included in our info.plist since our app utilizes the react-native-permissions library, which references this permission in its code.</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>3. Our app does not request this permission or utilize this functionality but it is included in our info.plist since our app utilizes the react-native-permissions library, which references this permission in its code.</string>
+  <key>NSCalendarsUsageDescription</key>
+  <string>2. Our app does not request this permission or utilize this functionality but it is included in our info.plist since our app utilizes the react-native-permissions library, which references this permission in its code.</string>
+  <key>NSContactsUsageDescription</key>
+  <string>1. Our app does not request this permission or utilize this functionality but it is included in our info.plist since our app utilizes the react-native-permissions library, which references this permission in its code.</string>
 </dict>
 </plist>
