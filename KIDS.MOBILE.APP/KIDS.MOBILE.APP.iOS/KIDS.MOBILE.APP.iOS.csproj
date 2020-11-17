@@ -25,7 +25,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>x86_64</MtouchArch>
-    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>Apple Development: Le Khac Hai (86BHMCQP3H)</CodesignKey>
     <CodesignProvision>VS: com.bsoftgroup.hkteacher.v2 Development</CodesignProvision>
