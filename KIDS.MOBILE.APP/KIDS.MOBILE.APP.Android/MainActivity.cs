@@ -2,7 +2,6 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
-using LabelHtml.Forms.Plugin.Droid;
 using Plugin.Media;
 using Prism;
 using Prism.Ioc;
@@ -27,7 +26,6 @@ namespace KIDS.MOBILE.APP.Droid
         private void OtherLibraries(Bundle bundle)
         {
             Rg.Plugins.Popup.Popup.Init(this, bundle);
-            HtmlLabelRenderer.Initialize();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
         }
 

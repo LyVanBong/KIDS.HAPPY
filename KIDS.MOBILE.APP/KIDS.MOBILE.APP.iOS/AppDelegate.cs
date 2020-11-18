@@ -1,6 +1,5 @@
 ﻿using FFImageLoading.Forms.Platform;
 using Foundation;
-using LabelHtml.Forms.Plugin.iOS;
 using Prism;
 using Prism.Ioc;
 using Rg.Plugins.Popup;
@@ -46,7 +45,6 @@ namespace KIDS.MOBILE.APP.iOS
             Popup.Init();
             SfTimePickerRenderer.Init();
             SfCheckBoxRenderer.Init();
-            HtmlLabelRenderer.Initialize();
             SfTabViewRenderer.Init();
             CachedImageRenderer.Init();
             SfTextInputLayoutRenderer.Init();

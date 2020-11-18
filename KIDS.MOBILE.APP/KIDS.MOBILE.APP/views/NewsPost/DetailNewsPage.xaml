@@ -1,63 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage x:Class="KIDS.MOBILE.APP.views.NewsPost.DetailNewsPage"
-             xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:abstractions="clr-namespace:LabelHtml.Forms.Plugin.Abstractions;assembly=HtmlLabel.Forms.Plugin"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
-             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
-             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             iOsSpecific:Page.UseSafeArea="true"
-             BackgroundColor="{StaticResource BackgroundColorNavBar}"
-             NavigationPage.HasNavigationBar="False"
-             mc:Ignorable="d">
+<ContentPage
+    x:Class="KIDS.MOBILE.APP.views.NewsPost.DetailNewsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    iOsSpecific:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
     <ContentPage.Content>
-        <Grid Margin="0"
-              Padding="0"
-              ColumnSpacing="0"
-              RowDefinitions="40,*"
-              RowSpacing="0">
-            <navigationView:NavigationView Grid.Row="0"
-                                           Text="{markupExtension:TranslateExtension 00058}" />
-            <ScrollView Grid.Row="1"
-                        Margin="0"
-                        Padding="0"
-                        BackgroundColor="{StaticResource BackgroundApp}">
-                <Grid Margin="10"
-                      Padding="0"
-                      ColumnSpacing="0"
-                      RowDefinitions="250,40,40,*"
-                      RowSpacing="0">
-                    <forms:CachedImage Grid.Row="0"
-                                       Aspect="AspectFill"
-                                       DownsampleToViewSize="True"
-                                       ErrorPlaceholder="news.png"
-                                       LoadingPlaceholder="news.png"
-                                       Source="{Binding DetailNews.ImgTmp}">
+        <Grid
+            Margin="0"
+            Padding="0"
+            ColumnSpacing="0"
+            RowDefinitions="40,*"
+            RowSpacing="0">
+            <navigationView:NavigationView Grid.Row="0" Text="{markupExtension:TranslateExtension 00058}" />
+            <ScrollView
+                Grid.Row="1"
+                Margin="0"
+                Padding="0"
+                BackgroundColor="{StaticResource BackgroundApp}">
+                <Grid
+                    Margin="10"
+                    Padding="0"
+                    ColumnSpacing="0"
+                    RowDefinitions="250,40,40,*"
+                    RowSpacing="0">
+                    <forms:CachedImage
+                        Grid.Row="0"
+                        Aspect="AspectFill"
+                        DownsampleToViewSize="True"
+                        ErrorPlaceholder="news.png"
+                        LoadingPlaceholder="news.png"
+                        Source="{Binding DetailNews.ImgTmp}">
                         <forms:CachedImage.Transformations>
                             <transformations:CornersTransformation CornersTransformType="AllRounded" />
                         </forms:CachedImage.Transformations>
                     </forms:CachedImage>
-                    <Label Grid.Row="1"
-                           HorizontalOptions="StartAndExpand"
-                           Text="{Binding DetailNews.Title}"
-                           VerticalOptions="CenterAndExpand" />
-                    <Label Grid.Row="2"
-                           HorizontalOptions="EndAndExpand"
-                           Text="{Binding DetailNews.NgayTao}"
-                           VerticalOptions="CenterAndExpand" />
-                    <abstractions:HtmlLabel Grid.Row="3"
-                                            Text="{Binding DetailNews.Content}" />
+                    <Label
+                        Grid.Row="1"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding DetailNews.Title}"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        Grid.Row="2"
+                        HorizontalOptions="EndAndExpand"
+                        Text="{Binding DetailNews.NgayTao}"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        Grid.Row="3"
+                        Text="{Binding DetailNews.Content}"
+                        TextType="Html" />
                 </Grid>
             </ScrollView>
-            <loadingView:LoadingView Grid.Row="1"
-                                     HorizontalOptions="FillAndExpand"
-                                     IsVisible="{Binding IsLoading}"
-                                     VerticalOptions="FillAndExpand" />
+            <loadingView:LoadingView
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsLoading}"
+                VerticalOptions="FillAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
