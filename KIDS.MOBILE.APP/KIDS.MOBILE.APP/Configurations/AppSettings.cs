@@ -6,7 +6,7 @@
         /// Syncfusion License
         /// </summary>
         internal static string SyncfusionLicense =
-            "MzQ2ODYxQDMxMzgyZTMzMmUzMFZVTnBTNFZsR0NZekcxQnY5Yk9ydTJKdHNrSC9PZjhtOEtkbUdpQUs2cGM9";
+            "MzY5MzMxQDMxMzgyZTM0MmUzMGpUdEtGRFhHNzIzYlpxT3IwN3BqVWNKWXRsN2RNL1pBVFU0aUFRRHpYNnc9";
         /// <summary>
         /// ONESIGNAL APP ID
         /// </summary>
