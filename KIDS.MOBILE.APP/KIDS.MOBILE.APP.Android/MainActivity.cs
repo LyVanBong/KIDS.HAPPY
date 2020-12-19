@@ -1,8 +1,8 @@
 ﻿using Android.App;
-using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using LabelHtml.Forms.Plugin.Droid;
 using Plugin.Media;
 using Prism;
 using Prism.Ioc;
