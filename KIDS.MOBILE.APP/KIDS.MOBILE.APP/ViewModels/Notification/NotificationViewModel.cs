@@ -61,17 +61,10 @@ namespace KIDS.MOBILE.APP.ViewModels.Notification
             NotificationDetailCommand = new Command<NotificationModel>(NotificationDetail);
         }
 
-        public override void Initialize(INavigationParameters parameters)
+        public override async void Initialize(INavigationParameters parameters)
         {
             base.Initialize(parameters);
-            Device.StartTimer(TimeSpan.FromMilliseconds(10000), () =>
-            {
-                new Thread(() =>
-               {
-                   Device.BeginInvokeOnMainThread(async () => { await GetCountNotification(); });
-               }).Start();
-                return true;
-            });
+            await GetCountNotification();
         }
 
         private async Task GetCountNotification()
@@ -145,7 +138,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Notification
                 if (AppConstants.User != null)
                 {
                     var data = await _notificationService.GetNotification(AppConstants.User.ClassID, AppConstants.User.DonVi);
-                    if (data.Code > 0)
+                    if (data != null && data.Code > 0)
                     {
                         DataNotification = new List<NotificationModel>(data.Data);
                     }
