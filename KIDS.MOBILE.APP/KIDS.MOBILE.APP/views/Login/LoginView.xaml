@@ -55,7 +55,7 @@
                    Grid.ColumnSpan="2"
                    Margin="0"
                    Aspect="AspectFit"
-                   Source="{markup:ImageResource 2.png}"
+                   Source="{markup:ImageResource KIDS.MOBILE.APP.Resources.Images.2.png}"
                    VerticalOptions="CenterAndExpand"
                    WidthRequest="200" />
             <forms:AnimationView Grid.Row="0"
