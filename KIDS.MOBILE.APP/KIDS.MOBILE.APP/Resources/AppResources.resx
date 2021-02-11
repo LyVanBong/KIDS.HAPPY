@@ -653,4 +653,12 @@
     <value>Year</value>
     <comment>Năm</comment>
   </data>
+  <data name="00136" xml:space="preserve">
+    <value>Account</value>
+    <comment>Tài khoản</comment>
+  </data>
+  <data name="00137" xml:space="preserve">
+    <value>News / Announcements</value>
+    <comment>Tin tức / Thông báo</comment>
+  </data>
 </root>

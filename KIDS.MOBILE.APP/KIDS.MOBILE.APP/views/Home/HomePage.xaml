@@ -2,14 +2,14 @@
 <ContentPage
     x:Class="KIDS.MOBILE.APP.views.Home.HomePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:prism="http://prismlibrary.com"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
     xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com"
     iOsSpecific:Page.UseSafeArea="true"
     BackgroundColor="{StaticResource BackgroundColorNavBar}"
     NavigationPage.HasNavigationBar="False"
@@ -101,7 +101,7 @@
                         Text="{markupExtension:TranslateExtension 00028}" />
                     <Frame
                         Grid.Row="2"
-                        Grid.Column="0"
+                        Grid.Column="1"
                         HasShadow="False">
                         <Frame.Resources>
                             <ResourceDictionary>
@@ -116,7 +116,7 @@
                                     <Setter Property="VerticalOptions" Value="EndAndExpand" />
                                     <Setter Property="VerticalTextAlignment" Value="Center" />
                                     <Setter Property="HorizontalTextAlignment" Value="Center" />
-                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="FontSize" Value="12" />
                                     <Setter Property="TextColor" Value="#000000" />
                                 </Style>
                             </ResourceDictionary>
@@ -141,7 +141,7 @@
                     </Frame>
                     <Frame
                         Grid.Row="2"
-                        Grid.Column="1"
+                        Grid.Column="0"
                         HasShadow="False">
                         <Frame.Resources>
                             <ResourceDictionary>
@@ -156,7 +156,7 @@
                                     <Setter Property="VerticalOptions" Value="EndAndExpand" />
                                     <Setter Property="VerticalTextAlignment" Value="Center" />
                                     <Setter Property="HorizontalTextAlignment" Value="Center" />
-                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="FontSize" Value="12" />
                                     <Setter Property="TextColor" Value="#000000" />
                                 </Style>
                             </ResourceDictionary>
@@ -196,7 +196,7 @@
                                     <Setter Property="VerticalOptions" Value="EndAndExpand" />
                                     <Setter Property="VerticalTextAlignment" Value="Center" />
                                     <Setter Property="HorizontalTextAlignment" Value="Center" />
-                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="FontSize" Value="12" />
                                     <Setter Property="TextColor" Value="#000000" />
                                 </Style>
                             </ResourceDictionary>
@@ -237,7 +237,7 @@
                                     <Setter Property="VerticalOptions" Value="EndAndExpand" />
                                     <Setter Property="VerticalTextAlignment" Value="Center" />
                                     <Setter Property="HorizontalTextAlignment" Value="Center" />
-                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="FontSize" Value="12" />
                                     <Setter Property="TextColor" Value="#000000" />
                                 </Style>
                             </ResourceDictionary>
@@ -277,7 +277,7 @@
                                     <Setter Property="VerticalOptions" Value="EndAndExpand" />
                                     <Setter Property="VerticalTextAlignment" Value="Center" />
                                     <Setter Property="HorizontalTextAlignment" Value="Center" />
-                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="FontSize" Value="12" />
                                     <Setter Property="TextColor" Value="#000000" />
                                 </Style>
                             </ResourceDictionary>
@@ -317,7 +317,7 @@
                                     <Setter Property="VerticalOptions" Value="EndAndExpand" />
                                     <Setter Property="VerticalTextAlignment" Value="Center" />
                                     <Setter Property="HorizontalTextAlignment" Value="Center" />
-                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="FontSize" Value="12" />
                                     <Setter Property="TextColor" Value="#000000" />
                                 </Style>
                             </ResourceDictionary>
@@ -358,7 +358,7 @@
                                     <Setter Property="VerticalOptions" Value="EndAndExpand" />
                                     <Setter Property="VerticalTextAlignment" Value="Center" />
                                     <Setter Property="HorizontalTextAlignment" Value="Center" />
-                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="FontSize" Value="12" />
                                     <Setter Property="TextColor" Value="#000000" />
                                 </Style>
                             </ResourceDictionary>
@@ -398,7 +398,7 @@
                                     <Setter Property="VerticalOptions" Value="EndAndExpand" />
                                     <Setter Property="VerticalTextAlignment" Value="Center" />
                                     <Setter Property="HorizontalTextAlignment" Value="Center" />
-                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="FontSize" Value="12" />
                                     <Setter Property="TextColor" Value="#000000" />
                                 </Style>
                             </ResourceDictionary>
@@ -438,7 +438,7 @@
                                     <Setter Property="VerticalOptions" Value="EndAndExpand" />
                                     <Setter Property="VerticalTextAlignment" Value="Center" />
                                     <Setter Property="HorizontalTextAlignment" Value="Center" />
-                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="FontSize" Value="12" />
                                     <Setter Property="TextColor" Value="#000000" />
                                 </Style>
                             </ResourceDictionary>
@@ -466,8 +466,10 @@
                         Grid.Row="5"
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
+                        FontAttributes="Bold"
                         Style="{StaticResource TitleLabel}"
-                        Text="{markupExtension:TranslateExtension 00027}" />
+                        Text="{markupExtension:TranslateExtension 00027}"
+                        TextColor="{StaticResource BackgroundColorNavBar}" />
                     <Image
                         Grid.Row="5"
                         Grid.Column="2"
@@ -524,8 +526,10 @@
                         Grid.Row="7"
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
+                        FontAttributes="Bold"
                         Style="{StaticResource TitleLabel}"
-                        Text="{markupExtension:TranslateExtension 00029}" />
+                        Text="{markupExtension:TranslateExtension 00137}"
+                        TextColor="{StaticResource BackgroundColorNavBar}" />
                     <Image
                         Grid.Row="7"
                         Grid.Column="2"
