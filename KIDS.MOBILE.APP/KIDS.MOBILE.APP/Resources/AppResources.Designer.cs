@@ -1283,5 +1283,32 @@ namespace KIDS.MOBILE.APP.Resources {
                 return ResourceManager.GetString("00137", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick comment.
+        /// </summary>
+        internal static string _00138 {
+            get {
+                return ResourceManager.GetString("00138", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        internal static string _00139 {
+            get {
+                return ResourceManager.GetString("00139", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commented quickly for {0} successful students.
+        /// </summary>
+        internal static string _00140 {
+            get {
+                return ResourceManager.GetString("00140", resourceCulture);
+            }
+        }
     }
 }

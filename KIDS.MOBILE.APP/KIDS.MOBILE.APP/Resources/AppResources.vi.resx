@@ -661,4 +661,16 @@
     <value>Tin tức / Thông báo</value>
     <comment>Tin tức / Thông báo</comment>
   </data>
+  <data name="00138" xml:space="preserve">
+    <value>Nhận xét nhanh</value>
+    <comment>Nhận xét nhanh</comment>
+  </data>
+  <data name="00139" xml:space="preserve">
+    <value>Cập nhật</value>
+    <comment>Cập nhật</comment>
+  </data>
+  <data name="00140" xml:space="preserve">
+    <value>Đã nhận xét nhanh cho {0} học sinh thành công</value>
+    <comment>Đã nhận xét nhanh cho {0} học sinh thành công</comment>
+  </data>
 </root>

@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using KIDS.MOBILE.APP.Resources;
+using Prism.Services;
 using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.ViewModels.Learn
@@ -31,6 +33,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
         private string _searchMorning;
         private List<AttendanceLeaveModel> _cache;
         private string _searchAfternoon;
+        private IPageDialogService _pageDialogService;
 
         public bool IsHasData
         {
@@ -125,15 +128,53 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
         public ICommand UpdateMorningCommand { get; set; }
         public ICommand UpdateAfternoonCommand { get; private set; }
         public ICommand SelectDateCommand { get; set; }
-
-        public LearnViewModel(ILearnService learnService, IAttendanceService attendanceService, IDialogService dialogService)
+        /// <summary>
+        /// Cap nhat nhanh
+        /// </summary>
+        public ICommand QuickCommentCommand { get; private set; }
+        public LearnViewModel(ILearnService learnService, IAttendanceService attendanceService, IDialogService dialogService, IPageDialogService pageDialogService)
         {
+            _pageDialogService = pageDialogService;
             _dialogService = dialogService;
             _learnService = learnService;
             _attendanceService = attendanceService;
             UpdateMorningCommand = new Command<AttendanceLeaveModel>(UpdateMorning);
             UpdateAfternoonCommand = new Command<AttendanceLeaveModel>(UpdateAfternoon);
             SelectDateCommand = new Command(OpenDatePicker);
+            QuickCommentCommand = new Command(QuickComment);
+        }
+
+        private async void QuickComment()
+        {
+            try
+            {
+                if (IsLoading) return;
+                IsLoading = true;
+                if (LearnMorningData != null && LearnMorningData.Any())
+                {
+                    var data = LearnMorningData.Where(x => string.IsNullOrWhiteSpace(x.Contents))?.ToList();
+                    var total = 0;
+                    foreach (var item in data)
+                    {
+                        var update = await _learnService.UpdatePlanStudyMorning(item.ID, item.ThoiGian, item.Contents);
+                        if (update != null && update.Code > 0 && update.Data > 0)
+                        {
+                            total++;
+                        }
+                    }
+
+                    await _pageDialogService.DisplayAlertAsync(AppResources._00007, string.Format(AppResources._00140, total),
+                          "OK");
+                }
+            }
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         private async void UpdateAfternoon(AttendanceLeaveModel obj)
