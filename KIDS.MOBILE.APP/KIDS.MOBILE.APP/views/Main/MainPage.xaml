@@ -1,44 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage x:Class="KIDS.MOBILE.APP.views.Main.MainPage"
-            xmlns="http://xamarin.com/schemas/2014/forms"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:abstractions="clr-namespace:Plugin.Badge.Abstractions;assembly=Plugin.Badge.Abstractions"
-            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-            xmlns:home="clr-namespace:KIDS.MOBILE.APP.views.Home;assembly=KIDS.MOBILE.APP"
-            xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-            xmlns:menu="clr-namespace:KIDS.MOBILE.APP.views.Menu;assembly=KIDS.MOBILE.APP"
-            xmlns:notification="clr-namespace:KIDS.MOBILE.APP.views.Notification;assembly=KIDS.MOBILE.APP"
-            xmlns:ticketManagement="clr-namespace:KIDS.MOBILE.APP.views.TicketManagement;assembly=KIDS.MOBILE.APP"
-            x:Name="TabbedPage"
-            android:TabbedPage.IsSwipePagingEnabled="False"
-            android:TabbedPage.OffscreenPageLimit="4"
-            android:TabbedPage.ToolbarPlacement="Bottom"
-            BarBackgroundColor="#edf4f2"
-            SelectedTabColor="{StaticResource BackgroundColorNavBar}"
-            UnselectedTabColor="DarkGray"
-            mc:Ignorable="d">
-    <NavigationPage Title="{markupExtension:Translate 00021}"
-                    IconImageSource="home_icon.png">
+<TabbedPage
+    x:Class="KIDS.MOBILE.APP.views.Main.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:home="clr-namespace:KIDS.MOBILE.APP.views.Home;assembly=KIDS.MOBILE.APP"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:menu="clr-namespace:KIDS.MOBILE.APP.views.Menu;assembly=KIDS.MOBILE.APP"
+    xmlns:notification="clr-namespace:KIDS.MOBILE.APP.views.Notification;assembly=KIDS.MOBILE.APP"
+    xmlns:ticketManagement="clr-namespace:KIDS.MOBILE.APP.views.TicketManagement;assembly=KIDS.MOBILE.APP"
+    x:Name="TabbedPage"
+    android:TabbedPage.IsSwipePagingEnabled="False"
+    android:TabbedPage.OffscreenPageLimit="4"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    BarBackgroundColor="#edf4f2"
+    SelectedTabColor="{StaticResource BackgroundColorNavBar}"
+    UnselectedTabColor="DarkGray"
+    mc:Ignorable="d">
+    <NavigationPage Title="{markupExtension:Translate 00021}" IconImageSource="home_icon.png">
         <x:Arguments>
             <home:HomePage />
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="{markupExtension:Translate 00022}"
-                    IconImageSource="checklist_icon.png">
+    <NavigationPage Title="{markupExtension:Translate 00022}" IconImageSource="checklist_icon.png">
         <x:Arguments>
             <ticketManagement:TicketManagementPage />
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="{markupExtension:Translate 00023}"
-                    IconImageSource="notificaion_icon.png">
+    <NavigationPage Title="{markupExtension:Translate 00023}" IconImageSource="notificaion_icon.png">
         <x:Arguments>
             <notification:NotificationPage />
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="{markupExtension:Translate 00024}"
-                    IconImageSource="menu_icon.png">
+    <NavigationPage Title="{markupExtension:Translate 00136}" IconImageSource="menu_icon.png">
         <x:Arguments>
             <menu:MenuPage />
         </x:Arguments>

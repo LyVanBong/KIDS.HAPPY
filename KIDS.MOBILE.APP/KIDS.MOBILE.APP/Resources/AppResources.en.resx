@@ -653,4 +653,28 @@
     <value>Year</value>
     <comment>Năm</comment>
   </data>
+  <data name="00136" xml:space="preserve">
+    <value>Account</value>
+    <comment>Tài khoản</comment>
+  </data>
+  <data name="00137" xml:space="preserve">
+    <value>News / Announcements</value>
+    <comment>Tin tức / Thông báo</comment>
+  </data>
+  <data name="00138" xml:space="preserve">
+    <value>Quick comment</value>
+    <comment>Nhận xét nhanh</comment>
+  </data>
+  <data name="00139" xml:space="preserve">
+    <value>Update</value>
+    <comment>Cập nhật</comment>
+  </data>
+  <data name="00140" xml:space="preserve">
+    <value>Commented quickly for {0} successful students</value>
+    <comment>Đã nhận xét nhanh cho {0} học sinh thành công</comment>
+  </data>
+  <data name="00141" xml:space="preserve">
+    <value>Comment content</value>
+    <comment>Nội dung nhận xét</comment>
+  </data>
 </root>

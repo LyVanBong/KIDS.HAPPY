@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="KIDS.MOBILE.APP.views.Learn.QuickCommentDialog"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AUTOHLT.MOBILE.Resources.Fonts;assembly=KIDS.MOBILE.APP"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:prism="http://prismlibrary.com"
+    Margin="0"
+    Padding="0"
+    prism:DialogLayout.CloseOnBackgroundTapped="False"
+    prism:DialogLayout.RelativeHeightRequest=".6"
+    prism:DialogLayout.RelativeWidthRequest=".7"
+    RowSpacing="0">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="40" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="60" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="40" />
+    </Grid.ColumnDefinitions>
+    <BoxView
+        Grid.Row="0"
+        Grid.Column="0"
+        Grid.ColumnSpan="2"
+        BackgroundColor="{StaticResource BackgroundColorNavBar}" />
+    <Label
+        Grid.Row="0"
+        Grid.Column="0"
+        Text="{markupExtension:Translate 00141}" />
+    <Label
+        Grid.Row="0"
+        Grid.Column="1"
+        FontFamily="AWesome"
+        Text="{x:Static local:FontAwesome5DuotoneSolid.WindowClosePrimary}">
+        <Label.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding ClosePopupCommand}" />
+        </Label.GestureRecognizers>
+    </Label>
+    <Editor
+        Grid.Row="1"
+        Grid.Column="0"
+        Grid.ColumnSpan="2"
+        Placeholder="{markupExtension:Translate 00141}"
+        Text="{Binding CommentContent}" />
+    <Button
+        Grid.Row="2"
+        Grid.Column="0"
+        Grid.ColumnSpan="2"
+        Margin="5"
+        Command="{Binding QuickCommentCommand}"
+        Text="{markupExtension:Translate 00138}" />
+</Grid>
