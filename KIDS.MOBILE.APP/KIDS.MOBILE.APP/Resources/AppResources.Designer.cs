@@ -1310,5 +1310,14 @@ namespace KIDS.MOBILE.APP.Resources {
                 return ResourceManager.GetString("00140", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment content.
+        /// </summary>
+        internal static string _00141 {
+            get {
+                return ResourceManager.GetString("00141", resourceCulture);
+            }
+        }
     }
 }

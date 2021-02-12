@@ -1,4 +1,6 @@
-﻿using KIDS.MOBILE.APP.Configurations;
+﻿using Com.OneSignal;
+using Com.OneSignal.Abstractions;
+using KIDS.MOBILE.APP.Configurations;
 using KIDS.MOBILE.APP.Controls.Dialogs.Network;
 using KIDS.MOBILE.APP.Controls.Dialogs.NewFolder;
 using KIDS.MOBILE.APP.Controls.Dialogs.PostAlbum;
@@ -72,13 +74,11 @@ using Prism.Unity;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading.Tasks;
-using Com.OneSignal;
-using Com.OneSignal.Abstractions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Device = Xamarin.Forms.Device;
 
+[assembly: ExportFont("FontAwesome5DuotoneSolid900.otf", Alias = "Awesome")]
 namespace KIDS.MOBILE.APP
 {
     public partial class App : PrismApplication
@@ -93,8 +93,6 @@ namespace KIDS.MOBILE.APP
         /// </summary>
         private async void InitializeApp()
         {
-            Device.SetFlags(new string[] { "RadioButton_Experimental" });
-
             //Register Syncfusion license
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(AppSettings.SyncfusionLicense);
 
@@ -221,6 +219,7 @@ namespace KIDS.MOBILE.APP
         {
             #region Dialog
 
+            containerRegistry.RegisterDialog<QuickCommentDialog, QuickCommentDialogViewModel>();
             containerRegistry.RegisterDialog<DatePickerDialog, DatePickerDialogViewModel>();
             containerRegistry.RegisterDialog<NewMessagePopup, NewMessagePopupViewModel>();
             containerRegistry.RegisterDialog<EditDeletePopup, EditDeletePopupViewModel>();

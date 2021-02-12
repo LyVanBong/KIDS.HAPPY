@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using KIDS.MOBILE.APP.Resources;
+using KIDS.MOBILE.APP.views.Learn;
 using Prism.Services;
 using Xamarin.Forms;
 
@@ -144,7 +145,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
             QuickCommentCommand = new Command(QuickComment);
         }
 
-        private async void QuickComment()
+        private  void QuickComment()
         {
             try
             {
@@ -153,18 +154,28 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
                 if (LearnMorningData != null && LearnMorningData.Any())
                 {
                     var data = LearnMorningData.Where(x => string.IsNullOrWhiteSpace(x.Contents))?.ToList();
-                    var total = 0;
-                    foreach (var item in data)
+                    if (data != null && data.Any())
                     {
-                        var update = await _learnService.UpdatePlanStudyMorning(item.ID, item.ThoiGian, item.Contents);
-                        if (update != null && update.Code > 0 && update.Data > 0)
-                        {
-                            total++;
-                        }
-                    }
+                         _dialogService.ShowDialog(nameof(QuickCommentDialog), async (result) =>
+                         {
+                             var para = result.Parameters.GetValue<string>("CommentContent");
+                             if (para != null)
+                             {
+                                 var total = 0;
+                                 foreach (var item in data)
+                                 {
+                                     var update = await _learnService.UpdatePlanStudyMorning(item.ID, item.ThoiGian, para);
+                                     if (update != null && update.Code > 0 && update.Data > 0)
+                                     {
+                                         total++;
+                                     }
+                                 }
 
-                    await _pageDialogService.DisplayAlertAsync(AppResources._00007, string.Format(AppResources._00140, total),
-                          "OK");
+                                 await _pageDialogService.DisplayAlertAsync(AppResources._00007, string.Format(AppResources._00140, total),
+                                     "OK");
+                             }
+                         });
+                    }
                 }
             }
             catch (Exception e)

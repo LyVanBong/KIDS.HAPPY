@@ -673,4 +673,8 @@
     <value>Commented quickly for {0} successful students</value>
     <comment>Đã nhận xét nhanh cho {0} học sinh thành công</comment>
   </data>
+  <data name="00141" xml:space="preserve">
+    <value>Comment content</value>
+    <comment>Nội dung nhận xét</comment>
+  </data>
 </root>
