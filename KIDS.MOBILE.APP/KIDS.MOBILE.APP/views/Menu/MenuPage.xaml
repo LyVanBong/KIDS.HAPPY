@@ -28,6 +28,7 @@
             <Frame
                 Grid.Row="2"
                 Grid.RowSpan="2"
+                BackgroundColor="#fff"
                 Margin="10,0"
                 Padding="0"
                 BorderColor="{StaticResource BackgroundColorNavBar}"
@@ -35,6 +36,7 @@
                 HasShadow="False">
                 <Grid
                     Margin="0"
+                    BackgroundColor="#fff"
                     Padding="0"
                     ColumnDefinitions="95,*"
                     ColumnSpacing="0"
@@ -100,6 +102,7 @@
             <BoxView
                 Grid.Row="1"
                 Grid.RowSpan="2"
+                BackgroundColor="#fff"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
                 <BoxView.GestureRecognizers>
@@ -109,11 +112,12 @@
             <ScrollView
                 Grid.Row="4"
                 Margin="0"
+                BackgroundColor="#fff"
                 Padding="0">
                 <Grid
                     Margin="10,50,10,80"
                     Padding="0"
-                    BackgroundColor="Transparent"
+                    BackgroundColor="#fff"
                     RowDefinitions="40,40,40,40"
                     RowSpacing="20"
                     VerticalOptions="StartAndExpand">

@@ -1,226 +1,223 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<Frame x:Class="KIDS.MOBILE.APP.views.Message.NewMessagePopup"
-       xmlns="http://xamarin.com/schemas/2014/forms"
-       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-       xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
-       xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-       xmlns:renderers="clr-namespace:KIDS.MOBILE.APP.Controls.Renderers;assembly=KIDS.MOBILE.APP"
-       xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-       xmlns:xaml="http://prismlibrary.com"
-       Margin="0"
-       Padding="0"
-       xaml:DialogLayout.CloseOnBackgroundTapped="False"
-       xaml:DialogLayout.RelativeWidthRequest=".9"
-       BackgroundColor="{StaticResource BackgroundApp}"
-       CornerRadius="10"
-       HasShadow="True">
-    <Grid Margin="0"
-          Padding="0"
-          RowDefinitions="Auto">
+<Frame
+    x:Class="KIDS.MOBILE.APP.views.Message.NewMessagePopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:renderers="clr-namespace:KIDS.MOBILE.APP.Controls.Renderers;assembly=KIDS.MOBILE.APP"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:xaml="http://prismlibrary.com"
+    Margin="0"
+    Padding="0"
+    xaml:DialogLayout.CloseOnBackgroundTapped="False"
+    xaml:DialogLayout.RelativeWidthRequest=".9"
+    BackgroundColor="{StaticResource BackgroundApp}"
+    CornerRadius="10"
+    HasShadow="True">
+    <Grid
+        Margin="0"
+        Padding="0"
+        BackgroundColor="#fff"
+        RowDefinitions="Auto">
         <Grid.Resources>
             <ResourceDictionary>
-                <Style x:Key="TitlePopup"
-                       TargetType="Label">
-                    <Setter Property="Margin"
-                            Value="0" />
-                    <Setter Property="Padding"
-                            Value="0" />
-                    <Setter Property="BackgroundColor"
-                            Value="{StaticResource BackgroundColorNavBar}" />
-                    <Setter Property="FontAttributes"
-                            Value="Bold" />
-                    <Setter Property="FontSize"
-                            Value="20" />
-                    <Setter Property="HorizontalOptions"
-                            Value="FillAndExpand" />
-                    <Setter Property="HorizontalTextAlignment"
-                            Value="Center" />
-                    <Setter Property="MaxLines"
-                            Value="1" />
-                    <Setter Property="TextColor"
-                            Value="#fff" />
-                    <Setter Property="VerticalOptions"
-                            Value="FillAndExpand" />
-                    <Setter Property="VerticalTextAlignment"
-                            Value="Center" />
+                <Style x:Key="TitlePopup" TargetType="Label">
+                    <Setter Property="Margin" Value="0" />
+                    <Setter Property="Padding" Value="0" />
+                    <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColorNavBar}" />
+                    <Setter Property="FontAttributes" Value="Bold" />
+                    <Setter Property="FontSize" Value="20" />
+                    <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                    <Setter Property="HorizontalTextAlignment" Value="Center" />
+                    <Setter Property="MaxLines" Value="1" />
+                    <Setter Property="TextColor" Value="#fff" />
+                    <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                    <Setter Property="VerticalTextAlignment" Value="Center" />
                 </Style>
-                <Style x:Key="ButtonCancel"
-                       TargetType="Button">
-                    <Setter Property="Margin"
-                            Value="10" />
-                    <Setter Property="BackgroundColor"
-                            Value="#fff" />
-                    <Setter Property="BorderColor"
-                            Value="Red" />
-                    <Setter Property="BorderWidth"
-                            Value=".5" />
-                    <Setter Property="CornerRadius"
-                            Value="5" />
+                <Style x:Key="ButtonCancel" TargetType="Button">
+                    <Setter Property="Margin" Value="10" />
+                    <Setter Property="BackgroundColor" Value="#fff" />
+                    <Setter Property="BorderColor" Value="Red" />
+                    <Setter Property="BorderWidth" Value=".5" />
+                    <Setter Property="CornerRadius" Value="5" />
                 </Style>
-                <Style x:Key="ButtonSubmit"
-                       TargetType="Button">
-                    <Setter Property="Margin"
-                            Value="10" />
-                    <Setter Property="BackgroundColor"
-                            Value="#fff" />
-                    <Setter Property="BorderColor"
-                            Value="{StaticResource BackgroundColorNavBar}" />
-                    <Setter Property="BorderWidth"
-                            Value=".5" />
-                    <Setter Property="CornerRadius"
-                            Value="5" />
+                <Style x:Key="ButtonSubmit" TargetType="Button">
+                    <Setter Property="Margin" Value="10" />
+                    <Setter Property="BackgroundColor" Value="#fff" />
+                    <Setter Property="BorderColor" Value="{StaticResource BackgroundColorNavBar}" />
+                    <Setter Property="BorderWidth" Value=".5" />
+                    <Setter Property="CornerRadius" Value="5" />
                 </Style>
             </ResourceDictionary>
         </Grid.Resources>
-        <Grid Grid.Row="0"
-              Margin="0"
-              Padding="0"
-              ColumnDefinitions="*,*"
-              IsVisible="True"
-              RowDefinitions="50,50,350,60">
+        <Grid
+            Grid.Row="0"
+            Margin="0"
+            Padding="0"
+            BackgroundColor="#fff"
+            ColumnDefinitions="*,*"
+            IsVisible="True"
+            RowDefinitions="50,50,350,60">
             <Grid.Triggers>
-                <DataTrigger Binding="{Binding IsSendMessage}"
-                             TargetType="Grid"
-                             Value="True">
-                    <Setter Property="Grid.IsVisible"
-                            Value="False" />
+                <DataTrigger
+                    Binding="{Binding IsSendMessage}"
+                    TargetType="Grid"
+                    Value="True">
+                    <Setter Property="Grid.IsVisible" Value="False" />
                 </DataTrigger>
-                <DataTrigger Binding="{Binding IsSendMessage}"
-                             TargetType="Grid"
-                             Value="False">
-                    <Setter Property="Grid.IsVisible"
-                            Value="True" />
+                <DataTrigger
+                    Binding="{Binding IsSendMessage}"
+                    TargetType="Grid"
+                    Value="False">
+                    <Setter Property="Grid.IsVisible" Value="True" />
                 </DataTrigger>
             </Grid.Triggers>
-            <Label Grid.Row="0"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   Style="{StaticResource TitlePopup}"
-                   Text="{markupExtension:Translate 00125}" />
-            <SearchBar Grid.Row="1"
-                       Grid.Column="0"
-                       Grid.ColumnSpan="2"
-                       FontSize="15"
-                       Placeholder="{markupExtension:Translate 00127}"
-                       Text="{Binding SearchPeopleName}" />
-            <CollectionView Grid.Row="2"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Margin="5"
-                            ItemsSource="{Binding AttendanceLeaveData}">
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource TitlePopup}"
+                Text="{markupExtension:Translate 00125}" />
+            <SearchBar
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                BackgroundColor="#fff"
+                FontSize="15"
+                Placeholder="{markupExtension:Translate 00127}"
+                Text="{Binding SearchPeopleName}" />
+            <CollectionView
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="5"
+                BackgroundColor="#fff"
+                ItemsSource="{Binding AttendanceLeaveData}">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="8"
-                                       Orientation="Vertical" />
+                    <LinearItemsLayout ItemSpacing="8" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="0"
-                              Padding="0"
-                              ColumnDefinitions="40,*,30">
-                            <forms:CachedImage Grid.Column="0"
-                                               Margin="0"
-                                               Aspect="AspectFill"
-                                               DownsampleToViewSize="true"
-                                               ErrorPlaceholder="student0.png"
-                                               HeightRequest="40"
-                                               LoadingPlaceholder="student0.png"
-                                               Source="{Binding TmpPicture}"
-                                               VerticalOptions="Center">
+                        <Grid
+                            Margin="0"
+                            Padding="0"
+                            BackgroundColor="#fff"
+                            ColumnDefinitions="40,*,30">
+                            <forms:CachedImage
+                                Grid.Column="0"
+                                Margin="0"
+                                Aspect="AspectFill"
+                                DownsampleToViewSize="true"
+                                ErrorPlaceholder="student0.png"
+                                HeightRequest="40"
+                                LoadingPlaceholder="student0.png"
+                                Source="{Binding TmpPicture}"
+                                VerticalOptions="Center">
                                 <forms:CachedImage.Transformations>
                                     <transformations:CircleTransformation />
                                 </forms:CachedImage.Transformations>
                             </forms:CachedImage>
-                            <Label Grid.Column="1"
-                                   FontSize="16"
-                                   Text="{Binding Name}"
-                                   TextColor="Black"
-                                   VerticalOptions="Center" />
-                            <CheckBox Grid.Column="2"
-                                      IsChecked="{Binding IsSelected}" />
+                            <Label
+                                Grid.Column="1"
+                                FontSize="16"
+                                Text="{Binding Name}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <CheckBox Grid.Column="2" IsChecked="{Binding IsSelected}" />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Button Grid.Row="3"
-                    Grid.Column="0"
-                    Command="{Binding CancelNewMessageCommand}"
-                    Style="{StaticResource ButtonCancel}"
-                    Text="{markupExtension:Translate 00049}" />
-            <Button Grid.Row="3"
-                    Grid.Column="1"
-                    Command="{Binding ChoosePeopleCommand}"
-                    Style="{StaticResource ButtonSubmit}"
-                    Text="{markupExtension:Translate 00128}" />
+            <Button
+                Grid.Row="3"
+                Grid.Column="0"
+                Command="{Binding CancelNewMessageCommand}"
+                Style="{StaticResource ButtonCancel}"
+                Text="{markupExtension:Translate 00049}" />
+            <Button
+                Grid.Row="3"
+                Grid.Column="1"
+                Command="{Binding ChoosePeopleCommand}"
+                Style="{StaticResource ButtonSubmit}"
+                Text="{markupExtension:Translate 00128}" />
         </Grid>
-        <Grid Grid.Row="0"
-              Margin="0"
-              Padding="0"
-              ColumnDefinitions="*,*"
-              IsVisible="false"
-              RowDefinitions="50,Auto,300,60">
+        <Grid
+            Grid.Row="0"
+            Margin="0"
+            Padding="0"
+            BackgroundColor="#fff"
+            ColumnDefinitions="*,*"
+            IsVisible="false"
+            RowDefinitions="50,Auto,300,60">
             <Grid.Triggers>
-                <DataTrigger Binding="{Binding IsSendMessage}"
-                             TargetType="Grid"
-                             Value="True">
-                    <Setter Property="Grid.IsVisible"
-                            Value="True" />
+                <DataTrigger
+                    Binding="{Binding IsSendMessage}"
+                    TargetType="Grid"
+                    Value="True">
+                    <Setter Property="Grid.IsVisible" Value="True" />
                 </DataTrigger>
-                <DataTrigger Binding="{Binding IsSendMessage}"
-                             TargetType="Grid"
-                             Value="False">
-                    <Setter Property="Grid.IsVisible"
-                            Value="False" />
+                <DataTrigger
+                    Binding="{Binding IsSendMessage}"
+                    TargetType="Grid"
+                    Value="False">
+                    <Setter Property="Grid.IsVisible" Value="False" />
                 </DataTrigger>
             </Grid.Triggers>
-            <Label Grid.Row="0"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   Style="{StaticResource TitlePopup}"
-                   Text="{markupExtension:Translate 00126}" />
-            <Frame Grid.Row="1"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   Margin="10,10,10,0"
-                   Padding="0"
-                   BackgroundColor="#dddddd"
-                   CornerRadius="10"
-                   HasShadow="False">
-                <Label Margin="10"
-                       Padding="0"
-                       FontSize="14"
-                       LineBreakMode="TailTruncation"
-                       MaxLines="3"
-                       Text="{Binding NamePeopleSent}"
-                       TextColor="#000" />
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource TitlePopup}"
+                Text="{markupExtension:Translate 00126}" />
+            <Frame
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="10,10,10,0"
+                Padding="0"
+                BackgroundColor="#dddddd"
+                CornerRadius="10"
+                HasShadow="False">
+                <Label
+                    Margin="10"
+                    Padding="0"
+                    FontSize="14"
+                    LineBreakMode="TailTruncation"
+                    MaxLines="3"
+                    Text="{Binding NamePeopleSent}"
+                    TextColor="#000" />
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding ReSelectPeopleSentCommand}" />
                 </Frame.GestureRecognizers>
             </Frame>
-            <Frame Grid.Row="2"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   Margin="10,10,10,0"
-                   Padding="0"
-                   BorderColor="DarkGray"
-                   CornerRadius="10"
-                   HasShadow="False">
-                <renderers:CustomEditor Margin="10,0"
-                                        Text="{Binding BodyMessage}" />
+            <Frame
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="10,10,10,0"
+                Padding="0"
+                BackgroundColor="#fff"
+                BorderColor="DarkGray"
+                CornerRadius="10"
+                HasShadow="False">
+                <renderers:CustomEditor Margin="10,0" Text="{Binding BodyMessage}" />
             </Frame>
-            <Button Grid.Row="3"
-                    Grid.Column="0"
-                    Command="{Binding CancelNewMessageCommand}"
-                    Style="{StaticResource ButtonCancel}"
-                    Text="{markupExtension:Translate 00049}" />
-            <Button Grid.Row="3"
-                    Grid.Column="1"
-                    Command="{Binding SendMessageCommand}"
-                    IsEnabled="{Binding IsActiveButtonSent}"
-                    Style="{StaticResource ButtonSubmit}"
-                    Text="{markupExtension:Translate 00129}" />
+            <Button
+                Grid.Row="3"
+                Grid.Column="0"
+                Command="{Binding CancelNewMessageCommand}"
+                Style="{StaticResource ButtonCancel}"
+                Text="{markupExtension:Translate 00049}" />
+            <Button
+                Grid.Row="3"
+                Grid.Column="1"
+                Command="{Binding SendMessageCommand}"
+                IsEnabled="{Binding IsActiveButtonSent}"
+                Style="{StaticResource ButtonSubmit}"
+                Text="{markupExtension:Translate 00129}" />
         </Grid>
-        <loadingView:LoadingView Grid.Row="0"
-                                 IsVisible="{Binding IsLoading}" />
+        <loadingView:LoadingView Grid.Row="0" IsVisible="{Binding IsLoading}" />
     </Grid>
 </Frame>

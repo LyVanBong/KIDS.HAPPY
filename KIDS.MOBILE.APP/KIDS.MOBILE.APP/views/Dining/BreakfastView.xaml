@@ -1,72 +1,83 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentView x:Class="KIDS.MOBILE.APP.views.Dining.BreakfastView"
-             xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:prism="http://prismlibrary.com"
-             xmlns:renderers="clr-namespace:KIDS.MOBILE.APP.Controls.Renderers;assembly=KIDS.MOBILE.APP"
-             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             mc:Ignorable="d">
+<ContentView
+    x:Class="KIDS.MOBILE.APP.views.Dining.BreakfastView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:renderers="clr-namespace:KIDS.MOBILE.APP.Controls.Renderers;assembly=KIDS.MOBILE.APP"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    mc:Ignorable="d">
     <ContentView.Content>
-        <Grid Margin="0"
-              ColumnSpacing="0"
-              RowDefinitions="50,*"
-              RowSpacing="0"
-              HorizontalOptions="FillAndExpand"
-              VerticalOptions="FillAndExpand">
-            <SearchBar Grid.Row="0"
-                       Text="{Binding SearchBreak}" />
-            <Grid Margin="10"
-                  Padding="0"
-                  Grid.Row="1"
-                  RowDefinitions="Auto,*">
-                <Frame Grid.Row="0"
-                       Margin="0"
-                       Padding="0"
-                       BorderColor="DarkGray"
-                       CornerRadius="5"
-                       HasShadow="False">
+        <Grid
+            Margin="0"
+            BackgroundColor="#fff"
+            ColumnSpacing="0"
+            HorizontalOptions="FillAndExpand"
+            RowDefinitions="50,*"
+            RowSpacing="0"
+            VerticalOptions="FillAndExpand">
+            <SearchBar
+                Grid.Row="0"
+                BackgroundColor="#fff"
+                Text="{Binding SearchBreak}" />
+            <Grid
+                Grid.Row="1"
+                Margin="10"
+                Padding="0"
+                BackgroundColor="#fff"
+                RowDefinitions="Auto,*">
+                <Frame
+                    Grid.Row="0"
+                    Margin="0"
+                    Padding="0"
+                    BackgroundColor="#fff"
+                    BorderColor="DarkGray"
+                    CornerRadius="5"
+                    HasShadow="False">
                     <Frame.Triggers>
-                        <Trigger TargetType="Frame"
-                                 Property="Margin"
-                                 Value="0">
-                            <Setter Property="IsVisible"
-                                    Value="{Binding IsHaveDish}" />
+                        <Trigger TargetType="Frame" Property="Margin" Value="0">
+                            <Setter Property="IsVisible" Value="{Binding IsHaveDish}" />
                         </Trigger>
                     </Frame.Triggers>
-                    <Grid Margin="0"
-                          Padding="0"
-                          RowDefinitions="40,Auto"
-                          RowSpacing="0">
-                        <Label Grid.Row="0"
-                               BackgroundColor="{StaticResource BackgroundColorNavBar}"
-                               FontSize="18"
-                               HorizontalOptions="FillAndExpand"
-                               HorizontalTextAlignment="Center"
-                               Text="Menu"
-                               TextColor="#ffffff"
-                               VerticalOptions="FillAndExpand"
-                               VerticalTextAlignment="Center" />
-                        <CollectionView Grid.Row="1"
-                                        Margin="10,5"
-                                        HeightRequest="80"
-                                        HorizontalOptions="FillAndExpand"
-                                        ItemsSource="{Binding DishData}"
-                                        VerticalOptions="FillAndExpand">
+                    <Grid
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="#fff"
+                        RowDefinitions="40,Auto"
+                        RowSpacing="0">
+                        <Label
+                            Grid.Row="0"
+                            BackgroundColor="{StaticResource BackgroundColorNavBar}"
+                            FontSize="18"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text="Menu"
+                            TextColor="#ffffff"
+                            VerticalOptions="FillAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <CollectionView
+                            Grid.Row="1"
+                            Margin="10,5"
+                            BackgroundColor="#fff"
+                            HeightRequest="80"
+                            HorizontalOptions="FillAndExpand"
+                            ItemsSource="{Binding DishData}"
+                            VerticalOptions="FillAndExpand">
                             <CollectionView.ItemsLayout>
-                                <LinearItemsLayout ItemSpacing="0"
-                                                   Orientation="Vertical" />
+                                <LinearItemsLayout ItemSpacing="0" Orientation="Vertical" />
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Label Margin="0"
-                                           Padding="0"
-                                           FontSize="16"
-                                           TextColor="#000000"
-                                           VerticalOptions="CenterAndExpand">
+                                    <Label
+                                        Margin="0"
+                                        Padding="0"
+                                        FontSize="16"
+                                        TextColor="#000000"
+                                        VerticalOptions="CenterAndExpand">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="- " />
@@ -79,75 +90,82 @@
                         </CollectionView>
                     </Grid>
                 </Frame>
-                <CollectionView x:Name="breakfast"
-                                Grid.Row="1"
-                                Margin="0"
-                                ItemsSource="{Binding StudentData}">
+                <CollectionView
+                    x:Name="breakfast"
+                    Grid.Row="1"
+                    Margin="0"
+                    BackgroundColor="#fff"
+                    ItemsSource="{Binding StudentData}">
                     <CollectionView.ItemsLayout>
-                        <LinearItemsLayout ItemSpacing="5"
-                                           Orientation="Vertical" />
+                        <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame Margin="0"
-                                   Padding="0"
-                                   HasShadow="False"
-                                   BorderColor="DeepSkyBlue"
-                                   CornerRadius="10">
-                                <Grid Margin="0"
-                                      Padding="0"
-                                      ColumnDefinitions="60,*"
-                                      RowDefinitions="60,Auto"
-                                      RowSpacing="0">
-                                    <forms:CachedImage Grid.Row="0"
-                                                       Grid.Column="0"
-                                                       Margin="5"
-                                                       Aspect="AspectFit"
-                                                       DownsampleToViewSize="true"
-                                                       ErrorPlaceholder="student0.png"
-                                                       HeightRequest="50"
-                                                       WidthRequest="50"
-                                                       HorizontalOptions="Start"
-                                                       VerticalOptions="Start"
-                                                       LoadingPlaceholder="student0.png"
-                                                       Source="{Binding TmpPicture}">
+                            <Frame
+                                Margin="0"
+                                Padding="0"
+                                BorderColor="DeepSkyBlue"
+                                CornerRadius="10"
+                                HasShadow="False">
+                                <Grid
+                                    Margin="0"
+                                    Padding="0"
+                                    ColumnDefinitions="60,*"
+                                    RowDefinitions="60,Auto"
+                                    RowSpacing="0">
+                                    <forms:CachedImage
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Margin="5"
+                                        Aspect="AspectFit"
+                                        DownsampleToViewSize="true"
+                                        ErrorPlaceholder="student0.png"
+                                        HeightRequest="50"
+                                        HorizontalOptions="Start"
+                                        LoadingPlaceholder="student0.png"
+                                        Source="{Binding TmpPicture}"
+                                        VerticalOptions="Start"
+                                        WidthRequest="50">
                                         <forms:CachedImage.Triggers>
-                                            <DataTrigger Binding="{Binding Sex}"
-                                                         TargetType="forms:CachedImage"
-                                                         Value="True">
-                                                <Setter Property="ErrorPlaceholder"
-                                                        Value="student1.png" />
-                                                <Setter Property="LoadingPlaceholder"
-                                                        Value="student1.png" />
+                                            <DataTrigger
+                                                Binding="{Binding Sex}"
+                                                TargetType="forms:CachedImage"
+                                                Value="True">
+                                                <Setter Property="ErrorPlaceholder" Value="student1.png" />
+                                                <Setter Property="LoadingPlaceholder" Value="student1.png" />
                                             </DataTrigger>
                                         </forms:CachedImage.Triggers>
                                         <forms:CachedImage.Transformations>
                                             <transformations:CornersTransformation CornersTransformType="AllRounded" />
                                         </forms:CachedImage.Transformations>
                                     </forms:CachedImage>
-                                    <Label Grid.Row="0"
-                                           Grid.Column="1"
-                                           FontSize="16"
-                                           Text="{Binding Name}"
-                                           VerticalOptions="FillAndExpand" />
-                                    <Frame Grid.Row="1"
-                                           Grid.Column="0"
-                                           Grid.ColumnSpan="2"
-                                           Margin="5"
-                                           Padding="0"
-                                           BorderColor="DarkGray"
-                                           CornerRadius="5"
-                                           HasShadow="False"
-                                           HorizontalOptions="FillAndExpand">
-                                        <renderers:CustomEditor AutoSize="TextChanges"
-                                                                FontSize="14"
-                                                                Placeholder="{markupExtension:Translate 00076}"
-                                                                Text="{Binding MealComment0}"
-                                                                VerticalOptions="FillAndExpand">
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontSize="16"
+                                        Text="{Binding Name}"
+                                        VerticalOptions="FillAndExpand" />
+                                    <Frame
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        Margin="5"
+                                        Padding="0"
+                                        BorderColor="DarkGray"
+                                        CornerRadius="5"
+                                        HasShadow="False"
+                                        HorizontalOptions="FillAndExpand">
+                                        <renderers:CustomEditor
+                                            AutoSize="TextChanges"
+                                            FontSize="14"
+                                            Placeholder="{markupExtension:Translate 00076}"
+                                            Text="{Binding MealComment0}"
+                                            VerticalOptions="FillAndExpand">
                                             <renderers:CustomEditor.Behaviors>
-                                                <prism:EventToCommandBehavior Command="{Binding Source={x:Reference breakfast}, Path=BindingContext.UpdateBreakFastCommand}"
-                                                                              CommandParameter="{Binding .}"
-                                                                              EventName="Unfocused" />
+                                                <prism:EventToCommandBehavior
+                                                    Command="{Binding Source={x:Reference breakfast}, Path=BindingContext.UpdateBreakFastCommand}"
+                                                    CommandParameter="{Binding .}"
+                                                    EventName="Unfocused" />
                                             </renderers:CustomEditor.Behaviors>
                                         </renderers:CustomEditor>
                                     </Frame>

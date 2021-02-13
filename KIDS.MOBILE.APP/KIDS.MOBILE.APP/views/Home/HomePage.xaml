@@ -97,8 +97,10 @@
                         Grid.Row="1"
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
+                        FontAttributes="Bold"
                         Style="{StaticResource TitleLabel}"
-                        Text="{markupExtension:TranslateExtension 00028}" />
+                        Text="{markupExtension:TranslateExtension 00028}"
+                        TextColor="{StaticResource BackgroundColorNavBar}" />
                     <Frame
                         Grid.Row="2"
                         Grid.Column="1"

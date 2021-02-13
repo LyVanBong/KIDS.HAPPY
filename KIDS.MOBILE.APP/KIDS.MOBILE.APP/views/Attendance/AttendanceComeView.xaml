@@ -9,15 +9,15 @@
     xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:renderers="clr-namespace:KIDS.MOBILE.APP.Controls.Renderers;assembly=KIDS.MOBILE.APP"
-    xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     mc:Ignorable="d">
     <ContentView.Content>
-        <Grid RowDefinitions="60,50,*">
+        <Grid BackgroundColor="#fff" RowDefinitions="60,50,*">
             <Frame
                 Grid.Row="0"
                 Margin="5"
                 Padding="0"
+                BackgroundColor="#fff"
                 BorderColor="DodgerBlue"
                 HasShadow="False">
                 <ScrollView
@@ -90,11 +90,15 @@
                     </StackLayout>
                 </ScrollView>
             </Frame>
-            <SearchBar Grid.Row="1" Text="{Binding SearchCome}" />
+            <SearchBar
+                Grid.Row="1"
+                BackgroundColor="#fff"
+                Text="{Binding SearchCome}" />
             <CollectionView
                 x:Name="Attendance"
                 Grid.Row="2"
                 Margin="5"
+                BackgroundColor="#fff"
                 ItemsSource="{Binding AttendanceComes}">
                 <CollectionView.Resources>
                     <ResourceDictionary>

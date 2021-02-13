@@ -1,126 +1,140 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentView x:Class="KIDS.MOBILE.APP.views.Message.InboxView"
-             xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
+<ContentView
+    x:Class="KIDS.MOBILE.APP.views.Message.InboxView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
     <ContentView.Content>
-        <Grid Margin="10,0"
-              Padding="0"
-              RowDefinitions="40,*">
-            <SearchBar Grid.Row="0"
-                       Text="{Binding SearchInbox}" />
-            <CollectionView x:Name="CollectionViewInbox"
-                            Grid.Row="1"
-                            ItemsSource="{Binding InboxData}">
+        <Grid
+            Margin="10,0"
+            Padding="0"
+            BackgroundColor="#fff"
+            RowDefinitions="40,*">
+            <SearchBar
+                Grid.Row="0"
+                BackgroundColor="#fff"
+                Text="{Binding SearchInbox}" />
+            <CollectionView
+                x:Name="CollectionViewInbox"
+                Grid.Row="1"
+                BackgroundColor="#fff"
+                ItemsSource="{Binding InboxData}">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="5"
-                                       Orientation="Vertical" />
+                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Margin="0"
-                               Padding="5"
-                               CornerRadius="10"
-                               HasShadow="False">
+                        <Frame
+                            Margin="0"
+                            Padding="5"
+                            BackgroundColor="#fff"
+                            CornerRadius="10"
+                            HasShadow="False">
                             <Frame.Triggers>
-                                <DataTrigger Binding="{Binding IsConfirmed}"
-                                             TargetType="Frame"
-                                             Value="False">
-                                    <Setter Property="Frame.BorderColor"
-                                            Value="#ff926b" />
+                                <DataTrigger
+                                    Binding="{Binding IsConfirmed}"
+                                    TargetType="Frame"
+                                    Value="False">
+                                    <Setter Property="Frame.BorderColor" Value="#ff926b" />
                                 </DataTrigger>
-                                <DataTrigger Binding="{Binding IsConfirmed}"
-                                             TargetType="Frame"
-                                             Value="True">
-                                    <Setter Property="Frame.BorderColor"
-                                            Value="#035aa6" />
+                                <DataTrigger
+                                    Binding="{Binding IsConfirmed}"
+                                    TargetType="Frame"
+                                    Value="True">
+                                    <Setter Property="Frame.BorderColor" Value="#035aa6" />
                                 </DataTrigger>
                             </Frame.Triggers>
-                            <Grid Margin="0"
-                                  Padding="0"
-                                  ColumnDefinitions="60,*"
-                                  RowDefinitions="30,30,Auto,30"
-                                  RowSpacing="0">
-                                <forms:CachedImage Grid.Row="0"
-                                                   Grid.RowSpan="2"
-                                                   Grid.Column="0"
-                                                   Margin="5"
-                                                   Aspect="AspectFill"
-                                                   DownsampleToViewSize="true"
-                                                   ErrorPlaceholder="student0.png"
-                                                   LoadingPlaceholder="student0.png"
-                                                   Source="{Binding Picture}">
+                            <Grid
+                                Margin="0"
+                                Padding="0"
+                                ColumnDefinitions="60,*"
+                                RowDefinitions="30,30,Auto,30"
+                                RowSpacing="0">
+                                <forms:CachedImage
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="0"
+                                    Margin="5"
+                                    Aspect="AspectFill"
+                                    DownsampleToViewSize="true"
+                                    ErrorPlaceholder="student0.png"
+                                    LoadingPlaceholder="student0.png"
+                                    Source="{Binding Picture}">
                                     <forms:CachedImage.Transformations>
                                         <transformations:CornersTransformation CornersTransformType="AllRounded" />
                                     </forms:CachedImage.Transformations>
                                 </forms:CachedImage>
-                                <Label Grid.Row="0"
-                                       Grid.Column="1"
-                                       FontSize="16"
-                                       Text="{Binding Source={x:Reference CollectionViewInbox}, Path=BindingContext.Name}"
-                                       VerticalOptions="Center" />
-                                <Label Grid.Row="0"
-                                       Grid.Column="1"
-                                       FontSize="16"
-                                       HorizontalOptions="End"
-                                       VerticalOptions="Center">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontSize="16"
+                                    Text="{Binding Source={x:Reference CollectionViewInbox}, Path=BindingContext.Name}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontSize="16"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center">
                                     <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={x:Reference CollectionViewInbox}, Path=BindingContext.ComfirmedCommand}"
-                                                              CommandParameter="{Binding .}" />
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference CollectionViewInbox}, Path=BindingContext.ComfirmedCommand}" CommandParameter="{Binding .}" />
                                     </Label.GestureRecognizers>
                                     <Label.Triggers>
-                                        <DataTrigger Binding="{Binding IsConfirmed}"
-                                                     TargetType="Label"
-                                                     Value="False">
-                                            <Setter Property="Label.Text"
-                                                    Value="{markupExtension:Translate 00040}" />
-                                            <Setter Property="Label.TextColor"
-                                                    Value="#ff926b" />
+                                        <DataTrigger
+                                            Binding="{Binding IsConfirmed}"
+                                            TargetType="Label"
+                                            Value="False">
+                                            <Setter Property="Label.Text" Value="{markupExtension:Translate 00040}" />
+                                            <Setter Property="Label.TextColor" Value="#ff926b" />
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding IsConfirmed}"
-                                                     TargetType="Label"
-                                                     Value="True">
-                                            <Setter Property="Label.Text"
-                                                    Value="{markupExtension:Translate 00039}" />
-                                            <Setter Property="Label.TextColor"
-                                                    Value="#035aa6" />
+                                        <DataTrigger
+                                            Binding="{Binding IsConfirmed}"
+                                            TargetType="Label"
+                                            Value="True">
+                                            <Setter Property="Label.Text" Value="{markupExtension:Translate 00039}" />
+                                            <Setter Property="Label.TextColor" Value="#035aa6" />
                                         </DataTrigger>
                                     </Label.Triggers>
                                 </Label>
-                                <Label Grid.Row="1"
-                                       Grid.Column="1"
-                                       Text="{Binding TmpDateCreate}" />
-                                <Label Grid.Row="2"
-                                       Grid.Column="0"
-                                       Grid.ColumnSpan="2"
-                                       Margin="0"
-                                       Padding="10,0"
-                                       Text="{Binding Content}" />
-                                <Grid Grid.Row="3"
-                                      Grid.Column="0"
-                                      Grid.ColumnSpan="2"
-                                      Margin="0"
-                                      Padding="0"
-                                      ColumnDefinitions="Auto,Auto,*">
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding TmpDateCreate}" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    Margin="0"
+                                    Padding="10,0"
+                                    Text="{Binding Content}" />
+                                <Grid
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    Margin="0"
+                                    Padding="0"
+                                    ColumnDefinitions="Auto,Auto,*">
                                     <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={x:Reference CollectionViewInbox}, Path=BindingContext.CommentMessageCommand}"
-                                                              CommandParameter="{Binding .}" />
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference CollectionViewInbox}, Path=BindingContext.CommentMessageCommand}" CommandParameter="{Binding .}" />
                                     </Grid.GestureRecognizers>
-                                    <Image Grid.Column="0"
-                                           Margin="5"
-                                           HorizontalOptions="Start"
-                                           Source="{markupExtension:ImageResource comment.png}"
-                                           VerticalOptions="Center" />
-                                    <Label Grid.Column="1"
-                                           FontSize="14"
-                                           Text="{markupExtension:Translate 00122}"
-                                           VerticalOptions="Center" />
-                                    <Label Grid.Column="2"
-                                           FontSize="13"
-                                           HorizontalOptions="End"
-                                           VerticalOptions="Center">
+                                    <Image
+                                        Grid.Column="0"
+                                        Margin="5"
+                                        HorizontalOptions="Start"
+                                        Source="{markupExtension:ImageResource comment.png}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Column="1"
+                                        FontSize="14"
+                                        Text="{markupExtension:Translate 00122}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Column="2"
+                                        FontSize="13"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{markupExtension:Translate 00041}" />

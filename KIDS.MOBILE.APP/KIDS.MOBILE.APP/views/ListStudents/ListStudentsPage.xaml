@@ -19,13 +19,15 @@
         <Grid
             Margin="0"
             Padding="0"
-            RowDefinitions="Auto,50,*"
             BackgroundColor="{StaticResource BackgroundApp}"
+            RowDefinitions="Auto,50,*"
             RowSpacing="0">
             <navigationView:NavigationView Text="{markupExtension:Translate 00042}" />
-            <SearchBar Grid.Row="1"
-                       VerticalOptions="CenterAndExpand"
-                       Text="{Binding SearchStudent}" />
+            <SearchBar
+                Grid.Row="1"
+                BackgroundColor="#fff"
+                Text="{Binding SearchStudent}"
+                VerticalOptions="CenterAndExpand" />
             <CollectionView
                 x:Name="CollectionView"
                 Grid.Row="2"
@@ -40,6 +42,7 @@
                         <Grid
                             Margin="0"
                             Padding="5,0,10,10"
+                            BackgroundColor="#fff"
                             ColumnDefinitions="60,*,Auto"
                             ColumnSpacing="0"
                             RowDefinitions="20,20,20,.5"
