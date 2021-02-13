@@ -30,6 +30,7 @@
             <CollectionView
                 x:Name="LsNewsData"
                 Grid.Row="1"
+                BackgroundColor="#fff"
                 Grid.RowSpan="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
@@ -42,6 +43,7 @@
                     <DataTemplate>
                         <Frame
                             Padding="0"
+                            BackgroundColor="#fff"
                             BorderColor="#588da8"
                             CornerRadius="5"
                             HasShadow="False">

@@ -1,153 +1,170 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage x:Class="KIDS.MOBILE.APP.views.Hygiene.HygienePage"
-             xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:behaviors="http://prismlibrary.com"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
-             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
-             xmlns:renderers="clr-namespace:KIDS.MOBILE.APP.Controls.Renderers;assembly=KIDS.MOBILE.APP"
-             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             iOsSpecific:Page.UseSafeArea="true"
-             BackgroundColor="{StaticResource BackgroundColorNavBar}"
-             NavigationPage.HasNavigationBar="False"
-             mc:Ignorable="d">
+<ContentPage
+    x:Class="KIDS.MOBILE.APP.views.Hygiene.HygienePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="http://prismlibrary.com"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+    xmlns:renderers="clr-namespace:KIDS.MOBILE.APP.Controls.Renderers;assembly=KIDS.MOBILE.APP"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    iOsSpecific:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
     <ContentPage.Content>
-        <Grid Margin="0"
-              Padding="0"
-              BackgroundColor="{StaticResource BackgroundApp}"
-              RowDefinitions="40,50,*">
-            <Grid Grid.Row="0"
-                  Grid.Column="0"
-                  Grid.ColumnSpan="2"
-                  ColumnDefinitions="auto,*">
-                <navigationView:NavigationView Grid.Column="0"
-                                               Grid.ColumnSpan="2"
-                                               Text="{markupExtension:Translate 00034}" />
-                <Grid Grid.Column="0"
-                      ColumnDefinitions="5,*,30">
-                    <Label Grid.Column="1"
-                           Text="{Binding ChoosedDate}"
-                           TextColor="White"
-                           VerticalOptions="CenterAndExpand" />
-                    <Image Grid.Column="2"
-                           Source="{markupExtension:ImageResource calendarToolbar.png}"></Image>
+        <Grid
+            Margin="0"
+            Padding="0"
+            BackgroundColor="{StaticResource BackgroundApp}"
+            RowDefinitions="40,50,*">
+            <Grid
+                Grid.Row="0"
+                BackgroundColor="#fff"
+                ColumnDefinitions="auto,*">
+                <navigationView:NavigationView
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="{markupExtension:Translate 00034}" />
+                <Grid
+                    Grid.Column="0"
+                    ColumnDefinitions="5,*,30">
+                    <Label
+                        Grid.Column="1"
+                        Text="{Binding ChoosedDate}"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                    <Image Grid.Column="2" Source="{markupExtension:ImageResource calendarToolbar.png}" />
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SelectDateCommand}" />
                     </Grid.GestureRecognizers>
                 </Grid>
             </Grid>
-            <SearchBar Grid.Row="1"
-                       Grid.Column="0"
-                       Grid.ColumnSpan="2"
-                       Text="{Binding SearchHygiene}" />
-            <CollectionView x:Name="CollectionView"
-                            Grid.Row="2"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Margin="10,0"
-                            ItemsSource="{Binding StudentData}">
+            <SearchBar
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="#fff"
+                Text="{Binding SearchHygiene}" />
+            <CollectionView
+                x:Name="CollectionView"
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="10,0"
+                BackgroundColor="#fff"
+                ItemsSource="{Binding StudentData}">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="5"
-                                       Orientation="Vertical" />
+                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Margin="0"
-                               Padding="0"
-                               BorderColor="DeepSkyBlue"
-                               CornerRadius="10"
-                               HasShadow="False">
-                            <Grid Margin="0"
-                                  Padding="0"
-                                  ColumnDefinitions="60,*"
-                                  RowDefinitions="20,40,Auto"
-                                  RowSpacing="0">
-                                <forms:CachedImage Grid.Row="0"
-                                                   Grid.RowSpan="2"
-                                                   Grid.Column="0"
-                                                   Margin="5"
-                                                   Aspect="AspectFill"
-                                                   DownsampleToViewSize="true"
-                                                   ErrorPlaceholder="student0.png"
-                                                   LoadingPlaceholder="student0.png"
-                                                   Source="{Binding TmpPicture}">
+                        <Frame
+                            Margin="0"
+                            Padding="0"
+                            BorderColor="DeepSkyBlue"
+                            CornerRadius="10"
+                            HasShadow="False">
+                            <Grid
+                                Margin="0"
+                                Padding="0"
+                                ColumnDefinitions="60,*"
+                                RowDefinitions="20,40,Auto"
+                                RowSpacing="0">
+                                <forms:CachedImage
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="0"
+                                    Margin="5"
+                                    Aspect="AspectFill"
+                                    DownsampleToViewSize="true"
+                                    ErrorPlaceholder="student0.png"
+                                    LoadingPlaceholder="student0.png"
+                                    Source="{Binding TmpPicture}">
                                     <forms:CachedImage.Triggers>
-                                        <DataTrigger Binding="{Binding Sex}"
-                                                     TargetType="forms:CachedImage"
-                                                     Value="True">
-                                            <Setter Property="ErrorPlaceholder"
-                                                    Value="student1.png" />
-                                            <Setter Property="LoadingPlaceholder"
-                                                    Value="student1.png" />
+                                        <DataTrigger
+                                            Binding="{Binding Sex}"
+                                            TargetType="forms:CachedImage"
+                                            Value="True">
+                                            <Setter Property="ErrorPlaceholder" Value="student1.png" />
+                                            <Setter Property="LoadingPlaceholder" Value="student1.png" />
                                         </DataTrigger>
                                     </forms:CachedImage.Triggers>
                                     <forms:CachedImage.Transformations>
                                         <transformations:CornersTransformation CornersTransformType="AllRounded" />
                                     </forms:CachedImage.Transformations>
                                 </forms:CachedImage>
-                                <Label Grid.Row="0"
-                                       Grid.Column="1"
-                                       FontSize="16"
-                                       Text="{Binding Name}"
-                                       VerticalOptions="CenterAndExpand" />
-                                <Grid Grid.Row="1"
-                                      Grid.Column="1"
-                                      Margin="5,0"
-                                      Padding="0"
-                                      ColumnDefinitions="*,50,40,50"
-                                      VerticalOptions="FillAndExpand">
-                                    <Label Grid.Column="0"
-                                           HorizontalOptions="Start"
-                                           Text="{markupExtension:Translate 00103}"
-                                           VerticalOptions="Center" />
-                                    <Button Grid.Column="1"
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontSize="16"
+                                    Text="{Binding Name}"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Grid
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="5,0"
+                                    Padding="0"
+                                    ColumnDefinitions="*,50,40,50"
+                                    VerticalOptions="FillAndExpand">
+                                    <Label
+                                        Grid.Column="0"
+                                        HorizontalOptions="Start"
+                                        Text="{markupExtension:Translate 00103}"
+                                        VerticalOptions="Center" />
+                                    <Button
+                                        Grid.Column="1"
+                                        Margin="0"
+                                        Padding="0"
+                                        Command="{Binding Source={x:Reference CollectionView}, Path=BindingContext.MinusCommand}"
+                                        CommandParameter="{Binding .}"
+                                        Text="-" />
+                                    <Frame
+                                        x:Name="Frame"
+                                        Grid.Column="2"
+                                        Margin="0,4"
+                                        Padding="0"
+                                        BorderColor="DarkGray"
+                                        HasShadow="False">
+                                        <Label
+                                            x:Name="hygiene"
                                             Margin="0"
                                             Padding="0"
-                                            Command="{Binding Source={x:Reference CollectionView}, Path=BindingContext.MinusCommand}"
-                                            CommandParameter="{Binding .}"
-                                            Text="-" />
-                                    <Frame x:Name="Frame"
-                                           Grid.Column="2"
-                                           Margin="0,4"
-                                           Padding="0"
-                                           BorderColor="DarkGray"
-                                           HasShadow="False">
-                                        <Label x:Name="hygiene"
-                                               Margin="0"
-                                               Padding="0"
-                                               HorizontalOptions="Center"
-                                               Text="{Binding Hygiene}"
-                                               TextColor="#000000"
-                                               VerticalOptions="Center" />
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Hygiene}"
+                                            TextColor="#000000"
+                                            VerticalOptions="Center" />
                                     </Frame>
-                                    <Button Grid.Column="3"
-                                            Command="{Binding Source={x:Reference CollectionView}, Path=BindingContext.PlusCommand}"
-                                            CommandParameter="{Binding .}"
-                                            Text="+" />
+                                    <Button
+                                        Grid.Column="3"
+                                        Command="{Binding Source={x:Reference CollectionView}, Path=BindingContext.PlusCommand}"
+                                        CommandParameter="{Binding .}"
+                                        Text="+" />
                                 </Grid>
-                                <Frame Grid.Row="2"
-                                       Grid.Column="0"
-                                       Grid.ColumnSpan="2"
-                                       Margin="5"
-                                       Padding="0"
-                                       BorderColor="DarkGray"
-                                       CornerRadius="5"
-                                       HasShadow="False"
-                                       HorizontalOptions="FillAndExpand">
-                                    <renderers:CustomEditor AutoSize="TextChanges"
-                                                            FontSize="14"
-                                                            Placeholder="{markupExtension:Translate 00076}"
-                                                            Text="{Binding HygieneComment}"
-                                                            VerticalOptions="FillAndExpand">
+                                <Frame
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    Margin="5"
+                                    Padding="0"
+                                    BorderColor="DarkGray"
+                                    CornerRadius="5"
+                                    HasShadow="False"
+                                    HorizontalOptions="FillAndExpand">
+                                    <renderers:CustomEditor
+                                        AutoSize="TextChanges"
+                                        FontSize="14"
+                                        Placeholder="{markupExtension:Translate 00076}"
+                                        Text="{Binding HygieneComment}"
+                                        VerticalOptions="FillAndExpand">
                                         <renderers:CustomEditor.Behaviors>
-                                            <behaviors:EventToCommandBehavior Command="{Binding Source={x:Reference CollectionView}, Path=BindingContext.UpdateHygieneCommand}"
-                                                                              CommandParameter="{Binding .}"
-                                                                              EventName="Unfocused" />
+                                            <behaviors:EventToCommandBehavior
+                                                Command="{Binding Source={x:Reference CollectionView}, Path=BindingContext.UpdateHygieneCommand}"
+                                                CommandParameter="{Binding .}"
+                                                EventName="Unfocused" />
                                         </renderers:CustomEditor.Behaviors>
                                     </renderers:CustomEditor>
                                 </Frame>
@@ -156,11 +173,11 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <loadingView:LoadingView Grid.Row="1"
-                                     Grid.RowSpan="2"
-                                     Grid.Column="0"
-                                     Grid.ColumnSpan="2"
-                                     IsVisible="{Binding IsLoading}" />
+            <loadingView:LoadingView
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                IsVisible="{Binding IsLoading}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

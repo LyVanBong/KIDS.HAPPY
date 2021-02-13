@@ -1,150 +1,171 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentView x:Class="KIDS.MOBILE.APP.views.Attendance.AttendanceLeaveView"
-             xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:behaviors="http://prismlibrary.com"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:renderers="clr-namespace:KIDS.MOBILE.APP.Controls.Renderers;assembly=KIDS.MOBILE.APP"
-             xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             mc:Ignorable="d">
+<ContentView
+    x:Class="KIDS.MOBILE.APP.views.Attendance.AttendanceLeaveView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="http://prismlibrary.com"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:renderers="clr-namespace:KIDS.MOBILE.APP.Controls.Renderers;assembly=KIDS.MOBILE.APP"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    mc:Ignorable="d">
     <ContentView.Content>
-        <Grid Margin="0"
-              ColumnSpacing="0"
-              RowDefinitions="50,*"
-              RowSpacing="0"
-              HorizontalOptions="FillAndExpand"
-              VerticalOptions="FillAndExpand">
-            <SearchBar Grid.Row="0"
-                       Text="{Binding SearchLeave}" />
-            <CollectionView Grid.Row="1"
-                            x:Name="Attendance"
-                            Margin="5"
-                            ItemsSource="{Binding AttendanceLeave}">
+        <Grid
+            Margin="0"
+            BackgroundColor="#fff"
+            ColumnSpacing="0"
+            HorizontalOptions="FillAndExpand"
+            RowDefinitions="50,*"
+            RowSpacing="0"
+            VerticalOptions="FillAndExpand">
+            <SearchBar
+                Grid.Row="0"
+                BackgroundColor="#fff"
+                Text="{Binding SearchLeave}" />
+            <CollectionView
+                x:Name="Attendance"
+                Grid.Row="1"
+                Margin="5"
+                BackgroundColor="#fff"
+                ItemsSource="{Binding AttendanceLeave}">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="15"
-                                       Orientation="Vertical" />
+                    <LinearItemsLayout ItemSpacing="15" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Margin="0"
-                               Padding="5"
-                               BorderColor="DodgerBlue"
-                               CornerRadius="5"
-                               HasShadow="False">
-                            <Grid Margin="0"
-                                  Padding="0"
-                                  ColumnDefinitions="50,*"
-                                  RowDefinitions="30,.5,30,40,Auto">
-                                <forms:CachedImage Grid.Row="0"
-                                                   Grid.RowSpan="3"
-                                                   Grid.Column="0"
-                                                   Margin="0"
-                                                   HeightRequest="50"
-                                                   WidthRequest="50"
-                                                   VerticalOptions="Start"
-                                                   HorizontalOptions="Start"
-                                                   Aspect="AspectFill"
-                                                   DownsampleToViewSize="True"
-                                                   ErrorPlaceholder="student0.png"
-                                                   LoadingPlaceholder="student0.png"
-                                                   Source="{Binding TmpPicture}">
+                        <Frame
+                            Margin="0"
+                            Padding="5"
+                            BorderColor="DodgerBlue"
+                            CornerRadius="5"
+                            HasShadow="False">
+                            <Grid
+                                Margin="0"
+                                Padding="0"
+                                ColumnDefinitions="50,*"
+                                RowDefinitions="30,.5,30,40,Auto">
+                                <forms:CachedImage
+                                    Grid.Row="0"
+                                    Grid.RowSpan="3"
+                                    Grid.Column="0"
+                                    Margin="0"
+                                    Aspect="AspectFill"
+                                    DownsampleToViewSize="True"
+                                    ErrorPlaceholder="student0.png"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Start"
+                                    LoadingPlaceholder="student0.png"
+                                    Source="{Binding TmpPicture}"
+                                    VerticalOptions="Start"
+                                    WidthRequest="50">
                                     <forms:CachedImage.Transformations>
                                         <transformations:CornersTransformation CornersTransformType="AllRounded" />
                                     </forms:CachedImage.Transformations>
                                 </forms:CachedImage>
-                                <Label Grid.Row="0"
-                                       Grid.Column="1"
-                                       Margin="0"
-                                       Padding="0"
-                                       FontAttributes="Bold"
-                                       FontSize="20"
-                                       HorizontalOptions="Start"
-                                       Text="{Binding TmpLeave}"
-                                       TextColor="#035aa6"
-                                       VerticalTextAlignment="Center" />
-                                <buttons:SfCheckBox x:Name="checkBox"
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    CheckedColor="DodgerBlue"
-                                                    FontSize="14"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    IsChecked="{Binding LeaveLate}"
-                                                    Text="{markupExtension:Translate 00077}">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="0"
+                                    Padding="0"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="Start"
+                                    Text="{Binding TmpLeave}"
+                                    TextColor="#035aa6"
+                                    VerticalTextAlignment="Center" />
+                                <buttons:SfCheckBox
+                                    x:Name="checkBox"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    CheckedColor="DodgerBlue"
+                                    FontSize="14"
+                                    HorizontalOptions="EndAndExpand"
+                                    IsChecked="{Binding LeaveLate}"
+                                    Text="{markupExtension:Translate 00077}">
                                     <buttons:SfCheckBox.Behaviors>
-                                        <behaviors:EventToCommandBehavior Command="{Binding Source={x:Reference Attendance}, Path=BindingContext.AttendanceLeaveCommand}"
-                                                                          CommandParameter="{Binding}"
-                                                                          EventName="StateChanged" />
+                                        <behaviors:EventToCommandBehavior
+                                            Command="{Binding Source={x:Reference Attendance}, Path=BindingContext.AttendanceLeaveCommand}"
+                                            CommandParameter="{Binding}"
+                                            EventName="StateChanged" />
                                     </buttons:SfCheckBox.Behaviors>
                                 </buttons:SfCheckBox>
-                                <BoxView Grid.Row="1"
-                                         Grid.Column="1"
-                                         BackgroundColor="DarkGray" />
-                                <Label Grid.Row="2"
-                                       Grid.Column="1"
-                                       FontSize="16"
-                                       Text="{Binding Name}"
-                                       VerticalTextAlignment="Center" />
-                                <Label Grid.Row="3"
-                                       Grid.Column="0"
-                                       FontSize="14"
-                                       Text="{markupExtension:Translate 00079}"
-                                       VerticalTextAlignment="Center" />
-                                <Frame Grid.Row="3"
-                                       Grid.Column="1"
-                                       Margin="0"
-                                       Padding="0"
-                                       BorderColor="DarkGray"
-                                       HasShadow="False">
-                                    <Grid Margin="0"
-                                          Padding="0"
-                                          ColumnDefinitions="*,Auto"
-                                          ColumnSpacing="0"
-                                          RowSpacing="0">
-                                        <Label Grid.Column="0"
-                                               Grid.ColumnSpan="2"
-                                               FontSize="14"
-                                               HorizontalTextAlignment="Center"
-                                               Text="{Binding ParentName}"
-                                               VerticalTextAlignment="Center" />
-                                        <Image Grid.Column="1"
-                                               Margin="0,0,10,0"
-                                               HeightRequest="15"
-                                               HorizontalOptions="EndAndExpand"
-                                               Source="{markupExtension:ImageResource arrowdown.png}"
-                                               VerticalOptions="CenterAndExpand"
-                                               WidthRequest="15" />
+                                <BoxView
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    BackgroundColor="DarkGray" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    FontSize="16"
+                                    Text="{Binding Name}"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    FontSize="14"
+                                    Text="{markupExtension:Translate 00079}"
+                                    VerticalTextAlignment="Center" />
+                                <Frame
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    Margin="0"
+                                    Padding="0"
+                                    BorderColor="DarkGray"
+                                    HasShadow="False">
+                                    <Grid
+                                        Margin="0"
+                                        Padding="0"
+                                        ColumnDefinitions="*,Auto"
+                                        ColumnSpacing="0"
+                                        RowSpacing="0">
+                                        <Label
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            FontSize="14"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding ParentName}"
+                                            VerticalTextAlignment="Center" />
+                                        <Image
+                                            Grid.Column="1"
+                                            Margin="0,0,10,0"
+                                            HeightRequest="15"
+                                            HorizontalOptions="EndAndExpand"
+                                            Source="{markupExtension:ImageResource arrowdown.png}"
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="15" />
                                     </Grid>
                                 </Frame>
-                                <BoxView Grid.Row="3"
-                                         Grid.Column="1"
-                                         Margin="0"
-                                         BackgroundColor="Transparent">
+                                <BoxView
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    Margin="0"
+                                    BackgroundColor="Transparent">
                                     <BoxView.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={x:Reference Attendance}, Path=BindingContext.SelectPickerCommand}"
-                                                              CommandParameter="{Binding}" />
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference Attendance}, Path=BindingContext.SelectPickerCommand}" CommandParameter="{Binding}" />
                                     </BoxView.GestureRecognizers>
                                 </BoxView>
-                                <Frame Grid.Row="4"
-                                       Grid.Column="0"
-                                       Grid.ColumnSpan="2"
-                                       Margin="0"
-                                       Padding="0"
-                                       BorderColor="DarkGray"
-                                       CornerRadius="5"
-                                       HasShadow="False">
-                                    <renderers:CustomEditor AutoSize="TextChanges"
-                                                            FontSize="14"
-                                                            Placeholder="{markupExtension:Translate 00076}"
-                                                            Text="{Binding LeaveComment}">
+                                <Frame
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    Margin="0"
+                                    Padding="0"
+                                    BorderColor="DarkGray"
+                                    CornerRadius="5"
+                                    HasShadow="False">
+                                    <renderers:CustomEditor
+                                        AutoSize="TextChanges"
+                                        FontSize="14"
+                                        Placeholder="{markupExtension:Translate 00076}"
+                                        Text="{Binding LeaveComment}">
                                         <Editor.Behaviors>
-                                            <behaviors:EventToCommandBehavior Command="{Binding Source={x:Reference Attendance}, Path=BindingContext.AttendanceLeaveCommand}"
-                                                                              CommandParameter="{Binding}"
-                                                                              EventName="Unfocused" />
+                                            <behaviors:EventToCommandBehavior
+                                                Command="{Binding Source={x:Reference Attendance}, Path=BindingContext.AttendanceLeaveCommand}"
+                                                CommandParameter="{Binding}"
+                                                EventName="Unfocused" />
                                         </Editor.Behaviors>
                                     </renderers:CustomEditor>
                                 </Frame>
