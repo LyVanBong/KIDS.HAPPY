@@ -20,10 +20,10 @@
             RowSpacing="0"
             VerticalOptions="FillAndExpand">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".5*" />
+                <ColumnDefinition Width=".2*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width=".5*" />
+                <ColumnDefinition Width=".2*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height=".5*" />
@@ -127,12 +127,23 @@
                             IsChecked="{Binding IsSaveAccountUser}"
                             Color="#5459E6" />
                         <Label
-                            FontSize="16"
+                            FontSize="12"
                             Text="{markup:Translate 00003}"
                             TextColor="Black"
                             VerticalOptions="Center">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="CheckSaveAccount_OnTapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label
+                            FontSize="12"
+                            Text="{markup:Translate 00150}"
+                            TextColor="Black"
+                            FontAttributes="Italic"
+                            VerticalOptions="Center"
+                            HorizontalOptions="EndAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
                             </Label.GestureRecognizers>
                         </Label>
                     </StackLayout>

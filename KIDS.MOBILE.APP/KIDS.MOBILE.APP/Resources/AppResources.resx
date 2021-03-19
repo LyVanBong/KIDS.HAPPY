@@ -677,4 +677,16 @@
     <value>Comment content</value>
     <comment>Nội dung nhận xét</comment>
   </data>
+  <data name="00150" xml:space="preserve">
+    <value>Forgot Password?</value>
+    <comment>Quên mật khẩu?</comment>
+  </data>
+  <data name="00151" xml:space="preserve">
+    <value>Change Password</value>
+    <comment>Thay đổi mật khẩu</comment>
+  </data>
+  <data name="00152" xml:space="preserve">
+    <value>Introduction</value>
+    <comment>Giới thiệu</comment>
+  </data>
 </root>

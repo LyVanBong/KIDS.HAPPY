@@ -32,6 +32,7 @@
     <None Remove="Resources\Images\gender.png" />
     <None Remove="Resources\Images\hygiene.png" />
     <None Remove="Resources\Images\inbox.png" />
+    <None Remove="Resources\Images\information.png" />
     <None Remove="Resources\Images\learn.png" />
     <None Remove="Resources\Images\listpeoples.png" />
     <None Remove="Resources\Images\logout.png" />
@@ -39,6 +40,7 @@
     <None Remove="Resources\Images\message.png" />
     <None Remove="Resources\Images\more.png" />
     <None Remove="Resources\Images\napping.png" />
+    <None Remove="Resources\Images\password.png" />
     <None Remove="Resources\Images\people.png" />
     <None Remove="Resources\Images\phone.png" />
     <None Remove="Resources\Images\phonenum.png" />
@@ -74,12 +76,14 @@
     <EmbeddedResource Include="Resources\Images\gender.png" />
     <EmbeddedResource Include="Resources\Images\hygiene.png" />
     <EmbeddedResource Include="Resources\Images\inbox.png" />
+    <EmbeddedResource Include="Resources\Images\information.png" />
     <EmbeddedResource Include="Resources\Images\learn.png" />
     <EmbeddedResource Include="Resources\Images\listpeoples.png" />
     <EmbeddedResource Include="Resources\Images\logout.png" />
     <EmbeddedResource Include="Resources\Images\message.png" />
     <EmbeddedResource Include="Resources\Images\more.png" />
     <EmbeddedResource Include="Resources\Images\napping.png" />
+    <EmbeddedResource Include="Resources\Images\password.png" />
     <EmbeddedResource Include="Resources\Images\people.png" />
     <EmbeddedResource Include="Resources\Images\phone.png" />
     <EmbeddedResource Include="Resources\Images\phonenum.png" />

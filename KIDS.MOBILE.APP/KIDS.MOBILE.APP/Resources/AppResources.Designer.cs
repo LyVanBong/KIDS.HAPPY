@@ -1319,5 +1319,32 @@ namespace KIDS.MOBILE.APP.Resources {
                 return ResourceManager.GetString("00141", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot Password?.
+        /// </summary>
+        internal static string _00150 {
+            get {
+                return ResourceManager.GetString("00150", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Password.
+        /// </summary>
+        internal static string _00151 {
+            get {
+                return ResourceManager.GetString("00151", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Introduction.
+        /// </summary>
+        internal static string _00152 {
+            get {
+                return ResourceManager.GetString("00152", resourceCulture);
+            }
+        }
     }
 }

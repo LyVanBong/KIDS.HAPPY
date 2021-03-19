@@ -51,7 +51,7 @@
                         BackgroundColor="{StaticResource BackgroundImage}"
                         HeightRequest="150"
                         HorizontalOptions="CenterAndExpand"
-                        Source="{Binding Teacher.AvatarTeacher}"
+                        Source="{Binding ProfilePicture}"
                         VerticalOptions="CenterAndExpand"
                         WidthRequest="150">
                         <Image.Clip>
@@ -60,6 +60,9 @@
                                 RadiusX="75"
                                 RadiusY="75" />
                         </Image.Clip>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                        </Image.GestureRecognizers>
                     </Image>
                     <Frame
                         Grid.Row="1"
@@ -116,7 +119,7 @@
                             x:Name="email"
                             Grid.Row="0"
                             Grid.Column="1"
-                            Placeholder="Username"
+                            Placeholder="Email"
                             Text="{Binding Teacher.Email}"
                             VerticalOptions="CenterAndExpand" />
                     </Grid>
