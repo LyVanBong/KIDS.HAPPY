@@ -677,4 +677,16 @@
     <value>Nội dung nhận xét</value>
     <comment>Nội dung nhận xét</comment>
   </data>
+  <data name="00150" xml:space="preserve">
+    <value>Quên mật khẩu?</value>
+    <comment>Quên mật khẩu?</comment>
+  </data>
+  <data name="00151" xml:space="preserve">
+    <value>Thay đổi mật khẩu</value>
+    <comment>Thay đổi mật khẩu</comment>
+  </data>
+  <data name="00152" xml:space="preserve">
+    <value>Giới thiệu</value>
+    <comment>Giới thiệu</comment>
+  </data>
 </root>

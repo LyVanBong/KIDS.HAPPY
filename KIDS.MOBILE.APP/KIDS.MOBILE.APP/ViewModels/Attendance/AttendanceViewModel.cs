@@ -355,9 +355,20 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
             try
             {
                 var data = await _attendanceService.CountAttendance(_classId, DateTime.Now);
-                if (data.Code > 0)
+                if (data?.Code > 0)
                 {
                     CountAttendance = data.Data.FirstOrDefault();
+                }
+                else
+                {
+                    CountAttendance = new CountAttendanceModel
+                    {
+                        CoMat = 0,
+                        DiMuon = 0,
+                        NghiCoPhep = 0,
+                        NghiKhongPhep = 0,
+                        STT = 0
+                    };
                 }
             }
             catch (Exception e)

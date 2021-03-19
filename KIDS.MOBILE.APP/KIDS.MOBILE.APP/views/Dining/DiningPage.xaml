@@ -11,6 +11,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
     xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+    xmlns:control="clr-namespace:KIDS.MOBILE.APP.Controls.CustomRenderers"
     iOsSpecific:Page.UseSafeArea="True"
     BackgroundColor="{StaticResource BackgroundColorNavBar}"
     NavigationPage.HasNavigationBar="False"
@@ -18,9 +19,9 @@
     <ContentPage.Content>
         <Grid
             Margin="0"
-            Padding="0"
+            Padding="0,0,0,10"
             BackgroundColor="{StaticResource BackgroundApp}"
-            RowDefinitions="40,*">
+            RowDefinitions="40,Auto,40">
             <Grid Grid.Row="0" ColumnDefinitions="auto,*">
                 <navigationView:NavigationView
                     Grid.Column="0"
@@ -64,11 +65,41 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
             </tabView:SfTabView>
+            <Grid Grid.Row="2"
+                  ColumnDefinitions="3*,*"
+                  HeightRequest="40">
+                <Frame Grid.Column="0" Padding="0"
+                       Margin="10,0,10,0"
+                       CornerRadius="{OnPlatform Android=10, iOS=5}"
+                       IsClippedToBounds="True"
+                       BorderColor="Black">
+                    <control:CustomEntry Placeholder="Nhận xét nhanh"
+                            PlaceholderColor="Gray"
+                            FontSize="14"
+                            TextColor="Black"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"/>
+                </Frame>
+
+                <Button BackgroundColor="{StaticResource BackgroundColorNavBar}"
+                        Text="Cập nhật"
+                        TextColor="White"
+                        Grid.Column="1"
+                        CornerRadius="{OnPlatform Android=10, iOS=5}"
+                        Margin="0,0,10,0"
+                        FontSize="12"
+                        Padding="0"
+                        FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"/>
+
+            </Grid>
             <loadingView:LoadingView
-                Grid.Row="1"
-                HorizontalOptions="FillAndExpand"
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                HorizontalOptions="CenterAndExpand"
                 IsVisible="{Binding IsLoading}"
-                VerticalOptions="FillAndExpand" />
+                VerticalOptions="CenterAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
