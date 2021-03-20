@@ -1276,7 +1276,7 @@ namespace KIDS.MOBILE.APP.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to News / Announcements.
+        ///   Looks up a localized string similar to News &amp; Events.
         /// </summary>
         internal static string _00137 {
             get {

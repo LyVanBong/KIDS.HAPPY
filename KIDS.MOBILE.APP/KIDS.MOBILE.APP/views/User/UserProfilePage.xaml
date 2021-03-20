@@ -61,7 +61,7 @@
                                 RadiusY="75" />
                         </Image.Clip>
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                            <TapGestureRecognizer Command="{Binding ChangeImageCommand}" />
                         </Image.GestureRecognizers>
                     </Image>
                     <Frame

@@ -658,8 +658,8 @@
     <comment>Tài khoản</comment>
   </data>
   <data name="00137" xml:space="preserve">
-    <value>News / Announcements</value>
-    <comment>Tin tức / Thông báo</comment>
+    <value>News &amp; Events</value>
+    <comment>Tin tức &amp; Sự kiện</comment>
   </data>
   <data name="00138" xml:space="preserve">
     <value>Quick comment</value>

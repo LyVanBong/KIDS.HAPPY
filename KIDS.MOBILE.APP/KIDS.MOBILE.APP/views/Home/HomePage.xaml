@@ -78,7 +78,7 @@
                     ColumnDefinitions="*,*,*"
                     ColumnSpacing="10"
                     HorizontalOptions="FillAndExpand"
-                    RowDefinitions="0,30,120,120,120,50,150,50,335"
+                    RowDefinitions="0,30,120,120,120,50,150,50,250"
                     RowSpacing="10"
                     VerticalOptions="FillAndExpand">
                     <Grid.Resources>
@@ -480,7 +480,7 @@
                         BackgroundColor="Transparent"
                         HeightRequest="35"
                         HorizontalOptions="EndAndExpand"
-                        Source="addimage.png"
+                        Source="more.png"
                         VerticalOptions="FillAndExpand"
                         WidthRequest="30" />
                     <BoxView
@@ -540,7 +540,7 @@
                         BackgroundColor="Transparent"
                         HeightRequest="30"
                         HorizontalOptions="EndAndExpand"
-                        Source="addnews.png"
+                        Source="more.png"
                         VerticalOptions="FillAndExpand"
                         WidthRequest="30" />
                     <BoxView
@@ -577,10 +577,10 @@
                                         Padding="0"
                                         BackgroundColor="{StaticResource BackgroundApp}"
                                         HorizontalOptions="FillAndExpand"
-                                        RowDefinitions="250,30,20,30"
+                                        RowDefinitions="170,30,20,30"
                                         RowSpacing="0"
                                         VerticalOptions="FillAndExpand"
-                                        WidthRequest="300">
+                                        WidthRequest="200">
                                         <ffimageloading:CachedImage
                                             Grid.Row="0"
                                             Margin="0"
