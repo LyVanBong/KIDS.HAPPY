@@ -28,16 +28,16 @@
             <Frame
                 Grid.Row="2"
                 Grid.RowSpan="2"
-                BackgroundColor="#fff"
                 Margin="10,0"
                 Padding="0"
+                BackgroundColor="#fff"
                 BorderColor="{StaticResource BackgroundColorNavBar}"
                 CornerRadius="20"
                 HasShadow="False">
                 <Grid
                     Margin="0"
-                    BackgroundColor="#fff"
                     Padding="0"
+                    BackgroundColor="#fff"
                     ColumnDefinitions="95,*"
                     ColumnSpacing="0"
                     RowDefinitions="*,*"
@@ -102,7 +102,7 @@
             <BoxView
                 Grid.Row="1"
                 Grid.RowSpan="2"
-                BackgroundColor="#fff"
+                BackgroundColor="Transparent"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
                 <BoxView.GestureRecognizers>
@@ -112,13 +112,13 @@
             <ScrollView
                 Grid.Row="4"
                 Margin="0"
-                BackgroundColor="#fff"
-                Padding="0">
+                Padding="0"
+                BackgroundColor="#fff">
                 <Grid
                     Margin="10,50,10,80"
                     Padding="0"
                     BackgroundColor="#fff"
-                    RowDefinitions="40,40,40,40"
+                    RowDefinitions="40,40,40,40,40"
                     RowSpacing="20"
                     VerticalOptions="StartAndExpand">
                     <Grid.Resources>
@@ -163,8 +163,8 @@
                             <TapGestureRecognizer Tapped="AnimationTap_OnTapped" />
                         </Frame.GestureRecognizers>
                         <Grid ColumnDefinitions="Auto,*">
-                            <Image Grid.Column="0" Source="{markupExtension:ImageResource evolution.png}" />
-                            <Label Grid.Column="1" Text="{markupExtension:Translate 00044}" />
+                            <Image Grid.Column="0" Source="{markupExtension:ImageResource setting.png}" />
+                            <Label Grid.Column="1" Text="{markupExtension:Translate 00045}" />
                         </Grid>
                     </Frame>
                     <Frame Grid.Row="2">
@@ -172,11 +172,20 @@
                             <TapGestureRecognizer Tapped="AnimationTap_OnTapped" />
                         </Frame.GestureRecognizers>
                         <Grid ColumnDefinitions="Auto,*">
-                            <Image Grid.Column="0" Source="{markupExtension:ImageResource setting.png}" />
-                            <Label Grid.Column="1" Text="{markupExtension:Translate 00045}" />
+                            <Image Grid.Column="0" Source="{markupExtension:ImageResource password.png}" />
+                            <Label Grid.Column="1" Text="{markupExtension:Translate 00151}" />
                         </Grid>
                     </Frame>
                     <Frame Grid.Row="3">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AnimationTap_OnTapped" />
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Image Grid.Column="0" Source="{markupExtension:ImageResource information.png}" />
+                            <Label Grid.Column="1" Text="{markupExtension:Translate 00152}" />
+                        </Grid>
+                    </Frame>
+                    <Frame Grid.Row="4">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding LogOutCommand}" Tapped="AnimationTap_OnTapped" />
                         </Frame.GestureRecognizers>

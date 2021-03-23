@@ -10,6 +10,7 @@
     xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+    xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
     iOsSpecific:Page.UseSafeArea="true"
     BackgroundColor="{StaticResource BackgroundColorNavBar}"
     NavigationPage.HasNavigationBar="False"
@@ -22,7 +23,7 @@
             ColumnDefinitions="*,80"
             ColumnSpacing="0"
             HorizontalOptions="FillAndExpand"
-            RowDefinitions="40,*,60"
+            RowDefinitions="40,*"
             RowSpacing="0"
             VerticalOptions="FillAndExpand">
             <Grid
@@ -46,58 +47,25 @@
                     </Grid.GestureRecognizers>
                 </Grid>
             </Grid>
-            <learn1:LearnMorningView
+            <tabView:SfTabView
                 Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Margin="0" />
-
-            <Button
-                Grid.Row="2"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Margin="5"
-                Padding="0"
-                BackgroundColor="#fff"
-                BorderColor="{StaticResource BackgroundColorNavBar}"
-                BorderWidth=".5"
-                Command="{Binding QuickCommentCommand}"
-                CornerRadius="10"
-                HorizontalOptions="CenterAndExpand"
-                Text="{markupExtension:Translate 00138}"
-                TextColor="{StaticResource BackgroundColorNavBar}"
-                WidthRequest="250" />
-
-            <!--<StackLayout
-                Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Margin="0"
-                Padding="5"
-                HorizontalOptions="CenterAndExpand"
-                Orientation="Horizontal"
-                VerticalOptions="FillAndExpand">
-                <StackLayout.Resources>
-                    <Style TargetType="Button">
-                        <Setter Property="CornerRadius" Value="10" />
-                    </Style>
-                </StackLayout.Resources>
-                <Button
-                    BorderColor="{StaticResource BackgroundColorNavBar}"
-                    BorderWidth=".5"
-                    BackgroundColor="#fff"
-                    Text="{markupExtension:Translate 00138}"
-                    TextColor="{StaticResource BackgroundColorNavBar}"
-                    WidthRequest="200" />
-                <Button
-                    BackgroundColor="{StaticResource BackgroundColorNavBar}"
-                    Text="{markupExtension:Translate 00139}"
-                    TextColor="#fff"
-                    WidthRequest="200" />
-            </StackLayout>-->
+                VisibleHeaderCount="2">
+                <tabView:SfTabItem Title="{markupExtension:Translate 00090}" TitleFontSize="18">
+                    <tabView:SfTabItem.Content>
+                        <learn1:LearnMorningView />
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+                <tabView:SfTabItem Title="{markupExtension:Translate 00091}" TitleFontSize="18">
+                    <tabView:SfTabItem.Content>
+                        <learn1:LearnAfternoonView />
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+            </tabView:SfTabView>
             <loadingView:LoadingView
                 Grid.Row="1"
-                Grid.RowSpan="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 IsVisible="{Binding IsLoading}" />

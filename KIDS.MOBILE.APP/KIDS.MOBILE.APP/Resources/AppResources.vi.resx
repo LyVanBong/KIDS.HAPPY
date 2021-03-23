@@ -658,8 +658,8 @@
     <comment>Tài khoản</comment>
   </data>
   <data name="00137" xml:space="preserve">
-    <value>Tin tức / Thông báo</value>
-    <comment>Tin tức / Thông báo</comment>
+    <value>Tin tức &amp; Sự kiện</value>
+    <comment>Tin tức &amp; Sự kiện</comment>
   </data>
   <data name="00138" xml:space="preserve">
     <value>Nhận xét nhanh</value>
@@ -676,5 +676,17 @@
   <data name="00141" xml:space="preserve">
     <value>Nội dung nhận xét</value>
     <comment>Nội dung nhận xét</comment>
+  </data>
+  <data name="00150" xml:space="preserve">
+    <value>Quên mật khẩu?</value>
+    <comment>Quên mật khẩu?</comment>
+  </data>
+  <data name="00151" xml:space="preserve">
+    <value>Thay đổi mật khẩu</value>
+    <comment>Thay đổi mật khẩu</comment>
+  </data>
+  <data name="00152" xml:space="preserve">
+    <value>Giới thiệu</value>
+    <comment>Giới thiệu</comment>
   </data>
 </root>
