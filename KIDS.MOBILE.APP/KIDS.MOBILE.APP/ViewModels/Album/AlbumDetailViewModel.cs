@@ -3,7 +3,6 @@ using KIDS.MOBILE.APP.Controls.Dialogs.ShowImage;
 using KIDS.MOBILE.APP.Models.Album;
 using KIDS.MOBILE.APP.Services.Album;
 using Microsoft.AppCenter.Crashes;
-using Plugin.Media;
 using Prism.Navigation;
 using Prism.Services.Dialogs;
 using System;
@@ -147,32 +146,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Album
         {
             try
             {
-                await CrossMedia.Current.Initialize();
-                if (!CrossMedia.Current.IsPickPhotoSupported)
-                {
-                    return;
-                }
-                //chọn 1 ảnh
-                var file = await CrossMedia.Current.PickPhotoAsync();
-                if (file == null)
-                {
-                    //NumOfPic = AppResources._00108;
-                    return;
-                }
-                //NumOfPic = file.AlbumPath;
-                Image image = new Image();
-
-                AlbumDetailModel detail = new AlbumDetailModel()
-                {
-                    ImageURL = file.AlbumPath
-                };
-                ImageData.Add(detail);
-                image.Source = ImageSource.FromStream(() =>
-                {
-                    var stream = file.GetStream();
-                    file.Dispose();
-                    return stream;
-                });
+                
             }
             catch
             {

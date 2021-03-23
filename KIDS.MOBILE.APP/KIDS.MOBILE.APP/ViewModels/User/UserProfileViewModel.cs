@@ -3,16 +3,16 @@ using KIDS.MOBILE.APP.Models.User;
 using KIDS.MOBILE.APP.Resources;
 using KIDS.MOBILE.APP.Services.User;
 using Microsoft.AppCenter.Crashes;
-using Plugin.Media;
-using Plugin.Media.Abstractions;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.ViewModels.User
@@ -146,37 +146,78 @@ namespace KIDS.MOBILE.APP.ViewModels.User
         {
             _navigationService.GoBackAsync();
         }
-
         private async Task ChangeProfilePicture()
         {
-            await CrossMedia.Current.Initialize();
-            if (!CrossMedia.Current.IsPickPhotoSupported)
+            try
             {
-                await App.Current.MainPage.DisplayAlert("Not supported", "Your device does not currently support this functionality", "Ok");
-                return;
+                if (IsLoading) return;
+                IsLoading = true;
+                IActionSheetButton ThuVien = ActionSheetButton.CreateButton("Thư viện", new DelegateCommand(async () => await ChonAnh()));
+                IActionSheetButton MayAnh = ActionSheetButton.CreateButton("Máy ảnh", new DelegateCommand(async () => await DungMayAnh()));
+                IActionSheetButton cancelAction = ActionSheetButton.CreateCancelButton("Bỏ qua", new DelegateCommand(() => { return; }));
+                await _pageDialogService.DisplayActionSheetAsync("Chọn ảnh đại diện", cancelAction, null, ThuVien, MayAnh);
             }
-            var mediaOptions = new PickMediaOptions()
+            catch (Exception e)
             {
-                PhotoSize = PhotoSize.Medium
-            };
-            var selectedImageFile = await CrossMedia.Current.PickPhotoAsync(mediaOptions);
+                Crashes.TrackError(e);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+        }
 
-            if (selectedImageFile == null)
+        private async Task DungMayAnh()
+        {
+            try
             {
-                await App.Current.MainPage.DisplayAlert("Error", "Could not get the image, please try again.", "Ok");
-                return;
+                if (IsLoading) return;
+                IsLoading = true;
+                var capture = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions()
+                {
+                    Title = "Chụp ảnh"
+                });
+                if (capture != null)
+                {
+                    var stream = await capture.OpenReadAsync();
+                    ProfilePicture = ImageSource.FromStream(() => stream);
+                }
             }
-            ProfilePicture = ImageSource.FromStream(() => selectedImageFile.GetStream());
-            var tempUrl = Teacher.Picture;
-            Teacher.Picture = ImageSourceToBase64(ProfilePicture);
-            await UpdateProfile();
-            //var result = await _userService.UpdateInfoUser(User);
-            //if (result == null || result.Data < 0)
-            //{
-            //    await _pageDialogService.DisplayAlertAsync(Resource._00002, Resource._00063, "OK");
-            //    User.Picture = tempUrl;
-            //    ProfilePicture = ImageSource.FromUri(new Uri(Teacher.AvatarTeacher));
-            //}
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+        }
+
+        private async Task ChonAnh()
+        {
+            try
+            {
+                if (IsLoading) return;
+                IsLoading = true;
+                var photo = await MediaPicker.PickPhotoAsync(new MediaPickerOptions()
+                {
+                    Title = "Chọn ảnh"
+                });
+                if (photo != null)
+                {
+                    var stream = await photo.OpenReadAsync();
+                    ProfilePicture = ImageSource.FromStream(() => stream);
+                }
+            }
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+
         }
     }
 }
