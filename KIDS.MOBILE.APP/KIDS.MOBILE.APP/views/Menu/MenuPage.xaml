@@ -37,7 +37,7 @@
                 <Grid
                     Margin="0"
                     Padding="0"
-                    BackgroundColor="#fff"
+                    BackgroundColor="Transparent"
                     ColumnDefinitions="95,*"
                     ColumnSpacing="0"
                     RowDefinitions="*,*"
@@ -103,6 +103,7 @@
                 Grid.Row="1"
                 Grid.RowSpan="2"
                 BackgroundColor="Transparent"
+                CornerRadius="20"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
                 <BoxView.GestureRecognizers>

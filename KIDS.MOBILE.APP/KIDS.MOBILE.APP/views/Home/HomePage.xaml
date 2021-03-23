@@ -509,6 +509,7 @@
                                     Margin="0"
                                     Padding="0"
                                     BackgroundColor="{StaticResource BackgroundApp}"
+                                    CornerRadius="0"
                                     HasShadow="False">
                                     <ffimageloading:CachedImage
                                         Aspect="AspectFill"
@@ -567,7 +568,7 @@
                                 <Frame
                                     Margin="0"
                                     Padding="0"
-                                    CornerRadius="10"
+                                    CornerRadius="0"
                                     HasShadow="False">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Source={x:Reference LsNewsData}, Path=BindingContext.DetailNewsCommand}" CommandParameter="{Binding}" />
@@ -580,7 +581,7 @@
                                         RowDefinitions="170,30,20,30"
                                         RowSpacing="0"
                                         VerticalOptions="FillAndExpand"
-                                        WidthRequest="200">
+                                        WidthRequest="250">
                                         <ffimageloading:CachedImage
                                             Grid.Row="0"
                                             Margin="0"
