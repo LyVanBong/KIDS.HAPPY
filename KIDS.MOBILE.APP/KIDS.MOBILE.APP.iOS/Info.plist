@@ -63,11 +63,5 @@
     <string>1. Our app does not request this permission or utilize this functionality but it is included in our info.plist since our app utilizes the react-native-permissions library, which references this permission in its code.</string>
     <key>NSCameraUsageDescription</key>
     <string>This app needs access to the camera to take photos.</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>This app needs access to microphone for taking videos.</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>This app needs access to the photo gallery for picking photos and videos.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>This app needs access to photos gallery for picking photos and videos.</string>
   </dict>
 </plist>

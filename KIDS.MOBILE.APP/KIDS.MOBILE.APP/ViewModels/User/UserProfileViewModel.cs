@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -150,20 +151,12 @@ namespace KIDS.MOBILE.APP.ViewModels.User
         {
             try
             {
-                if (IsLoading) return;
-                IsLoading = true;
-                IActionSheetButton ThuVien = ActionSheetButton.CreateButton("Thư viện", new DelegateCommand(async () => await ChonAnh()));
-                IActionSheetButton MayAnh = ActionSheetButton.CreateButton("Máy ảnh", new DelegateCommand(async () => await DungMayAnh()));
-                IActionSheetButton cancelAction = ActionSheetButton.CreateCancelButton("Bỏ qua", new DelegateCommand(() => { return; }));
-                await _pageDialogService.DisplayActionSheetAsync("Chọn ảnh đại diện", cancelAction, null, ThuVien, MayAnh);
+
+                await _pageDialogService.DisplayActionSheetAsync("Chọn ảnh đại diện", ActionSheetButton.CreateCancelButton("Bỏ qua"), null, ActionSheetButton.CreateButton("Thư viên", async () => await ChonAnh()), ActionSheetButton.CreateButton("Máy ảnh", async () => await DungMayAnh()));
             }
             catch (Exception e)
             {
                 Crashes.TrackError(e);
-            }
-            finally
-            {
-                IsLoading = false;
             }
         }
 
@@ -171,8 +164,6 @@ namespace KIDS.MOBILE.APP.ViewModels.User
         {
             try
             {
-                if (IsLoading) return;
-                IsLoading = true;
                 var capture = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions()
                 {
                     Title = "Chụp ảnh"
@@ -187,18 +178,12 @@ namespace KIDS.MOBILE.APP.ViewModels.User
             {
                 Crashes.TrackError(e);
             }
-            finally
-            {
-                IsLoading = false;
-            }
         }
 
         private async Task ChonAnh()
         {
             try
             {
-                if (IsLoading) return;
-                IsLoading = true;
                 var photo = await MediaPicker.PickPhotoAsync(new MediaPickerOptions()
                 {
                     Title = "Chọn ảnh"
@@ -213,11 +198,6 @@ namespace KIDS.MOBILE.APP.ViewModels.User
             {
                 Crashes.TrackError(e);
             }
-            finally
-            {
-                IsLoading = false;
-            }
-
         }
     }
 }

@@ -16,6 +16,7 @@ namespace KIDS.MOBILE.APP.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             base.OnCreate(bundle);
+            Xamarin.Essentials.Platform.Init(this, bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
             OtherLibraries(bundle);
             LoadApplication(new App(new DroidInitializer()));
