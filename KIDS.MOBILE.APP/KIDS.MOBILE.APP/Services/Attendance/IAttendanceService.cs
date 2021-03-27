@@ -53,8 +53,9 @@ namespace KIDS.MOBILE.APP.Services.Attendance
         /// Thống kê điểm danh học trinh trong lớp học
         /// </summary>
         /// <param name="classId"></param>
-        /// <param name="date"></param>
+        /// <param name="fromDate"></param>
+        /// <param name="toDate"></param>
         /// <returns></returns>
-        Task<ResponseModel<IEnumerable<CountAttendanceModel>>> CountAttendance(string classId, DateTime date);
+        Task<ResponseModel<IEnumerable<CountAttendanceModel>>> CountAttendance(string classId, string fromDate, string toDate);
     }
 }

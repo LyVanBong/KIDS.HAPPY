@@ -12,7 +12,7 @@
     xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     mc:Ignorable="d">
     <ContentView.Content>
-        <Grid BackgroundColor="#fff" RowDefinitions="60,50,*">
+        <Grid BackgroundColor="#fff" RowDefinitions="60,Auto,*">
             <Frame
                 Grid.Row="0"
                 Margin="5"
@@ -123,8 +123,8 @@
                                 Padding="0"
                                 ColumnDefinitions="50,*,*"
                                 ColumnSpacing="2"
-                                RowDefinitions="20,15,15,Auto"
-                                RowSpacing="10">
+                                RowDefinitions="20,20,20,60"
+                                RowSpacing="5">
                                 <Grid.Resources>
                                     <ResourceDictionary>
                                         <Style TargetType="RadioButton">
@@ -155,6 +155,7 @@
                                     Grid.Column="1"
                                     Grid.ColumnSpan="2"
                                     Padding="6,0,0,0"
+                                    FontSize="14"
                                     HorizontalOptions="StartAndExpand"
                                     Text="{Binding Name}"
                                     TextColor="#000000" />
@@ -163,36 +164,48 @@
                                     Grid.Column="1"
                                     Content="{markupExtension:Translate 00068}"
                                     IsChecked="{Binding CoMat}">
-                                    <RadioButton.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={x:Reference Attendance}, Path=BindingContext.AttendanceComeCommand}" CommandParameter="{Binding}" />
-                                    </RadioButton.GestureRecognizers>
+                                    <RadioButton.Behaviors>
+                                        <behaviors:EventToCommandBehavior
+                                            Command="{Binding Source={x:Reference Attendance}, Path=BindingContext.AttendanceComeCommand}"
+                                            CommandParameter="{Binding}"
+                                            EventName="CheckedChanged" />
+                                    </RadioButton.Behaviors>
                                 </RadioButton>
                                 <RadioButton
                                     Grid.Row="1"
                                     Grid.Column="2"
                                     Content="{markupExtension:Translate 00069}"
                                     IsChecked="{Binding NghiCoPhep}">
-                                    <RadioButton.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={x:Reference Attendance}, Path=BindingContext.AttendanceComeCommand}" CommandParameter="{Binding}" />
-                                    </RadioButton.GestureRecognizers>
+                                    <RadioButton.Behaviors>
+                                        <behaviors:EventToCommandBehavior
+                                            Command="{Binding Source={x:Reference Attendance}, Path=BindingContext.AttendanceComeCommand}"
+                                            CommandParameter="{Binding}"
+                                            EventName="CheckedChanged" />
+                                    </RadioButton.Behaviors>
                                 </RadioButton>
                                 <RadioButton
                                     Grid.Row="2"
                                     Grid.Column="1"
                                     Content="{markupExtension:Translate 00070}"
                                     IsChecked="{Binding NghiKhongPhep}">
-                                    <RadioButton.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={x:Reference Attendance}, Path=BindingContext.AttendanceComeCommand}" CommandParameter="{Binding}" />
-                                    </RadioButton.GestureRecognizers>
+                                    <RadioButton.Behaviors>
+                                        <behaviors:EventToCommandBehavior
+                                            Command="{Binding Source={x:Reference Attendance}, Path=BindingContext.AttendanceComeCommand}"
+                                            CommandParameter="{Binding}"
+                                            EventName="CheckedChanged" />
+                                    </RadioButton.Behaviors>
                                 </RadioButton>
                                 <RadioButton
                                     Grid.Row="2"
                                     Grid.Column="2"
                                     Content="{markupExtension:Translate 00071}"
                                     IsChecked="{Binding DiMuon}">
-                                    <RadioButton.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={x:Reference Attendance}, Path=BindingContext.AttendanceComeCommand}" CommandParameter="{Binding}" />
-                                    </RadioButton.GestureRecognizers>
+                                    <RadioButton.Behaviors>
+                                        <behaviors:EventToCommandBehavior
+                                            Command="{Binding Source={x:Reference Attendance}, Path=BindingContext.AttendanceComeCommand}"
+                                            CommandParameter="{Binding}"
+                                            EventName="CheckedChanged" />
+                                    </RadioButton.Behaviors>
                                 </RadioButton>
                                 <Frame
                                     Grid.Row="3"

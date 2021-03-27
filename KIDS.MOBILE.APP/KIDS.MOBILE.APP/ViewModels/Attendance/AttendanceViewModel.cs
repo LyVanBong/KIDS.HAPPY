@@ -350,11 +350,13 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
             }
         }
 
-        private async Task AttendanceCount()
+        private async Task AttendanceCount(string fromDate = null, string toDate = null)
         {
             try
             {
-                var data = await _attendanceService.CountAttendance(_classId, DateTime.Now);
+                if (fromDate == null && toDate == null)
+                    fromDate = toDate = DateTime.Now.ToString("yyyy/MM/dd");
+                var data = await _attendanceService.CountAttendance(_classId, fromDate, toDate);
                 if (data?.Code > 0)
                 {
                     CountAttendance = data.Data.FirstOrDefault();

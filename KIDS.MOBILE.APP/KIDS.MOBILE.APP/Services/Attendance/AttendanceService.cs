@@ -100,14 +100,15 @@ namespace KIDS.MOBILE.APP.Services.Attendance
             }
         }
 
-        public async Task<ResponseModel<IEnumerable<CountAttendanceModel>>> CountAttendance(string classId, DateTime date)
+        public async Task<ResponseModel<IEnumerable<CountAttendanceModel>>> CountAttendance(string classId, string fromDate, string toDate)
         {
             try
             {
                 var parameters = new List<RequestParameter>
                 {
                     new RequestParameter("ClassId",classId),
-                    new RequestParameter("Date",date.ToString("yyyy/MM/dd")),
+                    new RequestParameter("FromDate",fromDate),
+                    new RequestParameter("ToDate",toDate),
                 };
                 var data = await _requestProvider.GetAsync<IEnumerable<CountAttendanceModel>>("Attendance/Count", parameters);
                 return data;
