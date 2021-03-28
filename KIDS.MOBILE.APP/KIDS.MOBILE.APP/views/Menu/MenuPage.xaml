@@ -173,7 +173,10 @@
                     </Frame>
                     <Frame Grid.Row="2">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="AnimationTap_OnTapped" />
+                            <TapGestureRecognizer
+                                Command="{Binding SelectFeatureCommad}"
+                                CommandParameter="1"
+                                Tapped="AnimationTap_OnTapped" />
                         </Frame.GestureRecognizers>
                         <Grid ColumnDefinitions="Auto,*">
                             <Image Grid.Column="0" Source="{markupExtension:ImageResource password.png}" />

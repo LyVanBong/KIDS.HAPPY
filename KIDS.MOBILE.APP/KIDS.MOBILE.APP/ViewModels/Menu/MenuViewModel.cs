@@ -86,7 +86,10 @@ namespace KIDS.MOBILE.APP.ViewModels.Menu
                 switch (key)
                 {
                     case "0":
-                        await _navigationService.NavigateAsync("SettingPage?pass=" + UserData.Password+"&user="+UserData.NickName,null,true);
+                        await _navigationService.NavigateAsync("SettingPage",null,true);
+                        break;
+                    case "1":
+                        await _navigationService.NavigateAsync("ChangePasswordPage?pass=" + UserData.Password + "&user=" + UserData.NickName, null, true);
                         break;
 
                     default:

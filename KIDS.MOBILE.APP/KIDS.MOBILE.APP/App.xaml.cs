@@ -74,7 +74,9 @@ using Prism.Unity;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using KIDS.MOBILE.APP.ViewModels.ChangePass;
 using KIDS.MOBILE.APP.ViewModels.Setting;
+using KIDS.MOBILE.APP.views.ChangePass;
 using KIDS.MOBILE.APP.views.Setting;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -234,6 +236,7 @@ namespace KIDS.MOBILE.APP
 
             #region Registry Page - ViewModel
 
+            containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordViewModel>();
             containerRegistry.RegisterForNavigation<SettingPage, SettingViewModel>();
             containerRegistry.RegisterForNavigation<MessageDetailPage, MessageDetailViewModel>();
             containerRegistry.RegisterForNavigation<EvaluationCriteriaPage, EvaluationCriteriaViewModel>();

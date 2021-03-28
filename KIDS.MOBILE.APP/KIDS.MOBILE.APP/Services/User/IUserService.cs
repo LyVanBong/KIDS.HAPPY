@@ -8,6 +8,13 @@ namespace KIDS.MOBILE.APP.Services.User
     public interface IUserService
     {
         /// <summary>
+        /// Đổi mật khẩu
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="passwd"></param>
+        /// <returns></returns>
+        Task<ResponseModel<string>> ChangePasswd(string userName, string passwd);
+        /// <summary>
         /// lấy danh sách học sinh trong một lớp học
         /// </summary>
         /// <param name="classId"></param>

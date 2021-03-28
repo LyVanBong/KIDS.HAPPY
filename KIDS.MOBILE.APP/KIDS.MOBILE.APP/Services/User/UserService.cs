@@ -5,6 +5,7 @@ using KIDS.MOBILE.APP.Services.RequestProvider;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AppCenter.Crashes;
 
 namespace KIDS.MOBILE.APP.Services.User
 {
@@ -15,6 +16,26 @@ namespace KIDS.MOBILE.APP.Services.User
         public UserService(IRequestProvider requestProvider)
         {
             _requestProvider = requestProvider;
+        }
+
+        public async Task<ResponseModel<string>> ChangePasswd(string userName, string passwd)
+        {
+            try
+            {
+                var parameters = new List<RequestParameter>
+                {
+                    new RequestParameter("UserName",userName),
+                    new RequestParameter("PassWord",passwd),
+                };
+                var data = await _requestProvider.PostAsync<string>("ChangePassWord", parameters);
+                return data;
+            }
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
+            }
+
+            return null;
         }
 
         public async Task<ResponseModel<IEnumerable<StudentModel>>> GetStudents(string classId)

@@ -128,9 +128,7 @@
     <Folder Include="Converters\" />
     <Folder Include="Themes\" />
     <Folder Include="ViewModels\Guid\" />
-    <Folder Include="ViewModels\ChangePass\" />
     <Folder Include="ViewModels\Setting\" />
-    <Folder Include="views\ChangePass\" />
     <Folder Include="views\Guid\" />
     <Folder Include="views\Notification\" />
   </ItemGroup>
@@ -189,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Update="views\Assessment\WeeklyAssessmentView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="views\ChangePass\ChangePasswordPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="views\Dining\BreakfastView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
