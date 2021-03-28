@@ -120,7 +120,7 @@
             <Image
                 Grid.Row="2"
                 Grid.Column="1"
-                Margin="10"
+                Margin="20"
                 Aspect="AspectFill"
                 BackgroundColor="Transparent"
                 HorizontalOptions="FillAndExpand"

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KIDS.MOBILE.APP.views.Album.AddPhotoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}">
+    <Grid BackgroundColor="#fff" RowDefinitions="40,Auto,Auto,70,*">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <Style TargetType="textInputLayout:SfTextInputLayout">
+                    <Setter Property="Margin" Value="10,0" />
+                </Style>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <Grid
+            Margin="0"
+            Padding="0"
+            BackgroundColor="{StaticResource BackgroundColorNavBar}"
+            ColumnDefinitions="*,80">
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource TitleNavigation}"
+                Text="{Binding PhotoModel.Title}" />
+            <Image
+                x:Name="Image"
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="10"
+                BackgroundColor="Transparent"
+                HorizontalOptions="EndAndExpand"
+                Source="{markupExtension:ImageResource close.png}"
+                VerticalOptions="FillAndExpand"
+                WidthRequest="40" />
+            <BoxView
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{prism:GoBack}" />
+                </BoxView.GestureRecognizers>
+            </BoxView>
+        </Grid>
+        <textInputLayout:SfTextInputLayout
+            Grid.Row="1"
+            ContainerType="Outlined"
+            FocusedColor="#5459E6"
+            Hint="{Binding PhotoModel.CaptionHeader}"
+            UnfocusedColor="#1b1b2f">
+            <Entry
+                ClearButtonVisibility="WhileEditing"
+                HeightRequest="60"
+                Keyboard="Email"
+                MaxLength="250"
+                ReturnType="Next"
+                Text="{Binding CaptionContent}"
+                TextColor="Black" />
+        </textInputLayout:SfTextInputLayout>
+        <textInputLayout:SfTextInputLayout
+            Grid.Row="2"
+            ContainerType="Outlined"
+            FocusedColor="#5459E6"
+            Hint="{Binding PhotoModel.BodyHeader}"
+            UnfocusedColor="#1b1b2f">
+            <Editor
+                HeightRequest="200"
+                Text="{Binding BodyContent}"
+                TextColor="Black" />
+        </textInputLayout:SfTextInputLayout>
+        <Grid
+            Grid.Row="3"
+            Margin="10"
+            ColumnDefinitions="*,*">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <Style TargetType="Button">
+                        <Setter Property="CornerRadius" Value="10" />
+                        <Setter Property="BackgroundColor" Value="#fff" />
+                        <Setter Property="BorderWidth" Value="1" />
+                        <Setter Property="BorderColor" Value="{StaticResource BackgroundColorNavBar}" />
+                        <Setter Property="FontSize" Value="15" />
+                    </Style>
+                </ResourceDictionary>
+            </Grid.Resources>
+            <Button
+                Grid.Column="0"
+                Command="{Binding SelectFeatureCommand}"
+                CommandParameter="0"
+                ImageSource="{markupExtension:ImageResource icon_camera.png}"
+                Text="Chọn ảnh" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding SelectFeatureCommand}"
+                CommandParameter="1"
+                Text="Đăng" />
+        </Grid>
+    </Grid>
+</ContentPage>

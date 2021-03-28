@@ -82,7 +82,11 @@ namespace KIDS.MOBILE.APP.ViewModels.Album
 
         private void AddNewAlbum()
         {
-            _dialogService.ShowDialog(nameof(PostAlbumDialog));
+            if (IsLoading)
+                return;
+            IsLoading = true;
+            _navigationService.NavigateAsync(nameof(AddPhotoPage), new NavigationParameters("?key=0"), true);
+            IsLoading = false;
         }
 
         private void AlbumDetail(AlbumModel obj)

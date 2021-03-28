@@ -10,9 +10,10 @@ namespace KIDS.MOBILE.APP.Services.Album
         /// <summary>
         /// Lấy chi tiết một album
         /// </summary>
-        /// <param name="AlbumID"></param>
+        /// <param name="idAlbum"></param>
+        /// <param name="idUser"></param>
         /// <returns></returns>
-        Task<ResponseModel<IEnumerable<AlbumDetailModel>>> GetAlbumDetail(string AlbumID);
+        Task<ResponseModel<IEnumerable<AlbumDetailModel>>> GetAlbumDetail(string idAlbum, string idUser);
 
         /// <summary>
         /// Thêm hình ảnh vào album

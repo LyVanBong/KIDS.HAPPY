@@ -480,7 +480,7 @@
                         BackgroundColor="Transparent"
                         HeightRequest="35"
                         HorizontalOptions="EndAndExpand"
-                        Source="more.png"
+                        Source="{markupExtension:ImageResource more.png}"
                         VerticalOptions="FillAndExpand"
                         WidthRequest="30" />
                     <BoxView
@@ -541,7 +541,7 @@
                         BackgroundColor="Transparent"
                         HeightRequest="30"
                         HorizontalOptions="EndAndExpand"
-                        Source="more.png"
+                        Source="{markupExtension:ImageResource more.png}"
                         VerticalOptions="FillAndExpand"
                         WidthRequest="30" />
                     <BoxView

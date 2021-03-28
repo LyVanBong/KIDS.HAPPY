@@ -31,6 +31,7 @@
     <None Remove="Resources\Images\evolution.png" />
     <None Remove="Resources\Images\gender.png" />
     <None Remove="Resources\Images\hygiene.png" />
+    <None Remove="Resources\Images\icon_camera.png" />
     <None Remove="Resources\Images\inbox.png" />
     <None Remove="Resources\Images\information.png" />
     <None Remove="Resources\Images\learn.png" />
@@ -75,6 +76,7 @@
     <EmbeddedResource Include="Resources\Images\evolution.png" />
     <EmbeddedResource Include="Resources\Images\gender.png" />
     <EmbeddedResource Include="Resources\Images\hygiene.png" />
+    <EmbeddedResource Include="Resources\Images\icon_camera.png" />
     <EmbeddedResource Include="Resources\Images\inbox.png" />
     <EmbeddedResource Include="Resources\Images\information.png" />
     <EmbeddedResource Include="Resources\Images\learn.png" />
@@ -178,6 +180,9 @@
     <EmbeddedResource Update="Resources\AppResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="views\Album\AddPhotoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="views\Assessment\AssessmentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

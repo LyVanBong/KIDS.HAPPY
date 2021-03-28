@@ -100,10 +100,10 @@ namespace KIDS.MOBILE.APP.ViewModels.Album
                     return;
                 }
             }
-            await InitializationAlbumDetail(AlbumID, isNotif);
+            await InitializationAlbumDetail(AlbumData, isNotif);
         }
 
-        private async Task InitializationAlbumDetail(string AlbumID, bool isNotif)
+        private async Task InitializationAlbumDetail(AlbumModel dataAlbum, bool isNotif)
         {
             try
             {
@@ -118,7 +118,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Album
                     else
                         AlbumData = new ObservableCollection<AlbumModel>().FirstOrDefault();
                 }
-                var imageData = await _albumDetailService.GetAlbumDetail(AlbumID);
+                var imageData = await _albumDetailService.GetAlbumDetail(dataAlbum.AlbumID, dataAlbum.UserCreate);
                 if (imageData != null)
                 {
                     if (imageData.Code > 0)
@@ -146,7 +146,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Album
         {
             try
             {
-                
+
             }
             catch
             {

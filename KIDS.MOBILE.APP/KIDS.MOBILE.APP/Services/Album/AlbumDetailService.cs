@@ -17,13 +17,14 @@ namespace KIDS.MOBILE.APP.Services.Album
             _requestProvider = requestProvider;
         }
 
-        public async Task<ResponseModel<IEnumerable<AlbumDetailModel>>> GetAlbumDetail(string AlbumID)
+        public async Task<ResponseModel<IEnumerable<AlbumDetailModel>>> GetAlbumDetail(string idAlbum,string idUser)
         {
             try
             {
                 var parameters = new List<RequestParameter>
                 {
-                    new RequestParameter("AlbumID",AlbumID),
+                    new RequestParameter("AlbumID",idAlbum),
+                    new RequestParameter("GiaoVien_PhuHuynhClick",idUser),
                 };
                 var data = await _requestProvider.GetAsync<IEnumerable<AlbumDetailModel>>("Album/Detail/", parameters);
                 return data;

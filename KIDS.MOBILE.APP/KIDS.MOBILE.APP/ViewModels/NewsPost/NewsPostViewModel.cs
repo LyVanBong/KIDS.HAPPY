@@ -11,6 +11,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using KIDS.MOBILE.APP.views.Album;
 using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.ViewModels.NewsPost
@@ -59,7 +60,11 @@ namespace KIDS.MOBILE.APP.ViewModels.NewsPost
 
         private void AddNewsPost()
         {
-            _dialogService.ShowDialog(nameof(PostNewsDialog));
+            if (IsLoading)
+                return;
+            IsLoading = true;
+            _navigationService.NavigateAsync(nameof(AddPhotoPage), new NavigationParameters("?key=1"), true);
+            IsLoading = false;
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)

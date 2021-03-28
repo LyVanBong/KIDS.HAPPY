@@ -5,11 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
     xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    iOsSpecific:Page.UseSafeArea="true"
+    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
     BackgroundColor="{StaticResource BackgroundColorNavBar}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -21,38 +20,11 @@
             ColumnDefinitions="*,80"
             RowDefinitions="40,*,80"
             RowSpacing="0">
-            <BoxView
+            <navigationView:NavigationView
                 Grid.Row="0"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
-                Margin="0"
-                BackgroundColor="{StaticResource BackgroundColorNavBar}"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand" />
-            <Label
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Style="{StaticResource TitleNavigation}"
                 Text="{markupExtension:Translate 00027}" />
-            <Image
-                Grid.Row="0"
-                Grid.Column="1"
-                Margin="10"
-                BackgroundColor="Transparent"
-                HorizontalOptions="EndAndExpand"
-                Source="{markupExtension:ImageResource close.png}"
-                VerticalOptions="FillAndExpand"
-                WidthRequest="40" />
-            <BoxView
-                Grid.Row="0"
-                Grid.Column="1"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
-                <BoxView.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoBackCommand}" />
-                </BoxView.GestureRecognizers>
-            </BoxView>
             <CollectionView
                 x:Name="LsAlbumData"
                 Grid.Row="1"
@@ -85,12 +57,13 @@
                                 Margin="0"
                                 Padding="0"
                                 ColumnSpacing="0"
+                                HeightRequest="250"
                                 RowDefinitions="*,30"
                                 RowSpacing="0">
                                 <forms:CachedImage
                                     Grid.Row="0"
-                                    Margin="0"
-                                    Aspect="AspectFill"
+                                    Margin="3"
+                                    Aspect="AspectFit"
                                     ErrorPlaceholder="news.png"
                                     LoadingPlaceholder="news.png"
                                     Source="{Binding UriImage}" />
@@ -115,8 +88,8 @@
             <Image
                 Grid.Row="2"
                 Grid.Column="1"
-                Margin="10"
-                Aspect="AspectFill"
+                Margin="20"
+                Aspect="AspectFit"
                 BackgroundColor="Transparent"
                 HorizontalOptions="FillAndExpand"
                 Source="{markupExtension:ImageResource add-image.png}"
