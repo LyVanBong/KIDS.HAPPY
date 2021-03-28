@@ -14,6 +14,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using KIDS.MOBILE.APP.views.Setting;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -62,6 +64,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Menu
         private bool _isLoading;
 
         public ICommand ProfileCommand { get; set; }
+        public ICommand SelectFeatureCommad { get; private set; }
 
         public MenuViewModel(INavigationService navigationService, IDatabaseService databaseService, IPageDialogService pageDialogService, IUserService userService)
         {
@@ -71,6 +74,33 @@ namespace KIDS.MOBILE.APP.ViewModels.Menu
             _navigationService = navigationService;
             LogOutCommand = new Command(async () => await LogOut());
             ProfileCommand = new Command(async () => await Profile());
+            SelectFeatureCommad = new AsyncCommand<string>(async (key) => await SelectFeature(key));
+        }
+
+        private async Task SelectFeature(string key)
+        {
+            try
+            {
+                if (IsLoading || key == null) return;
+                IsLoading = true;
+                switch (key)
+                {
+                    case "0":
+                        await _navigationService.NavigateAsync("SettingPage?pass=" + UserData.Password+"&user="+UserData.NickName,null,true);
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         private async Task Profile()

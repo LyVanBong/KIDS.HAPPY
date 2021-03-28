@@ -74,6 +74,8 @@ using Prism.Unity;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using KIDS.MOBILE.APP.ViewModels.Setting;
+using KIDS.MOBILE.APP.views.Setting;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Device = Xamarin.Forms.Device;
@@ -232,6 +234,7 @@ namespace KIDS.MOBILE.APP
 
             #region Registry Page - ViewModel
 
+            containerRegistry.RegisterForNavigation<SettingPage, SettingViewModel>();
             containerRegistry.RegisterForNavigation<MessageDetailPage, MessageDetailViewModel>();
             containerRegistry.RegisterForNavigation<EvaluationCriteriaPage, EvaluationCriteriaViewModel>();
             containerRegistry.RegisterForNavigation<EvaluatePage, EvaluateViewModel>();

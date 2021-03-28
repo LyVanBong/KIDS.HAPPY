@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KIDS.MOBILE.APP.views.Setting.SettingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource BackgroundColorNavBar}">
+    <Grid BackgroundColor="#fff">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <Style TargetType="Label">
+                    <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                    <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                    <Setter Property="TextColor" Value="Black" />
+                    <Setter Property="Margin" Value="5" />
+                    <Setter Property="FontSize" Value="16" />
+                </Style>
+                <Style TargetType="Frame">
+                    <Setter Property="Margin" Value="10" />
+                    <Setter Property="Padding" Value="5" />
+                    <Setter Property="BorderColor" Value="{StaticResource BackgroundColorNavBar}" />
+                    <Setter Property="HasShadow" Value="False" />
+                    <Setter Property="CornerRadius" Value="10" />
+                    <Setter Property="BackgroundColor" Value="Transparent" />
+                    <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                    <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                </Style>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <navigationView:NavigationView
+            Grid.Row="0"
+            BackgroundColor="{StaticResource BackgroundColorNavBar}"
+            Text="Cài đặt" />
+
+
+        <Frame Grid.Row="1">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" />
+            </Frame.GestureRecognizers>
+            <Label Text="Nhận thông báo từ phía nhà trường" />
+        </Frame>
+        <!--<Frame Grid.Row="2">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped2" />
+            </Frame.GestureRecognizers>
+            <Label Text="Thông tin về ứng dụng" />
+        </Frame>-->
+    </Grid>
+</ContentPage>
