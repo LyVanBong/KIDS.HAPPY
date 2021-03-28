@@ -74,11 +74,11 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <forms:CachedImage
-                                Aspect="Fill"
+                                Aspect="AspectFit"
                                 BackgroundColor="#fff"
                                 DownsampleToViewSize="True"
                                 ErrorPlaceholder="imagetmp.png"
-                                HeightRequest="300"
+                                HeightRequest="150"
                                 HorizontalOptions="FillAndExpand"
                                 LoadingPlaceholder="imagetmp.png"
                                 Source="{Binding UriImage}"
