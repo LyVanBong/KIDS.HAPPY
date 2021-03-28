@@ -5,12 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
     xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
-    iOsSpecific:Page.UseSafeArea="true"
     BackgroundColor="{StaticResource BackgroundColorNavBar}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -30,11 +28,11 @@
             <CollectionView
                 x:Name="LsNewsData"
                 Grid.Row="1"
-                BackgroundColor="#fff"
                 Grid.RowSpan="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Margin="10,5,10,10"
+                BackgroundColor="#fff"
                 ItemsSource="{Binding NewsData}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
