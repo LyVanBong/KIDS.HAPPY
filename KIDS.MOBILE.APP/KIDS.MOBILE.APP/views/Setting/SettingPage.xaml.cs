@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AppCenter.Crashes;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
@@ -37,8 +38,15 @@ namespace KIDS.MOBILE.APP.views.Setting
 
         private void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
         {
-            AnimationTap_OnTapped(sender);
-            AppInfo.ShowSettingsUI();
+            try
+            {
+                AnimationTap_OnTapped(sender);
+                AppInfo.ShowSettingsUI();
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
         }
 
         //private void TapGestureRecognizer_OnTapped2(object sender, EventArgs e)

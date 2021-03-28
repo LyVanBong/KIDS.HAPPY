@@ -182,7 +182,7 @@
                     </Frame>
                     <Frame Grid.Row="3">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="AnimationTap_OnTapped" />
+                            <TapGestureRecognizer Tapped="AnimationTap_OnTapped_Info" />
                         </Frame.GestureRecognizers>
                         <Grid ColumnDefinitions="Auto,*">
                             <Image Grid.Column="0" Source="{markupExtension:ImageResource information.png}" />

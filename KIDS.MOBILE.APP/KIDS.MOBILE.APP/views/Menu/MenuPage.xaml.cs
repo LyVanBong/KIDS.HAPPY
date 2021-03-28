@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.AppCenter.Crashes;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,6 +26,26 @@ namespace KIDS.MOBILE.APP.views.Menu
                     return false;
                 });
             }
+        }
+
+        private async void AnimationTap_OnTapped_Info(object sender, EventArgs e)
+        {
+            try
+            {
+                AnimationTap_OnTapped(sender, e);
+                await Browser.OpenAsync("http://hkids.edu.vn/", new BrowserLaunchOptions
+                {
+                    LaunchMode = BrowserLaunchMode.SystemPreferred,
+                    TitleMode = BrowserTitleMode.Show,
+                    PreferredToolbarColor = Color.FromHex("#1976D2"),
+                    PreferredControlColor = Color.FromHex("#1976D2"),
+                });
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+
         }
     }
 }
