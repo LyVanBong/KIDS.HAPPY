@@ -17,18 +17,37 @@
             Margin="0"
             Padding="0"
             BackgroundColor="{StaticResource BackgroundApp}"
-            ColumnDefinitions="*,80"
-            RowDefinitions="40,*,80"
+            ColumnDefinitions="60,*"
+            RowDefinitions="40,60,*"
             RowSpacing="0">
             <navigationView:NavigationView
                 Grid.Row="0"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Text="{markupExtension:Translate 00027}" />
+            <Image
+                Grid.Row="1"
+                Grid.Column="0"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                HorizontalOptions="FillAndExpand"
+                Source="{markupExtension:ImageResource icon_add_album.png}"
+                VerticalOptions="FillAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddNewAlbumCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                HorizontalOptions="Start"
+                Text="Thêm album ảnh"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand" />
+
             <CollectionView
                 x:Name="LsAlbumData"
-                Grid.Row="1"
-                Grid.RowSpan="2"
+                Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Margin="5"
@@ -85,19 +104,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Image
-                Grid.Row="2"
-                Grid.Column="1"
-                Margin="20"
-                Aspect="AspectFit"
-                BackgroundColor="Transparent"
-                HorizontalOptions="FillAndExpand"
-                Source="{markupExtension:ImageResource add-image.png}"
-                VerticalOptions="FillAndExpand">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding AddNewAlbumCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
             <loadingView:LoadingView
                 Grid.Row="1"
                 Grid.Column="0"

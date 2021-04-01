@@ -31,6 +31,7 @@
     <None Remove="Resources\Images\evolution.png" />
     <None Remove="Resources\Images\gender.png" />
     <None Remove="Resources\Images\hygiene.png" />
+    <None Remove="Resources\Images\icon_add_album.png" />
     <None Remove="Resources\Images\icon_camera.png" />
     <None Remove="Resources\Images\inbox.png" />
     <None Remove="Resources\Images\information.png" />
@@ -76,6 +77,7 @@
     <EmbeddedResource Include="Resources\Images\evolution.png" />
     <EmbeddedResource Include="Resources\Images\gender.png" />
     <EmbeddedResource Include="Resources\Images\hygiene.png" />
+    <EmbeddedResource Include="Resources\Images\icon_add_album.png" />
     <EmbeddedResource Include="Resources\Images\icon_camera.png" />
     <EmbeddedResource Include="Resources\Images\inbox.png" />
     <EmbeddedResource Include="Resources\Images\information.png" />

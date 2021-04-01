@@ -52,7 +52,7 @@
             ContainerType="Outlined"
             FocusedColor="#5459E6"
             Hint="{Binding PhotoModel.CaptionHeader}"
-            UnfocusedColor="#1b1b2f">
+            UnfocusedColor="DarkGray">
             <Entry
                 ClearButtonVisibility="WhileEditing"
                 HeightRequest="60"
@@ -67,7 +67,7 @@
             ContainerType="Outlined"
             FocusedColor="#5459E6"
             Hint="{Binding PhotoModel.BodyHeader}"
-            UnfocusedColor="#1b1b2f">
+            UnfocusedColor="DarkGray">
             <Editor
                 HeightRequest="200"
                 Text="{Binding BodyContent}"

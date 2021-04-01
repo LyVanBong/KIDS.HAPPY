@@ -18,17 +18,35 @@
             Padding="0"
             BackgroundColor="{StaticResource BackgroundApp}"
             ColumnDefinitions="*,80"
-            RowDefinitions="40,*,80"
+            RowDefinitions="40,60,*"
             RowSpacing="0">
             <navigationView:NavigationView
                 Grid.Row="0"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Text="{markupExtension:Translate 00053}" />
+            <Image
+                Grid.Row="1"
+                Grid.Column="0"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                HorizontalOptions="FillAndExpand"
+                Source="{markupExtension:ImageResource icon_add_album.png}"
+                VerticalOptions="FillAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddNewAlbumCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                HorizontalOptions="Start"
+                Text="Thêm bài viết"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand" />
             <CollectionView
                 x:Name="LsNewsData"
-                Grid.Row="1"
-                Grid.RowSpan="2"
+                Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Margin="10,5,10,10"
@@ -115,19 +133,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Image
-                Grid.Row="2"
-                Grid.Column="1"
-                Margin="20"
-                Aspect="AspectFill"
-                BackgroundColor="Transparent"
-                HorizontalOptions="FillAndExpand"
-                Source="{markupExtension:ImageResource addpost.png}"
-                VerticalOptions="FillAndExpand">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding AddNewsPostCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
+
             <loadingView:LoadingView
                 Grid.Row="1"
                 Grid.Column="0"

@@ -32,9 +32,7 @@
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     Text="{markupExtension:Translate 00032}" />
-                <Grid
-                    Grid.Column="0"
-                    ColumnDefinitions="5,*,30">
+                <Grid Grid.Column="0" ColumnDefinitions="5,*,30">
                     <Label
                         Grid.Column="1"
                         Text="{Binding ChoosedDate}"
@@ -79,7 +77,7 @@
                         Margin="3,5,0,10"
                         Padding="0"
                         FontSize="18"
-                        Text="{markupExtension:Translate 00037}"
+                        Text="Từ"
                         VerticalOptions="CenterAndExpand" />
                     <Frame
                         Grid.Row="1"
@@ -108,7 +106,7 @@
                         Margin="0,5,0,10"
                         Padding="0"
                         FontSize="18"
-                        Text="{markupExtension:Translate 00036}"
+                        Text="Đến"
                         VerticalOptions="CenterAndExpand" />
                     <Frame
                         Grid.Row="1"

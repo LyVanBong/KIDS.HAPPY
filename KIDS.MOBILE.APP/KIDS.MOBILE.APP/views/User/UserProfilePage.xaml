@@ -138,6 +138,7 @@
                             Margin="0,0,4,0"
                             BackgroundColor="Transparent"
                             Date="{Binding Teacher.DOB}"
+                            TextColor="Black"
                             VerticalOptions="CenterAndExpand" />
                     </Grid>
                     <Frame
@@ -158,6 +159,7 @@
                             Margin="0,0,4,0"
                             BackgroundColor="Transparent"
                             SelectedIndex="{Binding Teacher.Sex}"
+                            TextColor="Black"
                             VerticalOptions="CenterAndExpand">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">

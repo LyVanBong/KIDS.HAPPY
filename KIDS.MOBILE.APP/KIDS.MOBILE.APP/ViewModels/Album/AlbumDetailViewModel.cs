@@ -155,9 +155,9 @@ namespace KIDS.MOBILE.APP.ViewModels.Album
 
         private void ImageDetail(AlbumDetailModel obj)
         {
-            var para = new DialogParameters();
-            para.Add(AppConstants.ImageDetail, obj);
-            _dialogService.ShowDialog(nameof(ShowImageDialog), para);
+            //var para = new DialogParameters();
+            //para.Add(AppConstants.ImageDetail, obj);
+            //_dialogService.ShowDialog(nameof(ShowImageDialog), para);
         }
 
         private void DeleteAlbum()
