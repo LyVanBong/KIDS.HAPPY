@@ -17,8 +17,8 @@
             Margin="0"
             Padding="0"
             BackgroundColor="{StaticResource BackgroundApp}"
-            ColumnDefinitions="60,*"
-            RowDefinitions="40,60,*"
+            ColumnDefinitions="50,*"
+            RowDefinitions="40,50,*"
             RowSpacing="0">
             <navigationView:NavigationView
                 Grid.Row="0"
@@ -28,6 +28,7 @@
             <Image
                 Grid.Row="1"
                 Grid.Column="0"
+                Margin="5"
                 Aspect="AspectFit"
                 BackgroundColor="Transparent"
                 HorizontalOptions="FillAndExpand"

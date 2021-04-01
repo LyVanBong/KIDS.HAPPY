@@ -17,76 +17,24 @@
             BackgroundColor="#fff"
             ColumnSpacing="0"
             HorizontalOptions="FillAndExpand"
-            RowDefinitions="50,.5,auto,50,*"
+            RowDefinitions="50,40,*,60"
             RowSpacing="0"
             VerticalOptions="FillAndExpand">
-            <Label
-                Grid.Row="0"
-                Margin="10,5"
-                HorizontalOptions="CenterAndExpand"
-                Text="{Binding Time}"
-                VerticalOptions="CenterAndExpand" />
-            <BoxView
+            <Button
                 Grid.Row="1"
-                Margin="10,5"
-                BackgroundColor="DarkGray" />
-            <CollectionView
-                Grid.Row="2"
-                Margin="10,5"
-                BackgroundColor="#fff"
-                HeightRequest="80"
-                ItemsSource="{Binding LearnMorningData}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.Triggers>
-                    <Trigger TargetType="CollectionView" Property="HeightRequest" Value="80">
-                        <Setter Property="IsVisible" Value="{Binding IsHasData}" />
-                    </Trigger>
-                </CollectionView.Triggers>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid ColumnDefinitions="80,.5,*" RowDefinitions="Auto,.5">
-                            <Grid.Resources>
-                                <ResourceDictionary>
-                                    <Style TargetType="Label">
-                                        <Setter Property="FontSize" Value="14" />
-                                        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-                                        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
-                                    </Style>
-                                </ResourceDictionary>
-                            </Grid.Resources>
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Text="{Binding ThoiGian}" />
-                            <BoxView
-                                Grid.Row="0"
-                                Grid.RowSpan="2"
-                                Grid.Column="1"
-                                BackgroundColor="DarkGray"
-                                VerticalOptions="FillAndExpand" />
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="2"
-                                Text="{Binding Contents}" />
-                            <BoxView
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Grid.ColumnSpan="3"
-                                BackgroundColor="DarkGray" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                Margin="10,2"
+                BackgroundColor="Transparent"
+                BorderColor="{StaticResource BackgroundColorNavBar}"
+                BorderWidth="1"
+                Text="Thời khóa biểu" />
             <SearchBar
-                Grid.Row="3"
+                Grid.Row="0"
                 BackgroundColor="#fff"
                 Text="{Binding SearchMorning}"
                 VerticalOptions="FillAndExpand" />
             <CollectionView
                 x:Name="morning"
-                Grid.Row="4"
+                Grid.Row="2"
                 Margin="10,5"
                 BackgroundColor="#fff"
                 ItemsSource="{Binding StudentData}">
@@ -98,14 +46,16 @@
                         <Frame
                             Margin="0"
                             Padding="0"
+                            BackgroundColor="Transparent"
                             BorderColor="DeepSkyBlue"
                             CornerRadius="10"
                             HasShadow="False">
                             <Grid
                                 Margin="0"
                                 Padding="0"
+                                BackgroundColor="Transparent"
                                 ColumnDefinitions="60,*"
-                                RowDefinitions="20,40,Auto"
+                                RowDefinitions="20,40,65"
                                 RowSpacing="0">
                                 <forms:CachedImage
                                     Grid.Row="0"
@@ -143,22 +93,24 @@
                                     Grid.ColumnSpan="2"
                                     Margin="5"
                                     Padding="0"
+                                    BackgroundColor="Transparent"
                                     BorderColor="DarkGray"
                                     CornerRadius="5"
                                     HasShadow="False"
                                     HorizontalOptions="FillAndExpand">
                                     <renderers:CustomEditor
-                                        AutoSize="TextChanges"
+                                        AutoSize="Disabled"
+                                        BackgroundColor="Transparent"
                                         FontSize="14"
                                         Placeholder="{markupExtension:Translate 00076}"
                                         Text="{Binding StudyCommentAM}"
                                         VerticalOptions="FillAndExpand">
-                                        <renderers:CustomEditor.Behaviors>
+                                        <!--<renderers:CustomEditor.Behaviors>
                                             <behaviors:EventToCommandBehavior
                                                 Command="{Binding Source={x:Reference morning}, Path=BindingContext.UpdateMorningCommand}"
                                                 CommandParameter="{Binding .}"
                                                 EventName="Unfocused" />
-                                        </renderers:CustomEditor.Behaviors>
+                                        </renderers:CustomEditor.Behaviors>-->
                                     </renderers:CustomEditor>
                                 </Frame>
                             </Grid>
@@ -166,6 +118,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <Button Grid.Row="3" Text="Cập nhật" />
         </Grid>
     </ContentView.Content>
 </ContentView>
