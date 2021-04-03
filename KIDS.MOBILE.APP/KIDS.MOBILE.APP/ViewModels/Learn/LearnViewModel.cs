@@ -15,6 +15,7 @@ using System.Windows.Input;
 using KIDS.MOBILE.APP.Resources;
 using KIDS.MOBILE.APP.views.Learn;
 using Prism.Services;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.ViewModels.Learn
@@ -89,6 +90,9 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
         }
 
         private string _choosedDate;
+        private bool _isOpenFastFeature;
+        private string _thoiKhoaBieu = "Thời khóa biểu";
+        private string _thoiKhoaBieuChieu = "Thời khóa biểu";
 
         public string ChoosedDate
         {
@@ -133,48 +137,99 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
         /// Cap nhat nhanh
         /// </summary>
         public ICommand QuickCommentCommand { get; private set; }
+
+        public bool IsOpenFastFeature
+        {
+            get => _isOpenFastFeature;
+            set => SetProperty(ref _isOpenFastFeature, value);
+        }
+
+        public ICommand FastFeatureCommand { get; private set; }
+
+        public string ThoiKhoaBieu
+        {
+            get => _thoiKhoaBieu;
+            set => SetProperty(ref _thoiKhoaBieu, value);
+        }
+
+        public string ThoiKhoaBieuChieu
+        {
+            get => _thoiKhoaBieuChieu;
+            set => SetProperty(ref _thoiKhoaBieuChieu, value);
+        }
+
         public LearnViewModel(ILearnService learnService, IAttendanceService attendanceService, IDialogService dialogService, IPageDialogService pageDialogService)
         {
             _pageDialogService = pageDialogService;
             _dialogService = dialogService;
             _learnService = learnService;
             _attendanceService = attendanceService;
-            UpdateMorningCommand = new Command<AttendanceLeaveModel>(UpdateMorning);
-            UpdateAfternoonCommand = new Command<AttendanceLeaveModel>(UpdateAfternoon);
             SelectDateCommand = new Command(OpenDatePicker);
-            QuickCommentCommand = new Command(QuickComment);
+            FastFeatureCommand = new AsyncCommand<string>(async (key) => await FastFeature(key));
         }
 
-        private  void QuickComment()
+        private async Task FastFeature(string key)
+        {
+            if (IsLoading) return;
+            IsLoading = true;
+            switch (key)
+            {
+                case "0":
+                    IsOpenFastFeature = !IsOpenFastFeature;
+                    break;
+                case "1":
+                case "3":
+                    await QuickComment(key);
+                    break;
+                case "2":
+                case "4":
+                    await StadyComment(key);
+                    break;
+                default:
+                    break;
+            }
+
+            IsLoading = false;
+        }
+
+        private async Task StadyComment(string key)
         {
             try
             {
-                if (IsLoading) return;
-                IsLoading = true;
-                if (LearnMorningData != null && LearnMorningData.Any())
+                if (key == "2")
                 {
-                    var data = LearnMorningData.Where(x => string.IsNullOrWhiteSpace(x.Contents))?.ToList();
-                    if (data != null && data.Any())
+                    var cmt = StudentData.Where(x => x.StudyCommentAM == null)?.ToList();
+                    if (cmt.Any())
                     {
-                         _dialogService.ShowDialog(nameof(QuickCommentDialog), async (result) =>
-                         {
-                             var para = result.Parameters.GetValue<string>("CommentContent");
-                             if (para != null)
-                             {
-                                 var total = 0;
-                                 foreach (var item in data)
-                                 {
-                                     var update = await _learnService.UpdatePlanStudyMorning(item.ID, item.ThoiGian, para);
-                                     if (update != null && update.Code > 0 && update.Data > 0)
-                                     {
-                                         total++;
-                                     }
-                                 }
-
-                                 await _pageDialogService.DisplayAlertAsync(AppResources._00007, string.Format(AppResources._00140, total),
-                                     "OK");
-                             }
-                         });
+                        await _pageDialogService.DisplayAlertAsync("Thông báo", "Vẫn còn có con chưa được nhận xét", "OK");
+                    }
+                    else
+                    {
+                        var count = 0;
+                        foreach (var item in StudentData)
+                        {
+                            count += await UpdateMorning(item);
+                        }
+                        await _pageDialogService.DisplayAlertAsync("Thông báo", "Đã nhận xét " + count + " con thanh công", "OK");
+                        IsOpenFastFeature = false;
+                    }
+                }
+                else
+                {
+                    var cmt = StudentData.Where(x => x.StudyCommentPM == null)?.ToList();
+                    if (cmt.Any())
+                    {
+                        await _pageDialogService.DisplayAlertAsync("Thông báo", "Vẫn còn có con chưa được nhận xét", "OK");
+                    }
+                    else
+                    {
+                        var count = 0;
+                        foreach (var item in StudentData)
+                        {
+                            count += await UpdateAfternoon(item);
+                        }
+                        await _pageDialogService.DisplayAlertAsync("Thông báo", "Đã nhận xét " + count + " con thanh công", "OK");
+                        IsOpenFastFeature = false;
                     }
                 }
             }
@@ -182,19 +237,54 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
             {
                 Crashes.TrackError(e);
             }
-            finally
+        }
+
+        private async Task QuickComment(string key)
+        {
+            try
             {
-                IsLoading = false;
+                _dialogService.ShowDialog("QuickCommentDialog", result =>
+                {
+                    var para = result.Parameters.GetValue<string>("CommentContent");
+                    if (para != null)
+                    {
+                        if (key == "1")
+                        {
+                            foreach (var student in StudentData)
+                            {
+                                if (string.IsNullOrWhiteSpace(student.StudyCommentAM))
+                                {
+                                    student.StudyCommentAM = para;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (var student in StudentData)
+                            {
+                                if (string.IsNullOrWhiteSpace(student.StudyCommentPM))
+                                {
+                                    student.StudyCommentPM = para;
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
             }
         }
 
-        private async void UpdateAfternoon(AttendanceLeaveModel obj)
+        private async Task<int> UpdateAfternoon(AttendanceLeaveModel obj)
         {
             try
             {
                 IsLoading = true;
                 var updateMorning =
                     await _learnService.UpdatePlanStudyAfternoon(obj.ID, obj.UserCreate, obj.StudyCommentPM);
+                return updateMorning.Data;
             }
             catch (Exception e)
             {
@@ -204,15 +294,18 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
             {
                 IsLoading = false;
             }
+
+            return 0;
         }
 
-        private async void UpdateMorning(AttendanceLeaveModel obj)
+        private async Task<int> UpdateMorning(AttendanceLeaveModel obj)
         {
             try
             {
                 IsLoading = true;
                 var updateMorning =
                     await _learnService.UpdatePlanStudyMorning(obj.ID, obj.UserCreate, obj.StudyCommentAM);
+                return updateMorning.Data;
             }
             catch (Exception e)
             {
@@ -222,6 +315,8 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
             {
                 IsLoading = false;
             }
+
+            return 0;
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
@@ -268,6 +363,10 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
                 if (data.Code > 0)
                 {
                     LearnMorningData = new List<LearnModel>(data.Data);
+                    if (LearnMorningData != null && LearnMorningData.Any())
+                    {
+                        ThoiKhoaBieu = LearnMorningData[0].Title != null ? LearnMorningData[0].Title : ThoiKhoaBieu;
+                    }
                     IsHasData = true;
                 }
                 else
@@ -281,6 +380,10 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
                 if (afternoon.Code > 0)
                 {
                     LearnAfternoonData = new List<LearnModel>(afternoon.Data);
+                    if (LearnAfternoonData != null && LearnAfternoonData.Any())
+                    {
+                        ThoiKhoaBieuChieu = LearnAfternoonData[0].Title != null ? LearnAfternoonData[0].Title : ThoiKhoaBieuChieu;
+                    }
                     IsHasData = true;
                 }
                 else

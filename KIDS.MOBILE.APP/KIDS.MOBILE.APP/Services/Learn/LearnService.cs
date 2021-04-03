@@ -46,7 +46,7 @@ namespace KIDS.MOBILE.APP.Services.Learn
                     new RequestParameter("UserCreate",userCreate),
                     new RequestParameter("StudyCommentPM",studyCommentPM),
                 };
-                var data = await _requestProvider.PostAsync<int>("Daily/UpdateHygiene", parameters);
+                var data = await _requestProvider.PostAsync<int>("Daily/UpdateStudyAfternoon", parameters);
                 return data;
             }
             catch (Exception)

@@ -27,6 +27,7 @@ using KIDS.MOBILE.APP.Services.User;
 using KIDS.MOBILE.APP.ViewModels.Album;
 using KIDS.MOBILE.APP.ViewModels.Assessment;
 using KIDS.MOBILE.APP.ViewModels.Attendance;
+using KIDS.MOBILE.APP.ViewModels.ChangePass;
 using KIDS.MOBILE.APP.ViewModels.Dining;
 using KIDS.MOBILE.APP.ViewModels.Evaluate;
 using KIDS.MOBILE.APP.ViewModels.Home;
@@ -42,11 +43,13 @@ using KIDS.MOBILE.APP.ViewModels.Napping;
 using KIDS.MOBILE.APP.ViewModels.NewsPost;
 using KIDS.MOBILE.APP.ViewModels.Notification;
 using KIDS.MOBILE.APP.ViewModels.PleaseLeaveSchool;
+using KIDS.MOBILE.APP.ViewModels.Setting;
 using KIDS.MOBILE.APP.ViewModels.TicketManagement;
 using KIDS.MOBILE.APP.ViewModels.User;
 using KIDS.MOBILE.APP.views.Album;
 using KIDS.MOBILE.APP.views.Assessment;
 using KIDS.MOBILE.APP.views.Attendance;
+using KIDS.MOBILE.APP.views.ChangePass;
 using KIDS.MOBILE.APP.views.Dining;
 using KIDS.MOBILE.APP.views.Evaluate;
 using KIDS.MOBILE.APP.views.Home;
@@ -62,6 +65,7 @@ using KIDS.MOBILE.APP.views.Napping;
 using KIDS.MOBILE.APP.views.NewsPost;
 using KIDS.MOBILE.APP.views.Notification;
 using KIDS.MOBILE.APP.views.PleaseLeaveSchool;
+using KIDS.MOBILE.APP.views.Setting;
 using KIDS.MOBILE.APP.views.TicketManagement;
 using KIDS.MOBILE.APP.views.User;
 using Microsoft.AppCenter;
@@ -74,16 +78,10 @@ using Prism.Unity;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using KIDS.MOBILE.APP.Models.Album;
-using KIDS.MOBILE.APP.ViewModels.ChangePass;
-using KIDS.MOBILE.APP.ViewModels.Setting;
-using KIDS.MOBILE.APP.views.ChangePass;
-using KIDS.MOBILE.APP.views.Setting;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Device = Xamarin.Forms.Device;
 
-[assembly: ExportFont("FontAwesome5DuotoneSolid900.otf", Alias = "Awesome")]
 namespace KIDS.MOBILE.APP
 {
     public partial class App : PrismApplication

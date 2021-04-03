@@ -51,7 +51,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Login
             _pageDialogService = pageDialogService;
             _loginService = loginService;
             _navigationService = navigationService;
-            LoginAppCommand = new DelegateCommand(LoginApp);
+            LoginAppCommand = new DelegateCommand(() => LoginApp());
             ForgotPasswordCommand = new DelegateCommand(OnForgotPasswordClicked);
         }
 
@@ -62,7 +62,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Login
             CheckLogin();
         }
 
-        private async void LoginApp()
+        private async void LoginApp(string pwd = null)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Login
                 IsLoading = true;
                 if (!string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(Passwd))
                 {
-                    var pass = _isCheckLogin ? Passwd : HashFunctionHelper.GetHashCode(Passwd, 1);
+                    var pass = string.IsNullOrEmpty(pwd) ? HashFunctionHelper.GetHashCode(Passwd, 1) : pwd;
                     var data = await _loginService.LogiAppByUserPwd(UserName,
                         pass);
                     if (data != null)
@@ -138,7 +138,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Login
                     UserName = user.NickName;
                     Passwd = user.Password;
                     await Task.Delay(TimeSpan.FromMilliseconds(1500));
-                    LoginApp();
+                    LoginApp(Passwd);
                 }
         }
 
