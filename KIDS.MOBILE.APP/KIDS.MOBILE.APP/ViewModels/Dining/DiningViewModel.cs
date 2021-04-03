@@ -12,6 +12,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using KIDS.MOBILE.APP.Services.Database;
+using Prism.Services;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.ViewModels.Dining
@@ -35,6 +38,11 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
         private List<DishModel> _dishData;
         private IDiningService _diningService;
         private List<MealListModel> _mealList;
+        private IDatabaseService _databaseService;
+        private string _thucDon;
+        private bool _isOpenFastFeature;
+        private IPageDialogService _pageDialogService;
+
         public ICommand UpdateBreakFastCommand { get; set; }
         public ICommand UpdateDinnerCommand { get; set; }
         public ICommand UpdateLunchCommand { get; set; }
@@ -157,16 +165,105 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
             }
         }
 
-        public DiningViewModel(IAttendanceService attendanceService, IDiningService diningService, IDialogService dialogService)
+        public string ThucDon
         {
+            get => _thucDon;
+            set => SetProperty(ref _thucDon, value);
+        }
+
+        public bool IsOpenFastFeature
+        {
+            get => _isOpenFastFeature;
+            set => SetProperty(ref _isOpenFastFeature, value);
+        }
+
+        public ICommand FastFeatureCommand { get; private set; }
+
+
+
+        public DiningViewModel(IAttendanceService attendanceService, IDiningService diningService, IDialogService dialogService, IDatabaseService databaseService, IPageDialogService pageDialogService)
+        {
+            _pageDialogService = pageDialogService;
+            _databaseService = databaseService;
             _dialogService = dialogService;
             _diningService = diningService;
             _attendanceService = attendanceService;
-            UpdateBreakFastCommand = new Command<AttendanceLeaveModel>(UpdateBreakFast);
-            UpdateDinnerCommand = new Command<AttendanceLeaveModel>(UpdateDinner);
-            UpdateLunchCommand = new Command<AttendanceLeaveModel>(UpdateLunch);
-            UpdateSnackCommand = new Command<AttendanceLeaveModel>(UpdateSnack);
             SelectDateCommand = new Command(OpenDatePicker);
+            FastFeatureCommand = new AsyncCommand<string>(s => FastFeature(s));
+
+        }
+
+        private async Task FastFeature(string key)
+        {
+            if (IsLoading) return;
+            IsLoading = true;
+            switch (key)
+            {
+                case "0":
+                    IsOpenFastFeature = !IsOpenFastFeature;
+                    break;
+                case "1":
+                    await QuickComment();
+                    break;
+                case "2":
+                    await DiningComment(key);
+                    break;
+                default:
+                    break;
+            }
+
+            IsLoading = false;
+        }
+
+        private async Task DiningComment(string key)
+        {
+            try
+            {
+                var cmt = StudentData.Where(x => string.IsNullOrEmpty(x.MealComment0)).ToList();
+                if (cmt.Any())
+                {
+                    await _pageDialogService.DisplayAlertAsync("Thông báo", "Vẫn còn có con chưa được nhận xét", "OK");
+                }
+                else
+                {
+                    var count = 0;
+                    foreach (var item in StudentData)
+                    {
+                        count += await UpdateBreakFast(item);
+                    }
+                    await _pageDialogService.DisplayAlertAsync("Thông báo", "Đã nhận xét " + count + " con thanh công", "OK");
+                    IsOpenFastFeature = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
+            }
+        }
+
+        private async Task QuickComment()
+        {
+            try
+            {
+                _dialogService.ShowDialog("QuickCommentDialog", new DialogParameters("key=1"), result =>
+                {
+                    var para = result.Parameters.GetValue<string>("CommentContent");
+                    if (para != null)
+                    {
+                        foreach (var student in StudentData)
+                        {
+                            if (string.IsNullOrWhiteSpace(student.MealComment0))
+                            {
+                                student.MealComment0 = para;
+                            }
+                        }
+                    }
+                });
+            }
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
+            }
         }
 
         private void OpenDatePicker()
@@ -241,13 +338,14 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
             }
         }
 
-        private async void UpdateBreakFast(AttendanceLeaveModel obj)
+        private async Task<int> UpdateBreakFast(AttendanceLeaveModel obj)
         {
             try
             {
                 IsLoading = true;
                 var update =
                     await _diningService.UpdateDining(obj.ID, _nguoiDung, obj.MealComment0, "", "", "", "", "");
+                return update.Data;
             }
             catch (Exception e)
             {
@@ -257,6 +355,8 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
             {
                 IsLoading = false;
             }
+
+            return 0;
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
@@ -317,41 +417,29 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
                     DateData.ToString("yyyy/MM/dd"));
                 if (data.Code > 0)
                 {
-                    _studentCache = StudentData = new List<AttendanceLeaveModel>(data.Data);
+                    StudentData = new List<AttendanceLeaveModel>(data.Data);
                 }
 
-                var tmpMeal = await _diningService.GetMealList();
-                if (tmpMeal.Code > 0)
+                var tmpDish = await _diningService.GetListOfDishes("", AppConstants.User.GradeID, DateData.ToString("yyyy/MM/dd"));
+                if (tmpDish.Code > 0)
                 {
-                    MealList = new List<MealListModel>(tmpMeal.Data);
-                    var tmp = MealList[SelectedIndex];
-                    var tmpDish = await _diningService.GetListOfDishes(tmp.ID, AppConstants.User.GradeID, DateData.ToString("yyyy/MM/dd"));
-                    if (tmpDish.Code > 0)
+                    var monAnData = new List<ListOfDishesModel>(tmpDish?.Data);
+                    if (monAnData.Any())
                     {
-                        var monAnData = new List<ListOfDishesModel>(tmpDish.Data);
-                        var monAn = monAnData[0].MonAn;
-                        if (monAn != null)
-                        {
-                            DishData = new List<DishModel>();
-                            var lsMonAn = monAn.Split(',');
-                            for (int i = 0; i < lsMonAn.Length; i++)
-                            {
-                                var chiTietMonAn = await _diningService.GetDishDetail(lsMonAn[i]);
-                                if (chiTietMonAn.Code > 0)
-                                {
-                                    var tmpMonAn = chiTietMonAn.Data.ToList();
-                                    DishData.Add(tmpMonAn[0]);
-                                    if (DishData == null)
-                                    {
-                                        IsHaveDish = false;
-                                    }
-                                    else
-                                    {
-                                        IsHaveDish = true;
-                                    }
-                                }
-                            }
-                        }
+                        ThucDon = "";
+                        var sang = monAnData.FirstOrDefault(x => x.BuaAn == "80cd65d9-d619-4161-a2a6-69a455fc8117");
+                        if (sang != null)
+                            ThucDon += "Bứa sáng" + "\n\t " + string.Join("\n\t", sang.TenMonAn.Split(',')) + "\n";
+                        var trua = monAnData.FirstOrDefault(x => x.BuaAn == "fa1726ce-8736-42e5-bd86-1c44089dd8c6");
+                        if (trua != null)
+                            ThucDon += "Bứa trưa" + "\n\t " + string.Join("\n\t", trua.TenMonAn.Split(',')) + "\n";
+                        var chieuPhu = monAnData.FirstOrDefault(x => x.BuaAn == "2f4ed0f5-a1dd-46ca-9067-78d1a745a638");
+                        if (chieuPhu != null)
+                            ThucDon += "Bứa chiều phụ" + "\n\t " + string.Join("\n\t", chieuPhu.TenMonAn.Split(',')) + "\n";
+                        var chieu = monAnData.FirstOrDefault(x => x.BuaAn == "f4424fae-5ad4-4267-a0b9-36fa32cc79c2");
+                        if (chieu != null)
+                            ThucDon += "Bứa chiều" + "\n\t " + string.Join("\n\t", chieu.TenMonAn.Split(',')) + "\n";
+                        ThucDon?.Replace(" ", "");
                     }
                 }
             }

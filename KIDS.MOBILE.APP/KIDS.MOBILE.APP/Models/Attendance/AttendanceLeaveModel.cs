@@ -14,6 +14,7 @@ namespace KIDS.MOBILE.APP.Models.Attendance
         private bool _isSelected;
         private string _studyCommentAm;
         private string _studyCommentPm;
+        private string _mealComment0;
         public string ID { get; set; }
         public string StudentID { get; set; }
         public string Date { get; set; }
@@ -48,7 +49,13 @@ namespace KIDS.MOBILE.APP.Models.Attendance
 
         public string Description { get; set; }
         public string UserCreate { get; set; }
-        public string MealComment0 { get; set; }
+
+        public string MealComment0
+        {
+            get => _mealComment0;
+            set => SetProperty(ref _mealComment0, value);
+        }
+
         public string MealComment1 { get; set; }
         public string MealComment2 { get; set; }
         public string MealComment3 { get; set; }

@@ -66,17 +66,13 @@
                 </ResourceDictionary>
             </StackLayout.Resources>
             <Label Text="Mẫu nhận xét nhanh" />
-            <RadioButton
-                CheckedChanged="RadioButton_OnCheckedChanged"
-                Content="Biết giúp bạn học tập"
-                IsChecked="true" />
-            <RadioButton CheckedChanged="RadioButton_OnCheckedChanged" Content="Biết giữ gìn đồ dùng học tập" />
-            <RadioButton CheckedChanged="RadioButton_OnCheckedChanged" Content="Biết hợp tác với bạn" />
-            <RadioButton CheckedChanged="RadioButton_OnCheckedChanged" Content="Biết tìm kiếm sự trợ giúp khi gặp khó khăn trong học tập" />
-            <RadioButton CheckedChanged="RadioButton_OnCheckedChanged" Content="Chuẩn bị đầy đủ đò dùng học tập" />
-            <RadioButton CheckedChanged="RadioButton_OnCheckedChanged" Content="Con tập trung chú ý, hứng thú tham gia giờ học cùng các cô và các bạn" />
-            <RadioButton CheckedChanged="RadioButton_OnCheckedChanged" Content="Con có nhiều tiến bộ tích cực tham gia vào các hoạt động ở lớp" />
-            <RadioButton CheckedChanged="RadioButton_OnCheckedChanged" Content="Hôm nay có tổ chức cho con làm thí nghiệm, con rất chú ý và làm thí nghiệm đạt kết quả tốt" />
+            <StackLayout BindableLayout.ItemsSource="{Binding CommentData}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton CheckedChanged="RadioButton_OnCheckedChanged" Content="{Binding Value}" />
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
         </StackLayout>
     </ScrollView>
     <textInputLayout:SfTextInputLayout

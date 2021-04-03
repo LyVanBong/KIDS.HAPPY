@@ -6,15 +6,13 @@ using KIDS.MOBILE.APP.Services.Attendance;
 using KIDS.MOBILE.APP.Services.Learn;
 using Microsoft.AppCenter.Crashes;
 using Prism.Navigation;
+using Prism.Services;
 using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using KIDS.MOBILE.APP.Resources;
-using KIDS.MOBILE.APP.views.Learn;
-using Prism.Services;
 using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
@@ -198,7 +196,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
             {
                 if (key == "2")
                 {
-                    var cmt = StudentData.Where(x => x.StudyCommentAM == null)?.ToList();
+                    var cmt = StudentData.Where(x => string.IsNullOrEmpty(x.StudyCommentAM))?.ToList();
                     if (cmt.Any())
                     {
                         await _pageDialogService.DisplayAlertAsync("Thông báo", "Vẫn còn có con chưa được nhận xét", "OK");
@@ -216,7 +214,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
                 }
                 else
                 {
-                    var cmt = StudentData.Where(x => x.StudyCommentPM == null)?.ToList();
+                    var cmt = StudentData.Where(x => string.IsNullOrEmpty(x.StudyCommentPM))?.ToList();
                     if (cmt.Any())
                     {
                         await _pageDialogService.DisplayAlertAsync("Thông báo", "Vẫn còn có con chưa được nhận xét", "OK");
@@ -243,7 +241,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
         {
             try
             {
-                _dialogService.ShowDialog("QuickCommentDialog", result =>
+                _dialogService.ShowDialog("QuickCommentDialog", new DialogParameters("key=0"),result =>
                 {
                     var para = result.Parameters.GetValue<string>("CommentContent");
                     if (para != null)
