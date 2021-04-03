@@ -30,6 +30,7 @@ namespace KIDS.MOBILE.APP.ViewModels.User
         private string _phone;
         private string _address;
         private bool _isLoading;
+        private FileResult _fileResult;
 
         public bool IsLoading
         {
@@ -87,7 +88,7 @@ namespace KIDS.MOBILE.APP.ViewModels.User
                 var para = new UpdateTeacherModel()
                 {
                     TeacherId = AppConstants.User.NguoiSuDung,
-                    Picture = Teacher.Picture,
+                    Picture = _fileResult,
                     Name = Teacher.Name,
                     Sex = Teacher.Sex.ToString(),
                     DOB = Teacher.DOB.Date.ToString("yyyy-MM-dd"),
@@ -168,6 +169,7 @@ namespace KIDS.MOBILE.APP.ViewModels.User
                 });
                 if (capture != null)
                 {
+                    _fileResult = capture;
                     var stream = await capture.OpenReadAsync();
                     ProfilePicture = ImageSource.FromStream(() => stream);
                 }
@@ -188,6 +190,7 @@ namespace KIDS.MOBILE.APP.ViewModels.User
                 });
                 if (photo != null)
                 {
+                    _fileResult = photo;
                     var stream = await photo.OpenReadAsync();
                     ProfilePicture = ImageSource.FromStream(() => stream);
                 }

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AppCenter.Crashes;
+using Xamarin.Essentials;
 
 namespace KIDS.MOBILE.APP.Services.User
 {
@@ -102,9 +103,13 @@ namespace KIDS.MOBILE.APP.Services.User
                     new RequestParameter("Email",update.Email),
                     new RequestParameter("Phone",update.Phone),
                     new RequestParameter("Address",update.Address),
-                    new RequestParameter("Picture",update.Picture)
                 };
-                var data = await _requestProvider.PostAsync<int>("Teacher/Update", parameters);
+                Dictionary<string, FileResult> paraFile = new Dictionary<string, FileResult>();
+                if (update.Picture != null && update.Picture.FileName != null)
+                {
+                    paraFile.Add("Picture", update.Picture);
+                }
+                var data = await _requestProvider.PostAsync<int>("Teacher/Update", parameters, paraFile);
                 return data;
             }
             catch (Exception e)

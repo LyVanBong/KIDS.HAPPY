@@ -1,4 +1,6 @@
-﻿namespace KIDS.MOBILE.APP.Models.User
+﻿using Xamarin.Essentials;
+
+namespace KIDS.MOBILE.APP.Models.User
 {
     public class UpdateTeacherModel
     {
@@ -9,6 +11,6 @@
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public string Picture { get; set; }
+        public FileResult Picture { get; set; }
     }
 }

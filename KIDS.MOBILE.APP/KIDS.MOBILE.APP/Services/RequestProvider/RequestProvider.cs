@@ -7,7 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using FFImageLoading;
+using Microsoft.AppCenter.Crashes;
+using Xamarin.Essentials;
 
 namespace KIDS.MOBILE.APP.Services.RequestProvider
 {
@@ -21,7 +25,7 @@ namespace KIDS.MOBILE.APP.Services.RequestProvider
             _client = new RestClient();
         }
 
-        public async Task<ResponseModel<T>> GetAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters = null)
+        public async Task<ResponseModel<T>> GetAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters = null, Dictionary<string, FileResult> parameterFile = null)
         {
             try
             {
@@ -60,19 +64,12 @@ namespace KIDS.MOBILE.APP.Services.RequestProvider
             }
         }
 
-        public async Task<ResponseModel<T>> PostAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters)
+        public async Task<ResponseModel<T>> PostAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters = null, Dictionary<string, FileResult> parameterFile = null)
         {
             try
             {
                 CreateClients(uri, Method.POST);
-                if (parameters != null && parameters.Any())
-                {
-                    foreach (var item in parameters)
-                    {
-                        _request.AddParameter(item.Key, item.Value);
-                    }
-                }
-
+                CreateParameter(parameters, parameterFile);
                 var response = await _client.ExecuteAsync<ResponseModel<T>>(_request);
                 var data = response.StatusCode == HttpStatusCode.OK
                     ? JsonConvert.DeserializeObject<ResponseModel<T>>(response.Content)
@@ -85,7 +82,38 @@ namespace KIDS.MOBILE.APP.Services.RequestProvider
             }
         }
 
-        public async Task<ResponseModel<T>> PutAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters)
+        private async void CreateParameter(IReadOnlyCollection<RequestParameter> parameters, Dictionary<string, FileResult> parameterFile)
+        {
+            try
+            {
+                if (parameters != null && parameters.Any())
+                {
+                    foreach (var item in parameters)
+                    {
+                        _request.AddParameter(item.Key, item.Value);
+                    }
+                }
+
+               
+                if (parameterFile != null && parameterFile.Any())
+                {
+                    _request.AddParameter("Content-Type", "multipart/form-data");
+                    foreach (var file in parameterFile)
+                    {
+                        var data = (await file.Value.OpenReadAsync())?.ToByteArray();
+                        _request.AddFile(file.Key, data, file.Value.FileName);
+                    }
+
+                    _request.AlwaysMultipartFormData = true;
+                }
+            }
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
+            }
+        }
+
+        public async Task<ResponseModel<T>> PutAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters = null, Dictionary<string, FileResult> parameterFile = null)
         {
             try
             {
@@ -110,7 +138,7 @@ namespace KIDS.MOBILE.APP.Services.RequestProvider
             }
         }
 
-        public async Task<ResponseModel<T>> DeleteAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters)
+        public async Task<ResponseModel<T>> DeleteAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters = null, Dictionary<string, FileResult> parameterFile = null)
         {
             try
             {

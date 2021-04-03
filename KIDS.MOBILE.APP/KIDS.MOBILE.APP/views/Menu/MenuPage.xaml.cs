@@ -38,7 +38,7 @@ namespace KIDS.MOBILE.APP.views.Menu
                     LaunchMode = BrowserLaunchMode.SystemPreferred,
                     TitleMode = BrowserTitleMode.Show,
                     PreferredToolbarColor = Color.FromHex("#1976D2"),
-                    PreferredControlColor = Color.FromHex("#1976D2"),
+                    PreferredControlColor = Color.FromHex("#fff"),
                 });
             }
             catch (Exception ex)
