@@ -47,23 +47,11 @@
                     </Grid.GestureRecognizers>
                 </Grid>
             </Grid>
-            <tabView:SfTabView
+            <learn1:LearnMorningView
                 Grid.Row="1"
                 Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Margin="0"
-                VisibleHeaderCount="2">
-                <tabView:SfTabItem Title="{markupExtension:Translate 00090}" TitleFontSize="18">
-                    <tabView:SfTabItem.Content>
-                        <learn1:LearnMorningView />
-                    </tabView:SfTabItem.Content>
-                </tabView:SfTabItem>
-                <tabView:SfTabItem Title="{markupExtension:Translate 00091}" TitleFontSize="18">
-                    <tabView:SfTabItem.Content>
-                        <learn1:LearnAfternoonView />
-                    </tabView:SfTabItem.Content>
-                </tabView:SfTabItem>
-            </tabView:SfTabView>
+                Grid.ColumnSpan="2" />
+
             <loadingView:LoadingView
                 Grid.Row="1"
                 Grid.Column="0"

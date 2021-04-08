@@ -17,7 +17,7 @@
     <Grid.RowDefinitions>
         <RowDefinition Height="40" />
         <RowDefinition Height="*" />
-        <RowDefinition Height="100" />
+        <RowDefinition Height="150" />
         <RowDefinition Height="60" />
     </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
@@ -79,7 +79,7 @@
         Grid.Row="2"
         Grid.Column="0"
         Grid.ColumnSpan="2"
-        Margin="10,0"
+        Margin="10,15"
         Padding="0"
         BackgroundColor="Transparent"
         ContainerType="Outlined"
