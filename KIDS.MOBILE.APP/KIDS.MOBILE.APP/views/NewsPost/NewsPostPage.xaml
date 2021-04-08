@@ -35,7 +35,7 @@
                 Source="{markupExtension:ImageResource icon_add_album.png}"
                 VerticalOptions="FillAndExpand">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding AddNewAlbumCommand}" />
+                    <TapGestureRecognizer Command="{Binding AddNewsPostCommand}" />
                 </Image.GestureRecognizers>
             </Image>
             <Label
