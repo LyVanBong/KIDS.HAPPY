@@ -173,7 +173,7 @@
       <Version>4.0.9</Version>
     </PackageReference>
     <PackageReference Include="Com.OneSignal">
-      <Version>3.10.4</Version>
+      <Version>3.10.5</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Analytics">
       <Version>4.2.0</Version>
@@ -200,37 +200,37 @@
       <Version>2.0.0.11</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
-      <Version>19.1.0.54</Version>
+      <Version>19.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Core">
-      <Version>19.1.0.54</Version>
+      <Version>19.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar">
-      <Version>19.1.0.54</Version>
+      <Version>19.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox">
-      <Version>19.1.0.54</Version>
+      <Version>19.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfDataGrid">
-      <Version>19.1.0.54</Version>
+      <Version>19.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfListView">
-      <Version>19.1.0.54</Version>
+      <Version>19.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPicker">
-      <Version>19.1.0.54</Version>
+      <Version>19.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
-      <Version>19.1.0.54</Version>
+      <Version>19.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPicker">
       <Version>18.2.0.46</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfProgressBar">
-      <Version>19.1.0.54</Version>
+      <Version>19.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfTabView">
-      <Version>19.1.0.54</Version>
+      <Version>19.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugin.HtmlLabel">
       <Version>5.0.0</Version>

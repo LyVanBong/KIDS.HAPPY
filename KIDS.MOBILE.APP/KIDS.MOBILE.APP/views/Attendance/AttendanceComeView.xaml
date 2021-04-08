@@ -158,7 +158,9 @@
                                     FontSize="14"
                                     HorizontalOptions="StartAndExpand"
                                     Text="{Binding Name}"
-                                    TextColor="#000000" />
+                                    TextColor="#000000"
+                                    VerticalOptions="FillAndExpand"
+                                    VerticalTextAlignment="Center" />
                                 <RadioButton
                                     Grid.Row="1"
                                     Grid.Column="1"

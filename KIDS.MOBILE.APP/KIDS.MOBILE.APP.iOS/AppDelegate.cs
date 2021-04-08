@@ -38,6 +38,7 @@ namespace KIDS.MOBILE.APP.iOS
 
         private void OtherLibraries()
         {
+            SfRadioButtonRenderer.Init();
             SfLinearProgressBarRenderer.Init();
             SfCircularProgressBarRenderer.Init();
             SfComboBoxRenderer.Init();

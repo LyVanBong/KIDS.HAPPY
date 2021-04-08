@@ -29,10 +29,8 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
         private IPageDialogService _pageDialogService;
         private CountAttendanceModel _countAttendance;
         private List<AttendanceComeModel> _attendanceComes;
-        private List<AttendanceComeModel> _comesCache;
         private IDialogService _dialogService;
         private List<AttendanceLeaveModel> _attendanceLeave;
-        private List<AttendanceLeaveModel> _leaveCache;
         private int _selectIndexTabview;
         private List<ParentModel> _parentStudent;
         private bool _isLoading;
@@ -45,14 +43,17 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
             set
             {
                 if (SetProperty(ref _searchCome, value))
-                    if (string.IsNullOrWhiteSpace(SearchCome))
+                    Task.Run(async () =>
                     {
-                        AttendanceComes = _comesCache;
-                    }
-                    else
-                    {
-                        AttendanceComes = new List<AttendanceComeModel>(_comesCache.Where(x => x.Name.ToUpper().Contains(SearchCome.ToUpper())));
-                    }
+                        if (string.IsNullOrWhiteSpace(SearchCome))
+                        {
+                            AttendanceComes = await GetAttendanceCome(DateData);
+                        }
+                        else
+                        {
+                            AttendanceComes = new List<AttendanceComeModel>(AttendanceComes.Where(x => x.Name.ToUpper().Contains(SearchCome.ToUpper())));
+                        }
+                    });
             }
         }
 
@@ -64,11 +65,11 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
                 if (SetProperty(ref _searchLeave, value))
                     if (string.IsNullOrWhiteSpace(SearchLeave))
                     {
-                        AttendanceLeave = _leaveCache;
+                        AttendanceLeave = GetAttendanceLeave(DateData).Result;
                     }
                     else
                     {
-                        AttendanceLeave = new List<AttendanceLeaveModel>(_leaveCache.Where(x => x.Name.ToUpper().Contains(SearchLeave.ToUpper())));
+                        AttendanceLeave = new List<AttendanceLeaveModel>(AttendanceLeave.Where(x => x.Name.ToUpper().Contains(SearchLeave.ToUpper())));
                     }
             }
         }
@@ -117,11 +118,11 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
                         IsLoading = true;
                         if (SelectIndexTabview == 0)
                         {
-                            await GetAttendanceCome();
+                            AttendanceComes = new List<AttendanceComeModel>(await GetAttendanceCome(DateData));
                         }
                         else
                         {
-                            await GetAttendanceLeave();
+                            AttendanceLeave = new List<AttendanceLeaveModel>(await GetAttendanceLeave(DateData));
                         }
 
                         IsLoading = false;
@@ -166,11 +167,12 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
         {
             try
             {
+                if (IsLoading) return;
                 IsLoading = true;
                 if (student != null)
                 {
                     var data = await _userService.GetParentOfStudent(student.StudentID);
-                    if (data.Code > 0)
+                    if (data != null && data.Code > 0 && data.Data.Any())
                     {
                         ParentStudent = new List<ParentModel>(data.Data);
                         var count = ParentStudent.Count;
@@ -203,7 +205,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
                             default:
                                 var nameParent = action.Split('(');
                                 student.ParentName = nameParent[0];
-                                student.NguoiDon = data.Data.Where(x => x.Name == nameParent[0]).FirstOrDefault().ID;
+                                student.NguoiDon = data.Data?.Where(x => x.Name == nameParent[0]).FirstOrDefault()?.ID;
                                 break;
                         }
 
@@ -228,10 +230,20 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
                 IsLoading = true;
                 if (leave != null)
                 {
+                    var update = AttendanceLeave.FirstOrDefault(x => x.ID == leave.ID);
+                    if (update != null)
+                    {
+                        update.CoMat = leave.CoMat;
+                        update.NghiCoPhep = leave.NghiCoPhep;
+                        update.NghiKhongPhep = leave.NghiKhongPhep;
+                        update.DiMuon = leave.DiMuon;
+                        update.ArriveComment = leave.ArriveComment;
+                    }
                     var data = await _attendanceService.AttendanceUpdateAfternoon(leave.ID, leave.Leave,
                         leave.LeaveLate, leave.LeaveComment, leave.NguoiDon, _teacherId);
                     if (data.Code > 0)
                     {
+
                     }
                 }
             }
@@ -249,9 +261,19 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
         {
             try
             {
+                if (IsLoading) return;
                 IsLoading = true;
                 if (come != null)
                 {
+                    var update = AttendanceComes.FirstOrDefault(x => x.ID == come.ID);
+                    if (update != null)
+                    {
+                        update.CoMat = come.CoMat;
+                        update.NghiCoPhep = come.NghiCoPhep;
+                        update.NghiKhongPhep = come.NghiKhongPhep;
+                        update.DiMuon = come.DiMuon;
+                        update.ArriveComment = come.ArriveComment;
+                    }
                     var data = await _attendanceService.AttendanceUpdateMorning(come.ID, come.CoMat, come.NghiCoPhep,
                         come.NghiKhongPhep, come.DiMuon, come.ArriveComment, _teacherId);
                     if (data.Code > 0)
@@ -303,7 +325,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
                 IsLoading = true;
                 _classId = AppConstants.User.ClassID;
                 _teacherId = AppConstants.User.NguoiSuDung;
-                await GetAttendanceCome();
+                AttendanceComes = await GetAttendanceCome(DateTime.Now);
                 await AttendanceCount();
             }
             catch (Exception e)
@@ -316,38 +338,41 @@ namespace KIDS.MOBILE.APP.ViewModels.Attendance
             }
         }
 
-        private async Task GetAttendanceLeave()
+        private async Task<List<AttendanceLeaveModel>> GetAttendanceLeave(DateTime date)
         {
             try
             {
                 var data = await _attendanceService.AttendanceLeave(_classId,
-                    DateData.ToString("yyyy/MM/dd"));
+                    date.ToString("yyyy/MM/dd"));
                 if (data.Code > 0)
                 {
-                    _leaveCache = AttendanceLeave = new List<AttendanceLeaveModel>(data.Data);
+                    return new List<AttendanceLeaveModel>(data.Data);
                 }
             }
             catch (Exception e)
             {
                 Crashes.TrackError(e);
             }
+
+            return null;
         }
 
-        private async Task GetAttendanceCome()
+        private async Task<List<AttendanceComeModel>> GetAttendanceCome(DateTime date)
         {
             try
             {
                 var comes = await _attendanceService.AttendanceCome(_classId,
-                    DateData.ToString("yyyy/MM/dd"));
+                    date.ToString("yyyy/MM/dd"));
                 if (comes.Code > 0)
                 {
-                    _comesCache = AttendanceComes = new List<AttendanceComeModel>(comes.Data);
+                    return comes.Data.ToList();
                 }
             }
             catch (Exception e)
             {
                 Crashes.TrackError(e);
             }
+            return null;
         }
 
         private async Task AttendanceCount(string fromDate = null, string toDate = null)

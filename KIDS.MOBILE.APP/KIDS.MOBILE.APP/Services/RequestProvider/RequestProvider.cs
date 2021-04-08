@@ -94,14 +94,16 @@ namespace KIDS.MOBILE.APP.Services.RequestProvider
                     }
                 }
 
-               
+
                 if (parameterFile != null && parameterFile.Any())
                 {
-                    _request.AddParameter("Content-Type", "multipart/form-data");
                     foreach (var file in parameterFile)
                     {
                         var data = (await file.Value.OpenReadAsync())?.ToByteArray();
-                        _request.AddFile(file.Key, data, file.Value.FileName);
+                        if (data != null)
+                        {
+                            _request.AddFile(file.Key, data, file.Value.FileName, "multipart/form-data");
+                        }
                     }
 
                     _request.AlwaysMultipartFormData = true;
