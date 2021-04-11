@@ -107,7 +107,7 @@
 
   <ItemGroup>
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.0.9" />
-    <PackageReference Include="Com.OneSignal" Version="3.10.5" />
+    <PackageReference Include="Com.OneSignal" Version="3.10.0" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.2.0" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
