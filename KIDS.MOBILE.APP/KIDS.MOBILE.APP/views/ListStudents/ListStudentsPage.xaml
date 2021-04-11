@@ -27,6 +27,7 @@
                 Grid.Row="1"
                 BackgroundColor="#fff"
                 Text="{Binding SearchStudent}"
+                TextColor="Black"
                 VerticalOptions="CenterAndExpand" />
             <CollectionView
                 x:Name="CollectionView"

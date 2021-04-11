@@ -47,17 +47,6 @@
                 FontSize="16"
                 Text="{Binding MessageData.NguoiGui}"
                 VerticalOptions="Center" />
-            <!--<Image
-                Grid.Row="0"
-                Grid.Column="1"
-                HorizontalOptions="End"
-                Source="{markupExtension:ImageResource more.png}"
-                VerticalOptions="Center"
-                WidthRequest="60">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding EditAndDeleteCommand}" />
-                </Image.GestureRecognizers>
-            </Image>-->
             <Label
                 Grid.Row="1"
                 Grid.Column="1"
@@ -125,6 +114,7 @@
                     <renderers:CustomEditor
                         Margin="2"
                         AutoSize="TextChanges"
+                        BackgroundColor="#fff"
                         FontSize="{OnPlatform Android=13,
                                               iOS=14}"
                         MinimumHeightRequest="40"
@@ -180,6 +170,7 @@
                                 Grid.Column="1"
                                 FontSize="14"
                                 Text="{Binding NguoiGui}"
+                                TextColor="#000"
                                 VerticalOptions="Center" />
                             <Frame
                                 Grid.Row="1"
@@ -191,7 +182,8 @@
                                 <Label
                                     Margin="5"
                                     FontSize="14"
-                                    Text="{Binding Content}" />
+                                    Text="{Binding Content}"
+                                    TextColor="#000" />
                             </Frame>
                         </Grid>
                     </DataTemplate>

@@ -86,7 +86,7 @@
                 Grid.Row="1"
                 Grid.RowSpan="2"
                 Margin="30,0,0,0"
-                Aspect="AspectFill"
+                Aspect="AspectFit"
                 BackgroundColor="{StaticResource BackgroundImage}"
                 HorizontalOptions="StartAndExpand"
                 Source="{Binding UserData.AvatarTeacher}"

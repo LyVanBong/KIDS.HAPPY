@@ -23,7 +23,8 @@
             <SearchBar
                 Grid.Row="0"
                 BackgroundColor="#fff"
-                Text="{Binding SearchDay}" />
+                Text="{Binding SearchDay}"
+                TextColor="Black" />
             <CollectionView
                 x:Name="Assessment"
                 Grid.Row="1"
@@ -38,11 +39,13 @@
                         <Frame
                             Margin="0"
                             Padding="5"
+                            BackgroundColor="#fff"
                             BorderColor="DodgerBlue"
                             HasShadow="False">
                             <Grid
                                 Margin="0"
                                 Padding="0"
+                                BackgroundColor="#fff"
                                 ColumnDefinitions="50,*"
                                 RowDefinitions="{OnPlatform iOS='20,30,40,80',
                                                             Android='20,30,40,60'}">
@@ -69,6 +72,7 @@
                                     Grid.Column="1"
                                     FontSize="16"
                                     Text="{Binding Name}"
+                                    TextColor="Black"
                                     VerticalTextAlignment="Center" />
                                 <Frame
                                     Grid.Row="2"
@@ -81,12 +85,14 @@
                                     HasShadow="False">
                                     <renderers:CustomEditor
                                         Margin="3"
-                                        AutoSize="TextChanges"
+                                        AutoSize="Disabled"
+                                        BackgroundColor="#fff"
                                         FontSize="14"
                                         HeightRequest="{OnPlatform Android=45,
                                                                    iOS=40}"
                                         Placeholder="{markupExtension:Translate 00106}"
-                                        Text="{Binding PhieuBeNgoan}">
+                                        Text="{Binding PhieuBeNgoan}"
+                                        TextColor="Black">
                                         <renderers:CustomEditor.Behaviors>
                                             <behaviors:EventToCommandBehavior
                                                 Command="{Binding Source={x:Reference Assessment}, Path=BindingContext.AttendanceLeaveCommand}"
@@ -107,11 +113,13 @@
                                     <renderers:CustomEditor
                                         Margin="0"
                                         AutoSize="Disabled"
+                                        BackgroundColor="#fff"
                                         FontSize="14"
                                         HeightRequest="{OnPlatform Android=45,
                                                                    iOS=40}"
                                         Placeholder="{markupExtension:Translate 000104}"
-                                        Text="{Binding DayComment}">
+                                        Text="{Binding DayComment}"
+                                        TextColor="Black">
                                         <renderers:CustomEditor.Behaviors>
                                             <behaviors:EventToCommandBehavior
                                                 Command="{Binding Source={x:Reference Assessment}, Path=BindingContext.AttendanceLeaveCommand}"

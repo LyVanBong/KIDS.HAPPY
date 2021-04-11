@@ -71,12 +71,14 @@
                                     Grid.Column="1"
                                     FontSize="16"
                                     Text="{Binding Source={x:Reference CollectionViewInbox}, Path=BindingContext.Name}"
+                                    TextColor="#000"
                                     VerticalOptions="Center" />
                                 <Label
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     FontSize="16"
                                     HorizontalOptions="End"
+                                    TextColor="#000"
                                     VerticalOptions="Center">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Source={x:Reference CollectionViewInbox}, Path=BindingContext.ComfirmedCommand}" CommandParameter="{Binding .}" />
@@ -101,14 +103,16 @@
                                 <Label
                                     Grid.Row="1"
                                     Grid.Column="1"
-                                    Text="{Binding TmpDateCreate}" />
+                                    Text="{Binding TmpDateCreate}"
+                                    TextColor="#000" />
                                 <Label
                                     Grid.Row="2"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2"
                                     Margin="0"
                                     Padding="10,0"
-                                    Text="{Binding Content}" />
+                                    Text="{Binding Content}"
+                                    TextColor="#000" />
                                 <Grid
                                     Grid.Row="3"
                                     Grid.Column="0"
@@ -129,17 +133,19 @@
                                         Grid.Column="1"
                                         FontSize="14"
                                         Text="{markupExtension:Translate 00122}"
+                                        TextColor="#000"
                                         VerticalOptions="Center" />
                                     <Label
                                         Grid.Column="2"
                                         FontSize="13"
                                         HorizontalOptions="End"
+                                        TextColor="#000"
                                         VerticalOptions="Center">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{markupExtension:Translate 00041}" />
+                                                <Span Text="{markupExtension:Translate 00041}" TextColor="#000" />
                                                 <Span Text=" " />
-                                                <Span Text="{Binding NguoiGui}" />
+                                                <Span Text="{Binding NguoiGui}" TextColor="#000" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>

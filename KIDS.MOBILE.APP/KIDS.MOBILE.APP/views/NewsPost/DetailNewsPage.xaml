@@ -3,13 +3,13 @@
     x:Class="KIDS.MOBILE.APP.views.NewsPost.DetailNewsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
-    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
     xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     BackgroundColor="{StaticResource BackgroundColorNavBar}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -49,15 +49,18 @@
                         Grid.Row="1"
                         HorizontalOptions="StartAndExpand"
                         Text="{Binding DetailNews.Title}"
+                        TextColor="#000"
                         VerticalOptions="CenterAndExpand" />
                     <Label
                         Grid.Row="2"
                         HorizontalOptions="EndAndExpand"
                         Text="{Binding DetailNews.NgayTao}"
+                        TextColor="#000"
                         VerticalOptions="CenterAndExpand" />
                     <Label
                         Grid.Row="3"
                         Text="{Binding DetailNews.Content}"
+                        TextColor="#000"
                         TextType="Html" />
                 </Grid>
             </ScrollView>

@@ -39,12 +39,14 @@
                         <Frame
                             Margin="0"
                             Padding="5"
+                            BackgroundColor="#fff"
                             BorderColor="DodgerBlue"
                             CornerRadius="5"
                             HasShadow="False">
                             <Grid
                                 Margin="0"
                                 Padding="0"
+                                BackgroundColor="#fff"
                                 ColumnDefinitions="50,*"
                                 RowDefinitions="30,.5,30,40,Auto">
                                 <forms:CachedImage
@@ -101,12 +103,14 @@
                                     Grid.Column="1"
                                     FontSize="16"
                                     Text="{Binding Name}"
+                                    TextColor="#000"
                                     VerticalTextAlignment="Center" />
                                 <Label
                                     Grid.Row="3"
                                     Grid.Column="0"
                                     FontSize="14"
                                     Text="{markupExtension:Translate 00079}"
+                                    TextColor="#000"
                                     VerticalTextAlignment="Center" />
                                 <Frame
                                     Grid.Row="3"
@@ -127,6 +131,7 @@
                                             FontSize="14"
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding ParentName}"
+                                            TextColor="#000"
                                             VerticalTextAlignment="Center" />
                                         <Image
                                             Grid.Column="1"

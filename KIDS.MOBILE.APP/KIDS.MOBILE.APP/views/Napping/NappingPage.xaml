@@ -150,7 +150,11 @@
                     </Frame>
                 </Grid>
             </Frame>
-            <SearchBar Grid.Row="2" Text="{Binding SearchNapping}" />
+            <SearchBar
+                Grid.Row="2"
+                BackgroundColor="#fff"
+                Text="{Binding SearchNapping}"
+                TextColor="Gray" />
             <CollectionView
                 x:Name="CollectionView"
                 Grid.Row="3"
@@ -165,12 +169,14 @@
                         <Frame
                             Margin="5"
                             Padding="0"
+                            BackgroundColor="#fff"
                             BorderColor="DeepSkyBlue"
                             CornerRadius="10"
                             HasShadow="False">
                             <Grid
                                 Margin="0"
                                 Padding="0"
+                                BackgroundColor="#fff"
                                 ColumnDefinitions="60,*"
                                 RowDefinitions="30,30,Auto"
                                 RowSpacing="0">
@@ -202,6 +208,7 @@
                                     Grid.Column="1"
                                     FontSize="16"
                                     Text="{Binding Name}"
+                                    TextColor="Black"
                                     VerticalOptions="CenterAndExpand" />
                                 <Grid
                                     Grid.Row="1"
@@ -256,10 +263,12 @@
                                     HasShadow="False"
                                     HorizontalOptions="FillAndExpand">
                                     <renderers:CustomEditor
-                                        AutoSize="TextChanges"
+                                        AutoSize="Disabled"
+                                        BackgroundColor="#fff"
                                         FontSize="14"
                                         Placeholder="{markupExtension:Translate 00076}"
                                         Text="{Binding SleepComment}"
+                                        TextColor="#000"
                                         VerticalOptions="FillAndExpand">
                                         <renderers:CustomEditor.Behaviors>
                                             <prism:EventToCommandBehavior
