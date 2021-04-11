@@ -115,12 +115,14 @@
                         <Frame
                             Margin="0"
                             Padding="5"
+                            BackgroundColor="#fff"
                             BorderColor="DodgerBlue"
                             CornerRadius="5"
                             HasShadow="False">
                             <Grid
                                 Margin="0"
                                 Padding="0"
+                                BackgroundColor="#fff"
                                 ColumnDefinitions="50,*,*"
                                 ColumnSpacing="2"
                                 RowDefinitions="30,30,30,60"

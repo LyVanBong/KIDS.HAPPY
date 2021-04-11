@@ -57,12 +57,14 @@
                                 <Frame
                                     Margin="0"
                                     Padding="0"
+                                    BackgroundColor="#fff"
                                     BorderColor="DeepSkyBlue"
                                     CornerRadius="10"
                                     HasShadow="False">
                                     <Grid
                                         Margin="0"
                                         Padding="0"
+                                        BackgroundColor="#fff"
                                         ColumnDefinitions="60,*"
                                         RowDefinitions="60,Auto"
                                         RowSpacing="0">
@@ -97,6 +99,7 @@
                                             Grid.Column="1"
                                             FontSize="16"
                                             Text="{Binding Name}"
+                                            TextColor="Black"
                                             VerticalOptions="FillAndExpand" />
                                         <Frame
                                             Grid.Row="1"
@@ -104,15 +107,18 @@
                                             Grid.ColumnSpan="2"
                                             Margin="5"
                                             Padding="0"
+                                            BackgroundColor="#fff"
                                             BorderColor="DarkGray"
                                             CornerRadius="5"
                                             HasShadow="False"
                                             HorizontalOptions="FillAndExpand">
                                             <renderers:CustomEditor
                                                 AutoSize="TextChanges"
+                                                BackgroundColor="#fff"
                                                 FontSize="14"
                                                 Placeholder="{markupExtension:Translate 00076}"
                                                 Text="{Binding MealComment0}"
+                                                TextColor="Black"
                                                 VerticalOptions="FillAndExpand" />
                                         </Frame>
                                     </Grid>

@@ -31,9 +31,7 @@
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     Text="{markupExtension:Translate 00034}" />
-                <Grid
-                    Grid.Column="0"
-                    ColumnDefinitions="5,*,30">
+                <Grid Grid.Column="0" ColumnDefinitions="5,*,30">
                     <Label
                         Grid.Column="1"
                         Text="{Binding ChoosedDate}"
@@ -49,7 +47,8 @@
                 Grid.Row="1"
                 Grid.Column="0"
                 BackgroundColor="#fff"
-                Text="{Binding SearchHygiene}" />
+                Text="{Binding SearchHygiene}"
+                TextColor="Black" />
             <CollectionView
                 x:Name="CollectionView"
                 Grid.Row="2"
@@ -65,12 +64,14 @@
                         <Frame
                             Margin="0"
                             Padding="0"
+                            BackgroundColor="#fff"
                             BorderColor="DeepSkyBlue"
                             CornerRadius="10"
                             HasShadow="False">
                             <Grid
                                 Margin="0"
                                 Padding="0"
+                                BackgroundColor="#fff"
                                 ColumnDefinitions="60,*"
                                 RowDefinitions="20,40,Auto"
                                 RowSpacing="0">
@@ -102,6 +103,7 @@
                                     Grid.Column="1"
                                     FontSize="16"
                                     Text="{Binding Name}"
+                                    TextColor="Black"
                                     VerticalOptions="CenterAndExpand" />
                                 <Grid
                                     Grid.Row="1"
@@ -114,14 +116,17 @@
                                         Grid.Column="0"
                                         HorizontalOptions="Start"
                                         Text="{markupExtension:Translate 00103}"
+                                        TextColor="Black"
                                         VerticalOptions="Center" />
                                     <Button
                                         Grid.Column="1"
                                         Margin="0"
                                         Padding="0"
+                                        BackgroundColor="#fff"
                                         Command="{Binding Source={x:Reference CollectionView}, Path=BindingContext.MinusCommand}"
                                         CommandParameter="{Binding .}"
-                                        Text="-" />
+                                        Text="-"
+                                        TextColor="Black" />
                                     <Frame
                                         x:Name="Frame"
                                         Grid.Column="2"
@@ -140,9 +145,11 @@
                                     </Frame>
                                     <Button
                                         Grid.Column="3"
+                                        BackgroundColor="#fff"
                                         Command="{Binding Source={x:Reference CollectionView}, Path=BindingContext.PlusCommand}"
                                         CommandParameter="{Binding .}"
-                                        Text="+" />
+                                        Text="+"
+                                        TextColor="Black" />
                                 </Grid>
                                 <Frame
                                     Grid.Row="2"
@@ -155,10 +162,12 @@
                                     HasShadow="False"
                                     HorizontalOptions="FillAndExpand">
                                     <renderers:CustomEditor
-                                        AutoSize="TextChanges"
+                                        AutoSize="Disabled"
+                                        BackgroundColor="#fff"
                                         FontSize="14"
                                         Placeholder="{markupExtension:Translate 00076}"
                                         Text="{Binding HygieneComment}"
+                                        TextColor="Black"
                                         VerticalOptions="FillAndExpand">
                                         <renderers:CustomEditor.Behaviors>
                                             <behaviors:EventToCommandBehavior

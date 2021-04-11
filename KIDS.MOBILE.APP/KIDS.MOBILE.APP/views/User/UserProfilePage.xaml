@@ -45,7 +45,7 @@
                     <Image
                         Grid.Row="0"
                         Margin="0"
-                        Aspect="Fill"
+                        Aspect="AspectFit"
                         BackgroundColor="{StaticResource BackgroundImage}"
                         HeightRequest="150"
                         HorizontalOptions="CenterAndExpand"

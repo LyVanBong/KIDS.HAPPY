@@ -71,6 +71,7 @@
             <renderers:CustomEditor
                 Margin="2,0"
                 AutoSize="Disabled"
+                BackgroundColor="#fff"
                 FontSize="14"
                 Text="{Binding Message.Content}" />
         </Frame>

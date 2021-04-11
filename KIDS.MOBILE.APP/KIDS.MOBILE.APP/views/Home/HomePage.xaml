@@ -33,7 +33,7 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 Margin="5,0,0,0"
-                Aspect="AspectFill"
+                Aspect="AspectFit"
                 BackgroundColor="{StaticResource BackgroundImage}"
                 HeightRequest="50"
                 Source="{Binding UserData.AvatarTeacher}"

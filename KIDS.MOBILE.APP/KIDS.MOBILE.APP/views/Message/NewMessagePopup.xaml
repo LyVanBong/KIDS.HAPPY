@@ -202,7 +202,10 @@
                 BorderColor="DarkGray"
                 CornerRadius="10"
                 HasShadow="False">
-                <renderers:CustomEditor Margin="10,0" Text="{Binding BodyMessage}" />
+                <renderers:CustomEditor
+                    Margin="10,0"
+                    BackgroundColor="#fff"
+                    Text="{Binding BodyMessage}" />
             </Frame>
             <Button
                 Grid.Row="3"
