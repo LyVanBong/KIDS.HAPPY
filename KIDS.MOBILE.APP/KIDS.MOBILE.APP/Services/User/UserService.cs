@@ -4,8 +4,10 @@ using KIDS.MOBILE.APP.Models.User;
 using KIDS.MOBILE.APP.Services.RequestProvider;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AppCenter.Crashes;
+using RestSharp;
 using Xamarin.Essentials;
 
 namespace KIDS.MOBILE.APP.Services.User
@@ -99,9 +101,9 @@ namespace KIDS.MOBILE.APP.Services.User
                     new RequestParameter("TeacherId",update.TeacherId),
                     new RequestParameter("Name",update.Name),
                     new RequestParameter("Sex",update.Sex),
-                    new RequestParameter("DOB",update.DOB),
-                    new RequestParameter("Email",update.Email),
+                    new RequestParameter("Dob",update.DOB),
                     new RequestParameter("Phone",update.Phone),
+                    new RequestParameter("Email",update.Email),
                     new RequestParameter("Address",update.Address),
                 };
                 Dictionary<string, FileResult> paraFile = new Dictionary<string, FileResult>();
@@ -109,11 +111,13 @@ namespace KIDS.MOBILE.APP.Services.User
                 {
                     paraFile.Add("Picture", update.Picture);
                 }
-                var data = await _requestProvider.PostAsync<int>("Teacher/Update", parameters, paraFile);
+
+                var data = await _requestProvider.PostFileAsync<int>("Teacher/Update", parameters, paraFile);
                 return data;
             }
             catch (Exception e)
             {
+                Crashes.TrackError(e);
                 return null;
             }
         }

@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using KIDS.MOBILE.APP.Services.Database;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -31,7 +32,7 @@ namespace KIDS.MOBILE.APP.ViewModels.User
         private string _address;
         private bool _isLoading;
         private FileResult _fileResult;
-
+        private IDatabaseService _databaseService;
         public bool IsLoading
         {
             get => _isLoading;
@@ -57,8 +58,9 @@ namespace KIDS.MOBILE.APP.ViewModels.User
 
         public ICommand ChangeImageCommand { get; }
 
-        public UserProfileViewModel(INavigationService navigationService, IUserService userService, IPageDialogService pageDialogService)
+        public UserProfileViewModel(INavigationService navigationService, IUserService userService, IPageDialogService pageDialogService, IDatabaseService databaseService)
         {
+            _databaseService = databaseService;
             _userService = userService;
             _navigationService = navigationService;
             _pageDialogService = pageDialogService;
@@ -100,6 +102,7 @@ namespace KIDS.MOBILE.APP.ViewModels.User
                 if (data.Code > 0)
                 {
                     await _pageDialogService.DisplayAlertAsync(AppResources._00007, AppResources._00097, "OK");
+                    await _navigationService.NavigateAsync("/LoginPage");
                 }
                 else
                 {
