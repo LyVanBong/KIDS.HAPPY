@@ -8,6 +8,7 @@
     xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:loadingView="clr-namespace:KIDS.MOBILE.APP.Controls.LoadingView;assembly=KIDS.MOBILE.APP"
     xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
+    xmlns:behavior="clr-namespace:KIDS.MOBILE.APP.Controls.Animation"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com"
     iOsSpecific:Page.UseSafeArea="true"
@@ -55,14 +56,23 @@
                     <TapGestureRecognizer Command="{Binding ProfileCommand}" />
                 </BoxView.GestureRecognizers>
             </BoxView>
-            <Label
-                Grid.Row="0"
-                Grid.Column="1"
-                FontSize="16"
-                MaxLines="2"
-                Text="{Binding UserData.WebcomeToTeacher}"
-                TextColor="#FFFFFF"
-                VerticalOptions="CenterAndExpand" />
+            <StackLayout x:Name="stackLayout"
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         HorizontalOptions="Fill"
+                         VerticalOptions="Fill">
+                <Label
+                    FontSize="16"
+                    MaxLines="1"
+                    Text="{Binding UserData.WebcomeToTeacher}"
+                    TextColor="#FFFFFF"
+                    VerticalOptions="CenterAndExpand">
+                    <Label.Behaviors>
+                        <behavior:MarqueeBehavior PageWidth="{Binding Path=Width, Source={x:Reference stackLayout}}"/>
+                    </Label.Behaviors>
+                </Label>
+            </StackLayout>
+            
             <ScrollView
                 Grid.Row="1"
                 Grid.Column="0"
