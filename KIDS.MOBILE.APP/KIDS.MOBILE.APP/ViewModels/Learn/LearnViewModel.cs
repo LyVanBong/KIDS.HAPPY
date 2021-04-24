@@ -181,7 +181,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
                     break;
                 case "2":
                 case "4":
-                    await StadyComment(key);
+                    await StudyComment(key);
                     break;
                 default:
                     break;
@@ -190,7 +190,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
             IsLoading = false;
         }
 
-        private async Task StadyComment(string key)
+        private async Task StudyComment(string key)
         {
             try
             {

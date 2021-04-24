@@ -5,6 +5,7 @@ using KIDS.MOBILE.APP.Models.Attendance;
 using KIDS.MOBILE.APP.Services.Assessment;
 using KIDS.MOBILE.APP.Services.Attendance;
 using Microsoft.AppCenter.Crashes;
+using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services.Dialogs;
 using System;
@@ -12,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.ViewModels.Assessment
@@ -96,11 +98,19 @@ namespace KIDS.MOBILE.APP.ViewModels.Assessment
         public ICommand ReloadCommand { get; set; }
         public ICommand SelectDateCommand { get; set; }
         public ICommand SearchCommand { get; set; }
+        public ICommand FastFeatureCommand { get; private set; }
 
         public int SelectIndexTabview
         {
             get => _selectIndexTabview;
             set => SetProperty(ref _selectIndexTabview, value);
+        }
+
+        private bool _isOpenFastFeature;
+        public bool IsOpenFastFeature
+        {
+            get => _isOpenFastFeature;
+            set => SetProperty(ref _isOpenFastFeature, value);
         }
 
         public AssessmentViewModel(IAttendanceService attendanceService, IAssessmentService assessmentService, INavigationService navigationService, IDialogService dialogService)
@@ -114,6 +124,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Assessment
             ReloadCommand = new Command(async () => await InitializationAttendance());
             SelectDateCommand = new Command(OpenDatePicker);
             SearchCommand = new Command(Search);
+            FastFeatureCommand = new DelegateCommand<string>(FastFeature);
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
@@ -303,6 +314,102 @@ namespace KIDS.MOBILE.APP.ViewModels.Assessment
         private void GoBack()
         {
             _navigationService.GoBackAsync();
+        }
+
+        private void FastFeature(string key)
+        {
+            if (IsLoading) return;
+            IsLoading = true;
+            switch (key)
+            {
+                case "0":
+                    IsOpenFastFeature = !IsOpenFastFeature;
+                    break;
+                //case "1":
+                //case "3":
+                //    await QuickComment(key);
+                //    break;
+                //case "2":
+                //case "4":
+                //    await StudyComment(key);
+                //    break;
+                default:
+                    break;
+            }
+
+            IsLoading = false;
+        }
+
+        private void QuickComment(string key)
+        {
+            try
+            {
+                _dialogService.ShowDialog("QuickCommentDialog", new DialogParameters("key=0"), result =>
+                {
+                    var para = result.Parameters.GetValue<string>("CommentContent");
+                    if (para != null)
+                    {
+                        foreach (var student in AttendanceLeave)
+                        {
+                            if (string.IsNullOrWhiteSpace(student.DayComment))
+                            {
+                                student.DayComment = para;
+                            }
+                        }
+                    }
+                });
+            }
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
+            }
+        }
+
+        private async Task StudyComment(string key)
+        {
+            //try
+            //{
+            //    if (key == "2")
+            //    {
+            //        var cmt = StudentData.Where(x => string.IsNullOrEmpty(x.StudyCommentAM))?.ToList();
+            //        if (cmt.Any())
+            //        {
+            //            await _pageDialogService.DisplayAlertAsync("Thông báo", "Vẫn còn có con chưa được nhận xét", "OK");
+            //        }
+            //        else
+            //        {
+            //            var count = 0;
+            //            foreach (var item in StudentData)
+            //            {
+            //                count += await UpdateMorning(item);
+            //            }
+            //            await _pageDialogService.DisplayAlertAsync("Thông báo", "Đã nhận xét " + count + " con thanh công", "OK");
+            //            IsOpenFastFeature = false;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        var cmt = StudentData.Where(x => string.IsNullOrEmpty(x.StudyCommentPM))?.ToList();
+            //        if (cmt.Any())
+            //        {
+            //            await _pageDialogService.DisplayAlertAsync("Thông báo", "Vẫn còn có con chưa được nhận xét", "OK");
+            //        }
+            //        else
+            //        {
+            //            var count = 0;
+            //            foreach (var item in StudentData)
+            //            {
+            //                count += await UpdateAfternoon(item);
+            //            }
+            //            await _pageDialogService.DisplayAlertAsync("Thông báo", "Đã nhận xét " + count + " con thanh công", "OK");
+            //            IsOpenFastFeature = false;
+            //        }
+            //    }
+            //}
+            //catch (Exception e)
+            //{
+            //    Crashes.TrackError(e);
+            //}
         }
     }
 }

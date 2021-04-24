@@ -21,7 +21,7 @@
               Padding="0"
               ColumnDefinitions="*,80"
               ColumnSpacing="0"
-              RowDefinitions="40,*"
+              RowDefinitions="40,*,40,40,40,20"
               RowSpacing="0">
             <navigationView:NavigationView Grid.Row="0"
                                            Text="{markupExtension:Translate 00035}" />
@@ -46,6 +46,7 @@
                 </Grid>
             </Grid>
             <tabView:SfTabView Grid.Row="1"
+                               Grid.RowSpan="4"
                                Grid.Column="0"
                                Grid.ColumnSpan="2"
                                BackgroundColor="{StaticResource BackgroundApp}"
@@ -68,9 +69,125 @@
                 </tabView:SfTabItem>
             </tabView:SfTabView>
             <loadingView:LoadingView Grid.Row="1"
+                                     Grid.RowSpan="4"
                                      Grid.Column="0"
                                      Grid.ColumnSpan="2"
                                      IsVisible="{Binding IsLoading}" />
+            <Frame
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0,5"
+                Padding="0"
+                BackgroundColor="{StaticResource BackgroundColorNavBar}"
+                CornerRadius="20"
+                HasShadow="False"
+                HorizontalOptions="End"
+                IsVisible="False"
+                WidthRequest="150">
+                <Label
+                    BackgroundColor="Transparent"
+                    FontAttributes="Bold"
+                    FontSize="15"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Cập nhật ngay"
+                    TextColor="#fff"
+                    VerticalOptions="CenterAndExpand" />
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding FastFeatureCommand}" CommandParameter="2" />
+                </Frame.GestureRecognizers>
+                <Frame.Triggers>
+                    <DataTrigger
+                        Binding="{Binding IsOpenFastFeature}"
+                        TargetType="Frame"
+                        Value="True">
+                        <Setter Property="Frame.IsVisible" Value="True" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding IsOpenFastFeature}"
+                        TargetType="Frame"
+                        Value="False">
+                        <Setter Property="Frame.IsVisible" Value="False" />
+                    </DataTrigger>
+                </Frame.Triggers>
+            </Frame>
+            <Frame
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0,5"
+                Padding="0"
+                BackgroundColor="{StaticResource BackgroundColorNavBar}"
+                CornerRadius="20"
+                HasShadow="False"
+                HorizontalOptions="End"
+                IsVisible="False"
+                WidthRequest="200">
+                <Label
+                    BackgroundColor="Transparent"
+                    FontAttributes="Bold"
+                    FontSize="15"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Tạo nhận xét chung"
+                    TextColor="#fff"
+                    VerticalOptions="CenterAndExpand" />
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding FastFeatureCommand}" CommandParameter="1" />
+                </Frame.GestureRecognizers>
+                <Frame.Triggers>
+                    <DataTrigger
+                        Binding="{Binding IsOpenFastFeature}"
+                        TargetType="Frame"
+                        Value="True">
+                        <Setter Property="Frame.IsVisible" Value="True" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding IsOpenFastFeature}"
+                        TargetType="Frame"
+                        Value="False">
+                        <Setter Property="Frame.IsVisible" Value="False" />
+                    </DataTrigger>
+                </Frame.Triggers>
+            </Frame>
+            <Frame
+                Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0,5"
+                Padding="0"
+                BackgroundColor="{StaticResource BackgroundColorNavBar}"
+                CornerRadius="20"
+                HasShadow="False"
+                HorizontalOptions="End"
+                VerticalOptions="FillAndExpand"
+                WidthRequest="100">
+                <Label
+                    BackgroundColor="Transparent"
+                    FontAttributes="Bold"
+                    FontSize="15"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Cập nhật"
+                    TextColor="#fff"
+                    VerticalOptions="CenterAndExpand">
+                    <Label.Triggers>
+                        <DataTrigger
+                            Binding="{Binding IsOpenFastFeature}"
+                            TargetType="Label"
+                            Value="True">
+                            <Setter Property="Label.Text" Value="Thoát" />
+                        </DataTrigger>
+                        <DataTrigger
+                            Binding="{Binding IsOpenFastFeature}"
+                            TargetType="Label"
+                            Value="False">
+                            <Setter Property="Label.Text" Value="Cập  nhật" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding FastFeatureCommand}" CommandParameter="0" />
+                </Frame.GestureRecognizers>
+            </Frame>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
