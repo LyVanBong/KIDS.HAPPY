@@ -61,6 +61,7 @@
                                         Grid.Column="0"
                                         Text="{Binding ThoiGian}"
                                         TextColor="#000"
+                                        FontSize="14"
                                         VerticalTextAlignment="Center" />
                                     <Label
                                         Grid.Row="0"
@@ -68,6 +69,7 @@
                                         Margin="10,0,0,0"
                                         Text="{Binding Contents}"
                                         TextColor="#000"
+                                        FontSize="14"
                                         VerticalTextAlignment="Center" />
                                     <BoxView
                                         Grid.Row="1"

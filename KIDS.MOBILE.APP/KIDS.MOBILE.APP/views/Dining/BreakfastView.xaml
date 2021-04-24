@@ -37,12 +37,14 @@
                     Orientation="Vertical"
                     Spacing="0">
                     <Label
-                        Margin="0,10"
+                        Margin="0,5"
                         BackgroundColor="Transparent"
-                        FontSize="16"
+                        FontSize="24"
                         HorizontalOptions="CenterAndExpand"
-                        Text="Thực đơn món ăn"
+                        Text="Thực đơn"
                         TextColor="#000"
+                        FontAttributes="Bold"
+                        TextDecorations="Underline"
                         VerticalOptions="CenterAndExpand" />
                     <Label
                         Margin="50,0"
@@ -55,14 +57,14 @@
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <Frame
-                                    Margin="0"
+                                    Margin="10,5"
                                     Padding="0"
                                     BackgroundColor="#fff"
                                     BorderColor="DeepSkyBlue"
                                     CornerRadius="10"
                                     HasShadow="False">
                                     <Grid
-                                        Margin="0"
+                                        Margin="5"
                                         Padding="0"
                                         BackgroundColor="#fff"
                                         ColumnDefinitions="60,*"
@@ -100,7 +102,8 @@
                                             FontSize="16"
                                             Text="{Binding Name}"
                                             TextColor="Black"
-                                            VerticalOptions="FillAndExpand" />
+                                            FontAttributes="Bold"
+                                            VerticalOptions="CenterAndExpand" />
                                         <Frame
                                             Grid.Row="1"
                                             Grid.Column="0"

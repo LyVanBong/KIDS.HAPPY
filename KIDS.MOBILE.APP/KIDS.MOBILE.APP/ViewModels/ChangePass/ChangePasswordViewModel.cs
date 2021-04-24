@@ -6,6 +6,7 @@ using KIDS.MOBILE.APP.Helpers;
 using KIDS.MOBILE.APP.Services.Database;
 using KIDS.MOBILE.APP.Services.User;
 using Microsoft.AppCenter.Crashes;
+using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 using Xamarin.CommunityToolkit.ObjectModel;
@@ -58,9 +59,9 @@ namespace KIDS.MOBILE.APP.ViewModels.ChangePass
             _navigationService = navigationService;
             _userService = userService;
             _pageDialogService = pageDialogService;
-            UpdatePassCommand = new AsyncCommand(async () => await UpdatePasswd());
+            UpdatePassCommand = new DelegateCommand(UpdatePasswd);
         }
-        private async Task UpdatePasswd()
+        private async void UpdatePasswd()
         {
             try
             {

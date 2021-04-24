@@ -334,7 +334,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Learn
 
         private async void goBackLearn(IDialogResult obj)
         {
-            if (obj.Parameters.ContainsKey(AppConstants.ChoosedDate))
+            if (obj?.Parameters?.ContainsKey(AppConstants.ChoosedDate) == true)
             {
                 var date = obj.Parameters.GetValue<DateTime>(AppConstants.ChoosedDate);
                 DateData = date;
