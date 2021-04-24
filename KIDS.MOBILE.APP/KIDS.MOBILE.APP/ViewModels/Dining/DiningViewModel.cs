@@ -16,6 +16,7 @@ using KIDS.MOBILE.APP.Services.Database;
 using Prism.Services;
 using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
 
 namespace KIDS.MOBILE.APP.ViewModels.Dining
 {
@@ -179,7 +180,16 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
 
         public ICommand FastFeatureCommand { get; private set; }
 
-
+        private ObservableCollection<MenuToDay> _MenuData = new ObservableCollection<MenuToDay>();
+        public ObservableCollection<MenuToDay> MenuData
+        {
+            get => _MenuData;
+            set
+            {
+                _MenuData = value;
+                RaisePropertyChanged(nameof(MenuData));
+            }
+        }
 
         public DiningViewModel(IAttendanceService attendanceService, IDiningService diningService, IDialogService dialogService, IDatabaseService databaseService, IPageDialogService pageDialogService)
         {
@@ -426,20 +436,52 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
                     var monAnData = new List<ListOfDishesModel>(tmpDish?.Data);
                     if (monAnData.Any())
                     {
-                        ThucDon = "";
-                        var sang = monAnData.FirstOrDefault(x => x.BuaAn == "80cd65d9-d619-4161-a2a6-69a455fc8117");
-                        if (sang != null)
-                            ThucDon += "Bứa sáng" + "\n\t " + string.Join("\n\t", sang.TenMonAn.Split(',')) + "\n";
-                        var trua = monAnData.FirstOrDefault(x => x.BuaAn == "fa1726ce-8736-42e5-bd86-1c44089dd8c6");
-                        if (trua != null)
-                            ThucDon += "Bứa trưa" + "\n\t " + string.Join("\n\t", trua.TenMonAn.Split(',')) + "\n";
-                        var chieuPhu = monAnData.FirstOrDefault(x => x.BuaAn == "2f4ed0f5-a1dd-46ca-9067-78d1a745a638");
-                        if (chieuPhu != null)
-                            ThucDon += "Bứa chiều phụ" + "\n\t " + string.Join("\n\t", chieuPhu.TenMonAn.Split(',')) + "\n";
-                        var chieu = monAnData.FirstOrDefault(x => x.BuaAn == "f4424fae-5ad4-4267-a0b9-36fa32cc79c2");
-                        if (chieu != null)
-                            ThucDon += "Bứa chiều" + "\n\t " + string.Join("\n\t", chieu.TenMonAn.Split(',')) + "\n";
-                        ThucDon?.Replace(" ", "");
+                        //ThucDon = "";
+                        //var sang = monAnData.FirstOrDefault(x => x.BuaAn == "80cd65d9-d619-4161-a2a6-69a455fc8117");
+                        //if (sang != null)
+                        //    ThucDon += "Bứa sáng" + "\n\t " + string.Join("\n\t", sang.TenMonAn.Split(',')) + "\n";
+                        //var trua = monAnData.FirstOrDefault(x => x.BuaAn == "fa1726ce-8736-42e5-bd86-1c44089dd8c6");
+                        //if (trua != null)
+                        //    ThucDon += "Bứa trưa" + "\n\t " + string.Join("\n\t", trua.TenMonAn.Split(',')) + "\n";
+                        //var chieuPhu = monAnData.FirstOrDefault(x => x.BuaAn == "2f4ed0f5-a1dd-46ca-9067-78d1a745a638");
+                        //if (chieuPhu != null)
+                        //    ThucDon += "Bứa chiều phụ" + "\n\t " + string.Join("\n\t", chieuPhu.TenMonAn.Split(',')) + "\n";
+                        //var chieu = monAnData.FirstOrDefault(x => x.BuaAn == "f4424fae-5ad4-4267-a0b9-36fa32cc79c2");
+                        //if (chieu != null)
+                        //    ThucDon += "Bứa chiều" + "\n\t " + string.Join("\n\t", chieu.TenMonAn.Split(',')) + "\n";
+                        //ThucDon?.Replace(" ", "");
+                        var menuList = new List<MenuToDay> { 
+                            new MenuToDay
+                            {
+                                Time = "Bữa sáng",
+                                Content = string.Join("\n", monAnData.FirstOrDefault(x => x.BuaAn == "80cd65d9-d619-4161-a2a6-69a455fc8117")?.TenMonAn?.Split(',')),
+                                Image = ImageSource.FromFile("breakfast.png"),
+                                TextColor = Color.FromHex("#ff7700")
+                            },
+                            new MenuToDay
+                            {
+                                Time = "Bữa trưa",
+                                Content = string.Join("\n", monAnData.FirstOrDefault(x => x.BuaAn == "fa1726ce-8736-42e5-bd86-1c44089dd8c6")?.TenMonAn?.Split(',')),
+                                Image = ImageSource.FromFile("lunch.jpeg"),
+                                TextColor = Color.FromHex("#002aff")
+                            },
+                            new MenuToDay
+                            {
+                                Time = "Bữa phụ chiều",
+                                Content = string.Join("\n", monAnData.FirstOrDefault(x => x.BuaAn == "2f4ed0f5-a1dd-46ca-9067-78d1a745a638")?.TenMonAn?.Split(',')),
+                                Image = ImageSource.FromFile("lunch.jpeg"),
+                                TextColor = Color.FromHex("#ff00c3")
+                            },
+                            new MenuToDay
+                            {
+                                Time = "Bữa chiều",
+                                Content = string.Join("\n", monAnData.FirstOrDefault(x => x.BuaAn == "f4424fae-5ad4-4267-a0b9-36fa32cc79c2")?.TenMonAn?.Split(',')),
+                                Image = ImageSource.FromFile("dinner.png"),
+                                TextColor = Color.FromHex("#9d00ff")
+                            }
+                        };
+                        MenuData?.Clear();
+                        MenuData = new ObservableCollection<MenuToDay>(menuList);
                     }
                 }
             }
@@ -452,5 +494,14 @@ namespace KIDS.MOBILE.APP.ViewModels.Dining
                 IsLoading = false;
             }
         }
+    }
+    public class MenuToDay
+    {
+        public Guid? Id { get; set; }
+        public string Time { get; set; }
+        public string Content { get; set; }
+        public string Comment { get; set; }
+        public ImageSource Image { get; set; }
+        public Color TextColor { get; set; }
     }
 }

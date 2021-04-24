@@ -16,7 +16,7 @@
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Content>
-        <Grid
+        <!--<Grid
             Margin="0"
             Padding="0,0,0,10"
             BackgroundColor="{StaticResource BackgroundApp}"
@@ -28,6 +28,48 @@
                 HorizontalOptions="CenterAndExpand"
                 IsVisible="{Binding IsLoading}"
                 VerticalOptions="CenterAndExpand" />
+        </Grid>-->
+        <Grid
+            Margin="0"
+            Padding="0"
+            BackgroundColor="{StaticResource BackgroundApp}"
+            ColumnDefinitions="*,80"
+            ColumnSpacing="0"
+            HorizontalOptions="FillAndExpand"
+            RowDefinitions="40,*"
+            RowSpacing="0"
+            VerticalOptions="FillAndExpand">
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                ColumnDefinitions="auto,*">
+                <navigationView:NavigationView
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="{markupExtension:Translate 00033}" />
+                <Grid Grid.Column="0" ColumnDefinitions="5,*,30">
+                    <Label
+                        Grid.Column="1"
+                        Text="{Binding ChoosedDate}"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                    <Image Grid.Column="2" Source="{markupExtension:ImageResource calendarToolbar.png}" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectDateCommand}" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </Grid>
+            <dining:BreakfastView
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2" />
+
+            <loadingView:LoadingView
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                IsVisible="{Binding IsLoading}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

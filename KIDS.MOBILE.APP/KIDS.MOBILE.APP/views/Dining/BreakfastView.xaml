@@ -9,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:renderers="clr-namespace:KIDS.MOBILE.APP.Controls.Renderers;assembly=KIDS.MOBILE.APP"
     xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     mc:Ignorable="d">
     <ContentView.Content>
         <Grid BackgroundColor="Transparent">
@@ -46,13 +47,98 @@
                         FontAttributes="Bold"
                         TextDecorations="Underline"
                         VerticalOptions="CenterAndExpand" />
-                    <Label
-                        Margin="50,0"
-                        BackgroundColor="Transparent"
-                        FontSize="14"
-                        MaxLines="100"
-                        Text="{Binding ThucDon}"
-                        TextColor="#000" />
+                    <!--Menu for today-->
+                    <syncfusion:SfListView x:Name="activityList"
+                        ItemsSource="{Binding MenuData,Mode=TwoWay}"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="StartAndExpand"
+                        Margin="10,0,10,0"
+                        AutoFitMode="DynamicHeight"
+                        SelectionMode="None"
+                        IsScrollingEnabled="False">
+
+                        <syncfusion:SfListView.HeaderTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid ColumnDefinitions="*,2*" ColumnSpacing="0" BackgroundColor="#64ccf5">
+                                        <Frame Grid.Column="0"
+                                           BorderColor="#bababa"
+                                           HasShadow="False"
+                                           CornerRadius="0"
+                                           IsClippedToBounds="False"
+                                           BackgroundColor="Transparent">
+                                            <Label Text="Thời gian"
+                                               FontSize="16"
+                                               TextColor="Black"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="CenterAndExpand"
+                                               VerticalOptions="CenterAndExpand"/>
+                                        </Frame>
+                                        <Frame Grid.Column="1"
+                                           CornerRadius="0"
+                                           BorderColor="#bababa"
+                                           HasShadow="False"
+                                           IsClippedToBounds="False"
+                                           BackgroundColor="Transparent">
+                                            <Label Text="Nội dung"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="Black"
+                                               HorizontalOptions="StartAndExpand"
+                                               VerticalOptions="CenterAndExpand"/>
+                                        </Frame>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </syncfusion:SfListView.HeaderTemplate>
+
+                        <syncfusion:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid ColumnDefinitions="*,2*" ColumnSpacing="0">
+                                        <Frame Grid.Column="0"
+                                           BorderColor="#bababa"
+                                           HasShadow="False"
+                                           CornerRadius="0"
+                                           IsClippedToBounds="False"
+                                           Padding="0">
+                                            <StackLayout HorizontalOptions="FillAndExpand"
+                                                     VerticalOptions="FillAndExpand"
+                                                     Orientation="Vertical">
+                                                <Image HeightRequest="40"
+                                                   Margin="0,5,0,0"
+                                                   VerticalOptions="StartAndExpand"
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   Aspect="AspectFit"
+                                                   Source="{Binding Image}"/>
+                                                <Label Text="{Binding Time}"
+                                               FontSize="14"
+                                               TextColor="{Binding TextColor}"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="CenterAndExpand"
+                                               VerticalOptions="CenterAndExpand"
+                                               LineBreakMode="WordWrap"
+                                               Padding="10,5,10,10"/>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame Grid.Column="1" CornerRadius="0"
+                                           BorderColor="#bababa"
+                                           HasShadow="False"
+                                           IsClippedToBounds="False"
+                                           Padding="5">
+                                            <Label Text="{Binding Content}"
+                                               FontSize="14"
+                                               TextColor="Black"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="CenterAndExpand"
+                                               Padding="10,10,10,10"
+                                               LineBreakMode="WordWrap"/>
+                                        </Frame>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </syncfusion:SfListView.ItemTemplate>
+                    </syncfusion:SfListView>
                     <StackLayout BindableLayout.ItemsSource="{Binding StudentData}" HorizontalOptions="CenterAndExpand">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>

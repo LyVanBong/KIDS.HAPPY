@@ -290,6 +290,15 @@
   <ItemGroup>
     <BundleResource Include="Resources\more.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lunch.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\breakfast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dinner.png" />
+  </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties TriggeredFromHotReload="False" />
