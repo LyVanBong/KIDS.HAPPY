@@ -1,5 +1,6 @@
 ﻿using Com.OneSignal;
 using Com.OneSignal.Abstractions;
+using DLToolkit.Forms.Controls;
 using KIDS.MOBILE.APP.Configurations;
 using KIDS.MOBILE.APP.Controls.Dialogs.Network;
 using KIDS.MOBILE.APP.Controls.Dialogs.NewFolder;
@@ -21,6 +22,7 @@ using KIDS.MOBILE.APP.Services.Message;
 using KIDS.MOBILE.APP.Services.Napping;
 using KIDS.MOBILE.APP.Services.News;
 using KIDS.MOBILE.APP.Services.Notification;
+using KIDS.MOBILE.APP.Services.PickMedia;
 using KIDS.MOBILE.APP.Services.Prescription;
 using KIDS.MOBILE.APP.Services.RequestProvider;
 using KIDS.MOBILE.APP.Services.User;
@@ -86,9 +88,12 @@ namespace KIDS.MOBILE.APP
 {
     public partial class App : PrismApplication
     {
+        public static bool IsSubcribed = false;
+        public static bool IsInAddPhotoPage = false;
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
             InitializeComponent();
+            FlowListView.Init();
         }
 
         /// <summary>
@@ -289,6 +294,7 @@ namespace KIDS.MOBILE.APP
             containerRegistry.Register<ILoginService, LoginService>();
             containerRegistry.Register<IPrescriptionService, PrescriptionService>();
             containerRegistry.Register<IDatabaseService, DatabaseService>();
+            containerRegistry.Register<IMultiMediaPickerService>();
 
             #endregion Registry Service
         }

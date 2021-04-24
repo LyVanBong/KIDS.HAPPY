@@ -1,8 +1,11 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using KIDS.MOBILE.APP.Droid.Service;
 using LabelHtml.Forms.Plugin.Droid;
+using Plugin.CurrentActivity;
 using Prism;
 using Prism.Ioc;
 
@@ -27,6 +30,7 @@ namespace KIDS.MOBILE.APP.Droid
             Rg.Plugins.Popup.Popup.Init(this);
             HtmlLabelRenderer.Initialize();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
+            CrossCurrentActivity.Current.Init(this, bundle);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -34,6 +38,13 @@ namespace KIDS.MOBILE.APP.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            MultiMediaPickerService.SharedInstance.OnActivityResult(requestCode, resultCode, data);
         }
     }
 
