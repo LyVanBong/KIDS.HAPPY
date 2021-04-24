@@ -80,6 +80,35 @@
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </StackLayout>
+                    <StackLayout BindableLayout.ItemsSource="{Binding LearnAfternoonData}" HorizontalOptions="CenterAndExpand">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    Margin="20,0"
+                                    ColumnDefinitions="Auto,*"
+                                    HorizontalOptions="FillAndExpand"
+                                    RowDefinitions="*,1"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Text="{Binding ThoiGian}"
+                                        TextColor="#000" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        Text="{Binding Contents}"
+                                        TextColor="#000" />
+                                    <BoxView
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        BackgroundColor="DarkGray" />
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
                     <BoxView
                         Margin="20,0"
                         BackgroundColor="#fff"
