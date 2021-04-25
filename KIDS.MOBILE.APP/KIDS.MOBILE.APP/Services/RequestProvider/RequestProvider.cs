@@ -43,7 +43,7 @@ namespace KIDS.MOBILE.APP.Services.RequestProvider
                     : default;
                 return data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return null;
             }
@@ -192,6 +192,39 @@ namespace KIDS.MOBILE.APP.Services.RequestProvider
         public Task<ResponseModel<T>> PutFileAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters = null, Dictionary<string, FileResult> parameterFile = null)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<ResponseModel<T>> PostAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters, Dictionary<string, string> files = null)
+        {
+            try
+            {
+                CreateClients(uri, Method.POST);
+                if (parameters != null && parameters.Any())
+                {
+                    foreach (var item in parameters)
+                    {
+                        _request.AddParameter(item.Key, item.Value);
+                    }
+                }
+                if (files?.Any() == true)
+                {
+                    foreach (var file in files)
+                    {
+                        _request.AddFile(file.Key, file.Value);
+                    }
+                }
+                _request.AlwaysMultipartFormData = true;
+                var response = await _client.ExecuteAsync<ResponseModel<T>>(_request);
+                var data = response.StatusCode == HttpStatusCode.OK
+                    ? JsonConvert.DeserializeObject<ResponseModel<T>>(response.Content)
+                    : default;
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
     }
 }

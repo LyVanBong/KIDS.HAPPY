@@ -20,6 +20,6 @@ namespace KIDS.MOBILE.APP.Services.Album
         /// </summary>
         /// <param name="insert"></param>
         /// <returns></returns>
-        Task<ResponseModel<int>> InsertAlbum(InsertAlbumModel insert);
+        Task<ResponseModel<int>> InsertAlbum(InsertAlbumModel insert, Dictionary<string, string> files = null);
     }
 }

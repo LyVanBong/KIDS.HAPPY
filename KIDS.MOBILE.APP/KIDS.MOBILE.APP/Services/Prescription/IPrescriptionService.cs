@@ -29,6 +29,6 @@ namespace KIDS.MOBILE.APP.Services.Prescription
         /// </summary>
         /// <param name="prescriptionID"></param>
         /// <returns></returns>
-        Task<ResponseModel<List<PrescriptionDetailModel>>> GetAllPrescriptionDetail(string prescriptionID);
+        Task<ResponseModel<PrescriptionDetailModel>> GetAllPrescriptionDetail(string prescriptionID);
     }
 }

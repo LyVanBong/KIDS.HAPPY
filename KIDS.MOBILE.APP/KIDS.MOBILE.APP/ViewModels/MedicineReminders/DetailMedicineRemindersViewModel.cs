@@ -8,6 +8,7 @@ using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -20,7 +21,7 @@ namespace KIDS.MOBILE.APP.ViewModels.MedicineReminders
         private IPrescriptionService _prescriptionService;
         private PrescriptionModel _medicineData;
         private UserModel _userData;
-        private List<PrescriptionDetailModel> _detailMeicineData;
+        private ObservableCollection<MedicineDetailTicketModel> _detailMeicineData;
         private bool _isLoading;
 
         public bool IsLoading
@@ -29,7 +30,7 @@ namespace KIDS.MOBILE.APP.ViewModels.MedicineReminders
             set => SetProperty(ref _isLoading, value);
         }
 
-        public List<PrescriptionDetailModel> DetailMeicineData
+        public ObservableCollection<MedicineDetailTicketModel> DetailMeicineData
         {
             get => _detailMeicineData;
             set => SetProperty(ref _detailMeicineData, value);
@@ -117,13 +118,13 @@ namespace KIDS.MOBILE.APP.ViewModels.MedicineReminders
                     }
                 }
                 var detail = await _prescriptionService.GetAllPrescriptionDetail(MedicineData.ID);
-                if (detail.Code > 0)
+                if (detail?.Code > 0)
                 {
-                    DetailMeicineData = new List<PrescriptionDetailModel>(detail.Data);
+                    DetailMeicineData = new ObservableCollection<MedicineDetailTicketModel>(detail?.Data?.MedicineList);
                 }
                 else
                 {
-                    DetailMeicineData = new List<PrescriptionDetailModel>();
+                    DetailMeicineData = new ObservableCollection<MedicineDetailTicketModel>();
                 }
             }
             catch (Exception e)

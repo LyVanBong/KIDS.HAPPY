@@ -20,5 +20,6 @@ namespace KIDS.MOBILE.APP.Services.RequestProvider
             Dictionary<string, FileResult> parameterFile = null);
         Task<ResponseModel<T>> PutFileAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters = null,
             Dictionary<string, FileResult> parameterFile = null);
+        Task<ResponseModel<T>> PostAsync<T>(string uri, IReadOnlyCollection<RequestParameter> parameters, Dictionary<string, string> files = null);
     }
 }

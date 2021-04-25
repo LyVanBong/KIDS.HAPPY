@@ -35,7 +35,7 @@ namespace KIDS.MOBILE.APP.Services.Album
             }
         }
 
-        public async Task<ResponseModel<int>> InsertAlbum(InsertAlbumModel insert)
+        public async Task<ResponseModel<int>> InsertAlbum(InsertAlbumModel insert, Dictionary<string, string> files = null)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace KIDS.MOBILE.APP.Services.Album
                     new RequestParameter("DateCreate",insert.DateCreate),
                     new RequestParameter("UserCreate",insert.UserCreate)
                 };
-                var data = await _requestProvider.PostAsync<int>("Album/InsertAlbum", parameters);
+                var data = await _requestProvider.PostAsync<int>("Album/CreateAlbum", parameters, files);
                 return data;
             }
             catch (Exception)

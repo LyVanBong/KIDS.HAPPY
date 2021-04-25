@@ -8,6 +8,8 @@
              xmlns:markupExtension="clr-namespace:KIDS.MOBILE.APP.MarkupExtension;assembly=KIDS.MOBILE.APP"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:navigationView="clr-namespace:KIDS.MOBILE.APP.Controls.NavigationView;assembly=KIDS.MOBILE.APP"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              iOsSpecific:Page.UseSafeArea="true"
              BackgroundColor="{StaticResource BackgroundColorNavBar}"
              NavigationPage.HasNavigationBar="False"
@@ -50,17 +52,18 @@
                           RowDefinitions="50,Auto"
                           RowSpacing="0"
                           VerticalOptions="FillAndExpand">
-                        <Image Grid.Row="0"
+                        <ffimageloading:CachedImage Grid.Row="0"
                                Grid.Column="0"
                                Aspect="AspectFill"
+                               DownsampleToViewSize="true"
                                BackgroundColor="{StaticResource BackgroundImage}"
                                Source="{Binding MedicineData.TmpPicture}">
-                            <Image.Clip>
+                            <ffimageloading:CachedImage.Clip>
                                 <EllipseGeometry Center="25,25"
                                                  RadiusX="25"
                                                  RadiusY="25" />
-                            </Image.Clip>
-                        </Image>
+                            </ffimageloading:CachedImage.Clip>
+                        </ffimageloading:CachedImage>
                         <StackLayout Grid.Row="0"
                                      Grid.Column="1"
                                      Margin="0"
@@ -177,34 +180,91 @@
                     <Label Grid.Row="0"
                            Style="{StaticResource TitleNavigation}"
                            Text="{markupExtension:TranslateExtension 00065}" />
-                    <CollectionView Grid.Row="1"
-                                    Margin="0"
-                                    ItemsSource="{Binding DetailMeicineData}">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout ItemSpacing="0"
-                                               Orientation="Vertical" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
+                    <syncfusion:SfListView HorizontalOptions="FillAndExpand"
+                                   AutoFitMode="DynamicHeight"
+                                   ItemsSource="{Binding DetailMeicineData}"
+                                   Margin="10,5,10,5"
+                                   FlowDirection="MatchParent"
+                                   IsScrollingEnabled="False"
+                                   SelectionMode="None"
+                                   Grid.Row="1">
+                        <syncfusion:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <Label Margin="0"
-                                       Padding="0"
-                                       BackgroundColor="Transparent"
-                                       VerticalOptions="CenterAndExpand">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span FontSize="16"
-                                                  Text="{Binding Name}"
-                                                  TextColor="Black" />
-                                            <Span Text="&#10;" />
-                                            <Span FontSize="14"
-                                                  Text="{Binding Description}"
-                                                  TextColor="DarkGray" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
+                                <ViewCell>
+                                    <Grid HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.6*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="0"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="70"/>
+                                            <RowDefinition Height="70"/>
+                                        </Grid.RowDefinitions>
+                                        <ffimageloading:CachedImage
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            Source="{Binding Image}"
+                                            DownsampleToViewSize="true"
+                                            Aspect="AspectFit"
+                                            Margin="0"
+                                            Grid.Column="0"
+                                            Grid.Row="0"/>
+                                        <Frame Grid.Column="1"
+                                            Grid.Row="0"
+                                               Margin="2"
+                                               Padding="0"
+                                               BorderColor="Black"
+                                               CornerRadius="8">
+                                            <Label HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="CenterAndExpand"
+                                                TextColor="Black"
+                                                FontSize="12"
+                                                Margin="5"
+                                                Text="{Binding Name}"
+                                                LineBreakMode="WordWrap"
+                                                BackgroundColor="{OnPlatform Android=Transparent, iOS=White}"
+                                                />
+                                        </Frame>
+
+                                        <Frame Grid.Column="2"
+                                            Grid.Row="0"
+                                               Margin="2"
+                                               Padding="0"
+                                               BorderColor="Black"
+                                               CornerRadius="8">
+                                            <Label HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="CenterAndExpand"
+                                                TextColor="Black"
+                                                FontSize="12"
+                                                Margin="5"
+                                                Text="{Binding Unit}"
+                                                BackgroundColor="{OnPlatform Android=Transparent, iOS=White}"
+                                                Grid.Column="2"/>
+                                        </Frame>
+
+                                        <Frame Grid.Row="1"
+                                            Grid.ColumnSpan="3"
+                                               Margin="2"
+                                               Padding="0"
+                                               BorderColor="Black"
+                                               CornerRadius="8">
+                                            <Label HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="CenterAndExpand"
+                                                TextColor="Black"
+                                                FontSize="12"
+                                                Margin="5"
+                                                Text="{Binding Note}"
+                                                BackgroundColor="{OnPlatform Android=Transparent, iOS=White}"/>
+                                        </Frame>
+                                        
+                                    </Grid>
+                                </ViewCell>
                             </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                        </syncfusion:SfListView.ItemTemplate>
+                    </syncfusion:SfListView>
                 </Grid>
             </Grid>
             <loadingView:LoadingView Grid.Row="1"

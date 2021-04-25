@@ -29,7 +29,7 @@ namespace KIDS.MOBILE.APP.Droid
         {
             Rg.Plugins.Popup.Popup.Init(this);
             HtmlLabelRenderer.Initialize();
-            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(false);
             CrossCurrentActivity.Current.Init(this, bundle);
         }
 

@@ -66,20 +66,20 @@
                 TextColor="Black" />
             </textInputLayout:SfTextInputLayout>
             <textInputLayout:SfTextInputLayout
-            Grid.Row="2"
-            ContainerType="Outlined"
-            FocusedColor="#5459E6"
-            Hint="{Binding PhotoModel.BodyHeader}"
-            UnfocusedColor="DarkGray">
+                Grid.Row="2"
+                ContainerType="Outlined"
+                FocusedColor="#5459E6"
+                Hint="{Binding PhotoModel.BodyHeader}"
+                UnfocusedColor="DarkGray">
                 <Editor
-                HeightRequest="200"
-                Text="{Binding BodyContent}"
-                TextColor="Black" />
+                    HeightRequest="200"
+                    Text="{Binding BodyContent}"
+                    TextColor="Black" />
             </textInputLayout:SfTextInputLayout>
             <Grid
-            Grid.Row="3"
-            Margin="10"
-            ColumnDefinitions="*,*">
+                Grid.Row="3"
+                Margin="10"
+                ColumnDefinitions="*,*">
                 <Grid.Resources>
                     <ResourceDictionary>
                         <Style TargetType="Button">

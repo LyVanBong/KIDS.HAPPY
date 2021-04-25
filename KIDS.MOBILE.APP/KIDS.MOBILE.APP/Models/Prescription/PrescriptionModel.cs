@@ -19,22 +19,22 @@ namespace KIDS.MOBILE.APP.Models.Prescription
         public string StudentID { get; set; }
 
         [JsonProperty("FromDate")]
-        public DateTime FromDate { get; set; }
+        public DateTime? FromDate { get; set; }
 
-        public string TmpFromDate => FromDate.ToString("dd/MM/yyyy");
+        public string TmpFromDate => FromDate?.ToString("dd/MM/yyyy");
 
         [JsonProperty("ToDate")]
-        public DateTime ToDate { get; set; }
+        public DateTime? ToDate { get; set; }
 
-        public string TmpToDate => ToDate.ToString("dd/MM/yyyy");
+        public string TmpToDate => ToDate?.ToString("dd/MM/yyyy");
 
         [JsonProperty("Content")]
         public string Content { get; set; }
 
         [JsonProperty("Date")]
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
-        public string TmpDate => Date.ToString("hh:mm:ss dd/MM/yyyy");
+        public string TmpDate => Date?.ToString("hh:mm:ss dd/MM/yyyy");
 
         [JsonProperty("Status")]
         public bool Status
@@ -47,7 +47,7 @@ namespace KIDS.MOBILE.APP.Models.Prescription
         public string Approver { get; set; }
 
         [JsonProperty("DateApprove")]
-        public DateTime DateApprove { get; set; }
+        public DateTime? DateApprove { get; set; }
 
         [JsonProperty("Description")]
         public string Description { get; set; }

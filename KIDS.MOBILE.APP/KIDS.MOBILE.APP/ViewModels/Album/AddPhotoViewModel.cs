@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using KIDS.MOBILE.APP.Configurations;
 using KIDS.MOBILE.APP.Models.Album;
+using KIDS.MOBILE.APP.Services.Album;
 using KIDS.MOBILE.APP.Services.PickMedia;
 using Microsoft.AppCenter.Crashes;
 using Plugin.Permissions;
@@ -20,7 +24,8 @@ namespace KIDS.MOBILE.APP.ViewModels.Album
         private string _captionContent;
         private int _key;
         private IPageDialogService _pageDialogService;
-        IMultiMediaPickerService _multiMediaPickerService;
+        private IMultiMediaPickerService _multiMediaPickerService;
+        private IAlbumService _albumService;
 
         private AddPhotoModel[] _dataPhoto = new AddPhotoModel[]
         {
@@ -71,19 +76,14 @@ namespace KIDS.MOBILE.APP.ViewModels.Album
             }
         }
 
-        public AddPhotoViewModel(IPageDialogService pageDialogService)
-        {
-            try
-            {
-                _pageDialogService = pageDialogService;
-                _multiMediaPickerService = Xamarin.Forms.DependencyService.Get<IMultiMediaPickerService>();
-                SelectFeatureCommand = new AsyncCommand<string>(async (key) => await SelectFeature(key));
-            }
-            catch (Exception ex)
-            {
+        private bool IsCreateAlbum = false;
 
-                throw;
-            }
+        public AddPhotoViewModel(IPageDialogService pageDialogService, IAlbumService albumService)
+        {
+            _pageDialogService = pageDialogService;
+            _albumService = albumService;
+            _multiMediaPickerService = Xamarin.Forms.DependencyService.Get<IMultiMediaPickerService>();
+            SelectFeatureCommand = new AsyncCommand<string>(async (key) => await SelectFeature(key));
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
@@ -93,6 +93,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Album
             {
                 _key = parameters.GetValue<int>("key");
                 PhotoModel = _dataPhoto[_key];
+                IsCreateAlbum = _key == 0;
             }
             Media?.Clear();
         }
@@ -107,6 +108,35 @@ namespace KIDS.MOBILE.APP.ViewModels.Album
                         await _pageDialogService.DisplayActionSheetAsync("Chọn ảnh", ActionSheetButton.CreateCancelButton("Bỏ qua"), null, ActionSheetButton.CreateButton("Thư viên", async () => await ChonAnh()), ActionSheetButton.CreateButton("Máy ảnh", async () => await DungMayAnh()));
                         break;
                     case "1":
+                        Dictionary<string, string> files = null;
+                        if(Media?.Any() == true)
+                        {
+                            files = new Dictionary<string, string>();
+                            foreach(var item in Media)
+                            {
+                                files.Add(item.Path, item.Path);
+                            }
+                        }
+                        var model = new InsertAlbumModel
+                        {
+                            ClassID = AppConstants.User.ClassID,
+                            UserCreate = AppConstants.User.UserId,
+                            DateCreate = DateTime.Now.ToString("yyyy-MM-dd hh:mm"),
+                            Description = BodyContent,
+                            Thumbnail = CaptionContent
+                        };
+                        if (IsCreateAlbum)
+                        {
+                            var result = await _albumService.InsertAlbum(model, files);
+                            if (result?.Data > 0)
+                            {
+                                await Application.Current.MainPage.DisplayAlert(string.Empty, "Tạo thành công", "OK");
+                            }
+                            else
+                            {
+                                await Application.Current.MainPage.DisplayAlert(string.Empty, "Đã có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ với admin.", "OK");
+                            }
+                        }
                         break;
                     default:
                         break;

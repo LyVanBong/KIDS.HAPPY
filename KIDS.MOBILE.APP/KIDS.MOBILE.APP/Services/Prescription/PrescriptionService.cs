@@ -55,15 +55,15 @@ namespace KIDS.MOBILE.APP.Services.Prescription
             }
         }
 
-        public async Task<ResponseModel<List<PrescriptionDetailModel>>> GetAllPrescriptionDetail(string prescriptionID)
+        public async Task<ResponseModel<PrescriptionDetailModel>> GetAllPrescriptionDetail(string prescriptionID)
         {
             try
             {
                 var parameters = new List<RequestParameter>
                 {
-                    new RequestParameter("PrescriptionID",prescriptionID),
+                    new RequestParameter("id",prescriptionID),
                 };
-                var data = await _requestProvider.GetAsync<List<PrescriptionDetailModel>>("Prescription/PrescriptionDetail", parameters);
+                var data = await _requestProvider.GetAsync<PrescriptionDetailModel>("Prescription/PrescriptionDetail", parameters);
                 return data;
             }
             catch (Exception)
