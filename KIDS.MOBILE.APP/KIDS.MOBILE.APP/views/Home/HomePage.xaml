@@ -30,23 +30,23 @@
                 BackgroundColor="{StaticResource BackgroundColorNavBar}"
                 CornerRadius="0,0,15,15"
                 HorizontalOptions="FillAndExpand" />
-            <Image
+            <ffimageloading:CachedImage
                 Grid.Row="0"
                 Grid.Column="0"
                 Margin="5,0,0,0"
                 Aspect="AspectFit"
-                BackgroundColor="{StaticResource BackgroundImage}"
+                BackgroundColor="White"
                 HeightRequest="50"
                 Source="{Binding UserData.AvatarTeacher}"
                 VerticalOptions="CenterAndExpand"
                 WidthRequest="50">
-                <Image.Clip>
+                <ffimageloading:CachedImage.Clip>
                     <EllipseGeometry
                         Center="25,25"
                         RadiusX="25"
                         RadiusY="25" />
-                </Image.Clip>
-            </Image>
+                </ffimageloading:CachedImage.Clip>
+            </ffimageloading:CachedImage>
             <BoxView
                 Grid.Row="0"
                 Grid.Column="0"

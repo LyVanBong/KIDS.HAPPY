@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace KIDS.MOBILE.APP.ViewModels.Home
@@ -68,6 +69,7 @@ namespace KIDS.MOBILE.APP.ViewModels.Home
         public ICommand DetailNewsCommand { get; set; }
         public ICommand AlbumDetailCommand { get; set; }
         public ICommand ProfileCommand { get; set; }
+        public ICommand EvaluateCommand { get; set; }
 
         private INavigationService _navigationService;
         private bool _isLoading;
@@ -84,6 +86,14 @@ namespace KIDS.MOBILE.APP.ViewModels.Home
             DetailNewsCommand = new Command<NewsModel>(DetailNews);
             AlbumDetailCommand = new Command<AlbumModel>(DetailAlbum);
             ProfileCommand = new Command(async () => await Profile());
+            EvaluateCommand = new Command(async () => await Evaluate());
+        }
+
+        private async Task Evaluate()
+        {
+            var user = AppConstants.User;
+            var uri = $"http://school.hkids.edu.vn/Teachers/AssessApp.aspx?SchoolID={user.DonVi}&GradeID={user.GradeID}&ClassID={user.ClassID}&SchoolYear={DateTime.Now.Year}&UserID={user.UserId}";
+            await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
         }
 
         private async void IsActiveChang()
