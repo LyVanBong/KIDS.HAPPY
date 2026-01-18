@@ -1,27 +1,21 @@
-# KIDS.HAPPY
+# KIDS.HAPPY 👩‍🏫
+> Ứng dụng di động dành cho Giáo Viên Mầm Non.
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/LyVanBong/KIDS.HAPPY)
-![GitHub issues](https://img.shields.io/github/issues/LyVanBong/KIDS.HAPPY)
-![GitHub stars](https://img.shields.io/github/stars/LyVanBong/KIDS.HAPPY)
 
 ## 📝 Giới Thiệu
-ỨNG DỤNG DÀNH CHO GIÁO VIÊN
+**KIDS.HAPPY** là ứng dụng di động (Mobile App) giúp các giáo viên quản lý lớp học hiệu quả, cập nhật tình hình học sinh và tương tác với phụ huynh nhanh chóng.
 
-Đây là một trong những dự án mã nguồn mở được phát triển và duy trì bởi **LyVanBong**. Mã nguồn được chia sẻ với mục đích học tập và đóng góp cho cộng đồng.
+## ✨ Tính Năng
+-   **Điểm danh**: Check-in/Check-out học sinh hàng ngày.
+-   **Sổ liên lạc điện tử**: Gửi nhận xét, đánh giá bé.
+-   **Quản lý sức khỏe**: Cập nhật thực đơn, giấc ngủ, vệ sinh.
+-   **Album ảnh**: Chia sẻ khoảnh khắc lớp học.
 
-## 🚀 Tính Năng
-- [x] Đang cập nhật...
-- [ ] Tính năng nổi bật sẽ được liệt kê tại đây.
-
-## 🛠 Cài Đặt
-Hướng dẫn cài đặt và sử dụng sẽ sớm được cập nhật.
-
-```bash
-# Clone dự án
-git clone https://github.com/LyVanBong/KIDS.HAPPY.git
-```
+## 🛠 Công Nghệ
+-   **Nền tảng**: Xamarin.Forms (Android & iOS).
+-   **Kiến trúc**: MVVM.
+-   **Kết nối**: REST API tới `KIDS.API`.
 
 ## 📞 Liên Hệ
-Nếu bạn có câu hỏi hoặc muốn đóng góp, vui lòng liên hệ:
-- **GitHub**: [LyVanBong](https://github.com/LyVanBong)
-- **Website**: [softty.net](https://softty.net)
+-   **GitHub**: [LyVanBong](https://github.com/LyVanBong)
